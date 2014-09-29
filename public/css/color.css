@@ -1,0 +1,25 @@
+
+.bg-color-pinkred{
+	background: rgba(245,50,91,1);
+}
+
+.bg-color-silver{
+	background: #DBDBDB;
+}
+
+.bg-color-grey{
+	background: #A6A6A6;
+}
+
+.bg-color-white{
+	background: #FFFFFF;
+}
+
+
+.text-color-white{
+	color: #FFF;
+}
+
+.text-color-grey{
+	color: rgba(0,0,0,0.8);
+}

@@ -1,0 +1,19 @@
+#account_head{
+	padding: 10px;
+	background: #FFF;
+	height:40px;
+	color: rgba(255,0,0,0.6);
+}
+body{
+	background:#ECECEC;
+}
+.back-container{
+	padding: 0px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+.corue-text{
+	float:right !important;
+	background:rgba(0,0,0,0.5); 
+	padding:10px;
+}
+
