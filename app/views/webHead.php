@@ -145,7 +145,7 @@ $path = $data['path'];
           <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" align="left">
-            <h2>MX1 Shop</h2>
+            <h2 class="corue-head">MX1 Shop</h2>
             
             <p class="tagDetail" >หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
             <button class="btn btn-danger"> สั่งซื้อทันที </button>
@@ -158,7 +158,7 @@ $path = $data['path'];
           <img src="<?php echo $path;?>img/car-accessory-06.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" style="float:right !important;" align="left">
-            <h2>ล้อแม็กซ์ราคาถูก</h2>
+            <h2 class="corue-head">ล้อแม็กซ์ราคาถูก</h2>
             
             <p class="tagDetail">หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
             <button class="btn btn-danger"> สั่งซื้อทันที </button>

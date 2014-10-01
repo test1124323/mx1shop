@@ -1,15 +1,15 @@
 <?php
-class TopicController extends \BaseController {
+
+class testController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		return View::make('main');
+		echo "index";
 	}
 
 
@@ -20,7 +20,7 @@ class TopicController extends \BaseController {
 	 */
 	public function create()
 	{
-		//   
+		//
 	}
 
 
@@ -31,7 +31,7 @@ class TopicController extends \BaseController {
 	 */
 	public function store()
 	{
-
+		echo "store";
 	}
 
 
@@ -43,10 +43,7 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-		// $list = DB::table('topic')->get();
-		// $data['list'] 	= $list;
-		return View::make('vote');
+		echo "show".$id;
 	}
 
 
@@ -70,7 +67,7 @@ class TopicController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		echo "update".$id;
 	}
 
 
@@ -82,10 +79,8 @@ class TopicController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		echo "destroy".$id;
 	}
-
-	//--------------------------Custome function------------------------------------
 
 
 }
