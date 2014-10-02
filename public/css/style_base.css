@@ -116,4 +116,12 @@ input{
 button{
 	border-radius: 30px !important;
 }
+a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #E85151;
+}
+a:hover{
+	color: #DB4242;
+}
 
