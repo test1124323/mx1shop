@@ -125,7 +125,11 @@ $path = $data['path'];
       </li>
 
       <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">ติดตามสินค้า</a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">แจ้งชำระเงิน</a>
+      </li>
+
+      <li class="dropdown dropdown-large">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">เกี่ยวกับเรา</a>
       </li>
     </ul>
     

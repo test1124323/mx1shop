@@ -1,3 +1,19 @@
+.option-pad{
+	padding: 10px;
+}
+.search-text{
+	background:#E9E9E9;
+	height: 30px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	padding: 5px;
+}
+.about-us{
+	background:#333333;
+	height: 220px;
+	box-shadow: inset 0 100px 60px rgba(100,100,100,0.1);
+}
+
 .onsale{
 	height: 200px;
 	padding: 0px !important;
@@ -65,7 +81,6 @@
 	
 	.onsale{
 		margin-top: 0px;
-		height: 100px;
 		padding-bottom: 10px;
 	}
 	.saleItem {
@@ -90,9 +105,9 @@
 
 }
 input{
-	border-radius: 0px !important;
+	border-radius: 30px !important;
 }
 button{
-	border-radius: 3px !important;
+	border-radius: 30px !important;
 }
 

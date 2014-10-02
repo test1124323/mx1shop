@@ -19,17 +19,37 @@ include("webHead.php");
   </div>
 </div>
 
+
+<div class="col-xs-12" style=" background:#F6F6F6;padding:0px;">
 <!-- left side -->
-<div class="col-sm-3">test<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+<div class="col-sm-3" style="padding:10px 10px 0 10px;">
+<!-- <h4>Search</h4> -->
+<div class="input-group col-sm-12">
+<form name="search" method="post" action="">
+      <div class="search-text">Search</div>
+      <input type="text" class="form-control" placeholder='ค้นหาสินค้า'><br/><br/>
+      <select class="form-control" style="border-radius:30px;">
+        <option class="option-pad">--ทุกหมวดหมู่--</option>
+      </select>
+      <br/><br/>
+      <button class="btn btn-default col-sm-6" type="button" style="float:right"><i class='glyphicon glyphicon-search'></i> ค้นหา</button>
+</form>
+</div><!-- /input-group -->
+
+</div>
 <!-- !left side -->
 
+
 <!-- right side -->
-<div class="col-sm-9">
+
+<div class="col-sm-9" style=" background:#F0F0F0;">
 
 test<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 </div>
 <!-- !right side -->
+</div>
+
 <!-- /content -->
 
 
