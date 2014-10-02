@@ -9,7 +9,7 @@ class testController extends \BaseController {
 	 */
 	public function index()
 	{
-		echo "index";
+		return View::make("main_test");
 	}
 
 
@@ -31,7 +31,11 @@ class testController extends \BaseController {
 	 */
 	public function store()
 	{
-		echo "store";
+		$in = Input::get('name');
+		//---------อันนี้คิวรี่มาโชว์เฉยๆ จริงๆแล้วควรจะเป็น insert------------
+		$a = Category::find(1)->get()->toArray();
+
+		return View::make('show_test',array('data'=>$a , 'aa'=>'1' , 'inpt'=>$in));
 	}
 
 
