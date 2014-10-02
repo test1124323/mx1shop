@@ -28,8 +28,6 @@ $path = $data['path'];
 
 <div class="container back-container">
 
-
-
 <!-- menu -->
 <nav class="navbar navbar-default navbar-static" style="margin-bottom:0px;z-index:10000;">
 
@@ -63,7 +61,7 @@ $path = $data['path'];
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">หมวดหมู่สินค้า <b class="caret"></b></a>
         
         <ul class="dropdown-menu dropdown-menu-large row">
-          <li class="col-sm-3">
+          <li class="col-xs-3">
             <ul>
               <li class="dropdown-header">Glyphicons</li>
               <li><a href="#">Available glyphs</a></li>
@@ -77,7 +75,7 @@ $path = $data['path'];
               <li><a href="#">Disabled menu items</a></li>
             </ul>
           </li>
-          <li class="col-sm-3">
+          <li class="col-xs-3">
             <ul>
               <li class="dropdown-header">Button groups</li>
               <li><a href="#">Basic example</a></li>
@@ -90,7 +88,7 @@ $path = $data['path'];
               <li><a href="#">Single button dropdowns</a></li>
             </ul>
           </li>
-          <li class="col-sm-3">
+          <li class="col-xs-3">
             <ul>
               <li class="dropdown-header">Input groups</li>
               <li><a href="#">Basic example</a></li>
@@ -103,7 +101,7 @@ $path = $data['path'];
               <li><a href="#">Justified</a></li>
             </ul>
           </li>
-          <li class="col-sm-3">
+          <li class="col-xs-3">
             <ul>
               <li class="dropdown-header">Navbar</li>
               <li><a href="#">Default navbar</a></li>
@@ -176,7 +174,7 @@ $path = $data['path'];
 
       <!-- <ul class="nav nav-tabs"> -->
        <div class="floattab">
-          <div class="col-sm-2 carouInner" align="center"> 
+          <div class="col-xs-2 carouInner" align="center"> 
               <div data-target="#myCarousel" data-slide-to="0" class="active buttick" >•</div>
               <div data-target="#myCarousel" data-slide-to="1" class="buttick" >•</div>
               <div data-target="#myCarousel" data-slide-to="2" class="buttick" >•</div>

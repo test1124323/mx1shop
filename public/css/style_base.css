@@ -1,12 +1,18 @@
+.catelist{
+	border: none;
+	border-bottom: solid thin #E0E0E0;
+	background: none;
+	margin-left: -7px;
+	padding: 5px 10px 5px 12px;
+}
 .option-pad{
 	padding: 10px;
 }
 .search-text{
-	background:#E9E9E9;
-	height: 30px;
 	margin-bottom: 10px;
 	font-size: 18px;
 	padding: 5px;
+	color: #777777;
 }
 .about-us{
 	background:#333333;

@@ -24,7 +24,7 @@ include("webHead.php");
 <!-- left side -->
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
-<div class="input-group col-sm-12">
+<div class="input-group col-sm-12" style="background:#C9C9C9;padding:4px 14px 14px 14px;border-radius:4px;">
 <form name="search" method="post" action="">
       <div class="search-text">Search</div>
       <input type="text" class="form-control" placeholder='ค้นหาสินค้า'><br/><br/>
@@ -36,7 +36,20 @@ include("webHead.php");
 </form>
 </div><!-- /input-group -->
 
+<div class="side-cate">
+  <h3>สินค้าใหม่</h3>
+  <ul class="list-group">
+    <li class="list-group-item catelist"><i class='glyphicon glyphicon-play'></i> Cras justo odio</li>
+    <li class="list-group-item catelist"><i class='glyphicon glyphicon-play'></i> Dapibus ac facilisis in</li>
+    <li class="list-group-item catelist"><i class='glyphicon glyphicon-play'></i> Morbi leo risus</li>
+    <li class="list-group-item catelist"><i class='glyphicon glyphicon-play'></i> Porta ac consectetur ac</li>
+    <li class="list-group-item catelist"><i class='glyphicon glyphicon-play'></i> Vestibulum at eros</li>
+  </ul>
 </div>
+
+</div>
+
+
 <!-- !left side -->
 
 
