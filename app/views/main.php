@@ -9,7 +9,7 @@ include("webHead.php");
   	<h2>ลดราคารับสิ้นปี 60%</h2>
   	<p>กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
-  <div align="center" style="background:url(http://img.frbiz.com/nimg/33/89/e53577de7bcd8e735f74b29cb7dd-0x0-0/accessories_for_apple_strong_style_color_b82220_car_strong_mount_in_car_strong_style_color_b82220_holder_strong_for_strong_style_c.jpg);background-position: center;
+  <div align="center" style="background:url(img/accesorie60a.jpg);background-position: center;
 	background-size: cover; background-repeat:no-repeat;" class="col-sm-3 saleItem bg-color-silver text-color-white" >
   	<h4 style="background:rgba(0,0,0,0.5); padding:5px;">10 อันดับสินค้าขายดี</h4>
   </div>
@@ -32,7 +32,7 @@ include("webHead.php");
         <option class="option-pad">--ทุกหมวดหมู่--</option>
       </select>
       <br/><br/>
-      <button class="btn btn-default col-sm-6" type="button" style="float:right"><i class='glyphicon glyphicon-search'></i> ค้นหา</button>
+      <button class="btn btn-default col-sm-6" type="submit" style="float:right"><i class='glyphicon glyphicon-search'></i> ค้นหา</button>
 </form>
 </div><!-- /input-group -->
 
@@ -69,9 +69,7 @@ include("webHead.php");
 
 <!-- right side -->
 
-<div class="col-sm-9" style=" background:#F0F0F0;">
-
-test<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="col-sm-9">
 
 </div>
 <!-- !right side -->
