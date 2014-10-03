@@ -69,7 +69,17 @@ include("webHead.php");
 
 <!-- right side -->
 
-<div class="col-sm-9">
+<div class="col-sm-9" style="padding:0px;">
+
+<?php for ($i=0; $i < 9; $i++) { 
+ ?>
+ <div class="col-sm-4 product-list">
+          
+  </div>
+ <?php
+}?>
+ 
+
 
 </div>
 <!-- !right side -->

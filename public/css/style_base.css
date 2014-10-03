@@ -1,3 +1,8 @@
+.product-list{
+	height: 250px;
+	border: solid thin #E0E0E0;
+	margin-bottom: 10px;
+}
 .catelist{
 	border: none;
 	border-bottom: solid thin #E0E0E0;
