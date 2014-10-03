@@ -12,6 +12,3 @@
 */
 
 Route::resource('/','TopicController');
-
-
-Route::resource('/test1','testController');
