@@ -6,18 +6,34 @@ include("function.php");
 
 <script type="text/javascript">
 
-function show_pop(id,url,display){
+function show_pop(id,url,display,method,parent,level,CategoryID,CategoryName){
 	$('#'+id).modal();                      // initialized with defaults
 	$('#'+id).modal({ keyboard: false });   // initialized with no keyboard
 	$('#'+id).modal('show'); 
-	var data = {display: display,val: '23'};
+	var data = {display: display,_method: method,parent:parent,level:level,CategoryID:CategoryID,CategoryName:CategoryName};
 	$.post(url,data,function(msg){
 		$('#'+display).html(msg);
 	});
 }
 function savePop(){
-	var url = "../backoffice/Cate";
-	$('#frm_pop').action('action',url).submit();
+	if($('#_method').val()=='PUT'){
+		var url = "Cate/"+$('#CategoryID').val();
+	}else{
+		var url = "Cate";
+	}
+	
+
+	if($('#CategoryName').val()==""){
+		alert("ระบุ "+$('#CategoryName').attr('placeholder'));
+		$('#CategoryName').focus();
+		return false;
+	}
+	$('#frm_pop').attr('action',url).submit();
+}
+function delData(CategoryID){
+	if(confirm("ยืนยันการลบ !! ")){
+		window.location.href="deleteCate/"+CategoryID;
+	}
 }
 </script>
 <div class="panel panel-primary" style="width:70%;">
@@ -26,9 +42,10 @@ function savePop(){
   </div>
   <div class="panel-body">
   <div >
-  	<button class="btn btn-primary btn-xs" data-toggle="modal" 
+  	<button class="btn btn-success btn-xs" data-toggle="modal" 
   	data-target=".bs-example-modal-lg" 
-  	onclick="show_pop('myModal','../backoffice/catePop','showdisp1');"><i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
+  	onclick="show_pop('myModal','../backoffice/catePop','showdisp1','POST','0','1','','');">
+  	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
 
   </div>
   <br>
@@ -37,33 +54,78 @@ function savePop(){
     	<thead class="bg_tb">
     		<tr>
     			<th width="15%"><div style=" text-align: left;">ลำดับ</div></th>
-    			<th width="55%"><div style=" text-align: left;">ชื่อหมวดสินค่า</div></th>
+    			<th width="55%"><div style=" text-align: left;">ชื่อหมวดสินค้า</div></th>
     			<th width="30%"><div style=" text-align: left;">จัดการ</div></th>
     		</tr>
     	</thead>
     	<tbody>
-    	<tr>
-    		<td align="left">1.</td>
-    		<td align="left">อุปกรณ์ตกแต่งภายนอก</td>
-    		<td align="left">
-    		<button type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
-    		<button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> ลบ</button>
-    		</td>
-    	</tr>
-    	<tr>
-    		<td align="left">2.</td>
-    		<td align="left">อุปกรณ์ตกแต่งภายใน</td>
-    		<td align="left">
-    		<button type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
-    		<button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> ลบ</button>
-    		</td>
-    	</tr>
+    	<?php 
+    	$i=0;
+    	if(count($CateData)){
+			 foreach ($CateData as $key => $value) {
+
+				?>
+				<tr>
+			    		<td align="left"><?php echo ++$i.".";?></td>
+			    		<td align="left"><?php echo $value['CategoryName'];?></td>
+			    		<td align="left">
+
+			    		<button type="button" class="btn btn-success btn-xs" 
+			    		onclick="show_pop('myModal','../backoffice/catePop','showdisp1','POST','<?php echo $value['CategoryID'];?>','2','','');">
+			    		<i class="glyphicon glyphicon-plus"></i> เพิ่มหมวดย่อย</button>
+
+			    		<button type="button" class="btn btn-primary btn-xs" 
+			    		onclick="show_pop('myModal','../backoffice/catePop/<?php echo $value['CategoryID'];?>','showdisp1','PUT','0','1','<?php echo $value['CategoryID'];?>','<?php echo $value['CategoryName'];?>');">
+			    		<i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
+			    		<button type="button" class="btn btn-danger btn-xs" onclick="delData('<?php echo $value['CategoryID'];?>');" ><i class="glyphicon glyphicon-trash"></i> ลบ</button>
+			    		</td>
+			    	</tr>
+				<?php
+				$j=0;
+				if(count($CateData2)){
+					foreach ($CateData2 as $key2 => $value2) {
+						//echo "<pre>";print_r($value2);echo "</pre>";
+						
+					# code...
+						if($value2['CateParentID']==$value['CategoryID']){
+							?>
+							<tr class="warning">
+						    		<td align="left"><?php echo '&nbsp&nbsp&nbsp'.$i.'.'.++$j.".";?></td>
+						    		<td align="left"><?php echo '&nbsp&nbsp&nbsp'.$value2['CategoryName'];?></td>
+						    		<td align="left">						    		
+						    		<button type="button" class="btn btn-primary btn-xs" 
+						    		onclick="show_pop('myModal','../backoffice/catePop/<?php echo $value2['CategoryID'];?>','showdisp1','PUT','<?php echo $value2['CateParentID'];?>','2','<?php echo $value2['CategoryID'];?>','<?php echo $value2['CategoryName'];?>');">
+						    		<i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
+						    		<button type="button" class="btn btn-danger btn-xs" onclick="delData('<?php echo $value2['CategoryID'];?>');" ><i class="glyphicon glyphicon-trash"></i> ลบ</button>
+						    		</td>
+						    	</tr>
+							<?php 
+
+						}
+
+					}
+				}
+				
+				//$CateDataLevel2 = $CateData2[''];
+			}
+		}else{
+
+			?>
+			<tr class="danger">
+			    		<td align="center" colspan="3">ไม่พบข้อมูล</td>
+			    
+			    	</tr>
+			<?php
+		}
+
+    	?>
+    	
+    	
     	</tbody>
     </table>
     </div>
   </div>
 </div>
-
 <?php
 include("backFoot.php");
 echo showModal('myModal','showdisp1','เพิ่ม/แก้ไข ข้อมูลหมวดสินค้า');

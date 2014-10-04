@@ -30,7 +30,7 @@ $arr_menu = array('1' =>'ตั้งค่า',
 '3'=>'รายการรอชำระเงิน');
 $arr_menuLink = array('1'=>'#','2'=>'','3'=>'');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
-$arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'','3'=>'','4'=>'','5'=>'');
+$arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'','5'=>'');
 ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -79,5 +79,10 @@ $arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'','3'=>'','4'=>'','5'=>'')
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="panel panel-default">
+<ol class="breadcrumb" style="margin-top:-15px;">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+<div class="panel panel-default" style="margin-top:-20px;">
   <div class="panel-body">

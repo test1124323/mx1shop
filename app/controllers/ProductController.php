@@ -1,6 +1,6 @@
 <?php
 
-class catePopController extends \BaseController {
+class ProductController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class catePopController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('back_setup/cate_pop');
+		return View::make('back_setup/Product');
 		//echo "index";
 	}
 
@@ -30,11 +30,11 @@ class catePopController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()//POST
+	public function store()
 	{
-		return View::make('back_setup/cate_pop');
-		//echo "store";
+		echo "store";
 	}
+
 
 	/**
 	 * Display the specified resource.
@@ -68,8 +68,7 @@ class catePopController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		return View::make('back_setup/cate_pop');
-		//echo "update".$id;
+		echo "update".$id;
 	}
 
 

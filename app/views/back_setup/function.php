@@ -12,7 +12,7 @@ echo '<form method="post" id="frm_pop">
       <div class="modal-body" id="'.$showdisp.'">
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-primary">บันทึกข้อมูล</button>
+      <button type="button" class="btn btn-primary"  onClick="savePop();">บันทึกข้อมูล</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
         
       </div>

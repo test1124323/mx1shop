@@ -9,7 +9,11 @@ class CateController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('back_setup/CategoryDis');
+		//$cate = CategoryModel::all()->toArray();
+		$cateLevel1 = CategoryModel::level1Cate()->get()->toArray();
+		$cateLevel2 = CategoryModel::level2Cate()->get()->toArray();
+		//print_r($cate);
+		return View::make('back_setup/CategoryDis',array("CateData"=>$cateLevel1,"CateData2"=>$cateLevel2));
 		//echo "index";
 	}
 
@@ -30,9 +34,20 @@ class CateController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store()//save
 	{
-		echo "store";
+		$cate_add = new CategoryModel;
+		$cate_add->CategoryName = Input::get('CategoryName');
+		$cate_add->DeleteStatus = 0;
+		$cate_add->CateParentID = Input::get('parent');
+		$cate_add->CateLevel = Input::get('level');
+		$cate_add->save();
+
+		return Redirect::to('backoffice/Cate');
+
+		//$cate = CategoryModel::all()->toArray();
+		//return View::make('back_setup/CategoryDis',array("CateData"=>$cate));
+
 	}
 
 
@@ -68,7 +83,17 @@ class CateController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		echo "update".$id;
+		$cate_add = CategoryModel::find($id);
+		$cate_add->CategoryName = Input::get('CategoryName');
+		$cate_add->DeleteStatus = 0;
+		$cate_add->CateParentID = Input::get('parent');
+		$cate_add->CateLevel = Input::get('level');
+		$cate_add->save();
+
+		return Redirect::to('backoffice/Cate');
+
+
+		//echo "update".$id;
 	}
 
 
@@ -80,7 +105,10 @@ class CateController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		echo "destroy".$id;
+		$cate_add = CategoryModel::find($id);
+		$cate_add->delete();
+		return Redirect::to('backoffice/Cate');
+		//echo "destroy".$id;
 	}
 
 
