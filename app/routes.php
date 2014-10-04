@@ -13,5 +13,6 @@
 
 Route::resource('/','TopicController');
 
-
 Route::resource('/test1','testController');
+Route::resource('/backoffice/Cate','CateController');
+Route::resource('/backoffice/catePop','catePopController');

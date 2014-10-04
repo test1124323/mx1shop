@@ -1,6 +1,6 @@
 <?php
 
-class testController extends \BaseController {
+class CateController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class testController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('test');
+		return View::make('back_setup/CategoryDis');
 		//echo "index";
 	}
 

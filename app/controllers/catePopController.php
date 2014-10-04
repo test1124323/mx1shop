@@ -1,6 +1,6 @@
 <?php
 
-class testController extends \BaseController {
+class catePopController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class testController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('test');
+		return View::make('back_setup/cate_pop');
 		//echo "index";
 	}
 
@@ -30,11 +30,11 @@ class testController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store()//POST
 	{
-		echo "store";
+		return View::make('back_setup/cate_pop');
+		//echo "store";
 	}
-
 
 	/**
 	 * Display the specified resource.
