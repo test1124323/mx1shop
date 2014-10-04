@@ -1,3 +1,6 @@
+.side-cate{}
+.productGroupMenu{}
+.howtobuy{}
 .head-marquee{
 	color:#999;
     padding:5px 5px 5px 15px;
@@ -99,7 +102,13 @@
 	z-index: 100000;
 	margin-left: 20px;
 }
+
+@media (max-width: 480px){
+
+}
+
 @media (max-width: 620px){
+
 .logo1{
 	width:100px;
 	margin-top: 10px;
@@ -110,6 +119,18 @@
 	}
 }
 @media (max-width: 768px){
+	.side-cate{
+		display: none;	
+	}
+	.howtobuy{
+		font-size: 20px;
+	}
+	.product-list{
+		height: 330px;
+		margin: 0px;
+		padding: 5px;
+		
+	}
 	.btn-howtopay{
 		display: none;
 	}
@@ -156,5 +177,8 @@ a{
 }
 a:hover{
 	color: #DB4242;
+}
+*{
+	font-family: "PT Sans',sans-serif" !important;
 }
 

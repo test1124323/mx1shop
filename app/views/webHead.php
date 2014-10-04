@@ -62,7 +62,7 @@ $path = $data['path'];
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">หมวดหมู่สินค้า <b class="caret"></b></a>
         
         <ul class="dropdown-menu dropdown-menu-large row">
-          <li class="col-xs-3">
+          <li class="col-sm-3">
             <ul>
               <li class="dropdown-header">Glyphicons</li>
               <li><a href="#">Available glyphs</a></li>
@@ -76,7 +76,7 @@ $path = $data['path'];
               <li><a href="#">Disabled menu items</a></li>
             </ul>
           </li>
-          <li class="col-xs-3">
+          <li class="col-sm-3">
             <ul>
               <li class="dropdown-header">Button groups</li>
               <li><a href="#">Basic example</a></li>
@@ -89,7 +89,7 @@ $path = $data['path'];
               <li><a href="#">Single button dropdowns</a></li>
             </ul>
           </li>
-          <li class="col-xs-3">
+          <li class="col-sm-3">
             <ul>
               <li class="dropdown-header">Input groups</li>
               <li><a href="#">Basic example</a></li>
@@ -102,7 +102,7 @@ $path = $data['path'];
               <li><a href="#">Justified</a></li>
             </ul>
           </li>
-          <li class="col-xs-3">
+          <li class="col-sm-3">
             <ul>
               <li class="dropdown-header">Navbar</li>
               <li><a href="#">Default navbar</a></li>

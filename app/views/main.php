@@ -17,7 +17,7 @@ include("webHead.php");
   	<h4 style="background:rgba(0,0,0,0.5); padding:5px;">10 อันดับสินค้าขายดี</h4>
   </div>
   <div class="col-sm-3 saleItem bg-color-silver">
-  <h2 class=" text-color-grey" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
+  <h2 class=" text-color-grey howtobuy" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
   <button class="btn btn-info btn-howtopay" style="width:100%;">คลิกที่นี่</button>
   </div>
 </div>
@@ -27,7 +27,7 @@ include("webHead.php");
 <!-- left side -->
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
-<div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;">
+<div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
 <form name="search" method="post" action="">
       <div class="search-text">Search</div>
       <input type="text" class="form-control" placeholder='ค้นหาสินค้า'><br/><br/>
@@ -35,7 +35,7 @@ include("webHead.php");
         <option class="option-pad">--ทุกหมวดหมู่--</option>
       </select>
       <br/><br/>
-      <button class="btn btn-default col-sm-6" type="submit" style="float:right"><i class='glyphicon glyphicon-search'></i> ค้นหา</button>
+      <button class="btn btn-default col-sm-6" type="submit" style="float:right">ค้นหา</button>
 </form>
 </div><!-- /input-group -->
 
