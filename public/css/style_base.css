@@ -1,11 +1,32 @@
+.head-marquee{
+	color:#999;
+    padding:5px 5px 5px 15px;
+    margin-bottom:20px;
+    box-shadow:0 0px 5px rgba(0,0,0,0.1);
+}
+.ProductPic{
+	width:100%;height:220px;
+	border:thin solid #EDEDED;
+}
+.bgdeal{
+	}
+
+.btn-howtopay{
+}
+
+.product-head{
+	height: 350px;
+	margin: 0px;
+	padding: 5px;
+}
 .product-list{
-	height: 250px;
-	border: solid thin #E0E0E0;
-	margin-bottom: 10px;
+	height: 350px;
+	margin: 0px;
+	padding: 5px;
+	
 }
 .catelist{
 	border: none;
-	border-bottom: solid thin #E0E0E0;
 	background: none;
 	margin-left: -7px;
 	padding: 5px 10px 5px 12px;
@@ -89,13 +110,20 @@
 	}
 }
 @media (max-width: 768px){
-	
+	.btn-howtopay{
+		display: none;
+	}
+	.deal-text {
+		display: none;
+	}
 	.onsale{
 		margin-top: 0px;
 		padding-bottom: 10px;
 	}
 	.saleItem {
-		height: 150px;
+		height: 100px;
+		background:none;
+
 	}
 	.floattab{
 		display: none;

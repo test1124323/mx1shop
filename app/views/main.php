@@ -7,15 +7,18 @@ include("webHead.php");
 <div class="col-sm-12 onsale scroll-wrapper">
   <div class="col-sm-6 saleItem bg-color-pinkred text-color-white">
   	<h2>ลดราคารับสิ้นปี 60%</h2>
-  	<p>กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
+  	<p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
-  <div align="center" style="background:url(img/accesorie60a.jpg);background-position: center;
-	background-size: cover; background-repeat:no-repeat;" class="col-sm-3 saleItem bg-color-silver text-color-white" >
+  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(img/accesorie60a.jpg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat:no-repeat;
+" >
   	<h4 style="background:rgba(0,0,0,0.5); padding:5px;">10 อันดับสินค้าขายดี</h4>
   </div>
   <div class="col-sm-3 saleItem bg-color-silver">
-  <h2 class=" text-color-grey" style="padding:5px;">วิธีสั่งซื้อ <br/>และชำระเงิน</h2>
-  <button class="btn btn-info" style="width:100%;">คลิกที่นี่</button>
+  <h2 class=" text-color-grey" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
+  <button class="btn btn-info btn-howtopay" style="width:100%;">คลิกที่นี่</button>
   </div>
 </div>
 
@@ -70,11 +73,38 @@ include("webHead.php");
 <!-- right side -->
 
 <div class="col-sm-9" style="padding:0px;">
+<div class="head-marquee">
+  <marquee><b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b></marquee>
+</div>
+<?php for ($i=0; $i < 2; $i++) { 
+ ?>
+<div class="col-sm-6 product-head">
+          <div class="ProductPic" 
+          style="background:url(img/testProductList.png);
+                  background-position:center;
+                  background-size:cover;
+                  background-repeat:no-repeat;">
+          </div>
+
+          <div style="padding:10px 0 0 7px;color:#888;font-size:14px;">รหัสสินค้า : 027162</div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;">ชื่อสินค้า : ไฟหน้าซีนอล XA002</div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;">ราคา : <b>3,700฿</b></div>
+</div>
+ <?php
+}?>
 
 <?php for ($i=0; $i < 9; $i++) { 
  ?>
  <div class="col-sm-4 product-list">
-          
+          <div class="ProductPic" 
+          style="background:url(img/testProductList.png);
+                  background-position:center;
+                  background-size:cover;
+                  background-repeat:no-repeat;">
+          </div>  
+          <div style="padding:10px 0 0 7px;color:#888;font-size:14px;">รหัสสินค้า : 027162</div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;">ชื่อสินค้า : ไฟหน้าซีนอล XA002</div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;">ราคา : <b>3,700฿</b></div>
   </div>
  <?php
 }?>
