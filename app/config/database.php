@@ -59,9 +59,9 @@ return array(
 		'main' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'mx1shop',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'mx1shopco_shop',
+			'username'  => 'mx1shopco_shop',
+			'password'  => 'p@ssw0rd',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
