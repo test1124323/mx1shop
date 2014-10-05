@@ -17,6 +17,16 @@ include("webHead.php");
 $i=1;
 // echo "<pre>";
 // print_r($productlist[0]['product_img'][0]['ProductIMG']);exit;
+
+if(empty($productlist)){
+?>
+<div style=" padding:0 20px 0 20px;">
+<pre style="font-size:20px; color:#999; text-shadow:1px 2px 0px rgba(255,255,255,0.8); background:#FCFCFC;" align="center">
+ไม่พบผลการค้นหา
+</pre>
+</div>
+<?php
+}
 foreach ($productlist as $pkey => $pvalue) { 
   $size = ($i>2)?'4':'6';
  ?>

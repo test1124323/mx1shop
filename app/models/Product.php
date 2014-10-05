@@ -19,6 +19,16 @@ class Product extends Eloquent{
 		if(empty($cateid)){
 			return $query;
 		}
-		return $query->where('ProductCateID',$cateid);
+		return $query->whereRaw("MATCH(ProductCateLabel) AGAINST(?)",['a'.$cateid]);
+		// return $query->where('ProductCateID','LIKE','% '.$cateid.'%')
+		// 			->orWhere('ProductCateID','LIKE','%'.$cateid.' %');
+
+	}
+
+	public function scopeName($query,$keyword){
+		if(empty($keyword)){
+			return $query;
+		}
+		return $query->where('ProductCateID','LIKE','%'.$keyword.'%');
 	}
 }

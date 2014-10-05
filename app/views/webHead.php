@@ -223,11 +223,25 @@ $path = $data['path'];
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
 <div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
-<form name="search" method="post" action="">
+<form name="search" method="get" action="">
       <div class="search-text">Search</div>
-      <input type="text" class="form-control" placeholder='ค้นหาสินค้า'><br/><br/>
-      <select class="form-control" style="border-radius:30px;">
-        <option class="option-pad">--ทุกหมวดหมู่--</option>
+      <input name="keyword" type="text" class="form-control" placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
+      <select name="cate" class="form-control" style="border-radius:30px;">
+        <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
+        <?php 
+        foreach ($cate1 as $k1 => $v1) {
+          ?>
+          <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
+          <?php
+          foreach ($cate2 as $k2 => $v2) {
+            if($v2['CateParentID']==$v1['CategoryID']){
+              ?>
+                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
+              <?php
+            }
+          }
+        }
+      ?>
       </select>
       <br/><br/>
       <button class="btn btn-default col-sm-6" type="submit" style="float:right">ค้นหา</button>
