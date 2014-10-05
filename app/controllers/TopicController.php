@@ -9,10 +9,9 @@ class TopicController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		$cateLevel1 = CategoryModel::level1Cate()->get()->toArray();
-		$cateLevel2 = CategoryModel::level2Cate()->get()->toArray();
-		$data['cate1'] = $cateLevel1;
-		$data['cate2'] = $cateLevel2;
+		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
+		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
+		$data['productlist'] 	= Product::all()->toArray();
 		return View::make('main',$data);
 	}
 

@@ -134,7 +134,10 @@ include("webHead.php");
 <div class="head-marquee">
   <marquee><b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b></marquee>
 </div>
-<?php for ($i=0; $i < 2; $i++) { 
+<?php 
+print_r($productlist);
+
+for ($i=0; $i < 2; $i++) { 
  ?>
 <div class="col-sm-6 product-head">
           <div class="ProductPic" 
