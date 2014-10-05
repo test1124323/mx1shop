@@ -11,7 +11,14 @@ class Product extends Eloquent{
 	protected $primaryKey = 'ProductID';
 	public $timestamps = false;
 
-	public function scopeCategory($query,$cate_id){
-		return $query->where('CateLevel','1');
+	public function ProductImg(){
+		return $this->hasMany('ProductImg','ProductID');
+	}
+
+	public function scopeCategory($query,$cateid){
+		if(empty($cateid)){
+			return $query;
+		}
+		return $query->where('ProductCateID',$cateid);
 	}
 }

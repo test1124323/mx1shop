@@ -146,3 +146,73 @@ $path = $data['path'];
 </nav>
 
 <!-- menu -->
+<!-- slider -->
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" style="background:#555;">
+      
+        <div class="item active" align="center">
+          <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
+           <div class="carousel-caption">
+           <div class="col-lg-5 corue-text" align="left">
+            <h2 class="corue-head">MX1 Shop</h2>
+            
+            <p class="tagDetail" >หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
+            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            </p>
+            </div>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item" align="center">
+          <img src="<?php echo $path;?>img/car-accessory-06.jpg">
+           <div class="carousel-caption">
+           <div class="col-lg-5 corue-text" style="float:right !important;" align="left">
+            <h2 class="corue-head">ล้อแม็กซ์ราคาถูก</h2>
+            
+            <p class="tagDetail">หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
+            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            </p>
+            </div>
+          </div>
+        </div><!-- End Item -->
+                
+      </div><!-- End Carousel Inner -->
+
+
+      <!-- <ul class="nav nav-tabs"> -->
+       <div class="floattab">
+          <div class="col-xs-2 carouInner" align="center"> 
+              <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+          </div>
+       </div> 
+      <!-- </ul> -->
+
+
+    </div><!-- End Carousel -->
+
+<!-- slider -->
+
+
+<div class="col-sm-12 onsale scroll-wrapper">
+  <div class="col-sm-6 saleItem bg-color-pinkred text-color-white">
+    <h2>ลดราคารับสิ้นปี 60%</h2>
+    <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
+  </div>
+  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(img/accesorie60a.jpg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat:no-repeat;
+" >
+    <h4 style="background:rgba(0,0,0,0.5); padding:5px;">10 อันดับสินค้าขายดี</h4>
+  </div>
+  <div class="col-sm-3 saleItem bg-color-silver">
+  <h2 class=" text-color-grey howtobuy" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
+  <button class="btn btn-info btn-howtopay" style="width:100%;">คลิกที่นี่</button>
+  </div>
+</div>
