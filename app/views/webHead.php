@@ -7,7 +7,17 @@ $path = $data['path'];
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>::MX1 Shop::</title>
+  <meta name="author" content="mx1shop">
+  <meta name="type" content="website">
+	<title>MX1 Shop::</title>
+  <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
+แม็กซ์
+โทร : 081-7009767, 083-0208068
+ไลน์ : oxymaxy
+อีเมลล์ : lee.pradubyon@gmail.com">
+
+  <link rel="shortcut icon" href="<?php echo $path;?>img/mx1-logo-tile.png">
+
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>

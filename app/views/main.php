@@ -101,17 +101,24 @@ include("webHead.php");
   </ul>
 
   <h3>หมวดหมู่</h3>
+    
+
   <ul class="list-group">
-    <li class="list-group-item catelist"><a href="#"> Cras justo odio</a></li>
-    <li class="list-group-item catelist"><a href="#">  Dapibus ac facilisis in</a></li>
-    <li class="list-group-item catelist"><a href="#">  Morbi leo risus</a></li>
-    <li class="list-group-item catelist"><a href="#">  Porta ac consectetur ac</a></li>
-    <li class="list-group-item catelist"><a href="#">  Vestibulum at eros</a></li>
-    <li class="list-group-item catelist"><a href="#"> Cras justo odio</a></li>
-    <li class="list-group-item catelist"><a href="#">  Dapibus ac facilisis in</a></li>
-    <li class="list-group-item catelist"><a href="#">  Morbi leo risus</a></li>
-    <li class="list-group-item catelist"><a href="#">  Porta ac consectetur ac</a></li>
-    <li class="list-group-item catelist"><a href="#">  Vestibulum at eros</a></li>
+  
+  <?php 
+    foreach ($cate1 as $k1 => $v1) {
+      ?>
+      <li class="list-group-item catelist" style="font-size:17px;"><a href="?cate=<?php echo $v1['CateParentID'];?>"><?php echo $v1['CategoryName'];?></a></li>
+      <?php
+      foreach ($cate2 as $k2 => $v2) {
+        if($v2['CateParentID']==$v1['CategoryID']){
+          ?>
+            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CateParentID'];?>"> - <?php echo $v2['CategoryName'];?></a></li>
+          <?php
+        }
+      }
+    }
+  ?>
   </ul>
 </div>
 

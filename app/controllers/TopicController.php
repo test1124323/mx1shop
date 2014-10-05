@@ -9,7 +9,11 @@ class TopicController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		return View::make('main');
+		$cateLevel1 = CategoryModel::level1Cate()->get()->toArray();
+		$cateLevel2 = CategoryModel::level2Cate()->get()->toArray();
+		$data['cate1'] = $cateLevel1;
+		$data['cate2'] = $cateLevel2;
+		return View::make('main',$data);
 	}
 
 
