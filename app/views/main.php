@@ -15,8 +15,7 @@ include("webHead.php");
 </div>
 <?php 
 $i=1;
-// echo "<pre>";
-// print_r($productlist[0]['product_img'][0]['ProductIMG']);exit;
+  
 
 if(empty($productlist)){
 ?>

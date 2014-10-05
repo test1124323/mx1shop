@@ -1,6 +1,6 @@
 <!doctype html>
 <?php 
-$data['path'] = empty(Request::segment(2))?'':'../';
+$data['path'] = (Request::segment(2)=='')?'':'../';
 $path = $data['path'];
 ?>
 <html lang="en">
