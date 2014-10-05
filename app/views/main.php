@@ -1,6 +1,57 @@
 <?php
 include("webHead.php");
 ?>
+<!-- slider -->
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" style="background:#555;">
+      
+        <div class="item active" align="center">
+          <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
+           <div class="carousel-caption">
+           <div class="col-lg-5 corue-text" align="left">
+            <h2 class="corue-head">MX1 Shop</h2>
+            
+            <p class="tagDetail" >หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
+            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            </p>
+            </div>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item" align="center">
+          <img src="<?php echo $path;?>img/car-accessory-06.jpg">
+           <div class="carousel-caption">
+           <div class="col-lg-5 corue-text" style="float:right !important;" align="left">
+            <h2 class="corue-head">ล้อแม็กซ์ราคาถูก</h2>
+            
+            <p class="tagDetail">หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
+            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            </p>
+            </div>
+          </div>
+        </div><!-- End Item -->
+                
+      </div><!-- End Carousel Inner -->
+
+
+      <!-- <ul class="nav nav-tabs"> -->
+       <div class="floattab">
+          <div class="col-xs-2 carouInner" align="center"> 
+              <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+          </div>
+       </div> 
+      <!-- </ul> -->
+
+
+    </div><!-- End Carousel -->
+
+<!-- slider -->
 
 <!-- content  -->
 
