@@ -17,4 +17,8 @@ class CategoryModel extends Eloquent{
 	public function scopeLevel2Cate($query){
 		return $query->where('CateLevel','2');
 	}
+	public function ParentCate()
+    {
+        return $this->hasMany('CategoryModel','CateParentID');
+    }
 }

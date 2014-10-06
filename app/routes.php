@@ -17,3 +17,5 @@ Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 Route::resource('/backoffice/catePop','catePopController');
 Route::resource('/backoffice/Product','ProductController');
+Route::resource('/backoffice/ProductForm','ProductManageController');
+Route::resource('/backoffice/DropdownCategory','ProductManageController@DropdownCategory');

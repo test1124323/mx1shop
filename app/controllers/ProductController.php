@@ -12,8 +12,6 @@ class ProductController extends \BaseController {
 		return View::make('back_setup/Product');
 		//echo "index";
 	}
-
-
 	/**
 	 * Show the form for creating a new resource.
 	 *

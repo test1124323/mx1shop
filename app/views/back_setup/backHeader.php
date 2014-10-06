@@ -25,10 +25,10 @@ $path = $data['path'];
 <body>
 <?php
 ${'tab'.$act} = 'active';
-$arr_menu = array('1' =>'ตั้งค่า',
+$arr_menu = array('0'=>'หน้าแรก','1' =>'ตั้งค่า',
 '2'=>'รายการสั่งซื้อสินค้าทั้งหมด',
 '3'=>'รายการรอชำระเงิน');
-$arr_menuLink = array('1'=>'#','2'=>'','3'=>'');
+$arr_menuLink = array('0'=>'#','1'=>'#','2'=>'','3'=>'');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
 $arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'','5'=>'');
 ?>
@@ -73,16 +73,9 @@ $arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'
       ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">คุณจักรยาน แกนล่อน</a></li>
-    	<li> <button type="button" class="btn btn-danger">Logout</button></li>
+         <li><a href="#">คุณจักรยาน แกนล่อน</a></li>
+    	   <li><button style="margin-top:15px" type="button" class="btn btn-danger btn-xs">Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<ol class="breadcrumb" style="margin-top:-15px;">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
-<div class="panel panel-default" style="margin-top:-20px;">
-  <div class="panel-body">

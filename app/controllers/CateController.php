@@ -107,6 +107,9 @@ class CateController extends \BaseController {
 	{
 		$cate_add = CategoryModel::find($id);
 		$cate_add->delete();
+
+		$delete_child = CategoryModel::where('CateParentID', '=',$id)->delete();//delete for child
+
 		return Redirect::to('backoffice/Cate');
 		//echo "destroy".$id;
 	}
