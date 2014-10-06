@@ -187,9 +187,7 @@ $path = $data['path'];
           <div class="col-xs-2 carouInner" align="center"> 
               <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-              <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-          </div>
+              </div>
        </div> 
       <!-- </ul> -->
 
