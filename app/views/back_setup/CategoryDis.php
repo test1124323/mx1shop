@@ -36,6 +36,14 @@ function delData(CategoryID){
 	}
 }
 </script>
+
+<ol class="breadcrumb" style="margin-top:-15px;">
+  <li><a href="#">หน้าแรก</a></li>
+  <li class="active">หมวดสินค่า</li>
+</ol>
+<div class="panel panel-default" style="margin-top:-20px;">
+  <div class="panel-body">
+
 <div class="panel panel-primary" style="width:70%;">
 <div class="panel-heading">
     <h3 class="panel-title"><i class='glyphicon glyphicon-cog'></i> หมวดสินค้า</h3>
@@ -48,8 +56,7 @@ function delData(CategoryID){
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
 
   </div>
-  <br>
-  <div class="table-responsive">
+  <div class="table-responsive" style="margin-top:10px;">
     <table class="table table-hover" >
     	<thead class="bg_tb">
     		<tr>
@@ -126,6 +133,8 @@ function delData(CategoryID){
     </div>
   </div>
 </div>
+</div><!--panel-body-->
+</div><!--panel panel-default-->
 <?php
 include("backFoot.php");
 echo showModal('myModal','showdisp1','เพิ่ม/แก้ไข ข้อมูลหมวดสินค้า');

@@ -3,19 +3,26 @@ $act = '1';
 include("backHeader.php");
 include("function.php");
 ?>
+<ol class="breadcrumb" style="margin-top:-15px;">
+  <li><a href="#">หน้าแรก</a></li>
+  <li class="active">รายการสินค้า</li>
+</ol>
+<div class="panel panel-default" style="margin-top:-20px;">
+  <div class="panel-body">
+
 <div class="panel panel-primary" style="width:100%;">
 	<div class="panel-heading">
 		<h3 class="panel-title"><i class='glyphicon glyphicon-cog'></i> รายการสินค้า</h3>
 	</div>
 	<div class="panel-body">
   <div >
+  <a href="ProductForm">
   	<button class="btn btn-success btn-xs" data-toggle="modal" 
   	data-target=".bs-example-modal-lg" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-
+  	</a>
   </div>
-  <br>
-  <div class="table-responsive">
+  <div class="table-responsive" style="margin-top:10px;">
     <table class="table table-hover table-bordered" >
     	<thead class="bg_tb">
     		<tr>
@@ -41,6 +48,8 @@ include("function.php");
    </div>
 </div>
 </div>
+</div><!--panel-body-->
+</div><!--panel panel-default-->
 <?php 
 include("backFoot.php");
 ?>
