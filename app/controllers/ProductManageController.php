@@ -30,22 +30,45 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//print_r(Input::get('ProductName'));
+		//echo "<pre>";print_r(Input::get('ProductName'));echo "</pre>";
+
+		//echo "<pre>";print_r(Input::get('CategoryName'));echo "</pre>";
+		//exit();
+		$date = date('Y-m-d');
 		if(count(Input::get('ProductName'))){
 			foreach (Input::get('ProductName') as $key => $value) {
 			# code...
 			$Product = new ProductModel;
-			$Product->ProductName = $value;
-			$Product->ProductSalePrice = str_replace(",","",Input::get('ProductSalePrice')[$key]);
-			$Product->ProductAmount = str_replace(",","",Input::get('ProductAmount')[$key]);
-			$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key];
-			$Product->ProductDESC = Input::get('ProductDESC')[$key];
-			$Product->ProductDate = '';
+			$Product->ProductName = $value[0];
+			$Product->ProductSalePrice = (Input::get('ProductSalePrice')[$key][0]);
+			$Product->ProductAmount = (Input::get('ProductAmount')[$key][0]);
+			$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
+			$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
+			$Product->ProductDate = ''.$date;
+
+			$Product->save();
+
+			
+			foreach (Input::get('CategoryName')[$key] as $keyCate => $valueCate) {
+				# code...
+				//echo "<pre>";print_r($valueCate);echo "</pre>";
+				$ProCate = new ProductCateModel();
+				$ProCate->CategoryID = $valueCate;
+				$product->Category()->save();
+
+
+			}
+
+			//$pro2 = ProductModel::find(1);
+
+
+
+
 			}
 		}
 
 
-
+return Redirect::to('backoffice/Product');
 		//echo "store";
 	}
 
@@ -117,7 +140,8 @@ public function DropdownCategory(){
  			$arr_data[$value2['CateParentID']][$value2['CategoryID']] = $value2['CategoryID'];
  		}
  	}
-$html = '<select id="Category'.$_POST["id_tb"].'"  name="CategoryName[]" class="form-control" placeholder="เลือกหมวดสินค้า">';
+ $id = explode("_",$_POST["id_tb"]);
+$html = '<select id="Category'.$_POST["id_tb"].'"  name="CategoryName['.$id[0].'][]" class="form-control" placeholder="เลือกหมวดสินค้า">';
 		$html.='<option value="">เลือกหมวดสินค้า</option>';
 		if($arr_data){
 			foreach ($arr_data as $key => $value) {

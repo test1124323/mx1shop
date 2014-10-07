@@ -9,7 +9,15 @@ class TopicController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		return View::make('main');
+		$cateid 				= Input::get('cate');
+		$keyword 				= Input::get('keyword');
+		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
+		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
+		$data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
+		// print_r(DB::getQueryLog());exit;
+		// echo "<pre>";
+		// print_r($data['productlist']);exit;
+		return View::make('main',$data);
 	}
 
 
