@@ -13,7 +13,14 @@ class TopicController extends \BaseController {
 		$keyword 				= Input::get('keyword');
 		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
 		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
-		$data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
+		// $data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
+		// $data['productlist'] 	= Product::find('0000001')->ProductCate()->get()->toArray();
+		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
+											->Name($keyword)
+											->with('ProductImg')
+											->get()->toArray();
+		// echo "<pre>";
+		// print_r($data['productlist']);exit;
 		// print_r(DB::getQueryLog());exit;
 		// echo "<pre>";
 		// print_r($data['productlist']);exit;
