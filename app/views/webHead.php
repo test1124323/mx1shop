@@ -68,7 +68,7 @@ $path = $data['path'];
     <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">หน้าแรก</a>
       </li>
-      <li class="dropdown dropdown-large">
+      <!-- <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">หมวดหมู่สินค้า <b class="caret"></b></a>
         
         <ul class="dropdown-menu dropdown-menu-large row">
@@ -126,7 +126,7 @@ $path = $data['path'];
               <li><a href="#">Inverted navbar</a></li>
             </ul>
           </li>
-        </ul>
+        </ul> -->
         
       </li>
       <li class="dropdown dropdown-large">
@@ -227,14 +227,21 @@ $path = $data['path'];
       <select name="cate" class="form-control" style="border-radius:30px;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
+          $cate = Input::get('cate');
+
         foreach ($cate1 as $k1 => $v1) {
           ?>
           <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
           <?php
           foreach ($cate2 as $k2 => $v2) {
             if($v2['CateParentID']==$v1['CategoryID']){
+               if($v2['CategoryID']==$cate){
+                 $con = 'selected';
+                }else{
+                  $con = '';
+                }
               ?>
-                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
+                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   <?php echo $v2['CategoryName'];?></option>
               <?php
             }
           }
@@ -262,15 +269,19 @@ $path = $data['path'];
   <ul class="list-group">
   
   <?php 
+  
     foreach ($cate1 as $k1 => $v1) {
       ?>
       <li class="list-group-item catelist" style="font-size:17px;"><a href="?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
       <?php
       foreach ($cate2 as $k2 => $v2) {
         if($v2['CateParentID']==$v1['CategoryID']){
+
           ?>
-            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>"> - <?php echo $v2['CategoryName'];?></a></li>
+            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>" > - <?php echo $v2['CategoryName'];?></a></li>
           <?php
+
+          
         }
       }
     }

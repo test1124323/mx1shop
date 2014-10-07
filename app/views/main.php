@@ -1,5 +1,14 @@
 <?php
 include("webHead.php");
+if(Input::has('cate')){
+  ?>
+<script>
+  
+  window.location.href="#list";
+
+</script>
+  <?php
+}
 ?>
 
 <!-- content  -->

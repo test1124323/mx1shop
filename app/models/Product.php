@@ -25,14 +25,9 @@ class Product extends Eloquent{
 
 	public function scopeJoinCategory($query){
 		
-		// return $query->whereRaw("MATCH(ProductCateLabel) AGAINST(?)",array('a'.$cateid));
 		return $query->join('tbl_productcate', 'tbl_product.ProductId', '=', 'tbl_productcate.ProductID')
 					->join('tbl_category', 'tbl_category.CategoryID', '=', 'tbl_productcate.CategoryID')
 					->groupBy('tbl_product.ProductId');
-		
-		// return $query->where('ProductCateID','LIKE','% '.$cateid.'%')
-		// 			->orWhere('ProductCateID','LIKE','%'.$cateid.' %');
-
 	}
 
 	public function scopeCategory($query,$cateid){
