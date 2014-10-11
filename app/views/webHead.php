@@ -152,8 +152,17 @@ $path = $data['path'];
     
       <!-- Wrapper for slides -->
       <div class="carousel-inner" style="background:#555;">
-      
+        
         <div class="item active" align="center">
+          <img src="<?php echo $path;?>img/cover.png">
+           <div class="carousel-caption">
+           <div class="col-lg-5" align="left">
+            
+            </div>
+          </div>
+        </div><!-- End Item -->
+
+        <div class="item" align="center">
           <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" align="left">
@@ -178,6 +187,7 @@ $path = $data['path'];
             </div>
           </div>
         </div><!-- End Item -->
+
                 
       </div><!-- End Carousel Inner -->
 
@@ -187,6 +197,7 @@ $path = $data['path'];
           <div class="col-xs-2 carouInner" align="center"> 
               <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               </div>
        </div> 
       <!-- </ul> -->
