@@ -44,7 +44,7 @@ class MorphPivot extends Pivot {
 	 * Set the morph type for the pivot.
 	 *
 	 * @param  string  $morphType
-	 * @return $this
+	 * @return \Illuminate\Database\Eloquent\Relations\MorphPivot
 	 */
 	public function setMorphType($morphType)
 	{

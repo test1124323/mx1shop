@@ -11,12 +11,10 @@ class TopicController extends \BaseController {
 	{
 		$cateid 				= Input::get('cate');
 		$keyword 				= Input::get('keyword');
-		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
-		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
-		$data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
-		// print_r(DB::getQueryLog());exit;
-		// echo "<pre>";
-		// print_r($data['productlist']);exit;
+		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
+											->Name($keyword)
+											->with('ProductImg')
+											->get()->toArray();
 		return View::make('main',$data);
 	}
 
@@ -51,10 +49,10 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-		// $list = DB::table('topic')->get();
-		// $data['list'] 	= $list;
-		return View::make('vote');
+		// echo "<pre>";
+		$product = 	Product::where('ProductID',$id)->with('ProductImg')->first()->toArray();
+		// print_r($product);exit;
+		return View::make('productDetail',array('detail'=>$product));
 	}
 
 

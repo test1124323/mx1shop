@@ -9,7 +9,26 @@
 }
 .ProductPic{
 	width:100%;height:220px;
-	border:thin solid #EDEDED;
+	border:5px solid #FFF;
+	box-shadow: 0 4px 4px rgba(100,100,100,0.3);
+	opacity: 1;
+    -webkit-transition: border 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border 0.5s;
+}
+.ProductPic:hover{
+	border:10px;
+}
+.ProductPicDetail{
+	width:100%;height:350px;
+	/*border-radius: 10px;*/
+	/*border:5px solid #FFF;*/
+
+	opacity: 1;
+    -webkit-transition: border 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border 0.5s;
+}
+.ProductPicDetail:hover{
+	border:10px;
 }
 .bgdeal{
 	}
@@ -72,6 +91,7 @@
 	z-index: 10000;
 	position: relative;
 	margin-top:-35px;
+	margin-left: 80px;
 	color: #FFF;
 }
 .carouInner{
