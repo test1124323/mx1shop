@@ -1,13 +1,23 @@
 <!doctype html>
 <?php 
-$data['path'] = empty(Request::segment(2))?'':'../';
+$data['path'] = (Request::segment(2)=='')?'':'../';
 $path = $data['path'];
 ?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>::MX1 Shop::</title>
+  <meta name="author" content="mx1shop">
+  <meta name="type" content="website">
+	<title>MX1 Shop::</title>
+  <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
+แม็กซ์
+โทร : 081-7009767, 083-0208068
+ไลน์ : oxymaxy
+อีเมลล์ : lee.pradubyon@gmail.com">
+
+  <!-- <link rel="shortcut icon" href="<?php echo $path;?>img/mx1-logo-tile.png"> -->
+
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>
@@ -136,15 +146,14 @@ $path = $data['path'];
 </nav>
 
 <!-- menu -->
-
 <!-- slider -->
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
     
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="background:#555;">
       
-        <div class="item active">
+        <div class="item active" align="center">
           <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" align="left">
@@ -157,7 +166,7 @@ $path = $data['path'];
           </div>
         </div><!-- End Item -->
  
-         <div class="item">
+         <div class="item" align="center">
           <img src="<?php echo $path;?>img/car-accessory-06.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" style="float:right !important;" align="left">
@@ -176,10 +185,10 @@ $path = $data['path'];
       <!-- <ul class="nav nav-tabs"> -->
        <div class="floattab">
           <div class="col-xs-2 carouInner" align="center"> 
-              <div data-target="#myCarousel" data-slide-to="0" class="active buttick" >•</div>
-              <div data-target="#myCarousel" data-slide-to="1" class="buttick" >•</div>
-              <div data-target="#myCarousel" data-slide-to="2" class="buttick" >•</div>
-              <div data-target="#myCarousel" data-slide-to="3" class="buttick" >•</div>
+              <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
+              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
           </div>
        </div> 
       <!-- </ul> -->
@@ -189,3 +198,89 @@ $path = $data['path'];
 
 <!-- slider -->
 
+
+<div class="col-sm-12 onsale scroll-wrapper">
+  <div class="col-sm-6 saleItem bg-color-pinkred text-color-white">
+    <h2>ลดราคารับสิ้นปี 60%</h2>
+    <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
+  </div>
+  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(img/accesorie60a.jpg);
+  background-position: center;
+  background-size: cover; 
+  background-repeat:no-repeat;
+" >
+    <h4 style="background:rgba(0,0,0,0.5); padding:5px;">10 อันดับสินค้าขายดี</h4>
+  </div>
+  <div class="col-sm-3 saleItem bg-color-silver">
+  <h2 class=" text-color-grey howtobuy" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
+  <button class="btn btn-info btn-howtopay" style="width:100%;">คลิกที่นี่</button>
+  </div>
+</div>
+
+
+<div class="col-xs-12" style=" background:#F6F6F6;padding:0px;">
+<!-- left side -->
+<div class="col-sm-3" style="padding:10px 10px 0 10px;">
+<!-- <h4>Search</h4> -->
+<div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
+<form name="search" method="get" action="">
+      <div class="search-text">Search</div>
+      <input name="keyword" type="text" class="form-control" placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
+      <select name="cate" class="form-control" style="border-radius:30px;">
+        <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
+        <?php 
+        foreach ($cate1 as $k1 => $v1) {
+          ?>
+          <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
+          <?php
+          foreach ($cate2 as $k2 => $v2) {
+            if($v2['CateParentID']==$v1['CategoryID']){
+              ?>
+                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
+              <?php
+            }
+          }
+        }
+      ?>
+      </select>
+      <br/><br/>
+      <button class="btn btn-default col-sm-6" type="submit" style="float:right">ค้นหา</button>
+</form>
+</div><!-- /input-group -->
+
+<div class="side-cate">
+<!--   <h3>สินค้าใหม่</h3>
+  <ul class="list-group">
+    <li class="list-group-item catelist"><a href="#"> Cras justo odio</a></li>
+    <li class="list-group-item catelist"><a href="#">  Dapibus ac facilisis in</a></li>
+    <li class="list-group-item catelist"><a href="#">  Morbi leo risus</a></li>
+    <li class="list-group-item catelist"><a href="#">  Porta ac consectetur ac</a></li>
+    <li class="list-group-item catelist"><a href="#">  Vestibulum at eros</a></li>
+  </ul> -->
+
+  <h3>หมวดหมู่</h3>
+    
+
+  <ul class="list-group">
+  
+  <?php 
+    foreach ($cate1 as $k1 => $v1) {
+      ?>
+      <li class="list-group-item catelist" style="font-size:17px;"><a href="?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
+      <?php
+      foreach ($cate2 as $k2 => $v2) {
+        if($v2['CateParentID']==$v1['CategoryID']){
+          ?>
+            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>"> - <?php echo $v2['CategoryName'];?></a></li>
+          <?php
+        }
+      }
+    }
+  ?>
+  </ul>
+</div>
+
+</div>
+
+
+<!-- !left side -->

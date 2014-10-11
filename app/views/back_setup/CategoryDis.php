@@ -88,14 +88,14 @@ function delData(CategoryID){
 			    		</td>
 			    	</tr>
 				<?php
+
 				$j=0;
+				   $CateData2 = DB::table('tbl_category')->where('CateParentID','=',$value['CategoryID'])->get();
+				    $CateData2 = objectToArray($CateData2);
 				if(count($CateData2)){
 					foreach ($CateData2 as $key2 => $value2) {
 						//echo "<pre>";print_r($value2);echo "</pre>";
-						
-					# code...
-						if($value2['CateParentID']==$value['CategoryID']){
-							?>
+						?>
 							<tr class="warning">
 						    		<td align="left"><?php echo '&nbsp&nbsp&nbsp'.$i.'.'.++$j.".";?></td>
 						    		<td align="left"><?php echo '&nbsp&nbsp&nbsp'.$value2['CategoryName'];?></td>
@@ -107,8 +107,6 @@ function delData(CategoryID){
 						    		</td>
 						    	</tr>
 							<?php 
-
-						}
 
 					}
 				}

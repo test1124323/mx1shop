@@ -53,8 +53,8 @@ function add_row(){
     });
     
     
-    table.rows[rowCount].cells[3].innerHTML='<input id="ProductAmount'+id_tb+'" name="ProductAmount['+id_tb+'][]" class="form-control" value="" placeholder="จำนวน">';
-    table.rows[rowCount].cells[4].innerHTML='<input id="ProductSalePrice'+id_tb+'" name="ProductSalePrice['+id_tb+'][]" class="form-control" value="" placeholder="ราคาขาย">';
+    table.rows[rowCount].cells[3].innerHTML='<input id="ProductAmount'+id_tb+'" onBlur="NumberFormat(this,0);"  style=" text-align: right;" name="ProductAmount['+id_tb+'][]" class="form-control" value="" placeholder="จำนวน">';
+    table.rows[rowCount].cells[4].innerHTML='<input id="ProductSalePrice'+id_tb+'" style=" text-align: right;" onBlur="NumberFormat(this,2);" name="ProductSalePrice['+id_tb+'][]" class="form-control" value="" placeholder="ราคาขาย">';
     
     table.rows[rowCount].cells[5].innerHTML='<div class="row"><div class="col-xs-2">ย่อ</div><div class="col-xs-9"><textarea class="form-control"  placeholder="คำอธิบายย่อ" name="ProductShortDESC['+id_tb+'][]"></textarea></div></div><br><div class="row"><div class="col-xs-2">ละเอียด</div><div class="col-xs-9"><textarea class="form-control"  placeholder="คำอธิบายละเอียด" name="ProductDESC['+id_tb+'][]"></textarea></div></div>';
 
@@ -92,16 +92,15 @@ function add_row(){
   	data-target=".bs-example-modal-lg" onclick="add_row();" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มรายการ</button>
   </div>
-
   <form method="post" id="form-input" action="ProductForm">
 
-  <input  type="text" name="_method" value="POST">
+  <input  type="hidden" name="_method" value="POST">
   <div class="table-responsive" style="margin-top:10px;">
     <table class="table table-hover table-bordered"  id="tb_data">
     	<thead class="bg_tb">
     		<tr>
     			<th width="5%"><div style=" text-align: center;">ลำดับ</div></th>
-    			<th width="20%"><div style=" text-align: center;">ชื่อรายการสินค้า</div></th>
+    			<th width="20%"><div  style=" text-align: center;">ชื่อรายการสินค้า</div></th>
     			<th width="20%"><div style=" text-align: center;">หมวดสินค้า</div></th>     			
     			<th width="10%"><div style=" text-align: center;">จำนวน</div></th>
     			<th width="10%"><div style=" text-align: center;">ราคาขาย/หน่วย</div></th>

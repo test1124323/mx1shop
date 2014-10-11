@@ -30,42 +30,38 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//echo "<pre>";print_r(Input::get('ProductName'));echo "</pre>";
-
-		//echo "<pre>";print_r(Input::get('CategoryName'));echo "</pre>";
-		//exit();
+		DB::transaction(function()
+		{
+			//**************//
+		//test preg_replace
+		//$string = '2,000.00';
+		$pattern = '/,/';
+		$replacement = '';
+		//echo preg_replace($pattern, $replacement, $string);
+			//*************//
 		$date = date('Y-m-d');
 		if(count(Input::get('ProductName'))){
 			foreach (Input::get('ProductName') as $key => $value) {
 			# code...
 			$Product = new ProductModel;
 			$Product->ProductName = $value[0];
-			$Product->ProductSalePrice = (Input::get('ProductSalePrice')[$key][0]);
-			$Product->ProductAmount = (Input::get('ProductAmount')[$key][0]);
+			$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
+			$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
 			$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
 			$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
 			$Product->ProductDate = ''.$date;
 
 			$Product->save();
-
-			
 			foreach (Input::get('CategoryName')[$key] as $keyCate => $valueCate) {
 				# code...
-				//echo "<pre>";print_r($valueCate);echo "</pre>";
 				$ProCate = new ProductCateModel();
 				$ProCate->CategoryID = $valueCate;
-				$product->Category()->save();
-
-
+				$Product->ProcateCategory()->save($ProCate);
 			}
-
-			//$pro2 = ProductModel::find(1);
-
-
-
-
 			}
 		}
+	});
+
 
 
 return Redirect::to('backoffice/Product');

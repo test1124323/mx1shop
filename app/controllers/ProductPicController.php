@@ -1,6 +1,6 @@
 <?php
 
-class ProductController extends \BaseController {
+class ProductPicController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,10 +9,25 @@ class ProductController extends \BaseController {
 	 */
 	public function index()
 	{
-		//$result = ProductModel::all()->toArray();
-		$result = ProductModel::paginate(20);
-		return View::make('back_setup/Product',array('product'=>$result));
-		//echo "index";
+		//echo "SSS";
+		//print_r(Input::get('chk_productID'));
+
+		//return View::make("back_setup/ProductPic");
+	}
+
+	public function show_product(){
+
+		// print_r(Input::get('chk_productID'));
+		$result = array();
+		if(count(Input::get('chk_productID'))){
+			$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->get()->toArray();
+		}
+		
+		//echo $str_cond = implode(',',Input::get('chk_productID'));
+
+			return View::make("back_setup/ProductPic",array('result'=>$result));
+
+		
 	}
 	/**
 	 * Show the form for creating a new resource.

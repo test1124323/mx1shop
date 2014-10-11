@@ -12,7 +12,7 @@ class ProductCateModel extends Eloquent{
 	public $timestamps = false;
 
 	public function Product(){
-		return $this->belongsTo('tbl_product','ProductID','ProductID');
+		return $this->belongsTo('ProductModel','ProductID','ProductID');//belongsTo('name of class','foren key','local key')
 	}
 	
 }
