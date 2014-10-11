@@ -9,6 +9,7 @@ $path = $data['path'];
 	<title>::MX1 Shop::</title>
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo $path;?>js/func.js"></script>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap-theme.css'>
 	<!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -18,7 +19,7 @@ $path = $data['path'];
 	</style>
 	<style type="text/css">
 		.bg_tb{
-			background-color: #99CCFF;
+			background-color: #5bc0de;
 		}
 	</style>
 </head>

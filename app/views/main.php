@@ -16,6 +16,7 @@ if(Input::has('cate')){
 <!-- right side -->
 
 <div class="head-marquee">
+<span id="list"></span>
   <marquee><b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b></marquee>
 </div>
 <?php 
@@ -35,7 +36,10 @@ foreach ($productlist as $pkey => $pvalue) {
   $size = ($i>2)?'4':'6';
  ?>
 <div class="col-sm-<?php echo $size?> product-head">
+<<<<<<< HEAD
+=======
           <a href="<?php echo $pvalue['ProductID']?>" target='_blank'>
+>>>>>>> personal/mx1
           <div class="ProductPic" 
           style="background:url(img/product_tmp/<?php echo @$pvalue['product_img'][0]['ProductIMG']?>);
                   background-position:center;

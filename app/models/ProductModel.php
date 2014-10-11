@@ -11,4 +11,8 @@ class ProductModel extends Eloquent{
 	protected $primaryKey = 'ProductID';
 	public $timestamps = false;
 	
+	public function ProcateCategory(){
+		return $this->hasMany('ProductCateModel','ProductID','ProductID');
+	}
+
 }

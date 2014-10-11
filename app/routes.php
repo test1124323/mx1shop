@@ -20,3 +20,5 @@ Route::resource('/backoffice/catePop','catePopController');
 Route::resource('/backoffice/Product','ProductController');
 Route::resource('/backoffice/ProductForm','ProductManageController');
 Route::resource('/backoffice/DropdownCategory','ProductManageController@DropdownCategory');
+Route::resource('/backoffice/ProductPic','ProductPicController@show_product');
+ 
