@@ -235,7 +235,7 @@ $path = $data['path'];
           <?php
           foreach ($cate2 as $k2 => $v2) {
             if($v2['CateParentID']==$v1['CategoryID']){
-              ?>
+              ?> 
                 <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
               <?php
             }
