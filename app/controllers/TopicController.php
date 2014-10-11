@@ -11,17 +11,10 @@ class TopicController extends \BaseController {
 	{
 		$cateid 				= Input::get('cate');
 		$keyword 				= Input::get('keyword');
-		// $data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
-		// $data['productlist'] 	= Product::find('0000001')->ProductCate()->get()->toArray();
 		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
 											->Name($keyword)
 											->with('ProductImg')
 											->get()->toArray();
-		// echo "<pre>";
-		// print_r($data['productlist']);exit;
-		// print_r(DB::getQueryLog());exit;
-		// echo "<pre>";
-		// print_r($data['productlist']);exit;
 		return View::make('main',$data);
 	}
 
@@ -56,7 +49,9 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$product = 	Product::where('ProductID',$id)->with('ProductImg')->get()->toArray();
+		// echo "<pre>";
+		$product = 	Product::where('ProductID',$id)->with('ProductImg')->first()->toArray();
+		// print_r($product);exit;
 		return View::make('productDetail',array('detail'=>$product));
 	}
 

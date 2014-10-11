@@ -245,8 +245,13 @@ $path = $data['path'];
           $cate = Input::get('cate');
 
         foreach ($cate1 as $k1 => $v1) {
+          if($v1['CategoryID']==$cate){
+                 $con1 = 'selected';
+                }else{
+                  $con1 = '';
+                }
           ?>
-          <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
+          <option class="option-pad" value="<?php echo $v1['CategoryID'];?>" <?php echo $con1;?>><?php echo $v1['CategoryName'];?></option>
           <?php
           foreach ($cate2 as $k2 => $v2) {
             if($v2['CateParentID']==$v1['CategoryID']){
@@ -306,5 +311,6 @@ $path = $data['path'];
 
 </div>
 
-
+<span id="list"></span>
+<div class="col-sm-9" style="padding:0px;">
 <!-- !left side -->
