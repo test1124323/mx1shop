@@ -9,11 +9,11 @@ $path = $data['path'];
 ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="mx1shop">
   <meta name="type" content="website">
-	<title>MX1 Shop::</title>
+  <title>MX1 Shop::</title>
   <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
 แม็กซ์
 โทร : 081-7009767, 083-0208068
@@ -31,11 +31,11 @@ $path = $data['path'];
   <link rel='stylesheet' href='<?php echo $path;?>css/style_base.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/color.css'>
 
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<style>
-		@import url(//fonts.googleapis.com/css?family=Lato:700);
-	</style>
+  <style>
+    @import url(//fonts.googleapis.com/css?family=Lato:700);
+  </style>
 
 
 </head>
@@ -156,10 +156,6 @@ $path = $data['path'];
     
       <!-- Wrapper for slides -->
       <div class="carousel-inner" style="background:#555;">
-<<<<<<< HEAD
-      
-        <div class="item active" align="center">
-=======
         
         <div class="item active" align="center">
           <img src="<?php echo $path;?>img/cover.png">
@@ -171,7 +167,6 @@ $path = $data['path'];
         </div><!-- End Item -->
 
         <div class="item" align="center">
->>>>>>> personal/mx1
           <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" align="left">
@@ -207,12 +202,7 @@ $path = $data['path'];
               <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-<<<<<<< HEAD
-              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-          </div>
-=======
               </div>
->>>>>>> personal/mx1
        </div> 
       <!-- </ul> -->
 
@@ -252,16 +242,6 @@ $path = $data['path'];
       <select name="cate" class="form-control" style="border-radius:30px;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
-<<<<<<< HEAD
-        foreach ($cate1 as $k1 => $v1) {
-          ?>
-          <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
-          <?php
-          foreach ($cate2 as $k2 => $v2) {
-            if($v2['CateParentID']==$v1['CategoryID']){
-              ?>
-                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
-=======
           $cate = Input::get('cate');
 
         foreach ($cate1 as $k1 => $v1) {
@@ -282,7 +262,6 @@ $path = $data['path'];
                 }
               ?>
                 <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   <?php echo $v2['CategoryName'];?></option>
->>>>>>> personal/mx1
               <?php
             }
           }
@@ -310,28 +289,19 @@ $path = $data['path'];
   <ul class="list-group">
   
   <?php 
-<<<<<<< HEAD
-=======
   
->>>>>>> personal/mx1
     foreach ($cate1 as $k1 => $v1) {
       ?>
       <li class="list-group-item catelist" style="font-size:17px;"><a href="?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
       <?php
       foreach ($cate2 as $k2 => $v2) {
         if($v2['CateParentID']==$v1['CategoryID']){
-<<<<<<< HEAD
-          ?>
-            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>"> - <?php echo $v2['CategoryName'];?></a></li>
-          <?php
-=======
 
           ?>
             <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>" > - <?php echo $v2['CategoryName'];?></a></li>
           <?php
 
           
->>>>>>> personal/mx1
         }
       }
     }
@@ -341,10 +311,6 @@ $path = $data['path'];
 
 </div>
 
-<<<<<<< HEAD
-
-=======
 <span id="list"></span>
 <div class="col-sm-9" style="padding:0px;">
->>>>>>> personal/mx1
 <!-- !left side -->
