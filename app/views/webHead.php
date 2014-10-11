@@ -2,6 +2,10 @@
 <?php 
 $data['path'] = (Request::segment(2)=='')?'':'../';
 $path = $data['path'];
+
+
+    $cate1      = CategoryModel::level1Cate()->get()->toArray();
+    $cate2      = CategoryModel::level2Cate()->get()->toArray();
 ?>
 <html lang="en">
 <head>

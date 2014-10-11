@@ -12,6 +12,7 @@
 */
 
 Route::resource('/','TopicController');
+Route::get('/{id}','TopicController@show');
 Route::resource('/test1','testController');
 Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');

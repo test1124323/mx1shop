@@ -11,8 +11,6 @@ class TopicController extends \BaseController {
 	{
 		$cateid 				= Input::get('cate');
 		$keyword 				= Input::get('keyword');
-		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
-		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
 		// $data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
 		// $data['productlist'] 	= Product::find('0000001')->ProductCate()->get()->toArray();
 		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
@@ -58,10 +56,8 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-		// $list = DB::table('topic')->get();
-		// $data['list'] 	= $list;
-		return View::make('vote');
+		$product = 	Product::where('ProductID',$id)->with('ProductImg')->get()->toArray();
+		return View::make('productDetail',array('detail'=>$product));
 	}
 
 

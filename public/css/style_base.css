@@ -11,6 +11,12 @@
 	width:100%;height:220px;
 	border:5px solid #FFF;
 	box-shadow: 0 4px 4px rgba(100,100,100,0.3);
+	opacity: 1;
+    -webkit-transition: border 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border 0.5s;
+}
+.ProductPic:hover{
+	border:10px;
 }
 .bgdeal{
 	}
