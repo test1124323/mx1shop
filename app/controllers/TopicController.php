@@ -15,15 +15,17 @@ class TopicController extends \BaseController {
 											->Name($keyword)
 											->with('ProductImg')
 											->paginate(17);
-
-		// foreach ($data['productlist'] as $key => $value) {
-		// 	foreach ($value['product_img'] as $k => $v) {
-		// 		if($v['StatusFirst']=='1'){
-		// 			$data['coverImg'][$value['ProductID']] = $v['ProductIMG'];
-		// 		}
-		// 	}
-		// }
-		
+		$data['coverImg']	=	array();
+		foreach ($data['productlist'] as $key => $value) {
+			foreach ($value['product_img'] as $k => $v) {
+				if($v['StatusFirst']=='1'){
+					$data['coverImg'][$value['ProductID']] = $v['ProductIMG'];
+				}
+			}
+		}
+		// echo "<pre>";
+		// print_r($data['coverImg']);
+		// exit;
 		return View::make('main',$data);
 	}
 

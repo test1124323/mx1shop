@@ -32,6 +32,7 @@ if(empty($productlist)){
 </div>
 <?php
 }
+
 foreach ($productlist as $pkey => $pvalue) { 
   $size = ($i>2)?'4':'6';
  ?>
@@ -40,7 +41,7 @@ foreach ($productlist as $pkey => $pvalue) {
           <a href="<?php echo $pvalue['ProductID']?>" target='_blank'>
 
           <div class="ProductPic" 
-          style="background:url(img/product_tmp/<?php echo @$pvalue['coverImg']['ProductID']?>);
+          style="background:url(img/product_tmp/<?php echo @$coverImg[$pvalue['ProductID']];?>);
                   background-position:center;
                   background-size:cover;
                   background-repeat:no-repeat;">

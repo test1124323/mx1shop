@@ -49,16 +49,22 @@ include("webHead.php");
 
 
 </div>
-<div class="col-sm-12">
-<div class="col-sm-7" align="left" style='margin-top:30px;word-wrap: break-word;color:#555; border-right:solid thin #CCC;'>
-<!-- <img src="img/ebsblT.png" width="100%">
-<center><h3 style="color:#E21;text-shadow:1px 1px 0px rgba(0,0,0,0.1);">รายละเอียดสินค้า</h3></center>
-<img src="img/underline3.png" width="100%"> -->
-<div style="font-size:23px;"><i>รายละเอียดสินค้า</i></div>
-<hr>
-                <span style="font-size: 15px !important;"><?php echo $detail['ProductDESC']?></span>
-<br/><br/>
-</div>
+<div class="col-sm-12"> 
+
+  <div class="col-sm-7 description" align="left" >
+    <!-- <img src="img/ebsblT.png" width="100%">
+    <center><h3 style="color:#E21;text-shadow:1px 1px 0px rgba(0,0,0,0.1);">รายละเอียดสินค้า</h3></center>
+    <img src="img/underline3.png" width="100%"> -->
+    <div style="font-size:23px;"><i>รายละเอียดสินค้า</i></div>
+    <hr>
+                    <span style="font-size: 15px !important;"><?php echo $detail['ProductDESC']?></span>
+    <br/><br/>
+  </div>
+  <!-- =================== -->
+  <div class="col-sm-5 price-box" >
+    <div style="text-align:right;" ><h1><?php echo $detail['ProductSalePrice']?>฿</h1></div>
+  </div>
+
 </div>
 
 <div class="col-sm-12" style="height:200px;"></div>
