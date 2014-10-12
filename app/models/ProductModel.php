@@ -14,5 +14,8 @@ class ProductModel extends Eloquent{
 	public function ProcateCategory(){
 		return $this->hasMany('ProductCateModel','ProductID','ProductID');
 	}
+	public function ProductImg(){
+		return $this->hasMany('ProductImg','ProductID')->orderby('StatusFirst','ASC');
+	}
 
 }

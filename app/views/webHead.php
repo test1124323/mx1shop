@@ -261,7 +261,7 @@ $path = $data['path'];
                 }else{
                   $con = '';
                 }
-              ?>
+              ?> 
                 <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   <?php echo $v2['CategoryName'];?></option>
               <?php
             }

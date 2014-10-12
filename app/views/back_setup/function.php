@@ -42,4 +42,33 @@ function objectToArray($d)
         return $d;
     }
 }
+function createthumb($name,$filename,$new_w,$new_h){
+  $system=explode('.',$name);
+  if(preg_match('/jpg|jpeg/',$system[1])){
+    $src_img=imagecreatefromjpeg($name);
+  }
+  if(preg_match('/png/',$system[1])){
+    $src_img=imagecreatefrompng($name);
+  }
+
+  $old_x=imagesx($src_img);
+  $old_y=imagesy($src_img);
+  $thumb_w=($old_x*$new_h)/$old_y;
+  $thumb_h=$new_h;
+  $co_x=floor(($new_w-$thumb_w)/2);
+  $co_y=0;      
+
+  $dst_img=imagecreatetruecolor($new_w,$thumb_h); 
+  $white=imagecolorallocate($dst_img,255,255,255);
+  imagefill($dst_img,0,0,$white);
+  imagecopyresized($dst_img,$src_img,$co_x,$co_y,0,0,$thumb_w,$thumb_h,$old_x,$old_y);    
+
+  if(preg_match("/png/",$system[1])){
+    imagepng($dst_img,$filename);   
+  }else{
+    imagejpeg($dst_img,$filename); 
+  }
+  imagedestroy($dst_img); 
+  imagedestroy($src_img); 
+}
 ?>
