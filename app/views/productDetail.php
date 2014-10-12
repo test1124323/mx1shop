@@ -49,12 +49,15 @@ include("webHead.php");
 
 
 </div>
-<div class="col-sm-12" align="center">
-<img src="img/ebsblT.png" width="100%">
-<h3 style="color:#E21;text-shadow:1px 1px 0px rgba(0,0,0,0.1);">รายละเอียดสินค้า</h3>
-<img src="img/underline3.png" width="100%">
-<div class="col-sm-12" align="left" style='margin-top:10px;word-wrap: break-word;font-family:Trebuchet MS", Arial, Helvetica, sans-serif !important;'>
+<div class="col-sm-12">
+<div class="col-sm-7" align="left" style='margin-top:30px;word-wrap: break-word;color:#555; border-right:solid thin #CCC;'>
+<!-- <img src="img/ebsblT.png" width="100%">
+<center><h3 style="color:#E21;text-shadow:1px 1px 0px rgba(0,0,0,0.1);">รายละเอียดสินค้า</h3></center>
+<img src="img/underline3.png" width="100%"> -->
+<div style="font-size:23px;"><i>รายละเอียดสินค้า</i></div>
+<hr>
                 <span style="font-size: 15px !important;"><?php echo $detail['ProductDESC']?></span>
+<br/><br/>
 </div>
 </div>
 

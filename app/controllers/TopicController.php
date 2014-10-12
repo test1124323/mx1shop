@@ -14,7 +14,16 @@ class TopicController extends \BaseController {
 		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
 											->Name($keyword)
 											->with('ProductImg')
-											->get()->toArray();
+											->paginate(17);
+
+		// foreach ($data['productlist'] as $key => $value) {
+		// 	foreach ($value['product_img'] as $k => $v) {
+		// 		if($v['StatusFirst']=='1'){
+		// 			$data['coverImg'][$value['ProductID']] = $v['ProductIMG'];
+		// 		}
+		// 	}
+		// }
+		
 		return View::make('main',$data);
 	}
 

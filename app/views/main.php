@@ -40,7 +40,7 @@ foreach ($productlist as $pkey => $pvalue) {
           <a href="<?php echo $pvalue['ProductID']?>" target='_blank'>
 
           <div class="ProductPic" 
-          style="background:url(img/product_tmp/<?php echo @$pvalue['product_img'][0]['ProductIMG']?>);
+          style="background:url(img/product_tmp/<?php echo @$pvalue['coverImg']['ProductID']?>);
                   background-position:center;
                   background-size:cover;
                   background-repeat:no-repeat;">
@@ -56,7 +56,7 @@ foreach ($productlist as $pkey => $pvalue) {
   $i++;
 }
 ?>
- 
+ <div style="text-align:center;" ><?php echo $productlist->links(); ?></div>
 
 <!-- !right side -->
 
