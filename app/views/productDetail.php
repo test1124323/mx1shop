@@ -10,7 +10,7 @@ include("webHead.php");
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
 <div style="padding-left:10px;"><br/>
-<div class="col-sm-11" style="padding:0;">
+<div class="col-sm-12" style="padding:0px;border:solid 5px #FFF; box-shadow:0 -2px 10px rgba(100,100,100,0.4);">
     <div class="ProductPicDetail " style="background:url(img/product/S__3940401.jpg);
                   background-position:center;
                   background-size:cover;
@@ -50,10 +50,15 @@ include("webHead.php");
 
 </div>
 <div class="col-sm-12" align="center">
-<img src="img/ebsblT.png">
-<h3 style="color:#FF2244;">รายละเอียดสินค้า</h3>
-<img src="img/underline3.png">
+<img src="img/ebsblT.png" width="100%">
+<h3 style="color:#E21;text-shadow:1px 1px 0px rgba(0,0,0,0.1);">รายละเอียดสินค้า</h3>
+<img src="img/underline3.png" width="100%">
+<div class="col-sm-12" align="left" style='margin-top:10px;word-wrap: break-word;font-family:Trebuchet MS", Arial, Helvetica, sans-serif !important;'>
+                <span style="font-size: 15px !important;"><?php echo $detail['ProductDESC']?></span>
 </div>
+</div>
+
+<div class="col-sm-12" style="height:200px;"></div>
 <!-- /content -->
 
 
