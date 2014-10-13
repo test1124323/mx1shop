@@ -9,8 +9,8 @@ include("function.php");
 
     var table = document.getElementById('tb_data');
     var rowCount = (table.rows.length);
-    
-    for(i=1;i<=rowCount;i++){
+    alert(rowCount);
+    for(i=1;i<=parseInt(rowCount);i++){
       table.rows[i].cells[0].align="center";
       table.rows[i].cells[0].innerHTML= i+".";
     }
@@ -40,13 +40,13 @@ function add_row(){
   
 
     table.rows[rowCount].cells[0].innerHTML= rowCount+".";
-    table.rows[rowCount].cells[1].innerHTML="<input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\">";
+    table.rows[rowCount].cells[1].innerHTML=" <input type=\"hidden\" name=\"HidProductID["+id_tb+"]\" value=\"\"><input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\">";
     var url = "../backoffice/DropdownCategory";
     var random =  id_tb+""+parseInt((Math.random()*1690708)/10);
 
-    var data = {id_tb:id_tb+"_"+random};
+    var data = {id_tb:id_tb+"_"+random,CategoryID:''};
     var html = "";
-     html +='<div><a data-toggle="modal" class="btn btn-info btn-xs" data-backdrop="static"  onclick="add_select('+id_tb+');" ><i class="glyphicon glyphicon-plus" ></i> เพิ่มหมวดสินค้า</a></div><br>';
+     html +='<div><a data-toggle="modal" class="btn btn-info btn-xs" data-backdrop="static"  onclick=\'add_select("'+id_tb+'","");\' ><i class="glyphicon glyphicon-plus" ></i> เพิ่มหมวดสินค้า</a></div><br>';
     $.post(url,data,function(msg){
        html +='<div id="select'+id_tb+'"><div class="input-group" id="sel'+random+'" ><span class="input-group-btn"><button class="btn btn-danger" onclick=\'remove_id("sel'+random+'");\' type="button"><i class="glyphicon glyphicon-trash"></i></button></span>'+msg+'</div></div>';
       table.rows[rowCount].cells[2].innerHTML=''+html;
@@ -62,16 +62,28 @@ function add_row(){
   
   
   }
-  function add_select(id_tb){
+  function add_select(id_tb,CategoryID){
    var random =  id_tb+""+parseInt((Math.random()*1600708)/10);
   // alert(random);
      var url = "../backoffice/DropdownCategory";
-     var data = {id_tb:id_tb+"_"+random};
+     var data = {id_tb:id_tb+"_"+random,CategoryID:CategoryID};
      var val = "";
       $.post(url,data,function(msg){
           val +='<div class="input-group"  id="sel'+random+'"  style="margin-top:10px;"><span class="input-group-btn"><button class="btn btn-danger" onclick=\'remove_id("sel'+random+'");\' type="button"><i class="glyphicon glyphicon-trash"></i></button></span>'+msg+'</div></div>';
           $('#select'+id_tb).append(''+val);
       });
+  }
+    function confirm_save(){
+    var table = document.getElementById('tb_data');
+    var rowCount = (table.rows.length);
+    if(rowCount=='1'){
+      alert('กรุณาเพิ่มข้อมูลก่อนบันทึก');
+      return false;
+    }
+    if(confirm("ยืนยันการบันทึกอีกครั้ง")){
+      return true;
+    }
+    return false;
   }
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
@@ -92,7 +104,7 @@ function add_row(){
   	data-target=".bs-example-modal-lg" onclick="add_row();" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มรายการ</button>
   </div>
-  <form method="post" id="form-input" action="ProductForm">
+  <form method="post" id="form-input" action="ProductForm" onsubmit="return confirm_save();">
 
   <input  type="hidden" name="_method" value="POST">
   <div class="table-responsive" style="margin-top:10px;">
@@ -109,12 +121,73 @@ function add_row(){
     		</tr>
     	</thead>
     	<tbody>
+      <?php 
+        if(isset($result)){
+          $i=1;
+          foreach ($result as $key => $value) {
+            $id_tb = $i."_A";
+            # code...
+            ?>
+            <tr id="<?php echo $id_tb;?>">
+              <td style=" text-align: center;"><?php echo $i;?>
+              <input type="hidden" name="HidProductID[<?php echo $id_tb;?>]" value="<?php echo $value['ProductID'];?>">
+              </td>
+              <td><input type="text" id="ProductName<?php echo $id_tb;?>" name="ProductName[<?php echo $id_tb;?>][]" value="<?php echo $value['ProductName']?>" class="form-control" placeholder="ชื่อรายการสินค้า"></td>
+              <td>
+                <div>
+                    <a data-toggle="modal" class="btn btn-info btn-xs" data-backdrop="static"  onclick="add_select('<?php echo $id_tb;?>','');" >
+                    <i class="glyphicon glyphicon-plus" ></i> เพิ่มหมวดสินค้า</a>
+                  </div><br>
+                <?php 
+                if($value['procate_category']){
+                  foreach ($value['procate_category'] as $key2 => $value2) {
+                  # code...
+                  $random = rand(10,1000000);
+                  ?>
+                  
+                  <div id="select<?php echo $id_tb;?>">
+                     <script type="text/javascript">
+                        add_select('<?php echo $id_tb;?>','<?php echo $value2["CategoryID"]?>');
+                      </script>
+                    
+                  </div>
+                  <?php
+                  //echo $value2['CategoryID']."<br>";
+                }
+              }else{
+                ?>
+                <div id="select<?php echo $id_tb;?>"></div>
+                <?php
+              }
+                
+                ?>
+              </td>
+              <td style=" text-align: center;"><input id="ProductAmount<?php echo $id_tb;?>" onBlur="number_format(this,0);"  style=" text-align: right;" name="ProductAmount[<?php echo $id_tb;?>][]" class="form-control" value="<?php echo $value['ProductAmount'];?>" placeholder="จำนวน"></td>
+              <td style=" text-align: center;"><input id="ProductSalePrice<?php echo $id_tb;?>" style=" text-align: right;" onBlur="number_format(this,2);" name="ProductSalePrice[<?php echo $id_tb;?>][]" class="form-control" value="<?php echo number_format($value['ProductSalePrice'],2);?>" placeholder="ราคาขาย"></td>
+              <td><div class="row">
+              <div class="col-xs-2">ย่อ</div>
+                <div class="col-xs-9">
+                  <textarea class="form-control"  placeholder="คำอธิบายย่อ" name="ProductShortDESC[<?php echo $id_tb;?>][]"><?php echo $value['ProductShortDESC'];?></textarea></div>
+                </div><br><div class="row"><div class="col-xs-2">ละเอียด</div>
+                <div class="col-xs-9">
+                  <textarea class="form-control"  placeholder="คำอธิบายละเอียด" name="ProductDESC[<?php echo $id_tb;?>][]"><?php echo $value['ProductDESC'];?></textarea>
+                </div>
+              </div></td>
+              <td style=" text-align: center;">
+                <a data-toggle="modal" class="btn btn-danger btn-xs" data-backdrop="static" href="javascript:void(0);" onClick="remove_id('<?php echo $id_tb;?>');"><i class='glyphicon glyphicon-trash'></i> ลบ</a>
+              </td>
+            </tr>
+            <?php
+            $i++;
+          }
+        }
+      ?>
     	</tbody>
     </table>
    </div>
    <div style="text-align:center">
    <button class="btn btn-primary btn-sm" type="submit"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
-  <button class="btn btn-default btn-sm">ยกเลิก</button>
+  
    </div>    
   </form>
 </div>

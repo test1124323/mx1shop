@@ -9,6 +9,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function index()
 	{
+		//echo "SSS";
 		return View::make('back_setup/ProductForm');
 		//echo "index";
 	}
@@ -21,7 +22,27 @@ class ProductManageController extends \BaseController {
 	{
 		//
 	}
+	public function ShowDataEdit(){
+		
+		if(count(Input::get('chk_productID'))){
+			$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->with('ProcateCategory')->get()->toArray();
+			//echo "<pre>";print_r($result);echo "</pre>";
 
+			return View::make("back_setup/ProductForm",array('result'=>$result));
+		}
+		else{
+			return Redirect::to('backoffice/Product');
+		}
+	}
+	public function  DeleteData(){
+		//echo "<pre>";print_r(Input::get('chk_productID'));echo  "</pre>";exit();
+		if(count(Input::get('chk_productID'))){
+			$delete1 = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->delete();
+			$delete2 = ProductCateModel::whereIn('ProductID',Input::get('chk_productID'))->delete();
+			
+		}
+		return Redirect::to('backoffice/Product');
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -30,41 +51,90 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		DB::transaction(function()
-		{
+		//echo "<pre>";print_r(Input::get('ProductName'));echo  "</pre>";
+		//echo "<pre>";print_r(Input::get('HidProductID'));echo  "</pre>";
+		//exit();
+		//DB::transaction(function()
+		//{
 			//**************//
 		//test preg_replace
 		//$string = '2,000.00';
+		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
+		
 		//echo preg_replace($pattern, $replacement, $string);
 			//*************//
 		$date = date('Y-m-d');
+		$i=0;
 		if(count(Input::get('ProductName'))){
 			foreach (Input::get('ProductName') as $key => $value) {
 			# code...
-			$Product = new ProductModel;
-			$Product->ProductName = $value[0];
-			$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
-			$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
-			$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
-			$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
-			$Product->ProductDate = ''.$date;
+			if(Input::get('HidProductID')[$key]==""){
+				$Product = new ProductModel;
+				$Product->ProductName = $value[0];
+				$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
+				$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
+				$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
+				$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
+				$Product->ProductDate = ''.$date;
 
-			$Product->save();
-			foreach (Input::get('CategoryName')[$key] as $keyCate => $valueCate) {
-				# code...
-				$ProCate = new ProductCateModel();
-				$ProCate->CategoryID = $valueCate;
-				$Product->ProcateCategory()->save($ProCate);
-			}
+				$Product->save();
+
+				//get max id
+				$MaxID = DB::table('tbl_product')->max('ProductID');
+				//echo $MaxID."<br>";
+				//array_push($arr_dataInsert,''.$MaxID);
+				$arr_data[] = ''.$MaxID;
+				
+				foreach (Input::get('CategoryName')[$key] as $keyCate => $valueCate) {
+					# code...
+					$ProCate = new ProductCateModel();
+					$ProCate->CategoryID = $valueCate;
+					$Product->ProcateCategory()->save($ProCate);
+				}
+
+				}else{
+					$Product = ProductModel::find(Input::get('HidProductID')[$key]);
+					$Product->ProductName = $value[0];
+					$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
+					$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
+					$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
+					$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
+					$Product->ProductDate = ''.$date;
+
+					$Product->save();
+
+					//cate
+					$delete = ProductCateModel::where('ProductID', '=',Input::get('HidProductID')[$key])->delete();
+					$id = explode("_",$key);
+					foreach (Input::get('CategoryName')[$id[0]] as $keyCate => $valueCate) {
+						$ProCate = new ProductCateModel;
+						$ProCate->CategoryID = $valueCate;
+						$ProCate->ProductID = Input::get('HidProductID')[$key];
+						$ProCate->save();
+
+					}
+					//end cate
+
+				}
+
 			}
 		}
-	});
+		
+	//});
 
-
-
-return Redirect::to('backoffice/Product');
+		//echo "<pre>";print_r($arr_data2);echo "</pre>";
+		if(count($arr_data)>0){
+		$result = ProductModel::whereIn('ProductID',$arr_data)->with('ProductImg')->get()->toArray();
+		//echo "<pre>";print_r($result);echo "</pre>";
+		return View::make("back_setup/ProductPic",array('result'=>$result));
+		}else{
+		//echo "AAAAAAAAAAAa";
+		return Redirect::to('backoffice/Product');
+		}
+	
+	
 		//echo "store";
 	}
 
@@ -144,8 +214,12 @@ $html = '<select id="Category'.$_POST["id_tb"].'"  name="CategoryName['.$id[0].'
 				# code...
 				$html.='<optgroup label="'.$arr_dataAll[$key]['name'].'">';
 				foreach ($value as $key2 => $value2) {
+					$select = "";
+					if(isset($_POST['CategoryID'])&&$_POST['CategoryID']==$key2){
+						$select = "selected";
+					}
 					# code...
-					$html.='<option value="'.$key2.'">'.$arr_dataAll[$key2]['name'].'</option>';
+					$html.='<option value="'.$key2.'" '.$select.' >'.$arr_dataAll[$key2]['name'].'</option>';
 
 				}
 				$html.='</optgroup>';
