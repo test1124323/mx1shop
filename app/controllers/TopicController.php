@@ -61,6 +61,7 @@ class TopicController extends \BaseController {
 	public function show($id)
 	{
 		$coverImg = 'noimage.png';
+		$imgCount = 0;
 		$product 	= 	Product::where('ProductID',$id);
 		if(is_object($product))
 		$product 	=	$product->with('ProductImg')->first()->toArray();

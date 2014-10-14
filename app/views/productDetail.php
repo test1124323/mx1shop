@@ -23,12 +23,23 @@ function switchImg(id){
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
 <div style="padding-left:0px;"><br/>
+
 <?php       
-            // [ProductImgID] => 1
-            // [ProductID] => 10
-            // [ProductIMG] => S__3940401.jpg
-            // [ProductThumb] => S__3940401.jpg
-            // [StatusFirst] => 1
+if($imgCount==0){
+
+  ?>
+<div class="col-sm-12" id="Ppic_<?php echo @++$a;?>" style="padding:0px;border:solid 2px #FFF; box-shadow:0 -2px 10px rgba(100,100,100,0.4);float:left;">
+    <div class="ProductPicDetail " style="background:url(img/product/noimage.png);
+                  background-position:center;
+                  background-size:cover;
+                  background-repeat:no-repeat; border:none;" >
+    </div>
+</div>
+
+  <?php
+}?>
+
+<?php       
 foreach ($detail['product_img'] as $key => $value) {
   $style    = '95%';
   if($value['StatusFirst']!=1){
