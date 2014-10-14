@@ -60,10 +60,18 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		// echo "<pre>";
-		$product = 	Product::where('ProductID',$id)->with('ProductImg')->first()->toArray();
-		// print_r($product);exit;
-		return View::make('productDetail',array('detail'=>$product));
+		$coverImg = 'noimage.png';
+		$product 	= 	Product::where('ProductID',$id);
+		if(is_object($product))
+		$product 	=	$product->with('ProductImg')->first()->toArray();
+		foreach ($product['product_img'] as $key => $value) {
+			if($value['StatusFirst']==1){
+				$coverImg	=	$value['ProductIMG'];
+			}
+			@++$imgCount;
+		}
+
+		return View::make('productDetail',array('detail'=>$product , 'coverImg'=>$coverImg , 'imgCount'=>$imgCount ));
 	}
 
 
