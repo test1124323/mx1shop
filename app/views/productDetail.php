@@ -62,7 +62,18 @@ include("webHead.php");
   </div>
   <!-- =================== -->
   <div class="col-sm-5 price-box" >
-    <div style="text-align:right;" ><h1><?php echo $detail['ProductSalePrice']?>฿</h1></div>
+    <div style=" " class="col-sm-12">
+      <div class="col-sm-12" style="text-align:center;padding:3px;font-size:18px;" >รหัสสินค้า <b><?php echo str_pad($detail['ProductID'], 7 , '0',STR_PAD_LEFT);?></b></div>
+      <div class="col-sm-12" style="text-align:center;background:#7FA92D;color:#FFF;padding:3px;font-size:24px;" >ราคา <?php echo $detail['ProductSalePrice']?>฿</div>
+    </div>
+    <div class="col-sm-12">
+        <div class="input-group " style="margin:10px 0 10px 0;">
+          <span class="input-group-addon">จำนวน</span>
+          <input type="number" class="form-control" style="border-radius:0px !important;" min = '0' value="0">
+        </div>
+        <button class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="img/cart.png" width="23px">หยิบใส่รถเข็น</button>
+    </div>
+
   </div>
 
 </div>
