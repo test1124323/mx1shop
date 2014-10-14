@@ -20,7 +20,6 @@ class ProductPicController extends \BaseController {
 		echo "เปลี่ยนแปลงข้อมูลเรียบร้อย";
 		//echo $_POST['ProductID'].">>".$_POST['ProductImgID'];
 	}
-
 	public function show_product(){
 
 		// print_r(Input::get('chk_productID'));

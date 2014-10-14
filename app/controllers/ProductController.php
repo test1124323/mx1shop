@@ -11,6 +11,7 @@ class ProductController extends \BaseController {
 	{
 		//$result = ProductModel::all()->toArray();
 		$result = ProductModel::paginate(20);
+		print_r(Input::get('chk_productID'));
 		return View::make('back_setup/Product',array('product'=>$result));
 		//echo "index";
 	}
@@ -23,7 +24,7 @@ class ProductController extends \BaseController {
 	{
 		//
 	}
-
+	
 
 	/**
 	 * Store a newly created resource in storage.

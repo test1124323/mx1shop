@@ -23,3 +23,5 @@ Route::resource('/backoffice/DropdownCategory','ProductManageController@Dropdown
 Route::resource('/backoffice/ProductPic','ProductPicController@show_product');
 Route::resource('/backoffice/ProductPicManage','ProductPicController');
 Route::resource('/backoffice/UpdateStatusPic','ProductPicController@update_status');
+Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit');
+Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');

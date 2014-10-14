@@ -7,6 +7,22 @@ include("function.php");
   function ProductPic(){
     $('#form-input').attr('action','ProductPic').submit();
   }
+  function ProductEdit(){
+     $('#form-input').attr('action','ProductEdit').submit();
+  }
+  function ProductDelete(){
+    if(confirm("ยืนยันการลบข้อมุล")){
+      $('#form-input').attr('action','ProductDel').submit();
+    }
+     
+  }
+  function Fnchk_all(){
+    if($('#chk_all').prop('checked')){
+      $('input[name*=chk_productID]').prop('checked',true);
+    }else{
+      $('input[name*=chk_productID]').prop('checked',false);
+    }
+  }
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
@@ -26,23 +42,22 @@ include("function.php");
   	data-target=".bs-example-modal-lg" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
   	</a>
-    
     <button type="button" onclick="ProductPic();" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-picture"></i> จัดการภาพ</button>
-    
+    <button type="button" class="btn btn-default btn-xs" onclick="ProductEdit();"><i class="glyphicon glyphicon-pencil"></i> แก้ไขข้อมูล</button>
+    <button type="button" class="btn btn-danger btn-xs" onclick="ProductDelete();"><i class="glyphicon glyphicon-trash"></i> ลบข้อมูล</button>
   </div>
   <div class="table-responsive" style="margin-top:10px;">
-  <form method="post" action="#" id="form-input">
+  <form method="post"  id="form-input">
         <table class="table table-hover table-bordered" >
       <thead class="bg_tb">
         <tr>
           <th width="5%"><div style=" text-align: center;">
-          <input type="checkbox" name="chk_all"  > ลำดับ</div></th>
+          <input type="checkbox" name="chk_all" id="chk_all"  onclick="Fnchk_all();" > ลำดับ</div></th>
           <th width="20%"><div style=" text-align: center;">ชื่อรายการสินค้า</div></th>
           <th width="15%"><div style=" text-align: center;">หมวดสินค้า</div></th>           
           <th width="5%"><div style=" text-align: center;">จำนวน</div></th>
           <th width="8%"><div style=" text-align: center;">ราคาขาย/หน่วย</div></th>
           <th width="30%"><div style=" text-align: center;">รายละเอียด</div></th>
-          <th width="20%"><div style=" text-align: center;">จัดการ</div></th>
         </tr>
       </thead>
       <tbody>
@@ -102,11 +117,7 @@ include("function.php");
         </div>
       </div>
      </td>
-     <td style=" text-align: center;">
-       <button type="button" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-picture"></i> จัดการภาพ</button>
-       <button type="button" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
-       <button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> ลบ</button>
-     </td>
+
         </tr>
           <?php
         }
