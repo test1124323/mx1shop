@@ -96,7 +96,15 @@ class TopicController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$pid 	=	'P_'.$id;
+		$quantity = 0 ;
+		if(Session::has($pid)){
+			$quantity	= 	intval(Session::get($pid)) + intval(Input::get('ProductCount'));
+		}else{
+			$quantity 	= 	Input::get('ProductCount');
+		}
+		Session::put($pid,$quantity);
+		return Redirect::to('cart');
 	}
 
 

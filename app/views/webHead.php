@@ -218,7 +218,7 @@ $path = $data['path'];
     <h2>ลดราคารับสิ้นปี 60%</h2>
     <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
-  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(img/accesorie60a.jpg);
+  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(<?php echo $path;?>img/accesorie60a.jpg);
   background-position: center;
   background-size: cover; 
   background-repeat:no-repeat;
