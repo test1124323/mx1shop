@@ -71,4 +71,28 @@ function createthumb($name,$filename,$new_w,$new_h){
   imagedestroy($dst_img); 
   imagedestroy($src_img); 
 }
+function ArrOrderStatus(){
+  return $arr_OrderStatus = array('0'=>'รอยืนยันการสั่งซื้อ',
+  '1'=>'ยืนยันการสั่งซื้อ',
+  '2'=>'รอการชำระเงิน',
+  '3'=>'ชำระเงินเรียบร้อย',
+  '4'=>'จัดส่งเรียบร้อย',
+  '5'=>'ยกเลิกรายการ');
+}
+function DateCurrent(){
+  return date('d/m/')."".(date('Y')+543);
+}
+function conv_date($date){
+   $str="";
+  if($date!=""){
+  $val1  = explode(" ", $date);
+  $val = explode('-',$val1[0]);
+  $str = $val[2]."/".$val[1]."/".($val[0]+543);
+  if(isset($val1[1])){
+    $str .= ($val1[1]!="")?" เมื่อเวลา ".$val1[1]:"";
+  }
+  
+  }
+return $str;
+}
 ?>

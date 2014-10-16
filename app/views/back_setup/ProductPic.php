@@ -15,7 +15,7 @@ $ImgPath = public_path().'/img/product/';
     var url = "UpdateStatusPic";
     var data = {ProductID:ProductID,ProductImgID:ProductImgID};
     $.post(url,data,function(msg){
-      alert(msg);
+      //alert(msg);
     });
 
     //alert(ProductID+">>"+ProductImgID);
