@@ -9,9 +9,11 @@ $path = $data['path'];
 	<title>::MX1 Shop::</title>
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo $path;?>js/bootstrap-datepicker.js"></script>
   <script src="<?php echo $path;?>js/func.js"></script>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap-theme.css'>
+  <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap-datepicker.css'>
 	<!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>-->
 	<style>
@@ -29,7 +31,7 @@ ${'tab'.$act} = 'active';
 $arr_menu = array('0'=>'หน้าแรก','1' =>'ตั้งค่า',
 '2'=>'รายการสั่งซื้อสินค้าทั้งหมด',
 '3'=>'รายการรอชำระเงิน');
-$arr_menuLink = array('0'=>'#','1'=>'#','2'=>'','3'=>'');
+$arr_menuLink = array('0'=>'../backoffice/Order','1'=>'#','2'=>'','3'=>'');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
 $arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'','5'=>'');
 ?>

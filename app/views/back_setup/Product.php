@@ -53,6 +53,7 @@ include("function.php");
         <tr>
           <th width="5%"><div style=" text-align: center;">
           <input type="checkbox" name="chk_all" id="chk_all"  onclick="Fnchk_all();" > ลำดับ</div></th>
+          <th width="15%"><div style=" text-align: center;">รหัสสินค้า</div></th>
           <th width="20%"><div style=" text-align: center;">ชื่อรายการสินค้า</div></th>
           <th width="15%"><div style=" text-align: center;">หมวดสินค้า</div></th>           
           <th width="5%"><div style=" text-align: center;">จำนวน</div></th>
@@ -72,6 +73,7 @@ include("function.php");
               <td style=" text-align: center;" >
               <input type="checkbox" name="chk_productID[]" value="<?php echo $value['ProductID'];?>" > <?php echo ++$i.".";?>
               </td>
+              <td><?php echo sprintf("%07s",$value['ProductID']);?></td>
               <td><?php echo $value['ProductName'];?></td>
               <td><?php
                 $ProCate = DB::table('tbl_productcate')

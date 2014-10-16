@@ -1,3 +1,16 @@
+$(function(){
+ 	$(".datepicker").each(function() {//ปฏิทิน
+ 		var date_for = $(this).attr("for");
+ 		$("span[for="+date_for+"]").datepicker({
+			language: "th-th"
+		});
+		$("span[for="+date_for+"]").on("changeDate", function (e){//onchangeDate
+			$('#'+date_for).val(e.format('dd/mm/yyyy'));
+			$('span[for='+date_for+']').datepicker('hide');
+			return false;
+		});
+ 	});
+ });
 function NumberFormat(obj,digit){//onBlur="NumberFormat(this,2);" this is object of textbox,2 is digit of number
 	var number = $.trim(obj.value).split(",").join("");
 	//alert(number);
@@ -10,7 +23,6 @@ function NumberFormat(obj,digit){//onBlur="NumberFormat(this,2);" this is object
 		alert("กรุณากรอกเฉพาะตัวเลขเท่านั้น !!");
 		obj.value = "";
 		return false;
-		//obj.value = num.toFixed(digit);
 		}
 		}
 
