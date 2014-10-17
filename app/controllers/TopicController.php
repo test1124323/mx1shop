@@ -108,7 +108,7 @@ class TopicController extends \BaseController {
 		}
 		Session::put($pid,$quantity);
 		
-		return Redirect::to('cart');
+		return Redirect::to('main/'.$id."?updated=1");
 	}
 
 

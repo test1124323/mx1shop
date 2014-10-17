@@ -14,15 +14,18 @@ function switchImg(id){
     }
   }
   $("#Ppic_"+id).animate({
-    width:'95%'
+    width:'90%'
   });
 }
 </script>
 <!-- content  -->
+
 <div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">รายละเอียดสินค้า</h4></div>
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
-
+<?php if(Input::has('updated')){?>
+<div class="alert alert-info" role="alert">เพิ่ม <?php echo $detail['ProductName']?> ลงในรถเข็นเรียบร้อยแล้ว หากต้องการตรวจสอบรายการ <a href="<?php echo Request::root();?>/cart">คลิกที่นี่</a></div>
+<?php }?>
 <div style="padding-left:0px;"><br/>
 
 <?php       
@@ -42,7 +45,7 @@ if($imgCount==0){
 
 <?php       
 foreach ($detail['product_img'] as $key => $value) {
-  $style    = '95%';
+  $style    = '90%';
   if($value['StatusFirst']!=1){
     $style  = '0';
   }
@@ -90,6 +93,7 @@ foreach ($detail['product_img'] as $key => $value) {
   <div class="col-sm-5 price-box" >
     <div style=" " class="col-sm-12">
       <div class="col-sm-12" style="text-align:center;padding:3px;font-size:18px;" >รหัสสินค้า <b><?php echo str_pad($detail['ProductID'], 7 , '0',STR_PAD_LEFT);?></b></div>
+      <div class="col-sm-12" style="text-align:center;padding:3px;font-size:14px;color:#FF7799;" >สินค้าคงเหลือจำนวน <span style="font-size:16px"><?php echo $detail['ProductAmount']?></span> ชิ้น</b></div>
       <div class="col-sm-12" style="text-align:center;background:#7FA92D;color:#FFF;padding:3px;font-size:24px;" >ราคา <?php echo number_format($detail['ProductSalePrice']);?>฿</div>
     </div>
     <div class="col-sm-12">
@@ -97,8 +101,9 @@ foreach ($detail['product_img'] as $key => $value) {
         <input type="hidden" name="_method" value="put">
        
         <div class="input-group " style="margin:10px 0 10px 0;">
-          <span class="input-group-addon">จำนวน</span>
-          <input type="number" class="form-control" id="ProductCount" name="ProductCount" style="border-radius:0px !important;" min = '0' value="0">
+          <span class="input-group-addon">สั่งซื้อจำนวน</span> 
+          <input type="number" class="form-control" id="ProductCount" name="ProductCount" style="border-radius:0px !important;text-align:right;" min = '1' value="1">
+          <span class="input-group-addon">ชิ้น</span>
         </div>
         <button type="submit" class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="<?php echo $path;?>img/cart.png" width="23px">หยิบใส่รถเข็น</button>
     </form>

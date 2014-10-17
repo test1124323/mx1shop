@@ -12,7 +12,30 @@ window.location.href="#list";
 <div style="padding-left:0px;"><br/>
 <?php
 echo "<pre>";
-print_r(Session::all());
+ // [detail] => Array
+ //                (
+ //                    [ProductID] => 4
+ //                    [ProductName] => ไฟหน้า
+ //                    [ProductLastCost] => 
+ //                    [ProductSalePrice] => 2200
+ //                    [ProductAmount] => 1
+ //                    [ProductShortDESC] => 
+ //                    [ProductDESC] => 
+ //                    [ProductDate] => 2014-10-10
+ //                    [ProductStatus] => 1
+ //                    [ProductCode] => 
+ //                    [product_img] => Array
+ //                        (
+ //                            [0] => Array
+ //                                (
+ //                                    [ProductImgID] => 24
+ //                                    [ProductID] => 4
+ //                                    [ProductIMG] => 2014101602124800.jpg
+ //                                    [ProductThumb] => 
+ //                                    [StatusFirst] => 2
+ //                                )
+
+print_r($productInCart);
 ?>
 
 <div class="col-sm-12" style="height:200px;"></div>

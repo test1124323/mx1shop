@@ -10,6 +10,7 @@ class Product extends Eloquent{
 	protected $fillable = array('*');
 	protected $primaryKey = 'ProductID';
 	public $timestamps = false;
+	protected $with = array('ProductImg');
 
 	public function productCategory(){
 		return $this->hasMany('ProductCate','ProductID');

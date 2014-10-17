@@ -6,6 +6,16 @@ $path = $data['path'];
 
     $cate1      = CategoryModel::level1Cate()->get()->toArray();
     $cate2      = CategoryModel::level2Cate()->get()->toArray();
+
+    foreach (Session::all() as $key => $value) {
+      if(!is_array($value)){
+        if(strpos($key,'P_')!==false){
+          @++$incart;
+        }
+      }
+    }
+
+
 ?>
 <html lang="en">
 <head>
@@ -145,6 +155,11 @@ $path = $data['path'];
       <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">เกี่ยวกับเรา</a>
       </li>
+
+      <li class="dropdown dropdown-large">
+        <a href="<?php echo Request::root();?>cart" class="dropdown-toggle" data-toggle="dropdown">รถเข็น <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
+      </li>
+
     </ul>
     
   </div><!-- /.nav-collapse -->
@@ -237,7 +252,7 @@ $path = $data['path'];
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
 <div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
-<form name="search" method="get" action="<?php echo url('/')?>">
+<form name="search" method="get" action="<?php echo url('main')?>">
       <div class="search-text">Search</div>
       <input name="keyword" type="text" class="form-control" placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
       <select name="cate" class="form-control" style="border-radius:30px;">
@@ -293,13 +308,13 @@ $path = $data['path'];
   
     foreach ($cate1 as $k1 => $v1) {
       ?>
-      <li class="list-group-item catelist" style="font-size:17px;"><a href="<?php echo url('/')?>?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
+      <li class="list-group-item catelist" style="font-size:17px;"><a href="<?php echo url('main')?>?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
       <?php
       foreach ($cate2 as $k2 => $v2) {
         if($v2['CateParentID']==$v1['CategoryID']){
 
           ?>
-            <li class="list-group-item catelist"><a style="color:#F77" href="<?php echo url('/')?>?cate=<?php echo $v2['CategoryID'];?>" > - <?php echo $v2['CategoryName'];?></a></li>
+            <li class="list-group-item catelist"><a style="color:#F77" href="<?php echo url('main')?>?cate=<?php echo $v2['CategoryID'];?>" > - <?php echo $v2['CategoryName'];?></a></li>
           <?php
 
           
