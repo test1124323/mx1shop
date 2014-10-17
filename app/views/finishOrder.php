@@ -11,6 +11,7 @@ window.location.href="#list";
 <div style="padding-left:20px;"><h2 class="title-text-x">รายการสินค้าในรถเข็น</h2></div>
 <div style="padding-left:0px;"><br/>
 <?php
+echo "<pre>";
 print_r(Session::all());
 ?>
 

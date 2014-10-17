@@ -96,6 +96,9 @@ class TopicController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		if(!(Input::has('ProductCount'))||is_nan(Input::get('ProductCount'))){
+		return Redirect::to('main');
+		}
 		$pid 	=	'P_'.$id;
 		$quantity = 0 ;
 		if(Session::has($pid)){
@@ -104,6 +107,7 @@ class TopicController extends \BaseController {
 			$quantity 	= 	Input::get('ProductCount');
 		}
 		Session::put($pid,$quantity);
+		
 		return Redirect::to('cart');
 	}
 

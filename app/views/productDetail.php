@@ -22,6 +22,7 @@ function switchImg(id){
 <div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">รายละเอียดสินค้า</h4></div>
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
+
 <div style="padding-left:0px;"><br/>
 
 <?php       
@@ -94,6 +95,7 @@ foreach ($detail['product_img'] as $key => $value) {
     <div class="col-sm-12">
     <form name="orderForm" method="post" action="../cartStore/<?php echo $detail['ProductID']?>">
         <input type="hidden" name="_method" value="put">
+       
         <div class="input-group " style="margin:10px 0 10px 0;">
           <span class="input-group-addon">จำนวน</span>
           <input type="number" class="form-control" id="ProductCount" name="ProductCount" style="border-radius:0px !important;" min = '0' value="0">

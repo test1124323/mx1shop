@@ -71,7 +71,7 @@ $path = $data['path'];
   <div class="collapse navbar-collapse js-navbar-collapse">
     <ul class="nav navbar-nav">
     <li class="dropdown dropdown-large">
-        <a href="../">หน้าแรก</a>
+        <a href="<?php echo Request::root();?>/main">หน้าแรก</a>
       </li>
       <!-- <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">หมวดหมู่สินค้า <b class="caret"></b></a>

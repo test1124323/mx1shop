@@ -38,7 +38,7 @@ foreach ($productlist as $pkey => $pvalue) {
  ?>
 <div class="col-sm-<?php echo $size?> product-head">
 
-          <a href="main/<?php echo $pvalue['ProductID']?>" target='_blank'>
+          <a href="main/<?php echo $pvalue['ProductID']?>">
 
           <div class="ProductPic" 
           style="background:url(img/product_tmp/<?php echo @$coverImg[$pvalue['ProductID']];?>);

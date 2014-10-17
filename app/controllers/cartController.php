@@ -17,7 +17,6 @@ class cartController extends \BaseController {
 				}
 			}
 		}
-		exit;
 		return View::make('finishOrder');
 	}
 
