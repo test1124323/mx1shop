@@ -82,6 +82,4 @@ class PaymentController extends \BaseController {
 	{
 		echo "destroy".$id;
 	}
-
-
 }
