@@ -24,7 +24,7 @@ function switchImg(id){
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
 <?php if(Input::has('updated')){?>
-<div class="alert alert-info" role="alert">เพิ่ม <?php echo $detail['ProductName']?> ลงในรถเข็นเรียบร้อยแล้ว หากต้องการตรวจสอบรายการ <a href="<?php echo Request::root();?>/cart">คลิกที่นี่</a></div>
+<div class="alert alert-info" role="alert">เพิ่ม <?php echo $detail['ProductName']?> ลงในตระกร้าเรียบร้อยแล้ว หากต้องการตรวจสอบรายการ <a href="<?php echo Request::root();?>/cart">คลิกที่นี่</a></div>
 <?php }?>
 <div style="padding-left:0px;"><br/>
 
@@ -105,7 +105,7 @@ foreach ($detail['product_img'] as $key => $value) {
           <input type="number" class="form-control" id="ProductCount" name="ProductCount" style="border-radius:0px !important;text-align:right;" min = '1' value="1">
           <span class="input-group-addon">ชิ้น</span>
         </div>
-        <button type="submit" class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="<?php echo $path;?>img/cart.png" width="23px">หยิบใส่รถเข็น</button>
+        <button type="submit" class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="<?php echo $path;?>img/cart.png" width="23px">หยิบใส่ตระกร้า</button>
     </form>
     </div>
 

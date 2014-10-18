@@ -90,7 +90,8 @@ class cartController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Session::forget($id);
+		return Redirect::to('cart');
 	}
 
 	//--------------------------Custome function------------------------------------

@@ -157,7 +157,7 @@ $path = $data['path'];
       </li>
 
       <li class="dropdown dropdown-large">
-        <a href="<?php echo Request::root();?>cart" class="dropdown-toggle" data-toggle="dropdown">รถเข็น <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
+        <a href="<?php echo Request::root();?>cart" class="dropdown-toggle" data-toggle="dropdown">ตระกร้า <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
       </li>
 
     </ul>

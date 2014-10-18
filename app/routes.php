@@ -16,6 +16,7 @@ Route::resource('main','TopicController');
 Route::resource('cartStore','TopicController');
 
 Route::resource('cart','cartController');
+Route::get('cancelOrder/{id}','cartController@destroy');
 
 Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');

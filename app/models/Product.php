@@ -11,6 +11,7 @@ class Product extends Eloquent{
 	protected $primaryKey = 'ProductID';
 	public $timestamps = false;
 	protected $with = array('ProductImg');
+	protected $appends 	= array('product_cover');
 
 	public function productCategory(){
 		return $this->hasMany('ProductCate','ProductID');
@@ -22,6 +23,12 @@ class Product extends Eloquent{
 
 	public function ProductCate(){
 		return $this->belongsToMany('Category', 'tbl_productcate' , 'ProductID' , 'CategoryID');
+	}
+
+	public function getProductCoverAttribute(){
+		return ProductImg::where('ProductID',$this->ProductID)->
+							where('StatusFirst','1')->
+							get()->toArray();
 	}
 
 	public function scopeJoinCategory($query){
