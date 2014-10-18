@@ -22,9 +22,11 @@ Route::resource('/backoffice/DropdownCategory','ProductManageController@Dropdown
 Route::resource('/backoffice/ProductPic','ProductPicController@show_product');
 Route::resource('/backoffice/ProductPicManage','ProductPicController');
 Route::resource('/backoffice/UpdateStatusPic','ProductPicController@update_status');
+Route::resource('/backoffice/deletePic','ProductPicController@deletePic');
 Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit');
 Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');
 Route::resource('/backoffice/Order','OrderController');
 Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
 Route::resource('/backoffice/deleteAuto','OrderController@deleteAuto');
 Route::resource('/backoffice/OrderDetailConf','OrderController');
+Route::resource('/backoffice/Payment','PaymentController');

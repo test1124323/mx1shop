@@ -1,5 +1,5 @@
 <?php
-$act = '0';
+$act = '2';
 include("backHeader.php");
 include("function.php");
 $arr_OrderStatus = ArrOrderStatus();

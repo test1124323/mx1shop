@@ -28,10 +28,9 @@ $path = $data['path'];
 <body>
 <?php
 ${'tab'.$act} = 'active';
-$arr_menu = array('0'=>'หน้าแรก','1' =>'ตั้งค่า',
-'2'=>'รายการสั่งซื้อสินค้าทั้งหมด',
-'3'=>'รายการรอชำระเงิน');
-$arr_menuLink = array('0'=>'../backoffice/Order','1'=>'#','2'=>'','3'=>'');
+$arr_menu = array('0'=>'หน้าแรก','2'=>'รายการรอชำระเงิน','1' =>'ตั้งค่า',
+);
+$arr_menuLink = array('0'=>'../backoffice/Order','2'=>'../backoffice/Payment','1'=>'#');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
 $arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'','5'=>'');
 ?>

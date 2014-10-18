@@ -131,6 +131,9 @@ include("function.php");
   </form>
    </div>
 <!--start page-->
+<div style="text-align:right;">
+    **ทั้งหมด <?php echo $product->getTotal()." รายการ ";?>
+  </div >
    <div style="text-align:right;" ><?php echo $product->links(); ?></div>
 <!--end page-->
 </div>
