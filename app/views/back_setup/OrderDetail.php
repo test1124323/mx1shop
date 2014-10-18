@@ -48,7 +48,7 @@ include("function.php");
 				return false;
 			}
 		}
-
+		$('#form-input').submit();
 	}
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
@@ -250,7 +250,6 @@ if($result[0]['OrderStatus']>='3'){
 		  </div>
 		</div>
 		</div>
-
 		<div class="col-sm-6" >
 			<div class="panel panel-default">
 		  	<div class="panel-body">

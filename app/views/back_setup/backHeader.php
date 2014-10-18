@@ -28,7 +28,10 @@ $path = $data['path'];
 <body>
 <?php
 ${'tab'.$act} = 'active';
-$arr_menu = array('0'=>'หน้าแรก','2'=>'รายการรอชำระเงิน','1' =>'ตั้งค่า',
+$new_order = OrderModel::where("StatusNew","=","1")->count();
+$wait_pay = OrderModel::where("OrderStatus","=","2")->count();
+
+$arr_menu = array('0'=>'หน้าแรก&nbsp&nbsp<span class="badge pull-right"> '.$new_order.'</span>','2'=>'รายการรอชำระเงิน&nbsp&nbsp<span class="badge pull-right"> '.$wait_pay.'</span>','1' =>'ตั้งค่า',
 );
 $arr_menuLink = array('0'=>'../backoffice/Order','2'=>'../backoffice/Payment','1'=>'#');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');

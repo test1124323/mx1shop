@@ -14,4 +14,7 @@ class OrderModel extends Eloquent{
 	public function OrderDetail(){
 		return $this->hasMany('OrderDetailModel','OrderID');
 	}
+	public function Payment(){
+		return $this->hasOne('PaymentModel','OrderID');
+	}
 }
