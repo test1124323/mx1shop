@@ -1,5 +1,5 @@
 <?php
-class cartController extends \BaseController {
+class billingController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,18 +9,7 @@ class cartController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		$productInCart  =  array();
-		foreach (Session::all() as $key => $value) {
-			if(!is_array($value)){
-				if(strpos($key,'P_')!==false){
-					$id = substr($key, 2);
-					$productInCart[$key]['amount']	= $value;
-					$productInCart[$key]['detail'] 	= Product::find($id)->toArray();
-				}
-			}
-		}
-
-		return View::make('finishOrder',array('productInCart'=>$productInCart));
+		return View::make('billingForm');
 	}
 
 
@@ -42,7 +31,7 @@ class cartController extends \BaseController {
 	 */
 	public function store()
 	{
-
+		echo "ss";
 	}
 
 
@@ -90,10 +79,7 @@ class cartController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		if(Session::has($id)){
-			Session::forget($id);
-		}
-		return Redirect::to('cart');
+
 	}
 
 	//--------------------------Custome function------------------------------------

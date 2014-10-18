@@ -3,7 +3,7 @@
 </div>
 
 </div>
-<div class="about-us col-sm-12">
+<div class="about-us col-xs-12">
 
 
 </div>

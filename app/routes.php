@@ -12,11 +12,12 @@
 */
 
 Route::resource('main','TopicController');
-// Route::get('/{id}','TopicController@show');
 Route::resource('cartStore','TopicController');
 
 Route::resource('cart','cartController');
 Route::get('cancelOrder/{id}','cartController@destroy');
+
+Route::resource('billing','billingController');
 
 Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');

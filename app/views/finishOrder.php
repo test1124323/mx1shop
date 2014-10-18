@@ -42,7 +42,7 @@ window.location.href="#list";
   <table class="table"> 
   <tr class="tr-head">
     <td class="table-head" width="30px;" ></td>
-    <td class="table-head"  width="100px;" ></td>
+    <td class="table-head" ></td>
     <td class="table-head" >สินค้า</td>
     <td class="table-head"  width="100px;">ราคา</td>
     <td class="table-head"  width="100px;">จำนวน</td>
@@ -57,36 +57,40 @@ window.location.href="#list";
     </tr>
     <?php
   }
+  $total = 0;
   foreach ($productInCart as $key => $value) {
   ?>
- 
   <tr style="color:#666; font-weight:bold;">
     <td class="table-head" style="font-size:10px;"><a href="<?php echo Request::root()?>/cancelOrder/<?php echo $key;?>"><i  class="glyphicon glyphicon-remove cancel-order"></i></a></td>
-    <td >
+    <td  class"picCart"><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>">
     <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo $value['detail']['product_cover'][0]['ProductIMG'];?>);
                   background-position:center;
                   background-size:cover;
                   background-repeat:no-repeat; border-radius:10px;
                   margin:0px;">
-    </div>
+    </div></a>
     </td>
     <td class="table-head" ><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>"><h5><?php echo $value['detail']['ProductName'];?></h5></td>
     <td class="table-head" ><h5><?php echo number_format($value['detail']['ProductSalePrice']);?> ฿</h5></td>
     <td class="table-head" ><h5><?php echo $value['amount'];?></h5></td>
-    <td class="table-head" ><h5><?php echo number_format(intval($value['amount'])*intval($value['detail']['ProductSalePrice']));?> ฿</h5></td>
+    <td class="table-head" ><h5><?php $sum = (intval($value['amount'])*intval($value['detail']['ProductSalePrice'])); 
+                                      echo number_format($sum);?> ฿</h5></td>
   </tr>
   <?php
+    $total += $sum;
   }
   ?>
   </table>
 </div>
 
-<div class="panel-heading" style="float:right;">
-<button class="btn btn-default" onclick="window.location.reload();"><i class="glyphicon glyphicon-refresh"></i> อัพเดทรายการสินค้า</button>
-<button class="btn btn-success"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button>
+<div class="col-sm-6" style="float:right; width:45%;text-align:right;padding:5px 30px 10px 0; color:#555;"><span style="font-size:18px;">ยอดรวมทั้งหมด</span>  <span style="font-size:24px;"><?php echo number_format($total);?> ฿</span></div>
+
+<div class="col-sm-6">
+<button class="btn btn-default" onclick="window.location.reload();" style="z-index:9999; margin-top:10px;"><i class="glyphicon glyphicon-refresh"></i> อัพเดทรายการสินค้า</button>
+<a href="<?php echo Request::root();?>/billing"><button class="btn btn-success" style="margin-top:10px;z-index:9999;"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button>
 </div>
 
-<div class="col-sm-12" style="height:200px;"></div>
+<div style="height:200px; width:100%;"></div>
 <!-- /content -->
 
 
