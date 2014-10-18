@@ -9,14 +9,22 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		$result = OrderModel::with('OrderDetail')->get()->toArray();
+		$result = OrderModel::with('OrderDetail')->paginate(20);
 		//echo "<pre>";print_r($result);echo "</pre>";
 		return View::make("back_setup/OrderAll",array('result'=>$result));
 	}
 
 	public function OrderDetail(){
-		$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
-		return View::make("back_setup/OrderDetail",array('result'=>$result));
+		
+		if(Input::get('OrderID')){
+			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
+			$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->paginate(20);
+			return View::make("back_setup/OrderDetail",array('result'=>$result));
+		}else{
+			return Redirect::to('backoffice/Order');
+		}
+		
+		
 	}
 	public function deleteAuto()
 	{
@@ -51,10 +59,15 @@ class OrderController extends \BaseController {
 	public function store()
 	{
 		$OrderStatus = (Input::get('OrderStatus'))?Input::get('OrderStatus'):"3";
+		$dateDelivered = ($OrderStatus=='4')?$this->conv_data_db(Input::get('DeliveredDate')):"";
+		if(Input::get("CanOrderStaus")!=""){
+			$OrderStatus = "5";
+			$dateDelivered = NULL;
+		}
 
 		$Order = OrderModel::find(Input::get('OrderID'));
 		$Order->OrderStatus = $OrderStatus;
-		$Order->DeliveredDate = ($OrderStatus=='4')?$this->conv_data_db(Input::get('DeliveredDate')):"";
+		$Order->DeliveredDate = $dateDelivered;
 		$Order->save();
 
 		return Redirect::to('backoffice/Order');

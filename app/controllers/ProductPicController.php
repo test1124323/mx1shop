@@ -106,15 +106,20 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 			$result = ProductImg::where('ProductID','=',$key)->get()->toArray();
 			if(count($result)){
 				//echo"<pre>";print_r($result);echo "</pre>";
-				foreach ($result as $kr => $vr) {
+				if(Input::get('type_add'.$key)=='2'){
+					foreach ($result as $kr => $vr) {
 				# code...
 					@unlink($destinationPath1."/".$vr['ProductIMG']);
 					@unlink($destinationPath2."/".$vr['ProductIMG']);
+					}
 				}
+		
 			}
 
-
-			$delete = ProductImg::where('ProductID', '=',$key)->delete();
+			if(Input::get('type_add'.$key)=='2'){
+				$delete = ProductImg::where('ProductID', '=',$key)->delete();
+			}
+			
 			foreach(Input::file('pic_'.$key) as $key2 => $value2){
 
 				$file = Input::file('pic_'.$key)[$i];
@@ -134,7 +139,7 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 
 				//add copy right
 				//$myCopyright = imagecreatefrompng(public_path().'/img/water_mask1_200.png');
-				$myCopyright = imagecreatefromjpeg(public_path().'/img/water_mask1_2002.jpg');
+				$myCopyright = imagecreatefromjpeg(public_path().'/img/water_mask1_350.jpg');
 				$srcWidth = imagesx($myCopyright);
 				$srcHeight = imagesy($myCopyright);
 
@@ -221,7 +226,9 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 	
 }
 
-
+public function deletePic(){
+	$delete = ProductImg::where('ProductImgID', '=',$_POST['ProductImgID'])->delete();
+}
 	/**
 	 * Display the specified resource.
 	 *

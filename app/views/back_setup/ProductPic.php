@@ -20,6 +20,16 @@ $ImgPath = public_path().'/img/product/';
 
     //alert(ProductID+">>"+ProductImgID);
   }
+  function deletePic(id,ProductImgID){
+    if(confirm('ยืนยันการลบภาพ อีกครั้ง')){
+      $('#'+id).remove();
+      var url = "deletePic";
+      var data = {ProductImgID:ProductImgID};
+      $.post(url,data,function(msg){
+      //alert(msg);
+      });
+    }
+  }
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
@@ -61,8 +71,13 @@ if($result){
       <td><input type="hidden" name="ProductID[<?php echo $value['ProductID'];?>]" value="<?php echo $value['ProductID'];?>">
       <?php echo $value['ProductName'];?></td>
       <td>
+      <div>
         <input  class="form-control" type="file" name="pic_<?php echo $value['ProductID'];?>[]" id="pic_<?php echo $value['ProductID'];?>" multiple >
-        
+       </div>
+       <div>
+         <label><input type="radio" name="type_add<?php echo $value['ProductID'];?>" value="1" checked> เก็บภาพเดิมไว้</label>
+         <label><input type="radio" name="type_add<?php echo $value['ProductID'];?>" value="2"> ลบภาพเดิมทิ้งทั้งหมด</label>
+       </div> 
       </td>
        <td>
        <?php 
@@ -70,11 +85,13 @@ if($result){
             foreach ($value['product_img'] as $keyImg => $valueImg) {
               # code...
               ?>
-              <div class="col-sm-4">
+              <div class="col-sm-4" id="pic_<?php echo $valueImg['ProductImgID']?>">
                 <img src="<?php echo $path."img/product/".$valueImg['ProductIMG'];?>" width="200px" height="100px;">
                 <div class="caption">
                   <label>
-                  <input type="radio" <?php echo ($valueImg['StatusFirst']=='1')?"checked":"";?> name="productID_<?php echo $value['ProductID'];?>" value="1" onClick="change_first('<?php echo $value["ProductID"];?>','<?php echo $valueImg["ProductImgID"];?>');"> ตั้งเป็นภาพแรก</label>
+                  <input type="radio" <?php echo ($valueImg['StatusFirst']=='1')?"checked":"";?> 
+                  name="productID_<?php echo $value['ProductID'];?>" value="1" onClick="change_first('<?php echo $value["ProductID"];?>','<?php echo $valueImg["ProductImgID"];?>');"> ตั้งเป็นภาพแรก</label>
+                <button type="button" class="btn btn-danger btn-xs" onclick="deletePic('<?php echo "pic_".$valueImg["ProductImgID"];?>','<?php echo $valueImg["ProductImgID"];?>');"><i class="glyphicon glyphicon-trash"></i> ลบ</button>
                 </div>
               </div>
               <?php
