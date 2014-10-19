@@ -57,7 +57,7 @@ foreach ($productlist as $pkey => $pvalue) {
   $i++;
 }
 ?>
- <div style="text-align:center;" ><?php echo $productlist->links(); ?></div>
+ <div class="col-sm-12" style="text-align:center;" ><?php echo $productlist->links(); ?></div>
 
 <!-- !right side -->
 

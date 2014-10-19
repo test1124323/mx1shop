@@ -13,32 +13,7 @@ window.location.href="#list";
 <?php if(Input::has('updated')&&Input::get('updated')=='1'){?>
 <div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-remove-sign" style="font-size:20px;"></i>  ยังไม่มีรายการสั่งซื้อ</div>
 <?php }?>
-<?php
- // [detail] => Array
- //                (
- //                    [ProductID] => 4
- //                    [ProductName] => ไฟหน้า
- //                    [ProductLastCost] => 
- //                    [ProductSalePrice] => 2200
- //                    [ProductAmount] => 1
- //                    [ProductShortDESC] => 
- //                    [ProductDESC] => 
- //                    [ProductDate] => 2014-10-10
- //                    [ProductStatus] => 1
- //                    [ProductCode] => 
- //                    [product_img] => Array
- //                        (
- //                            [0] => Array
- //                                (
- //                                    [ProductImgID] => 24
- //                                    [ProductID] => 4
- //                                    [ProductIMG] => 2014101602124800.jpg
- //                                    [ProductThumb] => 
- //                                    [StatusFirst] => 2
- //                                )
-// echo "<pre>";
-// print_r($productInCart);exit;
-?>
+
 <div class="panel panel-default" style="margin:10px;">
   <!-- Default panel contents -->
   
