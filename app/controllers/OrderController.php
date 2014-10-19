@@ -38,15 +38,11 @@ class OrderController extends \BaseController {
 	}
 
 	public function Search(){
-		//echo "<pre>";print_r(Input::all());echo "</pre>";
-		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC');
-		if (Input::has('SOrderID')){
-			//$result =  $result->where("OrderID","LIKE","%".Input::get("SOrderID")."%");
-		}
-		
-		$result =  $result->where("OrderID","LIKE","%2014f%")->paginate(20);
-		//$result->where("OrderID","LIKE","%".Input::get('SOrderID')."%");
-		//echo "<pre>";print_r($result);echo "</pre>";
+
+		$result = OrderModel::with('OrderDetail')
+		->Search(Input::get('SOrderID'),Input::get('SFullName'))
+		->orderby('OrderDate','DESC')
+		->paginate(20);
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 	}
 	/**

@@ -43,7 +43,7 @@ $arr_OrderStatus = ArrOrderStatus();
       <tbody>
       <?php 
 if(count($result)>0){
-	$i=0;
+	$i=$result->getFrom()-1;
 	foreach ($result as $key => $value) {
 		# code...
 		?>
