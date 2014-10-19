@@ -13,13 +13,13 @@ class cartController extends \BaseController {
 		foreach (Session::all() as $key => $value) {
 			if(!is_array($value)){
 				if(strpos($key,'P_')!==false){
+					@++$count;
 					$id = substr($key, 2);
 					$productInCart[$key]['amount']	= $value;
 					$productInCart[$key]['detail'] 	= Product::find($id)->toArray();
 				}
 			}
 		}
-
 		return View::make('finishOrder',array('productInCart'=>$productInCart));
 	}
 

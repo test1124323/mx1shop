@@ -106,6 +106,10 @@ class TopicController extends \BaseController {
 		}else{
 			$quantity 	= 	Input::get('ProductCount');
 		}
+		if(Product::find($id)->ProductAmount < $quantity){
+			return Redirect::to('main/'.$id."?updated=2");
+		}
+
 		Session::put($pid,$quantity);
 		
 		return Redirect::to('main/'.$id."?updated=1");

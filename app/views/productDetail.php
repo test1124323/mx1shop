@@ -23,8 +23,11 @@ function switchImg(id){
 <div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">รายละเอียดสินค้า</h4></div>
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
-<?php if(Input::has('updated')){?>
+<?php if(Input::has('updated')&&Input::get('updated')=='1') {?>
 <div class="alert alert-info" role="alert">เพิ่ม <?php echo $detail['ProductName']?> ลงในตระกร้าเรียบร้อยแล้ว หากต้องการตรวจสอบรายการ <a href="<?php echo Request::root();?>/cart">คลิกที่นี่</a></div>
+<?php }?>
+<?php if(Input::has('updated')&&Input::get('updated')=='2') {?>
+<div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-remove-sign" style="font-size:20px;"></i>  สินค้าไม่พอ</div>
 <?php }?>
 <div style="padding-left:0px;"><br/>
 

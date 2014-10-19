@@ -11,6 +11,8 @@ class billingController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
+
+		if(empty(Cart::getProduct())){return Redirect::to('cart?updated=1');}
 		return View::make('billingForm');
 	}
 
@@ -33,6 +35,18 @@ class billingController extends \BaseController {
 	 */
 	public function store()
 	{
+		Session::put('input',Input::all());
+		require_once('recaptchalib.php');
+		$privatekey = "6LciRfwSAAAAAHP1wg4Q7vyW9Sm4ivrPs6S3Hm-8";
+		$resp = recaptcha_check_answer ($privatekey,
+		                                $_SERVER["REMOTE_ADDR"],
+		                                Input::get("recaptcha_challenge_field"),
+		                                Input::get("recaptcha_response_field"));
+
+		if (!$resp->is_valid) {
+		   	return Redirect::to('billing?updated=1');
+		}
+
 		$input 		=	Input::all();
 		$FullName 	=	$input['fname']." ".$input['lname'];
 		$Address 	= 	$input['address'];
@@ -82,6 +96,8 @@ class billingController extends \BaseController {
 			Cart::clearProduct();
 
 		});
+
+		return View::make('bill',array());
 	}
 
 
