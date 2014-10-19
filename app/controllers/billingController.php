@@ -79,7 +79,8 @@ class billingController extends \BaseController {
 			foreach ($child as $key => $mChild) {
 				$mChild->save();
 			}
-			
+			Cart::clearProduct();
+
 		});
 	}
 

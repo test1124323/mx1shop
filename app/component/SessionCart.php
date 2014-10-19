@@ -6,7 +6,6 @@ use Product;
 class SessionCart{
 
 	public static function getProduct() {
-		// return "ss";
 		$productInCart  =  array();
 		foreach (Session::all() as $key => $value) {
 			if(!is_array($value)){
@@ -18,6 +17,14 @@ class SessionCart{
 			}
 		}
 		return $productInCart;
+	}
+
+	public static function clearProduct(){
+		foreach (Session::all() as $key => $value) {
+			if(strpos($key,'P_')!==false){
+				Session::forget($key);
+			}
+		}		
 	}
 
 }
