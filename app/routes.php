@@ -25,9 +25,12 @@ Route::resource('/backoffice/UpdateStatusPic','ProductPicController@update_statu
 Route::resource('/backoffice/deletePic','ProductPicController@deletePic');
 Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit');
 Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');
-Route::resource('/backoffice/Order','OrderController');
+Route::resource('/backoffice/Order','OrderController@Search');
 Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
 Route::resource('/backoffice/deleteAuto','OrderController@deleteAuto');
 Route::resource('/backoffice/OrderDetailConf','OrderController');
 Route::resource('/backoffice/Payment','PaymentController');
-Route::resource('/backoffice/OrderSearch','OrderController@Search');
+
+Route::resource('/backoffice/Customer','UserController@Customer');
+Route::resource('/backoffice/UserEdit','UserController@UserEdit');
+Route::resource('/backoffice/User','UserController');

@@ -17,4 +17,14 @@ class OrderModel extends Eloquent{
 	public function Payment(){
 		return $this->hasOne('PaymentModel','OrderID');
 	}
+	public function scopeSearch($query,$OrderID,$FullName){
+		if($OrderID){
+			$query->where('OrderID','LIKE','%'.$OrderID.'%');
+		}
+		if($FullName){
+			$query->where('FullName','LIKE','%'.$FullName.'%');
+		}
+		return $query;
+		
+	}
 }

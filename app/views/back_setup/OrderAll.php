@@ -12,7 +12,7 @@ $arr_OrderStatus = ArrOrderStatus();
 
 	}
 	function Search(){
-		$('#form-input').attr('action','OrderSearch').submit();
+		$('#form-input').attr('action','Order').submit();
 	}
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
@@ -69,7 +69,7 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SOrderDate'];?>" for="SOrderDate" name="SOrderDate" id="SOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SOrderDate'];?>" for="SOrderDate" name="SOrderDate" id="SOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="SOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -78,7 +78,7 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['EOrderDate'];?>" for="EOrderDate" name="EOrderDate" id="EOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['EOrderDate'];?>" for="EOrderDate" name="EOrderDate" id="EOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="EOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -90,7 +90,8 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SPaymantDate'];?>" for="SPaymantDate" name="SPaymantDate" id="SPaymantDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SPaymantDate'];?>" for="SPaymantDate" name="SPaymantDate" 
+                id="SPaymantDate" placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="SPaymantDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -99,7 +100,9 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" for="EPaymantDate" value="<?php echo @$Input['EPaymantDate'];?>" name="EPaymantDate" id="EPaymantDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" for="EPaymantDate" 
+                value="<?php echo @$Input['EPaymantDate'];?>" name="EPaymantDate" id="EPaymantDate" 
+                placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="EPaymantDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -111,7 +114,9 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" for="SDeliveredDate" value="<?php echo @$Input['SDeliveredDate'];?>" name="SDeliveredDate" id="SDeliveredDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" for="SDeliveredDate" 
+                value="<?php echo @$Input['SDeliveredDate'];?>" name="SDeliveredDate" 
+                id="SDeliveredDate" placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="SDeliveredDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -120,7 +125,9 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" for="EDeliveredDate" value="<?php echo @$Input['EDeliveredDate'];?>" name="EDeliveredDate" id="EDeliveredDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
+		  					<input type="text"  class="form-control datepicker" for="EDeliveredDate" 
+                value="<?php echo @$Input['EDeliveredDate'];?>" name="EDeliveredDate" id="EDeliveredDate" 
+                placeholder="dd/mm/yyyy" readonly="readonly" >
 		  					<span class="input-group-addon" for="EDeliveredDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -153,7 +160,7 @@ $arr_OrderStatus = ArrOrderStatus();
       <tbody>
       <?php 
 if(count($result)>0){
-	$i=0;
+	$i=$result->getFrom()-1;
 	foreach ($result as $key => $value) {
 		# code...
 		?>
