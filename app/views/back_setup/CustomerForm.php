@@ -3,7 +3,7 @@ $act = '1';
 include("backHeader.php");
 include("function.php");
 $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการใช้งาน");
-$data = $Customer[0];
+$data = @$Customer[0];
 ?>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
@@ -23,7 +23,7 @@ $data = $Customer[0];
   <div class="table-responsive" style="margin-top:10px;">
   <form method="post"  id="form-input" action="User">
   <input type="hidden" name="UserID" id="UserID" value="<?php echo $data['UserID'];?>">
-
+  <input type="hidden" name="TypeUser" id="TypeUser" value="1">
   <div class="row">
     <div class="col-xs-1"></div>
     <div class="col-xs-1">
@@ -84,8 +84,8 @@ $data = $Customer[0];
   <div class="col-xs-1">สถานะ</div>
   <div class="col-xs-4">
       <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary btn-xs <?php echo ($data['ActiveStatus']=='1')?"active":"";?>">
-        <input type="radio" name="ActiveStatus" id="ActiveStatus1" value="1" <?php echo ($data['ActiveStatus']=='1')?"checked":"";?>> ใช้งาน
+      <label class="btn btn-primary btn-xs <?php echo ($data['ActiveStatus']=='1'||$data['ActiveStatus']=="")?"active":"";?>">
+        <input type="radio" name="ActiveStatus" id="ActiveStatus1" value="1" <?php echo ($data['ActiveStatus']=='1'||$data['ActiveStatus']=="")?"checked":"";?>> ใช้งาน
       </label>
       <label class="btn btn-primary  btn-xs <?php echo ($data['ActiveStatus']=='2')?"active":"";?>">
         <input type="radio" name="ActiveStatus" id="ActiveStatus2" value="2" <?php echo ($data['ActiveStatus']=='2')?"checked":"";?>> ระงับการใช้งาน

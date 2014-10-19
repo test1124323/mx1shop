@@ -38,7 +38,13 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		$User = UserModel::find(Input::get("UserID"));
+		
+		if(Input::get("UserID")!=""){
+			$User = UserModel::find(Input::get("UserID"));
+		}else{
+			$User = new UserModel;
+		}
+
 		$User->UserName = Input::get("UserName");
 		$User->PassWord = Input::get("PassWord");
 		$User->Email = Input::get("Email");
@@ -46,6 +52,7 @@ class UserController extends \BaseController {
 		$User->UserAddress = Input::get("UserAddress");
 		$User->UserTel = Input::get("UserTel");
 		$User->FullName = Input::get("FullName");
+		$User->TypeUser = Input::get("TypeUser");
 		$User->save();
 		return Redirect::to('backoffice/Customer');
 
