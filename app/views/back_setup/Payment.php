@@ -42,7 +42,7 @@ $arr_OrderStatus = ArrOrderStatus();
       </thead>
       <tbody>
       <?php 
-if($result){
+if(count($result)>0){
 	$i=0;
 	foreach ($result as $key => $value) {
 		# code...
@@ -76,11 +76,17 @@ if($result){
 			<td style=" text-align: center;"><?php echo $arr_OrderStatus[$value['OrderStatus']];?></td>
 			<td style=" text-align: center;">
 			<button type="button" class="btn btn-primary btn-xs"  onclick="OrderDetail('<?php echo $value['OrderID'];?>');">
-			<i class="glyphicon glyphicon-pencil"></i> ใบสั่งซื้อ</button>
+			<i class="glyphicon glyphicon-credit-card"></i> ชำระเงิน</button>
 			</td>
 		</tr>
 		<?php
 	}
+}else{
+	?>
+	<tr>
+		<td  colspan="11" class="text-center bg-danger">ไม่พบข้อมูล</td>
+	</tr>
+	<?php
 }
       ?>
       </tbody>

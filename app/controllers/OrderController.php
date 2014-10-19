@@ -1,7 +1,5 @@
 <?php
-
 class OrderController extends \BaseController {
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,16 +7,18 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		$result = OrderModel::with('OrderDetail')->paginate(20);
-		//echo "<pre>";print_r($result);echo "</pre>";
-		return View::make("back_setup/OrderAll",array('result'=>$result));
+
+		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
+		//$result->where("OrderID","LIKE","%".Input::get('SOrderID')."%");
+		//echo "<pre>";print_r(Input::get('SOrderID'));echo "</pre>";
+		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 	}
 
 	public function OrderDetail(){
 		
 		if(Input::get('OrderID')){
 			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
-			$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->paginate(20);
+			$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
 			return View::make("back_setup/OrderDetail",array('result'=>$result));
 		}else{
 			return Redirect::to('backoffice/Order');
@@ -33,8 +33,21 @@ class OrderController extends \BaseController {
 		$Auto = OrderDetailModel::find(Input::get('AutoID'));
 		$Auto->delete();
 
-		$result = OrderModel::where('OrderID','=',$result1[0]['OrderID'])->with('OrderDetail')->get()->toArray();
+		$result = OrderModel::where('OrderID','=',$result1[0]['OrderID'])->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
 		return View::make("back_setup/OrderDetail",array('result'=>$result));
+	}
+
+	public function Search(){
+		//echo "<pre>";print_r(Input::all());echo "</pre>";
+		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC');
+		if (Input::has('SOrderID')){
+			//$result =  $result->where("OrderID","LIKE","%".Input::get("SOrderID")."%");
+		}
+		
+		$result =  $result->where("OrderID","LIKE","%2014f%")->paginate(20);
+		//$result->where("OrderID","LIKE","%".Input::get('SOrderID')."%");
+		//echo "<pre>";print_r($result);echo "</pre>";
+		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -58,6 +71,19 @@ class OrderController extends \BaseController {
 	}
 	public function store()
 	{
+		$pattern = '/,/';
+		$replacement = '';
+
+
+		$OrderStatus = "";
+		$PaymentTotal = 0;
+		$PaymantDate = NULL;
+		//PaymentTotal
+		if (Input::has('PaymentTotal')){
+			$PaymentTotal = preg_replace($pattern,$replacement,Input::get('PaymentTotal'));
+			$PaymantDate = $this->conv_data_db(Input::get('PaymantDate'));
+
+		}
 		$OrderStatus = (Input::get('OrderStatus'))?Input::get('OrderStatus'):"3";
 		$dateDelivered = ($OrderStatus=='4')?$this->conv_data_db(Input::get('DeliveredDate')):"";
 		if(Input::get("CanOrderStaus")!=""){
@@ -65,15 +91,21 @@ class OrderController extends \BaseController {
 			$dateDelivered = NULL;
 		}
 
+
 		$Order = OrderModel::find(Input::get('OrderID'));
 		$Order->OrderStatus = $OrderStatus;
 		$Order->DeliveredDate = $dateDelivered;
+		$Order->PaymantDate = $PaymantDate;
 		$Order->save();
 
+		if($PaymantDate!=NULL){
+			$Payment = new PaymentModel();
+			$Payment->PaymantDate = $PaymantDate;
+			$Payment->PaymentTotal = $PaymentTotal;
+			$Order->Payment()->save($Payment);
+		}
 		return Redirect::to('backoffice/Order');
 	}
-
-
 	/**
 	 * Display the specified resource.
 	 *

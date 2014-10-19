@@ -36,3 +36,4 @@ Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
 Route::resource('/backoffice/deleteAuto','OrderController@deleteAuto');
 Route::resource('/backoffice/OrderDetailConf','OrderController');
 Route::resource('/backoffice/Payment','PaymentController');
+Route::resource('/backoffice/OrderSearch','OrderController@Search');

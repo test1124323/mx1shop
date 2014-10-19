@@ -1,17 +1,17 @@
 <?php
-class OrderDetailModel extends Eloquent{
+class PaymentModel extends Eloquent{
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
 	protected $connection = 'main';
-	protected $table = 'tbl_orderdetail';
+	protected $table = 'tbl_payment';
 	protected $fillable = array('*');
-	protected $primaryKey = 'AutoID';
+	protected $primaryKey = 'OrderID';
 	public $timestamps = false;
 
 	public function Order(){
-		return $this->belongsTo('OrderModel','OrderID');
+		return $this->hasOne('OrderModel','OrderID');
 	}
 }

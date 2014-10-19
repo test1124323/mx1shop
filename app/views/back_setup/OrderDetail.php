@@ -48,7 +48,7 @@ include("function.php");
 				return false;
 			}
 		}
-
+		$('#form-input').submit();
 	}
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
@@ -193,10 +193,8 @@ if($result[0]['OrderStatus']>='3'){
 			</div>
 			<div class="row">
 				<div class="col-sm-6" >
-					<label><input type="checkbox" name="OrderStatus" id="OrderStatus"> value="4" <?php echo ($result[0]['OrderStatus']=='4')?"checked":"";?> > ยืนยันจัดส่ง</label>
+					<label><input type="checkbox" name="OrderStatus" id="OrderStatus" value="4" <?php echo ($result[0]['OrderStatus']=='4')?"checked":"";?> > ยืนยันจัดส่ง</label>
 				</div>
-				
-
 			</div>
 			<div class="row">
 				<div class="col-sm-3" >
@@ -252,7 +250,6 @@ if($result[0]['OrderStatus']>='3'){
 		  </div>
 		</div>
 		</div>
-
 		<div class="col-sm-6" >
 			<div class="panel panel-default">
 		  	<div class="panel-body">

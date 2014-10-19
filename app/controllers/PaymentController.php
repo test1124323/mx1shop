@@ -9,7 +9,7 @@ class PaymentController extends \BaseController {
 	 */
 	public function index()
 	{
-		$result = OrderModel::with('OrderDetail')->where("OrderStatus","=","2")->paginate(20);
+		$result = OrderModel::with('OrderDetail')->where("OrderStatus","=","2")->orderby('OrderDate','DESC')->paginate(20);
 		//echo "<pre>";print_r($result);echo "</pre>";
 		return View::make("back_setup/Payment",array('result'=>$result));
 	}
@@ -82,6 +82,4 @@ class PaymentController extends \BaseController {
 	{
 		echo "destroy".$id;
 	}
-
-
 }
