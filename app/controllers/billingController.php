@@ -1,5 +1,6 @@
 <?php
 use component\SessionCart as Cart;
+use component\Shelf;
 class billingController extends \BaseController {
 
 	/**
@@ -40,7 +41,6 @@ class billingController extends \BaseController {
 		$Email 		= 	$input['email'];
 		$child 		=	array();
 
-		echo "<pre>";
 		$productInCart		=	Cart::getProduct();
 		$maxID 				=	OrderModel::where('OrderDate','>',date("Y-m"))->max('OrderID');
 		$maxID 				=	(empty($maxID))?date("Ym")."000001":$maxID+1;
@@ -70,13 +70,16 @@ class billingController extends \BaseController {
 
 		}
 		
-
 		DB::transaction(function() use ($child,$order)
 		{
+			foreach ( Shelf::buy($child) as $key => $objChild) {
+			 	$objChild->save();
+			}
 			$order->save();
 			foreach ($child as $key => $mChild) {
 				$mChild->save();
 			}
+			
 		});
 	}
 

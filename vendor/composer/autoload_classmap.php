@@ -36,5 +36,6 @@ return array(
     'cartController' => $baseDir . '/app/controllers/cartController.php',
     'catePopController' => $baseDir . '/app/controllers/catePopController.php',
     'component\\SessionCart' => $baseDir . '/app/component/SessionCart.php',
+    'component\\Shelf' => $baseDir . '/app/component/Shelf.php',
     'testController' => $baseDir . '/app/controllers/testController.php',
 );

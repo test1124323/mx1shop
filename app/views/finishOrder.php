@@ -63,7 +63,7 @@ window.location.href="#list";
   <tr style="color:#666; font-weight:bold;">
     <td class="table-head" style="font-size:10px;"><a href="<?php echo Request::root()?>/cancelOrder/<?php echo $key;?>"><i  class="glyphicon glyphicon-remove cancel-order"></i></a></td>
     <td  class"picCart"><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>">
-    <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo $value['detail']['product_cover'][0]['ProductIMG'];?>);
+    <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo @$value['detail']['product_cover'][0]['ProductIMG'];?>);
                   background-position:center;
                   background-size:cover;
                   background-repeat:no-repeat; border-radius:10px;
