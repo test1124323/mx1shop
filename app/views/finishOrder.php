@@ -87,7 +87,7 @@ window.location.href="#list";
 
 <div class="col-sm-6">
 <button class="btn btn-default" onclick="window.location.reload();" style="z-index:9999; margin-top:10px;"><i class="glyphicon glyphicon-refresh"></i> อัพเดทรายการสินค้า</button>
-<a href="<?php echo Request::root();?>/billing"><button class="btn btn-success" style="margin-top:10px;z-index:9999;"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button>
+<a href="<?php echo Request::root();?>/billing"><button class="btn btn-success" style="margin-top:10px;z-index:9999;"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button></a>
 </div>
 
 <div style="height:200px; width:100%;"></div>

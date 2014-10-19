@@ -31,7 +31,8 @@ class billingController extends \BaseController {
 	 */
 	public function store()
 	{
-		echo "ss";
+		// Array ( [fname] => 1 [lname] => 1 [address] => 1 [postcode] => 1 [telnumber] => 1 [email] => 1@hotmai.com )
+		
 	}
 
 
