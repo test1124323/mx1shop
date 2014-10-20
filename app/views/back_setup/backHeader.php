@@ -35,7 +35,7 @@ $arr_menu = array('0'=>'หน้าแรก&nbsp&nbsp<span class="badge pull-r
 );
 $arr_menuLink = array('0'=>'../backoffice/Order','2'=>'../backoffice/Payment','1'=>'#');
 $arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
-$arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'../backoffice/Customer','5'=>'');
+$arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'../backoffice/Customer','5'=>'../backoffice/Employee');
 ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">

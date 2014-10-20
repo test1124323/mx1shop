@@ -14,7 +14,4 @@ class UserModel extends Eloquent{
 	public function scopeCustomer($query,$data){
 		return $query->where('TypeUser','=',$data);
 	}
-	public function scopeEmploy($query){
-		return $query->where('TypeUser','2');
-	}
 }

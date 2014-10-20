@@ -10,6 +10,9 @@ $arr_OrderStatus = ArrOrderStatus();
 		$('#form-input').attr('action','OrderDetail').submit();
 
 	}
+	function Search(){
+		$('#form-input').attr('action','Payment').submit();
+	}
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li class="active">หน้าแรก</li>
@@ -24,6 +27,71 @@ $arr_OrderStatus = ArrOrderStatus();
 	</div>
 	<div class="panel-body">	
 	<form method="post"  id="form-input">
+	<fieldset>
+		<legend>ค้นหา</legend>
+		<div class="panel panel-default">
+  			<div class="panel-body">
+    			<div class="row">
+    				<div class="col-xs-1"></div>
+    				<div class="col-xs-2">
+    					เลขที่ใบสั่งซื้อ
+    				</div>
+    				<div class="col-xs-3">
+    					<input type="text" class="form-control" id="SOrderID" name="SOrderID" value="<?php echo @$Input['SOrderID'];?>" placeholder="เลขที่ใบสั่งซื้อ">
+    				</div>
+    				<div class="col-xs-2">
+    					ชื่อ-สกุล
+    				</div>
+    				<div class="col-xs-3">
+    					<input type="text" class="form-control" id="SFullName" value="<?php echo @$Input['SFullName'];?>" name="SFullName" placeholder="ชื่อ-สกุล">
+    				</div>
+    			</div>
+    			<div class="row" style="margin-top:10px;">
+    				<div class="col-xs-1"></div>
+    				<div class="col-xs-2">
+    					ที่อยู่
+    				</div>
+    				<div class="col-xs-3">
+    					<input type="text" class="form-control" value="<?php echo @$Input['SAdress'];?>" id="SAdress" name="SAdress" placeholder="ที่อยู่">
+    				</div>
+    				<div class="col-xs-2">
+    					หมายเลขโทรศัพท์
+    				</div>
+    				<div class="col-xs-3">
+    					<input type="text" class="form-control" id="STel" name="STel" value="<?php echo @$Input['STel'];?>" placeholder="หมายเลขโทรศัพท์">
+    				</div>
+    			</div>
+    			<div class="row" style="margin-top:10px;">
+    				<div class="col-xs-1"></div>
+    				<div class="col-xs-2">
+    					วันที่ทำรายการ
+    				</div>
+    				<div class="col-xs-3">
+    					<div class="input-group">
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SOrderDate'];?>" for="SOrderDate" name="SOrderDate" id="SOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
+		  					<span class="input-group-addon" for="SOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
+						</div>
+    				</div>
+    				<div class="col-xs-2">
+    					ถึง
+    				</div>
+    				<div class="col-xs-3">
+    					<div class="input-group">
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['EOrderDate'];?>" for="EOrderDate" name="EOrderDate" id="EOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
+		  					<span class="input-group-addon" for="EOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
+						</div>
+    				</div>
+    			</div>
+    			<div class="row" style="margin-top:10px;">
+    				<div class="col-xs-12f^ text-center" >
+    					<button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+    				</div>
+    			</div>
+  			</div>
+		</div>
+	</fieldset>
+
+
 	<input type="hidden" name="OrderID" id="OrderID" value="">
         <table class="table table-hover table-bordered" >
       <thead class="bg_tb">

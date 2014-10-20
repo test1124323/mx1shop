@@ -9,6 +9,14 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
     $("#UserID").val(UserID);
     $('#form-input').attr("action","UserEdit").submit();
   }
+  function delData(UserID){
+  if(confirm("ยืนยันการลบ !! ")){
+    window.location.href="deleteCustomer/"+UserID;
+  }
+}
+function AddUser(){
+  $('#form-input').submit();
+}
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
@@ -23,16 +31,17 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
 	</div>
 	<div class="panel-body">
   <div >
-  <a href="UserEdit">
-  	<button class="btn btn-success btn-xs" data-toggle="modal" 
+  
+    <button class="btn btn-success btn-xs"  onclick="AddUser();" data-toggle="modal" 
   	data-target=".bs-example-modal-lg" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-  	</a>
+  	
 
   </div>
   <div class="table-responsive" style="margin-top:10px;">
-  <form method="post"  id="form-input">
+  <form method="post"  id="form-input" action="UserEdit">
   <input type="hidden" name="UserID" id="UserID" value="">
+  <input type="hidden" name="TypeUser" id="TypeUser" value="1">
         <table class="table table-hover table-bordered" >
       <thead class="bg_tb">
         <tr>
@@ -50,7 +59,7 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
       <tbody>
       <?php 
         if(count($Customer)){
-          $i=0;
+          $i=$Customer->getFrom()-1;
           foreach ($Customer as $key => $value) {
             # code...
             ?>
@@ -64,7 +73,7 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
               <td><?php echo $value['PassWord'];?></td>
               <td><?php echo $arr_UserStatus[$value['ActiveStatus']];?></td>
               <td class="text-center"><button type="button" class="btn btn-default btn-xs" onclick="UserEdit('<?php echo $value['UserID'];?>');"><i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
-    <button type="button" class="btn btn-danger btn-xs" onclick="ProductDelete();"><i class="glyphicon glyphicon-trash"></i> ลบ</button></td>
+    <button type="button" class="btn btn-danger btn-xs" onclick="delData('<?php echo $value['UserID'];?>');"><i class="glyphicon glyphicon-trash"></i> ลบ</button></td>
             </tr>
             <?php
           }
@@ -74,6 +83,12 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
     </table>
   </form>
    </div>
+   <!--start page-->
+<div style="text-align:right;">
+    **ทั้งหมด <?php echo $Customer->getTotal()." รายการ ";?>
+  </div >
+   <div style="text-align:right;" ><?php echo $Customer->links(); ?></div>
+<!--end page-->
 </div>
 </div>
 

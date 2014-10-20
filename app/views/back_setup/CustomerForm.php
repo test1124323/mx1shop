@@ -7,7 +7,16 @@ $data = @$Customer[0];
 ?>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
-  <li ><a href="Customer">ข้อมูลลูกค้า</a></li>
+  <?php if($TypeUser=='1'){
+    ?>
+    <li ><a href="Customer">ข้อมูลลูกค้า</a></li>
+    <?php
+    }else{
+      ?>
+      <li ><a href="Employee">ข้อมูลพนักงาน</a></li>
+      <?php
+      }?>
+  
   <li class="active">ข้อมูลลูกค้า</li>
 </ol>
 <div class="panel panel-default" style="margin-top:-20px;">
@@ -23,7 +32,7 @@ $data = @$Customer[0];
   <div class="table-responsive" style="margin-top:10px;">
   <form method="post"  id="form-input" action="User">
   <input type="hidden" name="UserID" id="UserID" value="<?php echo $data['UserID'];?>">
-  <input type="hidden" name="TypeUser" id="TypeUser" value="1">
+  <input type="hidden" name="TypeUser" id="TypeUser" value="<?php echo $TypeUser;?>">
   <div class="row">
     <div class="col-xs-1"></div>
     <div class="col-xs-1">
@@ -79,6 +88,26 @@ $data = @$Customer[0];
       <input type="text" class="form-control" id="PassWord" name="PassWord" value="<?php echo $data['PassWord'];?>" placeholder="รหัสผ่าน">
     </div>
   </div>
+  <?php 
+if($TypeUser=='2'){
+  ?>
+  <div class="row" style="margin-top:10px;">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-1">ระดับ</div>
+  <div class="col-xs-4">
+      <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-info btn-xs <?php echo ($data['SuperUser']=='1'||$data['SuperUser']=="")?"active":"";?>">
+        <input type="radio" name="SuperUser" id="SuperUser1" value="1" <?php echo ($data['SuperUser']=='1'||$data['SuperUser']=="")?"checked":"";?>> Admin
+      </label>
+      <label class="btn btn-info  btn-xs <?php echo ($data['SuperUser']=='2')?"active":"";?>">
+        <input type="radio" name="SuperUser" id="SuperUser2" value="2" <?php echo ($data['SuperUser']=='2')?"checked":"";?>> พนักงาน
+      </label>
+    </div>
+  </div>
+  </div>
+  <?php
+}
+  ?>
   <div class="row" style="margin-top:10px;">
   <div class="col-xs-1"></div>
   <div class="col-xs-1">สถานะ</div>

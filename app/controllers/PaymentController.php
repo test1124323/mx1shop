@@ -14,6 +14,28 @@ class PaymentController extends \BaseController {
 		return View::make("back_setup/Payment",array('result'=>$result));
 	}
 
+	public function Search(){
+
+		$result = OrderModel::with('OrderDetail')
+		->Search(Input::get('SOrderID'),Input::get('SFullName'),
+			Input::get('SAdress'),Input::get('STel'),
+			$this->conv_data_db(Input::get('SOrderDate')),$this->conv_data_db(Input::get('EOrderDate')),
+			$this->conv_data_db(Input::get('SPaymantDate')),$this->conv_data_db(Input::get('EPaymantDate')),
+			$this->conv_data_db(Input::get('SDeliveredDate')),$this->conv_data_db(Input::get('EDeliveredDate')),
+			'2')
+		->orderby('OrderDate','DESC')
+		->paginate(20);
+		return View::make("back_setup/Payment",array('result'=>$result,'Input'=>Input::all()));
+	}
+	public function conv_data_db($date){
+		if($date){
+		$val = explode("/",$date);
+		return ($val[2]-543)."-".$val[1]."-".$val[0];
+		}else{
+			return NULL;
+		}
+		
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

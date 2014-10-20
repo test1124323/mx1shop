@@ -16,9 +16,13 @@ class UserController extends \BaseController {
 		$Customer = UserModel::Customer('1')->paginate(20);
 		return View::make("back_setup/Customer",array("Customer"=>$Customer));
 	}
+	public function Employee(){
+		$Customer = UserModel::Customer('2')->paginate(20);
+		return View::make("back_setup/Employee",array("Customer"=>$Customer));
+	}
 	public function UserEdit(){
-		$Customer = UserModel::Customer('1')->where("UserID","=",Input::get("UserID"))->get()->toArray();
-		return View::make("back_setup/CustomerForm",array("Customer"=>$Customer));
+		$Customer = UserModel::Customer(Input::get("TypeUser"))->where("UserID","=",Input::get("UserID"))->get()->toArray();
+		return View::make("back_setup/CustomerForm",array("Customer"=>$Customer,'TypeUser'=>Input::get("TypeUser")));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -53,9 +57,14 @@ class UserController extends \BaseController {
 		$User->UserTel = Input::get("UserTel");
 		$User->FullName = Input::get("FullName");
 		$User->TypeUser = Input::get("TypeUser");
+		$User->SuperUser = Input::get("SuperUser");
 		$User->save();
-		return Redirect::to('backoffice/Customer');
-
+		if(Input::get("TypeUser")=='1'){
+			return Redirect::to('backoffice/Customer');
+		}else{
+			return Redirect::to('backoffice/Employee');
+		}
+		
 	}
 
 
@@ -103,7 +112,10 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		echo "destroy".$id;
+		$User = UserModel::find($id);
+		$User->delete();
+		return Redirect::to('backoffice/Customer');
+		//echo "destroy".$id;
 	}
 
 

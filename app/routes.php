@@ -29,8 +29,11 @@ Route::resource('/backoffice/Order','OrderController@Search');
 Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
 Route::resource('/backoffice/deleteAuto','OrderController@deleteAuto');
 Route::resource('/backoffice/OrderDetailConf','OrderController');
-Route::resource('/backoffice/Payment','PaymentController');
+Route::resource('/backoffice/Payment','PaymentController@Search');
 
 Route::resource('/backoffice/Customer','UserController@Customer');
 Route::resource('/backoffice/UserEdit','UserController@UserEdit');
 Route::resource('/backoffice/User','UserController');
+Route::get('/backoffice/deleteCustomer/{id}','UserController@destroy');
+
+Route::resource('/backoffice/Employee','UserController@Employee');

@@ -14,6 +14,10 @@ class Product extends Eloquent{
 	public function ProductImg(){
 		return $this->hasMany('ProductImg','ProductID');
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 	public function scopeCategory($query,$cateid){
 		if(empty($cateid)){
 			return $query;

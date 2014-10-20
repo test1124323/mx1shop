@@ -40,7 +40,12 @@ class OrderController extends \BaseController {
 	public function Search(){
 
 		$result = OrderModel::with('OrderDetail')
-		->Search(Input::get('SOrderID'),Input::get('SFullName'))
+		->Search(Input::get('SOrderID'),Input::get('SFullName'),
+			Input::get('SAdress'),Input::get('STel'),
+			$this->conv_data_db(Input::get('SOrderDate')),$this->conv_data_db(Input::get('EOrderDate')),
+			$this->conv_data_db(Input::get('SPaymantDate')),$this->conv_data_db(Input::get('EPaymantDate')),
+			$this->conv_data_db(Input::get('SDeliveredDate')),$this->conv_data_db(Input::get('EDeliveredDate')),
+			Input::get('SOrderStatus'))
 		->orderby('OrderDate','DESC')
 		->paginate(20);
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
@@ -62,8 +67,13 @@ class OrderController extends \BaseController {
 	 * @return Response
 	 */
 	public function conv_data_db($date){
+		if($date){
 		$val = explode("/",$date);
 		return ($val[2]-543)."-".$val[1]."-".$val[0];
+		}else{
+			return NULL;
+		}
+		
 	}
 	public function store()
 	{

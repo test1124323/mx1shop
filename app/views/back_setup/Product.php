@@ -64,7 +64,6 @@ include("function.php");
       <tbody>
       <?php 
       if($product){
-        $to = $product->getTo();
         $i=$product->getFrom()-1;
         foreach ($product as $key => $value) {
           # code...

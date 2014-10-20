@@ -132,6 +132,15 @@ $arr_OrderStatus = ArrOrderStatus();
 						</div>
     				</div>
     			</div>
+          <div class="row" style="margin-top:10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              สถานะ
+            </div>
+            <div class="col-xs-3">
+              <?php echo Form::select('SOrderStatus',$arr_OrderStatus,@$Input['SOrderStatus'],array('class'=>'form-control'));?>
+            </div>
+          </div>
     			<div class="row" style="margin-top:10px;">
     				<div class="col-xs-12f^ text-center" >
     					<button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>

@@ -72,7 +72,9 @@ function createthumb($name,$filename,$new_w,$new_h){
   imagedestroy($src_img); 
 }
 function ArrOrderStatus(){
-  return $arr_OrderStatus = array('0'=>'รอยืนยันการสั่งซื้อ',
+  return $arr_OrderStatus = array(
+  ''=>'เลือก',
+  '0'=>'รอยืนยันการสั่งซื้อ',
   '1'=>'ยืนยันการสั่งซื้อ',
   '2'=>'รอการชำระเงิน',
   '3'=>'ชำระเงินเรียบร้อย',
