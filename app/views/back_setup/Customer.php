@@ -23,7 +23,7 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
 	</div>
 	<div class="panel-body">
   <div >
-  <a href="ProductForm">
+  <a href="UserEdit">
   	<button class="btn btn-success btn-xs" data-toggle="modal" 
   	data-target=".bs-example-modal-lg" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
