@@ -27,7 +27,7 @@ $arr_OrderStatus = ArrOrderStatus();
 		<h3 class="panel-title"><i class='glyphicon glyphicon-list-alt'></i> รายการสั่งสินค้า</h3>
 	</div>
 	<div class="panel-body">	
-	<form method="post"  id="form-input">
+	<form method="get"  id="form-input">
 	<fieldset>
 		<legend>ค้นหา</legend>
 		<div class="panel panel-default">
