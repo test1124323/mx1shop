@@ -118,7 +118,7 @@ class ProductManageController extends \BaseController {
 					$Product->save();
 
 					//cate
-					$delete = ProductCateModel::where('ProductID', '=',Input::get('HidProductID')[$key])->delete();
+					$delete = ProductCateModel::where('ProductID', '=',$HidProductID)->delete();
 					$id = explode("_",$key);
 					$CategoryName = $Input['CategoryName'][$id[0]];
 					foreach ($CategoryName as $keyCate => $valueCate) {
