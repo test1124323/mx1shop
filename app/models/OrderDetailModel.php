@@ -11,6 +11,7 @@ class OrderDetailModel extends Eloquent{
 	protected $primaryKey = 'AutoID';
 	public $timestamps = false;
 
+
 	public function Order(){
 		return $this->belongsTo('OrderModel','OrderID');
 	}

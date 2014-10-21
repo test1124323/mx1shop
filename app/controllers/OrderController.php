@@ -8,7 +8,15 @@ class OrderController extends \BaseController {
 	public function index()
 	{
 
-		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
+		$result = OrderModel::with('OrderDetail')
+		->Search(Input::get('SOrderID'),Input::get('SFullName'),
+			Input::get('SAdress'),Input::get('STel'),
+			$this->conv_data_db(Input::get('SOrderDate')),$this->conv_data_db(Input::get('EOrderDate')),
+			$this->conv_data_db(Input::get('SPaymantDate')),$this->conv_data_db(Input::get('EPaymantDate')),
+			$this->conv_data_db(Input::get('SDeliveredDate')),$this->conv_data_db(Input::get('EDeliveredDate')),
+			Input::get('SOrderStatus'))
+		->orderby('OrderDate','DESC')
+		->paginate(20);
 		//$result->where("OrderID","LIKE","%".Input::get('SOrderID')."%");
 		//echo "<pre>";print_r(Input::get('SOrderID'));echo "</pre>";
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
