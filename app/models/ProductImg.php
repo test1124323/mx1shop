@@ -17,5 +17,4 @@ class ProductImg extends Eloquent{
 	public function Product($query,$pid){
 		return $query->belongsTo('Product','ProductID');
 	}
-
 }

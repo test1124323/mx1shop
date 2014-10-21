@@ -1,6 +1,7 @@
 <!doctype html>
 <?php 
-$data['path'] = empty(Request::segment(2))?'':'../';
+$reqs  = Request::segment(2);
+$data['path'] = empty($reqs)?'':'../';
 $path = $data['path'];
 ?>
 <html lang="en">

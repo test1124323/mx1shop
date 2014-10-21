@@ -11,12 +11,21 @@ class TopicController extends \BaseController {
 	{
 		$cateid 				= Input::get('cate');
 		$keyword 				= Input::get('keyword');
-		$data['cate1'] 			= CategoryModel::level1Cate()->get()->toArray();
-		$data['cate2']  		= CategoryModel::level2Cate()->get()->toArray();
-		$data['productlist'] 	= Product::Category($cateid)->Name($keyword)->with('ProductImg')->get()->toArray();
-		// print_r(DB::getQueryLog());exit;
+		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
+											->Name($keyword)
+											->with('ProductImg')
+											->paginate(17);
+		$data['coverImg']	=	array();
+		foreach ($data['productlist'] as $key => $value) {
+			foreach ($value['product_img'] as $k => $v) {
+				if($v['StatusFirst']=='1'){
+					$data['coverImg'][$value['ProductID']] = $v['ProductIMG'];
+				}
+			}
+		}
 		// echo "<pre>";
-		// print_r($data['productlist']);exit;
+		// print_r($data['coverImg']);
+		// exit;
 		return View::make('main',$data);
 	}
 
@@ -51,10 +60,19 @@ class TopicController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-		// $list = DB::table('topic')->get();
-		// $data['list'] 	= $list;
-		return View::make('vote');
+		$coverImg = 'noimage.png';
+		$imgCount = 0;
+		$product 	= 	Product::where('ProductID',$id);
+		if(is_object($product))
+		$product 	=	$product->with('ProductImg')->first()->toArray();
+		foreach ($product['product_img'] as $key => $value) {
+			if($value['StatusFirst']==1){
+				$coverImg	=	$value['ProductIMG'];
+			}
+			@++$imgCount;
+		}
+
+		return View::make('productDetail',array('detail'=>$product , 'coverImg'=>$coverImg , 'imgCount'=>$imgCount ));
 	}
 
 
@@ -78,7 +96,23 @@ class TopicController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		if(!(Input::has('ProductCount'))||is_nan(Input::get('ProductCount'))){
+		return Redirect::to('main');
+		}
+		$pid 	=	'P_'.$id;
+		$quantity = 0 ;
+		if(Session::has($pid)){
+			$quantity	= 	intval(Session::get($pid)) + intval(Input::get('ProductCount'));
+		}else{
+			$quantity 	= 	Input::get('ProductCount');
+		}
+		if(Product::find($id)->ProductAmount < $quantity){
+			return Redirect::to('main/'.$id."?updated=2");
+		}
+
+		Session::put($pid,$quantity);
+		
+		return Redirect::to('main/'.$id."?updated=1");
 	}
 
 

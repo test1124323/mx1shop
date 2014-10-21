@@ -11,8 +11,14 @@
 |
 */
 
-Route::resource('/','TopicController');
-Route::resource('/test1','testController');
+Route::resource('main','TopicController');
+Route::resource('cartStore','TopicController');
+
+Route::resource('cart','cartController');
+Route::get('cancelOrder/{id}','cartController@destroy');
+
+Route::resource('billing','billingController');
+
 Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 Route::resource('/backoffice/catePop','catePopController');

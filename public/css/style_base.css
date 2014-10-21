@@ -1,3 +1,28 @@
+.square{
+	border-radius:2px !important;
+	box-shadow: inset 1px 1px 2px rgba(100,100,100,0.2);
+}
+
+.table-head{
+	text-align:center;
+}
+
+.picCart{
+	width:100px;
+}
+
+.price-box{
+	margin-top:30px;
+	word-wrap: break-word;
+	color:#555; 
+	
+}
+.description{
+	margin-top:30px;
+	word-wrap: break-word;
+	color:#555; 
+	border-right:solid thin #CCC;
+}
 .side-cate{}
 .productGroupMenu{}
 .howtobuy{}
@@ -11,10 +36,32 @@
 	width:100%;height:220px;
 	border:5px solid #FFF;
 	box-shadow: 0 4px 4px rgba(100,100,100,0.3);
+	opacity: 1;
+    -webkit-transition: border 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border 0.5s;
+}
+.ProductPic:hover{
+	border:10px;
+}
+.productPictmp{
+	height: 50px;
+	margin: 5px;
+}
+.ProductPicDetail{
+	width:100%;height:350px;
+	/*border-radius: 10px;*/
+	border:5px solid #FFF;
+
+	opacity: 1;
+    -webkit-transition: border 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border 0.5s;
+}
+.ProductPicDetail:hover{
+	border:10px;
 }
 .bgdeal{
 	}
-
+ 
 .btn-howtopay{
 }
 
@@ -46,7 +93,7 @@
 }
 .about-us{
 	background:#333333;
-	height: 220px;
+	height: 50px;
 	box-shadow: inset 0 100px 60px rgba(100,100,100,0.1);
 }
 
@@ -106,6 +153,9 @@
 }
 
 @media (max-width: 480px){
+.picCart{
+	width: 0px;
+}
 
 }
 
@@ -181,6 +231,15 @@ a:hover{
 	color: #DB4242;
 }
 *{
-	font-family: "PT Sans',sans-serif" !important;
+	font-family: "PT Sans',sans-serif";
 }
-
+.tr-head{
+	background:#EFEFEF;margin:5px 0 5px 0;
+}
+.cancel-order{
+	color:#AAA;
+}
+.cancel-order:hover{
+	color:#666;
+	cursor: pointer;
+}

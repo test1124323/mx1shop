@@ -1,7 +1,10 @@
 </div>
+
 </div>
-<div class="about-us col-sm-12">
-	test
+
+</div>
+<div class="about-us col-xs-12">
+
 
 </div>
 

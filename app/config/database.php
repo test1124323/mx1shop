@@ -46,16 +46,6 @@ return array(
 
 	'connections' => array(
 
-		// 'main' => array(
-		// 	'driver'    => 'mysql',
-		// 	'host'      => '27.254.85.38',
-		// 	'database'  => 'acololoc_mid',
-		// 	'username'  => 'acololoc',
-		// 	'password'  => '4082941354',
-		// 	'charset'   => 'utf8',
-		// 	'collation' => 'utf8_unicode_ci',
-		// 	'prefix'    => '',
-		// ),
 		'main' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
@@ -66,6 +56,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		// 	'main' => array(
+		// 	'driver'    => 'mysql',
+		// 	'host'      => 'localhost',
+		// 	'database'  => 'mxshopco_shop',
+		// 	'username'  => 'mxshopco_shop',
+		// 	'password'  => 'p@ssw0rd',
+		// 	'charset'   => 'utf8',
+		// 	'collation' => 'utf8_unicode_ci',
+		// 	'prefix'    => '',
+		// ),
 
 	),
 

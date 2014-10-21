@@ -2,14 +2,28 @@
 <?php 
 $data['path'] = (Request::segment(2)=='')?'':'../';
 $path = $data['path'];
+
+
+    $cate1      = CategoryModel::level1Cate()->get()->toArray();
+    $cate2      = CategoryModel::level2Cate()->get()->toArray();
+
+    foreach (Session::all() as $key => $value) {
+      if(!is_array($value)){
+        if(strpos($key,'P_')!==false){
+          @++$incart;
+        }
+      }
+    }
+
+
 ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="mx1shop">
   <meta name="type" content="website">
-	<title>MX1 Shop::</title>
+  <title>MX1 Shop::</title>
   <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
 แม็กซ์
 โทร : 081-7009767, 083-0208068
@@ -25,13 +39,14 @@ $path = $data['path'];
   <link rel='stylesheet' href='<?php echo $path;?>css/menu.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/mainslider.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/style_base.css'>
+  <link rel='stylesheet' href='<?php echo $path;?>css/scrollstyle.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/color.css'>
 
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<style>
-		@import url(//fonts.googleapis.com/css?family=Lato:700);
-	</style>
+  <style>
+    @import url(//fonts.googleapis.com/css?family=Lato:700);
+  </style>
 
 
 </head>
@@ -66,68 +81,8 @@ $path = $data['path'];
   <div class="collapse navbar-collapse js-navbar-collapse">
     <ul class="nav navbar-nav">
     <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">หน้าแรก</a>
+        <a href="<?php echo Request::root();?>/main">หน้าแรก</a>
       </li>
-      <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">หมวดหมู่สินค้า <b class="caret"></b></a>
-        
-        <ul class="dropdown-menu dropdown-menu-large row">
-          <li class="col-sm-3">
-            <ul>
-              <li class="dropdown-header">Glyphicons</li>
-              <li><a href="#">Available glyphs</a></li>
-              <li class="disabled"><a href="#">How to use</a></li>
-              <li><a href="#">Examples</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Dropdowns</li>
-              <li><a href="#">Example</a></li>
-              <li><a href="#">Aligninment options</a></li>
-              <li><a href="#">Headers</a></li>
-              <li><a href="#">Disabled menu items</a></li>
-            </ul>
-          </li>
-          <li class="col-sm-3">
-            <ul>
-              <li class="dropdown-header">Button groups</li>
-              <li><a href="#">Basic example</a></li>
-              <li><a href="#">Button toolbar</a></li>
-              <li><a href="#">Sizing</a></li>
-              <li><a href="#">Nesting</a></li>
-              <li><a href="#">Vertical variation</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Button dropdowns</li>
-              <li><a href="#">Single button dropdowns</a></li>
-            </ul>
-          </li>
-          <li class="col-sm-3">
-            <ul>
-              <li class="dropdown-header">Input groups</li>
-              <li><a href="#">Basic example</a></li>
-              <li><a href="#">Sizing</a></li>
-              <li><a href="#">Checkboxes and radio addons</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Navs</li>
-              <li><a href="#">Tabs</a></li>
-              <li><a href="#">Pills</a></li>
-              <li><a href="#">Justified</a></li>
-            </ul>
-          </li>
-          <li class="col-sm-3">
-            <ul>
-              <li class="dropdown-header">Navbar</li>
-              <li><a href="#">Default navbar</a></li>
-              <li><a href="#">Buttons</a></li>
-              <li><a href="#">Text</a></li>
-              <li><a href="#">Non-nav links</a></li>
-              <li><a href="#">Component alignment</a></li>
-              <li><a href="#">Fixed to top</a></li>
-              <li><a href="#">Fixed to bottom</a></li>
-              <li><a href="#">Static top</a></li>
-              <li><a href="#">Inverted navbar</a></li>
-            </ul>
-          </li>
-        </ul>
-        
       </li>
       <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">บทความ</a>
@@ -140,6 +95,11 @@ $path = $data['path'];
       <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">เกี่ยวกับเรา</a>
       </li>
+
+      <li class="dropdown dropdown-large">
+        <a href="<?php echo Request::root();?>/cart">ตระกร้า <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
+      </li>
+
     </ul>
     
   </div><!-- /.nav-collapse -->
@@ -152,8 +112,17 @@ $path = $data['path'];
     
       <!-- Wrapper for slides -->
       <div class="carousel-inner" style="background:#555;">
-      
+        
         <div class="item active" align="center">
+          <img src="<?php echo $path;?>img/cover.png">
+           <div class="carousel-caption">
+           <div class="col-lg-5" align="left">
+            
+            </div>
+          </div>
+        </div><!-- End Item -->
+
+        <div class="item" align="center">
           <img src="<?php echo $path;?>img/Bugatti-Veyron.jpg">
            <div class="carousel-caption">
            <div class="col-lg-5 corue-text" align="left">
@@ -178,6 +147,7 @@ $path = $data['path'];
             </div>
           </div>
         </div><!-- End Item -->
+
                 
       </div><!-- End Carousel Inner -->
 
@@ -188,8 +158,7 @@ $path = $data['path'];
               <div data-target="#myCarousel" data-slide-to="0" class="active buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="1" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
               <div data-target="#myCarousel" data-slide-to="2" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-              <div data-target="#myCarousel" data-slide-to="3" class="buttick" ><a style="color:#FFF;text-decoration:none;">•</a></div>
-          </div>
+              </div>
        </div> 
       <!-- </ul> -->
 
@@ -204,7 +173,7 @@ $path = $data['path'];
     <h2>ลดราคารับสิ้นปี 60%</h2>
     <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
-  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(img/accesorie60a.jpg);
+  <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(<?php echo $path;?>img/accesorie60a.jpg);
   background-position: center;
   background-size: cover; 
   background-repeat:no-repeat;
@@ -223,24 +192,32 @@ $path = $data['path'];
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
 <div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
-<form name="search" method="get" action="">
+<form name="search" method="get" action="<?php echo url('main')?>">
       <div class="search-text">Search</div>
       <input name="keyword" type="text" class="form-control" placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
       <select name="cate" class="form-control" style="border-radius:30px;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
+          $cate = Input::get('cate');
+
         foreach ($cate1 as $k1 => $v1) {
+          if($v1['CategoryID']==$cate){
+                 $con1 = 'selected';
+                }else{
+                  $con1 = '';
+                }
           ?>
-          <option class="option-pad" value=""><?php echo $v1['CategoryName'];?></option>
+          <option class="option-pad" value="<?php echo $v1['CategoryID'];?>" <?php echo $con1;?>><?php echo $v1['CategoryName'];?></option>
           <?php
           foreach ($cate2 as $k2 => $v2) {
             if($v2['CateParentID']==$v1['CategoryID']){
-<<<<<<< HEAD
-              ?> 
-=======
+               if($v2['CategoryID']==$cate){
+                 $con = 'selected';
+                }else{
+                  $con = '';
+                }
               ?>
->>>>>>> master
-                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;">   <?php echo $v2['CategoryName'];?></option>
+                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   <?php echo $v2['CategoryName'];?></option>
               <?php
             }
           }
@@ -268,15 +245,19 @@ $path = $data['path'];
   <ul class="list-group">
   
   <?php 
+  
     foreach ($cate1 as $k1 => $v1) {
       ?>
-      <li class="list-group-item catelist" style="font-size:17px;"><a href="?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
+      <li class="list-group-item catelist" style="font-size:17px;"><a href="<?php echo url('main')?>?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
       <?php
       foreach ($cate2 as $k2 => $v2) {
         if($v2['CateParentID']==$v1['CategoryID']){
+
           ?>
-            <li class="list-group-item catelist"><a style="color:#F77" href="?cate=<?php echo $v2['CategoryID'];?>"> - <?php echo $v2['CategoryName'];?></a></li>
+            <li class="list-group-item catelist"><a style="color:#F77" href="<?php echo url('main')?>?cate=<?php echo $v2['CategoryID'];?>" > - <?php echo $v2['CategoryName'];?></a></li>
           <?php
+
+          
         }
       }
     }
@@ -286,5 +267,6 @@ $path = $data['path'];
 
 </div>
 
-
+<span id="list"></span>
+<div class="col-sm-9" style="padding:0px;">
 <!-- !left side -->
