@@ -51,7 +51,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//echo "<pre>";print_r(Input::get('ProductName'));echo  "</pre>";
+		//echo "<pre>";print_r(Input::get());echo  "</pre>ZZZZZZZZZZZZZ";
 		//echo "<pre>";print_r(Input::get('HidProductID'));echo  "</pre>";
 		//exit();
 		//DB::transaction(function()
@@ -62,21 +62,30 @@ class ProductManageController extends \BaseController {
 		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
-		
+		$Input = Input::get();
 		//echo preg_replace($pattern, $replacement, $string);
 			//*************//
 		$date = date('Y-m-d');
 		$i=0;
-		if(count(Input::get('ProductName'))){
-			foreach (Input::get('ProductName') as $key => $value) {
+		if(count($Input['ProductName'])){
+			foreach ($Input['ProductName'] as $key => $value) {
 			# code...
-			if(Input::get('HidProductID')[$key]==""){
+				$HidProductID = $Input['HidProductID'][$key];
+
+				$ProductDESC = $Input['ProductDESC'][$key][0];
+				$ProductShortDESC = $Input['ProductShortDESC'][$key][0];
+				$ProductAmount = $Input['ProductAmount'][$key][0];
+				$ProductSalePrice = $Input['ProductSalePrice'][$key][0];
+
+			if(empty($HidProductID)){
+				
+
 				$Product = new ProductModel;
 				$Product->ProductName = $value[0];
-				$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
-				$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
-				$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
-				$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
+				$Product->ProductSalePrice = preg_replace($pattern,$replacement,$ProductSalePrice);
+				$Product->ProductAmount = preg_replace($pattern,$replacement,$ProductAmount);
+				$Product->ProductShortDESC = $ProductShortDESC;
+				$Product->ProductDESC = $ProductDESC;
 				$Product->ProductDate = ''.$date;
 
 				$Product->save();
@@ -86,8 +95,9 @@ class ProductManageController extends \BaseController {
 				//echo $MaxID."<br>";
 				//array_push($arr_dataInsert,''.$MaxID);
 				$arr_data[] = ''.$MaxID;
+				$CategoryName = $Input['CategoryName'][$key];
 				
-				foreach (Input::get('CategoryName')[$key] as $keyCate => $valueCate) {
+				foreach ($CategoryName as $keyCate => $valueCate) {
 					# code...
 					$ProCate = new ProductCateModel();
 					$ProCate->CategoryID = $valueCate;
@@ -95,12 +105,14 @@ class ProductManageController extends \BaseController {
 				}
 
 				}else{
-					$Product = ProductModel::find(Input::get('HidProductID')[$key]);
+
+
+					$Product = ProductModel::find($HidProductID);
 					$Product->ProductName = $value[0];
-					$Product->ProductSalePrice = preg_replace($pattern,$replacement,Input::get('ProductSalePrice')[$key][0]);
-					$Product->ProductAmount = preg_replace($pattern,$replacement,Input::get('ProductAmount')[$key][0]);
-					$Product->ProductShortDESC = Input::get('ProductShortDESC')[$key][0];
-					$Product->ProductDESC = Input::get('ProductDESC')[$key][0];
+					$Product->ProductSalePrice = preg_replace($pattern,$replacement,$ProductSalePrice);
+					$Product->ProductAmount = preg_replace($pattern,$replacement,$ProductAmount);
+					$Product->ProductShortDESC = $ProductShortDESC;
+					$Product->ProductDESC = $ProductDESC;
 					$Product->ProductDate = ''.$date;
 
 					$Product->save();
@@ -108,10 +120,11 @@ class ProductManageController extends \BaseController {
 					//cate
 					$delete = ProductCateModel::where('ProductID', '=',Input::get('HidProductID')[$key])->delete();
 					$id = explode("_",$key);
-					foreach (Input::get('CategoryName')[$id[0]] as $keyCate => $valueCate) {
+					$CategoryName = $Input['CategoryName'][$id[0]];
+					foreach ($CategoryName as $keyCate => $valueCate) {
 						$ProCate = new ProductCateModel;
 						$ProCate->CategoryID = $valueCate;
-						$ProCate->ProductID = Input::get('HidProductID')[$key];
+						$ProCate->ProductID = $HidProductID;
 						$ProCate->save();
 
 					}

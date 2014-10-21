@@ -92,21 +92,27 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 
 	public function store()
 	{
+		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
 		$destinationPath1 = public_path().'/img/product/';
 		$destinationPath2 =  public_path().'/img/product_tmp/';
 
 		$arr_dataImg = array();
 		$j=0;
-		foreach (Input::get('ProductID') as $key => $value) {
+		$Input = Input::get();
+		$InputFile = Input::file();
+		foreach ($Input['ProductID'] as $key => $value) {
 			# code...
 			
 		$i=0;
-		if (Input::hasFile('pic_'.$key)){
+		$hasPic = "pic_";
+		$hasPic .= $key;
+		if (Input::hasFile($hasPic)){
 
 			$result = ProductImg::where('ProductID','=',$key)->get()->toArray();
 			if(count($result)){
 				//echo"<pre>";print_r($result);echo "</pre>";
-				if(Input::get('type_add'.$key)=='2'){
+				$type_add = $Input['type_add'.$key.''];
+				if($type_add=='2'){
 					foreach ($result as $kr => $vr) {
 				# code...
 					@unlink($destinationPath1."/".$vr['ProductIMG']);
@@ -116,17 +122,18 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 		
 			}
 
-			if(Input::get('type_add'.$key)=='2'){
+			if($type_add=='2'){
 				$delete = ProductImg::where('ProductID', '=',$key)->delete();
 			}
-			
-			foreach(Input::file('pic_'.$key) as $key2 => $value2){
+			$pic = "pic_";
+			$pic .= $key;
+			foreach(Input::file($pic) as $key2 => $value2){
 
-				$file = Input::file('pic_'.$key)[$i];
-				$file2 = Input::file('pic_'.$key)[$i];
+				$file = $InputFile[$pic][$i];
 
-				$fileNameOri = Input::file('pic_'.$key)[$i]->getClientOriginalName();
+				$fileNameOri = $file->getClientOriginalName();
 				$fileNameOri  = explode('.',$fileNameOri);
+				
 				$fileName = date('Ymdhis').$i.$j.".".$fileNameOri[1];
 
 				
@@ -151,7 +158,8 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				if(preg_match('/png/',$fileNameOri[1])){
 					$myImage=imagecreatefrompng($destinationPath1."/".$fileName);
 				}
-
+				//echo $myImage;
+				//exit();
 				$destWidth = imagesx($myImage);
 				$destHeight = imagesy($myImage);
 
