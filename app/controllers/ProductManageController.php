@@ -23,16 +23,25 @@ class ProductManageController extends \BaseController {
 		//
 	}
 	public function ShowDataEdit(){
-		
-		if(count(Input::get('chk_productID'))){
-			$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->with('ProcateCategory')->get()->toArray();
-			//echo "<pre>";print_r($result);echo "</pre>";
+		try{
+			if(Input::has('chk_productID')){
 
-			return View::make("back_setup/ProductForm",array('result'=>$result));
+				$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))
+				->with('ProcateCategory')
+				->get()
+				->toArray();
+				//echo "<pre>";print_r($result);echo "</pre>";
+
+				return View::make("back_setup/ProductForm",array('result'=>$result));
+			}
+			else{
+				return Redirect::to('backoffice/Product');
+			}
 		}
-		else{
-			return Redirect::to('backoffice/Product');
+		catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+
 	}
 	public function  DeleteData(){
 		//echo "<pre>";print_r(Input::get('chk_productID'));echo  "</pre>";exit();
@@ -51,14 +60,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//echo "<pre>";print_r(Input::get());echo  "</pre>ZZZZZZZZZZZZZ";
-		//echo "<pre>";print_r(Input::get('HidProductID'));echo  "</pre>";
-		//exit();
-		//DB::transaction(function()
-		//{
-			//**************//
-		//test preg_replace
-		//$string = '2,000.00';
+		try{
 		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
@@ -147,6 +149,11 @@ class ProductManageController extends \BaseController {
 		return Redirect::to('backoffice/Product');
 		}
 	
+		}
+		catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+
 	
 		//echo "store";
 	}
