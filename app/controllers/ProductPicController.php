@@ -56,6 +56,7 @@ class ProductPicController extends \BaseController {
 private	function createthumb($name,$filename,$new_w,$new_h){
 
   $system=explode('.',$name);
+  $src_img = "";
   if(preg_match('/jpg|jpeg/',$system[1])){
     $src_img=imagecreatefromjpeg($name);
   }
@@ -93,6 +94,7 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 	public function store()
 	{
 		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
+	try{
 		$destinationPath1 = public_path().'/img/product/';
 		$destinationPath2 =  public_path().'/img/product_tmp/';
 
@@ -149,6 +151,7 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$myCopyright = imagecreatefromjpeg(public_path().'/img/water_mask1_350.jpg');
 				$srcWidth = imagesx($myCopyright);
 				$srcHeight = imagesy($myCopyright);
+				$myImage = "";
 
 				//echo $srcWidth.">>".$srcHeight."<b>";
 
@@ -228,10 +231,13 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 		//echo $name.">>>";
 		//echo $uri = Request::path();
 		//echo "store";
-	$result = ProductModel::whereIn('ProductID',Input::get('ProductID'))->with('ProductImg')->get()->toArray();
-	return View::make("back_setup/ProductPic",array('result'=>$result));
+			$result = ProductModel::whereIn('ProductID',Input::get('ProductID'))->with('ProductImg')->get()->toArray();
+			return View::make("back_setup/ProductPic",array('result'=>$result));
 
-	
+		}
+		catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 }
 
 public function deletePic(){
