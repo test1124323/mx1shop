@@ -126,12 +126,6 @@ include("function.php");
               <td><?php echo sprintf("%07s",$value['ProductID']);?></td>
               <td><?php echo $value['ProductName'];?></td>
               <td><?php
-                /*$ProCate = DB::table('tbl_productcate')
-                ->join('tbl_category', 'tbl_productcate.CategoryID', '=', 'tbl_category.CategoryID')
-                ->where('tbl_productcate.ProductID','=',$value['ProductID'])->get();
-                //print_r($ProCate);
-                $ProCate = objectToArray($ProCate);*/
-
                 if($value['procate_category']){
                   foreach ($value['procate_category'] as $key2 => $value2) {
                     echo "<li>".@$arr_dataAll[$value2['CategoryID']]['name']."</li>";
