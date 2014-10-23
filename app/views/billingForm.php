@@ -41,7 +41,7 @@ window.location.href="#list";
 <div class="col-sm-10">
 <h3> </h3>
   <h4 class="h3-label">ที่อยู่ <span class="text-color-red">*</span></h4>
-  <input type="text" class="form-control square" name="address" placeholder="บ้านเลขที่ หมู่บ้าน ถนน เขต แขวง" value="<?php echo @$input['address']?>" required />
+  <input type="text" class="form-control square" name="address" placeholder="ที่อยู่ในการจัดส่งสินค้า" value="<?php echo @$input['address']?>" required />
 </div>
 <div class="col-sm-2"></div>
 <!-- !row -->
