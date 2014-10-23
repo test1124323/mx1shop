@@ -222,7 +222,7 @@ class ProductPicController extends \BaseController {
 	//echo $uploadSuccess."Upload";
 		//$file = Input::file('pic_1')[0]->getClientOriginalName();
 		//$name = Input::file('pic1')->getClientOriginalName();
-		//echo "<pre>";print_r($file);echo "</pre>";
+		echo "<pre>";print_r(Input::get('ProductID'));echo "</pre>";
 		//echo $name.">>>";
 		//echo $uri = Request::path();
 		//echo "store";
