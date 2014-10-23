@@ -67,7 +67,7 @@ class billingController extends \BaseController {
         $order->TelNumber 	= 	$tel;
         $order->PostCode 	= 	$PostCode;
         $order->Email 		= 	$Email;
-        $order->OrderStatus = 	'2';
+        $order->OrderStatus = 	'0';
         $order->StatusNew 	= 	'1';
 
 
