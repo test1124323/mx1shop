@@ -74,7 +74,7 @@ include("function.php");
             </div>
             <div class="col-xs-3">
               <?php
-                echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
+                //echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
               ?>
             </div>
           </div>
@@ -134,7 +134,7 @@ include("function.php");
 
                 if($value['procate_category']){
                   foreach ($value['procate_category'] as $key2 => $value2) {
-                    echo "<li>".$arr_dataAll[$value2['CategoryID']]['name']."</li>";
+                    echo "<li>".@$arr_dataAll[$value2['CategoryID']]['name']."</li>";
                   }
                 }
               ?></td>

@@ -48,50 +48,6 @@ class ProductPicController extends \BaseController {
 		//
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-private	function createthumb($name,$filename,$new_w,$new_h){
-
-  $system=explode('.',$name);
-  $src_img = "";
-  if(preg_match('/jpg|jpeg/',$system[1])){
-    $src_img=imagecreatefromjpeg($name);
-  }
-  if(preg_match('/png/',$system[1])){
-    $src_img=imagecreatefrompng($name);
-  }
-
-  $old_x=imagesx($src_img);
-  $old_y=imagesy($src_img);
-
-  $size=GetimageSize($name);
-  $thumb_w = $new_w;
-  $thumb_h =round($new_w*$size[1]/$size[0]);
-
-  //$thumb_w=($old_x*$new_h)/$old_y;
-  //$thumb_h=$new_h;
-
-  $co_x=floor(($new_w-$thumb_w)/2);
-  $co_y=0;      
-
-  $dst_img=imagecreatetruecolor($new_w,$thumb_h); 
-  $white=imagecolorallocate($dst_img,255,255,255);
-  imagefill($dst_img,0,0,$white);
-  imagecopyresized($dst_img,$src_img,$co_x,$co_y,0,0,$thumb_w,$thumb_h,$old_x,$old_y);    
-
-  if(preg_match("/png/",$system[1])){
-    imagepng($dst_img,$filename);   
-  }else{
-    imagejpeg($dst_img,$filename); 
-  }
-  imagedestroy($dst_img); 
-  imagedestroy($src_img); 
-}
-
 	public function store()
 	{
 		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
@@ -183,14 +139,16 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 
 				//imagecopymerge($myImageThumb, $myCopyright, $destX, $destY, 0, 0,400,300, 50);
 
+
+
 				if(preg_match('/jpg|jpeg/',$fileType)){
 					imagejpeg($myImage,$destinationPath1."/".$fileName);
 
-					imagejpeg($myImage,$destinationPath2."/".$fileName);
+					//imagejpeg($myImage,$destinationPath2."/".$fileName);
 				}
 				if(preg_match('/png/',$fileType)){
 					imagepng($myImage,$destinationPath1."/".$fileName);
-					imagepng($myImage,$destinationPath2."/".$fileName);
+					//imagepng($myImage,$destinationPath2."/".$fileName);
 				}
 				imagedestroy($myImage);
 				imagedestroy($myCopyright);
@@ -221,7 +179,35 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$path = $destinationPath1."/".$value2;
 				$target = $destinationPath2."/".$value2;
 				
+				$images = $path;
+				$new_images = $target;
+				$width=400;
+				$size=GetimageSize($images);
+				$height=round($width*$size[1]/$size[0]);
+				$flieEx = explode(".",$value2);
+				$fileType = $flieEx[1];
+				$myImage = "";
 
+				if(preg_match('/jpg|jpeg/',$fileType)){
+					$images_orig =imagecreatefromjpeg($path);
+				}
+				if(preg_match('/png/',$fileType)){
+					$images_orig =imagecreatefrompng($path);
+				}
+
+				$photoX = ImagesX($images_orig);
+				$photoY = ImagesY($images_orig);
+				$images_fin = ImageCreateTrueColor($width, $height);
+				ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+
+				if(preg_match('/jpg|jpeg/',$fileType)){
+					imagejpeg($images_fin,$target);
+				}
+				if(preg_match('/png/',$fileType)){
+					imagepng($images_fin,$target);
+				}
+				ImageDestroy($images_orig);
+				ImageDestroy($images_fin);
 				//copy($path, $target);
 				//create thumb
 				//$this->createthumb($target,$target,400,400);
