@@ -23,7 +23,14 @@ include("function.php");
       $('input[name*=chk_productID]').prop('checked',false);
     }
   }
+  function Search(){
+     $('#form-input').attr('action','Product').submit();
+  }
 </script>
+<?php 
+//echo "<pre>";print_r($result);echo "</pre>";
+
+?>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
   <li class="active">รายการสินค้า</li>
@@ -36,19 +43,63 @@ include("function.php");
 		<h3 class="panel-title"><i class='glyphicon glyphicon-cog'></i> รายการสินค้า</h3>
 	</div>
 	<div class="panel-body">
-  <div >
+
+  <div class="table-responsive" >
+  <form method="get"  id="form-input">
+  <fieldset>
+    <legend>ค้นหา</legend>
+    <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              รหัสสินค้า
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="SProductID" name="SProductID" 
+              value="<?php echo @$Input['SProductID'];?>" placeholder="รหัสสินค้า">
+            </div>
+            <div class="col-xs-2">
+              ชื่อรายการสินค้า
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="SProductName" 
+              value="<?php echo @$Input['SProductName'];?>" name="SProductName" placeholder="ชื่อรายการสินค้า">
+            </div>
+          </div>
+         <!-- <div class="row" style="margin-top:10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              หมวดสินค้า
+            </div>
+            <div class="col-xs-3">
+              <?php
+                echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
+              ?>
+            </div>
+          </div>
+          -->
+          <div class="row" style="margin-top:10px;">
+            <div class="col-xs-12f^ text-center" >
+              <button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </fieldset>
+   
+
+  <div style="margin-top:10px;" >
   <a href="ProductForm">
-  	<button class="btn btn-success btn-xs" data-toggle="modal" 
-  	data-target=".bs-example-modal-lg" >
-  	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-  	</a>
+    <button class="btn btn-success btn-xs" data-toggle="modal" 
+    data-target=".bs-example-modal-lg" >
+    <i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
+    </a>
     <button type="button" onclick="ProductPic();" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-picture"></i> จัดการภาพ</button>
     <button type="button" class="btn btn-default btn-xs" onclick="ProductEdit();"><i class="glyphicon glyphicon-pencil"></i> แก้ไขข้อมูล</button>
     <button type="button" class="btn btn-danger btn-xs" onclick="ProductDelete();"><i class="glyphicon glyphicon-trash"></i> ลบข้อมูล</button>
   </div>
-  <div class="table-responsive" style="margin-top:10px;">
-  <form method="post"  id="form-input">
-        <table class="table table-hover table-bordered" >
+    <table class="table table-hover table-bordered" style="margin-top:10px;" >
       <thead class="bg_tb">
         <tr>
           <th width="5%"><div style=" text-align: center;">
@@ -63,7 +114,7 @@ include("function.php");
       </thead>
       <tbody>
       <?php 
-      if($product){
+      if(count($product)>0){
         $i=$product->getFrom()-1;
         foreach ($product as $key => $value) {
           # code...
@@ -75,14 +126,15 @@ include("function.php");
               <td><?php echo sprintf("%07s",$value['ProductID']);?></td>
               <td><?php echo $value['ProductName'];?></td>
               <td><?php
-                $ProCate = DB::table('tbl_productcate')
+                /*$ProCate = DB::table('tbl_productcate')
                 ->join('tbl_category', 'tbl_productcate.CategoryID', '=', 'tbl_category.CategoryID')
                 ->where('tbl_productcate.ProductID','=',$value['ProductID'])->get();
                 //print_r($ProCate);
-                $ProCate = objectToArray($ProCate);
-                if($ProCate){
-                  foreach ($ProCate as $key2 => $value2) {
-                    echo "<li>".$value2['CategoryName']."</li>";
+                $ProCate = objectToArray($ProCate);*/
+
+                if($value['procate_category']){
+                  foreach ($value['procate_category'] as $key2 => $value2) {
+                    echo "<li>".$arr_dataAll[$value2['CategoryID']]['name']."</li>";
                   }
                 }
               ?></td>
@@ -122,6 +174,12 @@ include("function.php");
         </tr>
           <?php
         }
+      }else{
+        ?>
+        <tr>
+          <td  colspan="7" class="text-center bg-danger">ไม่พบข้อมูล</td>
+        </tr>
+        <?php
       }
       ?>
 

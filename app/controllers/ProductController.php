@@ -10,9 +10,35 @@ class ProductController extends \BaseController {
 	public function index()
 	{
 		//$result = ProductModel::all()->toArray();
-		$result = ProductModel::paginate(20);
-		print_r(Input::get('chk_productID'));
-		return View::make('back_setup/Product',array('product'=>$result));
+		$result = ProductModel::with('ProcateCategory')->Search(Input::get('SProductID'),Input::get('SProductName'),Input::get('SCategoryID'))->paginate(20);
+	
+		$result1 = CategoryModel::level1Cate()->get()->toArray();
+   		$result2 = CategoryModel::level2Cate()->get()->toArray();
+   	//echo "<pre>";print_r($result1);echo "</pre>";
+   $arr_data = array();
+   $arr_dataAll = array();
+   $arr_dataSel = array();
+ 	if(count($result1)){
+ 		foreach ($result1 as $key => $value) {
+ 			# code...
+ 			$arr_dataAll[$value['CategoryID']]['name'] = $value['CategoryName'];
+ 			$arr_dataAll[$value['CategoryID']]['id'] = $value['CategoryID'];
+ 		}
+ 		foreach ($result2 as $key2 => $value2) {
+ 			# code...
+ 			$arr_dataAll[$value2['CategoryID']]['name'] = $value2['CategoryName'];
+ 			$arr_dataAll[$value2['CategoryID']]['id'] = $value2['CategoryID'];
+ 			$arr_data[$value2['CateParentID']][$value2['CategoryID']] = $value2['CategoryName'];
+ 		}
+ 	}
+ $arr_dataSel[""] = array("---ทั้งหมด---");
+ foreach ($arr_data as $key => $value) {
+ 	# code...
+ 	$arr_dataSel[$arr_dataAll[$key]['name']] = $value;
+ }
+		return View::make('back_setup/Product',
+			array('product'=>$result,'Input'=>Input::all(),
+				'arr_dataSel'=>$arr_dataSel,'arr_dataAll'=>$arr_dataAll));
 		//echo "index";
 	}
 	/**

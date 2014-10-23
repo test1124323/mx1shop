@@ -1,6 +1,7 @@
 <?php
-
+use Intervention\Image\ImageManagerStatic as Image;
 class ProductPicController extends \BaseController {
+
 
 	/**
 	 * Display a listing of the resource.
@@ -111,9 +112,10 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 		if (Input::hasFile($hasPic)){
 
 			$result = ProductImg::where('ProductID','=',$key)->get()->toArray();
+			$type_add = $Input['type_add'.$key.''];
 			if(count($result)){
 				//echo"<pre>";print_r($result);echo "</pre>";
-				$type_add = $Input['type_add'.$key.''];
+				
 				if($type_add=='2'){
 					foreach ($result as $kr => $vr) {
 				# code...
@@ -134,9 +136,10 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$file = $InputFile[$pic][$i];
 
 				$fileNameOri = $file->getClientOriginalName();
-				$fileNameOri  = explode('.',$fileNameOri);
-				
-				$fileName = date('Ymdhis').$i.$j.".".$fileNameOri[1];
+				$fileNameOriEx  = explode('.',$fileNameOri);
+				$fileType = $fileNameOriEx[1];
+
+				$fileName = date('Ymdhis').$i.$j.".".$fileType;
 
 				
 
@@ -154,14 +157,14 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$myImage = "";
 
 				//echo $srcWidth.">>".$srcHeight."<b>";
-
-				if(preg_match('/jpg|jpeg/',$fileNameOri[1])){
+				//echo $fileNameOriEx[1]."<br>";
+				if(preg_match('/jpg|jpeg/',$fileType)){
 					$myImage=imagecreatefromjpeg($destinationPath1."/".$fileName);
 				}
-				if(preg_match('/png/',$fileNameOri[1])){
+				if(preg_match('/png/',$fileType)){
 					$myImage=imagecreatefrompng($destinationPath1."/".$fileName);
 				}
-				//echo $myImage;
+				///echo $myImage;
 				//exit();
 				$destWidth = imagesx($myImage);
 				$destHeight = imagesy($myImage);
@@ -171,18 +174,23 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$destX = ($destWidth - $srcWidth) / 2;
 				$destY = ($destHeight - $srcHeight) / 1;
 
-
+				//$myImageThumb = $myImage;
 
 				$white = imagecolorexact($myCopyright, 255, 255, 255);
 				//imagecolortransparent($myCopyright, $white);
 
 				imagecopymerge($myImage, $myCopyright, $destX, $destY, 0, 0, $srcWidth, $srcHeight, 50);
 
-				if(preg_match('/jpg|jpeg/',$fileNameOri[1])){
+				//imagecopymerge($myImageThumb, $myCopyright, $destX, $destY, 0, 0,400,300, 50);
+
+				if(preg_match('/jpg|jpeg/',$fileType)){
 					imagejpeg($myImage,$destinationPath1."/".$fileName);
+
+					imagejpeg($myImage,$destinationPath2."/".$fileName);
 				}
-				if(preg_match('/png/',$fileNameOri[1])){
+				if(preg_match('/png/',$fileType)){
 					imagepng($myImage,$destinationPath1."/".$fileName);
+					imagepng($myImage,$destinationPath2."/".$fileName);
 				}
 				imagedestroy($myImage);
 				imagedestroy($myCopyright);
@@ -212,10 +220,11 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				# code...
 				$path = $destinationPath1."/".$value2;
 				$target = $destinationPath2."/".$value2;
+				
 
-				copy($path, $target);
+				//copy($path, $target);
 				//create thumb
-				$this->createthumb($target,$target,400,400);
+				//$this->createthumb($target,$target,400,400);
 				//end create thumb
 			}
 		}

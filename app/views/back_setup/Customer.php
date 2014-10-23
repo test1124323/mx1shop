@@ -15,7 +15,10 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
   }
 }
 function AddUser(){
-  $('#form-input').submit();
+  $('#form-input').attr("action","UserEdit").submit();
+}
+function Search(){
+  $('#form-input').attr("action","Customer").submit();
 }
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
@@ -30,16 +33,73 @@ function AddUser(){
 		<h3 class="panel-title"><i class='glyphicon glyphicon-cog'></i> ข้อมูลลูกค้า</h3>
 	</div>
 	<div class="panel-body">
-  <div >
-  
-    <button class="btn btn-success btn-xs"  onclick="AddUser();" data-toggle="modal" 
-  	data-target=".bs-example-modal-lg" >
-  	<i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-  	
 
-  </div>
   <div class="table-responsive" style="margin-top:10px;">
-  <form method="post"  id="form-input" action="UserEdit">
+  <form method="get"  id="form-input" >
+  <fieldset>
+    <legend>ค้นหา</legend>
+    <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              ชื่อสกุล
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="SOrderID" name="SOrderID" value="<?php echo @$Input['SOrderID'];?>" placeholder="เลขที่ใบสั่งซื้อ">
+            </div>
+            <div class="col-xs-2">
+              ชื่อ-สกุล
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="SFullName" value="<?php echo @$Input['SFullName'];?>" name="SFullName" placeholder="ชื่อ-สกุล">
+            </div>
+          </div>
+          <div class="row" style="margin-top:10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              ที่อยู่
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" value="<?php echo @$Input['SAdress'];?>" id="SAdress" name="SAdress" placeholder="ที่อยู่">
+            </div>
+            <div class="col-xs-2">
+              หมายเลขโทรศัพท์
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" id="STel" name="STel" value="<?php echo @$Input['STel'];?>" placeholder="หมายเลขโทรศัพท์">
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-2">
+              อีเมล์
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" value="<?php echo @$Input['SAdress'];?>" id="SAdress" name="SAdress" placeholder="ที่อยู่">
+            </div>
+            <div class="col-xs-2">
+              สถานะ
+            </div>
+            <div class="col-xs-3">
+              <?php echo Form::select('SOrderStatus',array('ทั้งหมด','1'=>'ใช้งาน','2'=>'ระงับการใช้งาน'),@$Input['SOrderStatus'],array('class'=>'form-control'));?>
+            </div>
+          </div>
+          <div class="row" style="margin-top:10px;">
+            <div class="col-xs-12f^ text-center" >
+              <button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </fieldset>
+    <div  style="margin-top:10px;">
+    <button class="btn btn-success btn-xs"  onclick="AddUser();" data-toggle="modal" 
+    data-target=".bs-example-modal-lg" >
+    <i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
+  </div>
+
   <input type="hidden" name="UserID" id="UserID" value="">
   <input type="hidden" name="TypeUser" id="TypeUser" value="1">
         <table class="table table-hover table-bordered" >
@@ -77,6 +137,12 @@ function AddUser(){
             </tr>
             <?php
           }
+        }else{
+          ?>
+          <tr>
+            <td  colspan="9" class="text-center bg-danger">ไม่พบข้อมูล</td>
+          </tr>
+          <?php
         }
       ?>
       </tbody>
