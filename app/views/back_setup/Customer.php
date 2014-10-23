@@ -7,7 +7,7 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
 <script type="text/javascript">
   function UserEdit(UserID){
     $("#UserID").val(UserID);
-    $('#form-input').attr("action","UserEdit").submit();
+    $('#form-input').attr("method","POST").attr("action","UserEdit").submit();
   }
   function delData(UserID){
   if(confirm("ยืนยันการลบ !! ")){
@@ -15,7 +15,7 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
   }
 }
 function AddUser(){
-  $('#form-input').attr("action","UserEdit").submit();
+  $('#form-input').attr("method","POST").attr("action","UserEdit").submit();
 }
 function Search(){
   $('#form-input').attr("action","Customer").submit();
@@ -43,47 +43,48 @@ function Search(){
           <div class="row">
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
-              ชื่อสกุล
-            </div>
-            <div class="col-xs-3">
-              <input type="text" class="form-control" id="SOrderID" name="SOrderID" value="<?php echo @$Input['SOrderID'];?>" placeholder="เลขที่ใบสั่งซื้อ">
-            </div>
-            <div class="col-xs-2">
               ชื่อ-สกุล
             </div>
             <div class="col-xs-3">
-              <input type="text" class="form-control" id="SFullName" value="<?php echo @$Input['SFullName'];?>" name="SFullName" placeholder="ชื่อ-สกุล">
+              <input type="text" class="form-control" id="SFullName" 
+              value="<?php echo @$Input['SFullName'];?>" name="SFullName" 
+              placeholder="ชื่อ-สกุล">
+            </div>
+            <div class="col-xs-2">
+              ที่อยู่
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" value="<?php echo @$Input['SUserAddress'];?>" 
+              id="SUserAddress" name="SUserAddress" placeholder="ที่อยู่">
             </div>
           </div>
           <div class="row" style="margin-top:10px;">
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
-              ที่อยู่
-            </div>
-            <div class="col-xs-3">
-              <input type="text" class="form-control" value="<?php echo @$Input['SAdress'];?>" id="SAdress" name="SAdress" placeholder="ที่อยู่">
-            </div>
-            <div class="col-xs-2">
               หมายเลขโทรศัพท์
             </div>
             <div class="col-xs-3">
-              <input type="text" class="form-control" id="STel" name="STel" value="<?php echo @$Input['STel'];?>" placeholder="หมายเลขโทรศัพท์">
+              <input type="text" class="form-control" id="SUserTel" name="SUserTel" 
+              value="<?php echo @$Input['SUserTel'];?>" placeholder="หมายเลขโทรศัพท์">
             </div>
+            <div class="col-xs-2">
+              อีเมล์
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control" value="<?php echo @$Input['SEmail'];?>" 
+              id="SEmail" name="SEmail" placeholder="อีเมล์">
+            </div>
+   
           </div>
 
           <div class="row" style="margin-top:10px;">
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
-              อีเมล์
-            </div>
-            <div class="col-xs-3">
-              <input type="text" class="form-control" value="<?php echo @$Input['SAdress'];?>" id="SAdress" name="SAdress" placeholder="ที่อยู่">
-            </div>
-            <div class="col-xs-2">
               สถานะ
             </div>
             <div class="col-xs-3">
-              <?php echo Form::select('SOrderStatus',array('ทั้งหมด','1'=>'ใช้งาน','2'=>'ระงับการใช้งาน'),@$Input['SOrderStatus'],array('class'=>'form-control'));?>
+              <?php echo Form::select('SActiveStatus',array('ทั้งหมด','1'=>'ใช้งาน','2'=>'ระงับการใช้งาน'),
+              @$Input['SActiveStatus'],array('class'=>'form-control'));?>
             </div>
           </div>
           <div class="row" style="margin-top:10px;">
@@ -102,7 +103,7 @@ function Search(){
 
   <input type="hidden" name="UserID" id="UserID" value="">
   <input type="hidden" name="TypeUser" id="TypeUser" value="1">
-        <table class="table table-hover table-bordered" >
+        <table class="table table-hover table-bordered" style="margin-top:10px;">
       <thead class="bg_tb">
         <tr>
           <th width="5%"><div style=" text-align: center;">ลำดับ</div></th>

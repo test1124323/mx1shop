@@ -54,7 +54,7 @@ class ProductPicController extends \BaseController {
 	try{
 		$destinationPath1 = public_path().'/img/product/';
 		$destinationPath2 =  public_path().'/img/product_tmp/';
-
+		$arr_product = array();
 		$arr_dataImg = array();
 		$j=0;
 		$Input = Input::get();
@@ -174,6 +174,7 @@ class ProductPicController extends \BaseController {
 
 		foreach ($arr_dataImg as $key => $value) {
 			# code...
+			
 			foreach ($value as $key2 => $value2) {
 				# code...
 				$path = $destinationPath1."/".$value2;
@@ -217,16 +218,22 @@ class ProductPicController extends \BaseController {
 	}
 
 
-
+foreach (Input::get('ProductID') as $key => $value) {
+	# code...
+	$arr_product[] = $key*1;
+}
 
 	//echo $uploadSuccess."Upload";
 		//$file = Input::file('pic_1')[0]->getClientOriginalName();
 		//$name = Input::file('pic1')->getClientOriginalName();
 		echo "<pre>";print_r(Input::get('ProductID'));echo "</pre>";
+
+		echo "<pre>";print_r($arr_product);echo "</pre>";
 		//echo $name.">>>";
 		//echo $uri = Request::path();
 		//echo "store";
-			$result = ProductModel::whereIn('ProductID',Input::get('ProductID'))->with('ProductImg')->get()->toArray();
+			$result = ProductModel::whereIn('ProductID',$arr_product)->with('ProductImg')->get()->toArray();
+			echo "<pre>";print_r(DB::getQueryLog());echo "</pre>";
 			return View::make("back_setup/ProductPic",array('result'=>$result));
 
 		}

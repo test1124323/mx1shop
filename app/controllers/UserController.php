@@ -13,15 +13,17 @@ class UserController extends \BaseController {
 	}
 
 	public function Customer(){
-		$Customer = UserModel::Customer('1')->paginate(20);
-		return View::make("back_setup/Customer",array("Customer"=>$Customer));
+
+		$Customer = UserModel::Customer('1',Input::get('SFullName'),Input::get('SUserAddress'),Input::get('SUserTel'),Input::get('SEmail'),Input::get('SActiveStatus'))->paginate(20);
+
+		return View::make("back_setup/Customer",array("Customer"=>$Customer,'Input'=>Input::all()));
 	}
 	public function Employee(){
-		$Customer = UserModel::Customer('2')->paginate(20);
-		return View::make("back_setup/Employee",array("Customer"=>$Customer));
+		$Customer = UserModel::Customer('2',Input::get('SFullName'),Input::get('SUserAddress'),Input::get('SUserTel'),Input::get('SEmail'),Input::get('SActiveStatus'))->paginate(20);
+		return View::make("back_setup/Employee",array("Customer"=>$Customer,'Input'=>Input::all()));
 	}
 	public function UserEdit(){
-		$Customer = UserModel::Customer(Input::get("TypeUser"))->where("UserID","=",Input::get("UserID"))->get()->toArray();
+		$Customer = UserModel::Customer(Input::get("TypeUser"),'','','','','')->where("UserID","=",Input::get("UserID"))->get()->toArray();
 		return View::make("back_setup/CustomerForm",array("Customer"=>$Customer,'TypeUser'=>Input::get("TypeUser")));
 	}
 	/**
