@@ -2,7 +2,9 @@
 <?php 
 $reqs  = Request::segment(2);
 $data['path'] = empty($reqs)?'':'../';
-$path = $data['path'];
+//$path = $data['path'];
+$path = Request::root()."/";
+//echo Request::root();
 ?>
 <html lang="en">
 <head>
@@ -15,6 +17,7 @@ $path = $data['path'];
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap-theme.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap-datepicker.css'>
+  <input  type="hidden" name="rootPath" id="rootPath" value="<?php echo $path?>">
 	<!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>-->
 	<style>
@@ -29,14 +32,17 @@ $path = $data['path'];
 <body>
 <?php
 ${'tab'.$act} = 'active';
-$new_order = OrderModel::where("StatusNew","=","1")->count();
+$new_order = OrderModel::where("OrderStatus","=","0")->count();
 $wait_pay = OrderModel::where("OrderStatus","=","2")->count();
 
-$arr_menu = array('0'=>'หน้าแรก&nbsp&nbsp<span class="badge pull-right"> '.$new_order.'</span>','2'=>'รายการรอชำระเงิน&nbsp&nbsp<span class="badge pull-right"> '.$wait_pay.'</span>','1' =>'ตั้งค่า',
+$arr_menu = array('0'=>'รายการสั่งสินค้า&nbsp&nbsp<span class="badge pull-right"> '.$new_order.'</span>',
+  '2'=>'รายการรอชำระเงิน&nbsp&nbsp<span class="badge pull-right"> '.$wait_pay.'</span>',
+  '3'=>'รายการสินค้า',
+  '1' =>'ตั้งค่า',
 );
-$arr_menuLink = array('0'=>'../backoffice/Order','2'=>'../backoffice/Payment','1'=>'#');
-$arr_sub1 = array('1'=>'หมวดสินค้า','2'=>'รายการสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
-$arr_subLink1 = array('1'=>'../backoffice/Cate','2'=>'../backoffice/Product','3'=>'','4'=>'../backoffice/Customer','5'=>'../backoffice/Employee');
+$arr_menuLink = array('0'=>$path.'backoffice/Order','2'=>$path.'backoffice/Payment','1'=>'#','3'=>$path.'backoffice/Product');
+$arr_sub1 = array('1'=>'หมวดสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
+$arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>'','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee');
 ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">

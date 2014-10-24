@@ -20,7 +20,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('back_setup/ProductForm');
 	}
 	public function ShowDataEdit(){
 		try{
@@ -60,6 +60,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
+		//echo "store";exit();
 		try{
 		$arr_data = array();
 		$pattern = '/,/';

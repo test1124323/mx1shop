@@ -1,5 +1,5 @@
 <?php
-$act = '1';
+$act = '3';
 include("backHeader.php");
 include("function.php");
 $ImgPath = public_path().'/img/product/';
@@ -12,7 +12,8 @@ $ImgPath = public_path().'/img/product/';
     return false;
   }
   function change_first(ProductID,ProductImgID){
-    var url = "UpdateStatusPic";
+    var path = $('#rootPath').val();
+    var url = path+"backoffice/UpdateStatusPic";
     var data = {ProductID:ProductID,ProductImgID:ProductImgID};
     $.post(url,data,function(msg){
       //alert(msg);
@@ -23,7 +24,8 @@ $ImgPath = public_path().'/img/product/';
   function deletePic(id,ProductImgID){
     if(confirm('ยืนยันการลบภาพ อีกครั้ง')){
       $('#'+id).remove();
-      var url = "deletePic";
+      var path = $('#rootPath').val();
+      var url = path+"backoffice/deletePic";
       var data = {ProductImgID:ProductImgID};
       $.post(url,data,function(msg){
       //alert(msg);
@@ -33,7 +35,7 @@ $ImgPath = public_path().'/img/product/';
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
-  <li><a href="Product">รายการสินค้า</a></li>
+  <li><a href="<?php echo $arr_menuLink[3];?>">รายการสินค้า</a></li>
   <li class="active">จัดการรูปภาพ</li>
 </ol>
 <div class="panel panel-default" style="margin-top:-20px;">
@@ -109,7 +111,8 @@ if($result){
    </div>
    <div style="text-align:center">
    <button class="btn btn-primary btn-sm" type="submit"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
-  <button class="btn btn-default btn-sm">ยกเลิก</button>
+   <a href="<?php echo $path."backoffice/Product";?>">
+   <button class="btn btn-default btn-sm" type="button"><i class="glyphicon glyphicon-arrow-left"></i> ย้อนกลับ</button></a>
    </div>    
   </form>
 </div>

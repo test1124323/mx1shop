@@ -5,11 +5,6 @@ include("function.php");
 $arr_OrderStatus = ArrOrderStatus();
 ?>
 <script type="text/javascript">
-	function OrderDetail(OrderID){
-		$('#OrderID').val(OrderID);
-		$('#form-input').attr('action','OrderDetail').submit();
-
-	}
 	function Search(){
 		$('#form-input').attr('action','Payment').submit();
 	}
@@ -23,10 +18,10 @@ $arr_OrderStatus = ArrOrderStatus();
 
 <div class="panel panel-primary" style="width:100%;">
 	<div class="panel-heading">
-		<h3 class="panel-title"><i class='glyphicon glyphicon-list-alt'></i> รายการสั่งสินค้า</h3>
+		<h3 class="panel-title"><i class='glyphicon glyphicon-list-alt'></i> รายการรอชำระเงิน</h3>
 	</div>
 	<div class="panel-body">	
-	<form method="post"  id="form-input">
+	<form method="GET"  id="form-input">
 	<fieldset>
 		<legend>ค้นหา</legend>
 		<div class="panel panel-default">
@@ -143,8 +138,10 @@ if(count($result)>0){
 			<td style=" text-align: center;"><?php echo conv_date($value['DeliveredDate']);?></td>
 			<td style=" text-align: center;"><?php echo $arr_OrderStatus[$value['OrderStatus']];?></td>
 			<td style=" text-align: center;">
-			<button type="button" class="btn btn-primary btn-xs"  onclick="OrderDetail('<?php echo $value['OrderID'];?>');">
+      <a href="Order/<?php echo $value['OrderID'];?>">
+			<button type="button" class="btn btn-primary btn-xs">
 			<i class="glyphicon glyphicon-credit-card"></i> ชำระเงิน</button>
+      </a>
 			</td>
 		</tr>
 		<?php

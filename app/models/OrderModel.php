@@ -41,7 +41,7 @@ class OrderModel extends Eloquent{
 		if(!empty($SDeliveredDate)&&!empty($EDeliveredDate)){
 			$query->whereBetween('DeliveredDate',array($SDeliveredDate,$EDeliveredDate));
 		}
-		if($OrderStatus){
+		if($OrderStatus!=""){
 			$query->where('OrderStatus','=',$OrderStatus);
 		}
 
