@@ -100,6 +100,7 @@ window.location.href="#list";
                                                               border:none;font-size:20px;width:78%;"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button>
 </div>
 </form>
+<div class="col-sm-11 about-to-pay">ss</div>
 <div class="col-sm-12" style="height:200px;"></div>
 </div>
 <!-- /content -->
