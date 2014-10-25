@@ -86,10 +86,11 @@ function DateCurrent(){
 }
 function conv_date($date){
    $str="";
-  if($date!=""){
+  if($date!=""&&$date!="0000-00-00"){
   $val1  = explode(" ", $date);
   $val = explode('-',$val1[0]);
   $str = $val[2]."/".$val[1]."/".($val[0]+543);
+
   if(isset($val1[1])){
     $str .= ($val1[1]!="")?" เมื่อเวลา ".$val1[1]:"";
   }

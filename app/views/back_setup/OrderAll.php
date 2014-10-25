@@ -6,11 +6,6 @@ $arr_OrderStatus = ArrOrderStatus();
 
 ?>
 <script type="text/javascript">
-	function OrderDetail(OrderID){
-		$('#OrderID').val(OrderID);
-		$('#form-input').attr('action','OrderDetail').submit();
-
-	}
 	function Search(){
 		$('#form-input').attr('action','Order').submit();
 	}
@@ -201,8 +196,22 @@ if(count($result)>0){
 			<td style=" text-align: center;"><?php echo conv_date($value['DeliveredDate']);?></td>
 			<td style=" text-align: center;"><?php echo $arr_OrderStatus[$value['OrderStatus']];?></td>
 			<td style=" text-align: center;">
-			<button type="button" class="btn btn-primary btn-xs"  onclick="OrderDetail('<?php echo $value['OrderID'];?>');">
-			<i class="glyphicon glyphicon-pencil"></i> ใบสั่งซื้อ</button>
+      <?php 
+        if($value['OrderStatus']=='0'){
+          ?>
+           <a href="Order/<?php echo $value['OrderID'];?>">
+          <button type="button" class="btn btn-success btn-xs"  >
+      <i class="glyphicon glyphicon-saved"></i> ยืนยันสั่งซื้อ</button>
+      </a>
+          <?php
+        }else{
+          ?>
+          <a href="Order/<?php echo $value['OrderID'];?>">
+          <button type="button" class="btn btn-primary btn-xs"  >
+      <i class="glyphicon glyphicon-pencil"></i> ใบสั่งซื้อ</button></a>
+          <?php
+        }
+      ?>	
 			</td>
 		</tr>
 		<?php

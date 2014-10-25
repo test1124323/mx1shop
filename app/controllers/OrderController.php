@@ -21,28 +21,6 @@ class OrderController extends \BaseController {
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 	}
 
-	public function OrderDetail(){
-		
-		if(Input::get('OrderID')){
-			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
-			$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
-			return View::make("back_setup/OrderDetail",array('result'=>$result));
-		}else{
-			return Redirect::to('backoffice/Order');
-		}
-		
-		
-	}
-	public function deleteAuto()
-	{
-		$result1 = OrderDetailModel::where('AutoID','=',Input::get('AutoID'))->get()->toArray();
-		//echo "<pre>";print_r($result1);echo "</pre>";
-		$Auto = OrderDetailModel::find(Input::get('AutoID'));
-		$Auto->delete();
-
-		$result = OrderModel::where('OrderID','=',$result1[0]['OrderID'])->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
-		return View::make("back_setup/OrderDetail",array('result'=>$result));
-	}
 
 	public function Search(){
 
@@ -56,6 +34,16 @@ class OrderController extends \BaseController {
 		->orderby('OrderDate','DESC')
 		->paginate(20);
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
+	}
+	public function confirmOrder(){
+
+		$Order = OrderModel::find(Input::get('OrderID'));
+		$Order->OrderStatus = '2';
+		$Order->save();
+
+		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
+		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
+
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -112,12 +100,16 @@ class OrderController extends \BaseController {
 		$Order->save();
 
 		if($PaymantDate!=NULL){
+			$del = PaymentModel::where("OrderID",'=',Input::get('OrderID'))->delete();
+			
+
 			$Payment = new PaymentModel();
 			$Payment->PaymantDate = $PaymantDate;
 			$Payment->PaymentTotal = $PaymentTotal;
 			$Order->Payment()->save($Payment);
 		}
-		return Redirect::to('backoffice/Order');
+
+		return Redirect::to('backoffice/'.Input::get("UrlRe"));
 	}
 	/**
 	 * Display the specified resource.
@@ -127,7 +119,17 @@ class OrderController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		echo "show".$id;
+		//echo Request::root();
+		if($id){
+			
+			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
+			$result = OrderModel::where('OrderID','=',$id)->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
+			//print_r($result);
+			return View::make("/back_setup/OrderDetail",array('result'=>$result));
+		}else{
+			return Redirect::to('backoffice/Order');
+		}
+		//echo "show".$id;
 	}
 
 
@@ -164,8 +166,12 @@ class OrderController extends \BaseController {
 	public function destroy($id)
 	{
 		
-
-		//return Redirect::to('backoffice/Cate');
+		$result1 = OrderDetailModel::where('AutoID','=',$id)->get()->toArray();
+		$result = OrderModel::where('OrderID','=',$result1[0]['OrderID'])->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
+		
+		$Auto = OrderDetailModel::find($id);
+		$Auto->delete();
+		return Redirect::to('backoffice/Order/'.$result1[0]['OrderID']);
 		//echo "destroy".$id;
 	}
 

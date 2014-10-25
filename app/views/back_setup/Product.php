@@ -1,18 +1,18 @@
 <?php
-$act = '1';
+$act = '3';
 include("backHeader.php");
 include("function.php");
 ?>
 <script type="text/javascript">
   function ProductPic(){
-    $('#form-input').attr('action','ProductPic').submit();
+    $('#form-input').attr('method','POST').attr('action','ProductPic').submit();
   }
   function ProductEdit(){
-     $('#form-input').attr('action','ProductEdit').submit();
+     $('#form-input').attr('method','POST').attr('action','ProductEdit').submit();
   }
   function ProductDelete(){
     if(confirm("ยืนยันการลบข้อมุล")){
-      $('#form-input').attr('action','ProductDel').submit();
+      $('#form-input').attr('method','POST').attr('action','ProductDel').submit();
     }
      
   }
@@ -25,6 +25,13 @@ include("function.php");
   }
   function Search(){
      $('#form-input').attr('action','Product').submit();
+  }
+  function ProductForm(){
+    $('#form-input').attr('method','POST').attr('action','ProductForm').submit();
+  }
+  function ProductAdd(){
+    //$('#_method').val("GET");
+    $('#form-input').attr('action','ProductForm/create').submit();
   }
 </script>
 <?php 
@@ -46,6 +53,7 @@ include("function.php");
 
   <div class="table-responsive" >
   <form method="get"  id="form-input">
+  
   <fieldset>
     <legend>ค้นหา</legend>
     <div class="panel panel-default">
@@ -90,11 +98,9 @@ include("function.php");
    
 
   <div style="margin-top:10px;" >
-  <a href="ProductForm">
-    <button class="btn btn-success btn-xs" data-toggle="modal" 
-    data-target=".bs-example-modal-lg" >
+
+    <button class="btn btn-success btn-xs" onclick="ProductAdd();">
     <i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-    </a>
     <button type="button" onclick="ProductPic();" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-picture"></i> จัดการภาพ</button>
     <button type="button" class="btn btn-default btn-xs" onclick="ProductEdit();"><i class="glyphicon glyphicon-pencil"></i> แก้ไขข้อมูล</button>
     <button type="button" class="btn btn-danger btn-xs" onclick="ProductDelete();"><i class="glyphicon glyphicon-trash"></i> ลบข้อมูล</button>

@@ -4,14 +4,20 @@ include("backHeader.php");
 include("function.php");
 ?>
 <script type="text/javascript">
+
 	function delete_data(id){
 		if(confirm("ยืนยันการลบรายการ")){
-			$('#AutoID').val(id);
-			$('#form-input').attr('action','deleteAuto').submit();
+			var path = $('#rootPath').val();
+			$('#_method').val("DELETE");
+			//alert(path);
+			$('#form-input').attr('action',path+'backoffice/Order/'+id).submit();
+			//window.location.href="deleteAuto/"+id;
+			//$('#AutoID').val(id);
+			//$('#form-input').attr('action','deleteAuto').submit();
 		}
 	}
 	function cancelOrder(){
-		if(confirm("ยินยันการยกเลิกรายหการ")){
+		if(confirm("ยินยันการยกเลิกรายการ")){
 			$('#CanOrderStaus').val('5');
 			$('#form-input').submit();
 
@@ -25,8 +31,8 @@ include("function.php");
 		}
 		 PaymentTotal = parseFloat($('#PaymentTotal').val().split(",").join(""));
 		 PriceTotal = parseFloat($('#PriceTotal').val());
-		if(PaymentTotal!=PriceTotal){
-			alert("ระบุ จำนวนเงินให้เท่ากับเงินรวม");
+		if(PaymentTotal<PriceTotal){
+			alert("ระบุ จำนวนเงินน้อยกว่ายอดรวม");
 			$('#PaymentTotal').focus();
 			return false;
 		}
@@ -50,20 +56,32 @@ include("function.php");
 		}
 		$('#form-input').submit();
 	}
+	function confirmOrder(){
+		if(confirm("คุณต้องการ ยืนยันรายการสั่งซื้อ")){
+			$('#form-input').attr('action','confirmOrder').submit();
+		}
+		
+	}
 </script>
+<?php 
+$link = $path."backoffice/";
+$text = "";
+$url = "";
+
+	if($result[0]['OrderStatus']=='2'){
+		$link .= "Payment";
+		$text = "รายการรอชำระเงิน";
+		$url = "Payment";
+	}
+	else{
+		$link .= "Order";
+		$text = "รายการสั่งสินค้า";
+		$url = "Order";
+	}
+?>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li>หน้าแรก</li>
-  <?php 
-  	if($result[0]['OrderStatus']=='2'){
-  		?>
-  		<li ><a href="Payment">รายการรอชำระเงิน</a></li>
-  		<?php
-  	}else{
-  		?>
-  		<li ><a href="Order">รายการสั่งสินค้า</a></li>
-  		<?php
-  	}
-  ?>
+  <li ><a href="<?php echo $link;?>"><?php echo $text;?></a></li>
   <li class="active">รายละเอียดการสั่งซื้อ</li>
 </ol>
 
@@ -125,10 +143,14 @@ include("function.php");
   	</div>
 </div>
 </div>
-	<form method="post"  id="form-input" action="OrderDetailConf">
+	<form method="post"  id="form-input" action="<?php echo $path."backoffice/"?>Order">
 	<input type="hidden" name="AutoID" id="AutoID">
 	<input type="hidden" name="OrderID" id="OrderID" value="<?php echo $result[0]['OrderID'];?>">
 	<input type="hidden" name="CanOrderStaus" id="CanOrderStaus" value="">
+	<input type="hidden" name="UrlRe" id="UrlRe" value="<?php echo $url;?>">
+
+	<input type="hidden" name="_method" id="_method" value="POST">
+
 	<div class="table-responsive">
         <table class="table table-hover table-bordered" >
       <thead class="bg_tb">
@@ -158,7 +180,8 @@ if($result){
 			<td style=" text-align: right;"><?php echo number_format($value['ProductPrice'],2);?></td>
 			<td style=" text-align: right;"><?php echo number_format($value['OrderPriceTotal'],2);?></td>
 			<td style=" text-align: center;">
-			<button type="button" class="btn btn-danger btn-xs"  onclick="delete_data('<?php echo $value['AutoID'];?>');">
+			<button type="button" class="btn btn-danger btn-xs"  
+			onclick="delete_data('<?php echo $value['AutoID'];?>');">
 			<i class="glyphicon glyphicon-trash"></i> ลบข้อมูล</button></td>
 		</tr>
 		<?php
@@ -293,16 +316,27 @@ if($result[0]['OrderStatus']>='3'){
 			<?php 
 			if($result[0]['OrderStatus']=='2'){
 				?>
-				<button class="btn btn-primary btn-sm" type="button" onclick="chkInput();"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
+				<button class="btn btn-primary btn-sm" type="button" onclick="chkInput();">
+				<i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
 				<?php
 
+			}
+			else if($result[0]['OrderStatus']=='0'){
+				?>
+				<button class="btn btn-primary btn-sm" type="button"  onclick="confirmOrder();" >
+				<i class="glyphicon glyphicon-saved" ></i> ยืนยันการสั่งซื้อ</button>
+				<?php
 			}else{
 				?>
-				<button class="btn btn-primary btn-sm" type="submit"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
+				<button class="btn btn-primary btn-sm"  type="submit">
+				<i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
 				<?php
 			}
 			?>
 			<button class="btn btn-danger btn-sm" type="button" onclick="cancelOrder();"><i class="glyphicon glyphicon-saved"></i> ยกเลิกรายการ</button>
+			<a href="<?php echo $link;?>">
+			<button class="btn btn-default btn-sm" type="button" >
+			<i class="glyphicon glyphicon-arrow-left"></i> ย้อนกลับ</button></a>
 			</div>
 		</div>
       </form>
