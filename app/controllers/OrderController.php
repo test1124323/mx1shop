@@ -35,14 +35,15 @@ class OrderController extends \BaseController {
 		->paginate(20);
 		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 	}
+
 	public function confirmOrder(){
 
 		$Order = OrderModel::find(Input::get('OrderID'));
 		$Order->OrderStatus = '2';
 		$Order->save();
-
-		$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
-		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
+		return Redirect::to('backoffice/Order');
+		//$result = OrderModel::with('OrderDetail')->orderby('OrderDate','DESC')->paginate(20);
+		//return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
 
 	}
 	/**

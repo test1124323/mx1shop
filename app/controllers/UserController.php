@@ -33,7 +33,9 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		//echo "create";
+		$Customer = UserModel::Customer(Input::get("TypeUser"),'','','','','')->where("UserID","=",Input::get("UserID"))->get()->toArray();
+		return View::make("back_setup/CustomerForm",array("Customer"=>$Customer,'TypeUser'=>Input::get("TypeUser")));
 	}
 
 
@@ -78,7 +80,9 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		echo "show".$id;
+		
+		$Customer = UserModel::where("UserID","=",$id)->get()->toArray();
+		return View::make("back_setup/CustomerForm",array("Customer"=>$Customer,'TypeUser'=>Input::get("TypeUser")));
 	}
 
 
@@ -116,7 +120,12 @@ class UserController extends \BaseController {
 	{
 		$User = UserModel::find($id);
 		$User->delete();
-		return Redirect::to('backoffice/Customer');
+		if(Input::get("TypeUser")=="1"){
+			return Redirect::to('backoffice/Customer');
+		}else{
+			return Redirect::to('backoffice/Employee');
+		}
+		
 		//echo "destroy".$id;
 	}
 

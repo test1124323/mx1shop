@@ -23,6 +23,8 @@ Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 
 Route::resource('/backoffice/catePop','catePopController');
+
+
 Route::resource('/backoffice/Product','ProductController');
 Route::resource('/backoffice/ProductForm','ProductManageController');
 Route::resource('/backoffice/DropdownCategory','ProductManageController@DropdownCategory');
@@ -33,17 +35,13 @@ Route::resource('/backoffice/deletePic','ProductPicController@deletePic');
 Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit');
 Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');
 
+//order
 Route::resource('/backoffice/Order','OrderController');
-//Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
-
 Route::resource('/backoffice/confirmOrder','OrderController@confirmOrder');
-Route::resource('/backoffice/OrderDetailConf','OrderController');
-
 Route::resource('/backoffice/Payment','PaymentController');
-
-Route::resource('/backoffice/Customer','UserController@Customer');
-Route::resource('/backoffice/UserEdit','UserController@UserEdit');
+//end order
+//user
 Route::resource('/backoffice/User','UserController');
-Route::get('/backoffice/deleteCustomer/{id}','UserController@destroy');
-
+Route::resource('/backoffice/Customer','UserController@Customer');
 Route::resource('/backoffice/Employee','UserController@Employee');
+//end uder

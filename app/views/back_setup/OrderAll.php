@@ -152,13 +152,13 @@ $arr_OrderStatus = ArrOrderStatus();
           <th width="5%"><div style=" text-align: center;">ลำดับ</th>
           <th width="10%"><div style=" text-align: center;">เลขที่ใบสั่งซื้อ</div></th>
           <th width="10%"><div style=" text-align: center;">วันที่ทำรายการ</div></th>           
-          <th width="20%"><div style=" text-align: center;">ข้อมูลลูกค้า</div></th>
-          <th width="8%"><div style=" text-align: center;">จำนวน</div></th>
+          <th width="15%"><div style=" text-align: center;">ข้อมูลลูกค้า</div></th>
+          <th width="7%"><div style=" text-align: center;">จำนวน</div></th>
           <th width="8%"><div style=" text-align: center;">ราคารวม</div></th>
           <th width="8%"><div style=" text-align: center;">วันที่ชำระเงิน</div></th>
           <th width="8%"><div style=" text-align: center;">วันที่ส่งสินค้า</div></th>
           <th width="8%"><div style=" text-align: center;">สถานะ</div></th>
-          <th width="8%"><div style=" text-align: center;">จัดการ</div></th>
+          <th width="15%"><div style=" text-align: center;">จัดการ</div></th>
         </tr>
       </thead>
       <tbody>
@@ -168,7 +168,7 @@ if(count($result)>0){
 	foreach ($result as $key => $value) {
 		# code...
 		?>
-		<tr>
+		<tr <?php echo ($value['OrderStatus']=='5')?"class=\"danger\"":""?>>
 			<td style=" text-align: center;"><?php echo ++$i;?></td>
 			<td ><?php echo $value['OrderID'];?></td>
 			<td style=" text-align: center;"><?php echo conv_date($value['OrderDate']);?></td>
@@ -209,6 +209,9 @@ if(count($result)>0){
           <a href="Order/<?php echo $value['OrderID'];?>">
           <button type="button" class="btn btn-primary btn-xs"  >
       <i class="glyphicon glyphicon-pencil"></i> ใบสั่งซื้อ</button></a>
+       <a href="Order/<?php echo $value['OrderID'];?>">
+          <button type="button" class="btn btn-danger btn-xs"  >
+      <i class="glyphicon glyphicon-trash"></i> ลบข้อมูล</button></a>
           <?php
         }
       ?>	

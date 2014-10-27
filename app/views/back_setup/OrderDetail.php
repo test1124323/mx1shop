@@ -58,7 +58,8 @@ include("function.php");
 	}
 	function confirmOrder(){
 		if(confirm("คุณต้องการ ยืนยันรายการสั่งซื้อ")){
-			$('#form-input').attr('action','confirmOrder').submit();
+			var path = $('#rootPath').val();
+			$('#form-input').attr('action',path+'backoffice/confirmOrder').submit();
 		}
 		
 	}

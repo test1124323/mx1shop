@@ -168,7 +168,10 @@ class ProductManageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		echo "show".$id;
+		$result = ProductModel::where('ProductID','=',$id)->with('ProcateCategory')->get()->toArray();
+		//echo "<pre>";print_r($result);echo "</pre>";
+
+		return View::make("back_setup/ProductForm",array('result'=>$result));
 	}
 
 
