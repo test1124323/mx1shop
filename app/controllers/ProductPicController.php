@@ -1,6 +1,7 @@
 <?php
-
+use Intervention\Image\ImageManagerStatic as Image;
 class ProductPicController extends \BaseController {
+
 
 	/**
 	 * Display a listing of the resource.
@@ -47,57 +48,13 @@ class ProductPicController extends \BaseController {
 		//
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-private	function createthumb($name,$filename,$new_w,$new_h){
-
-  $system=explode('.',$name);
-  $src_img = "";
-  if(preg_match('/jpg|jpeg/',$system[1])){
-    $src_img=imagecreatefromjpeg($name);
-  }
-  if(preg_match('/png/',$system[1])){
-    $src_img=imagecreatefrompng($name);
-  }
-
-  $old_x=imagesx($src_img);
-  $old_y=imagesy($src_img);
-
-  $size=GetimageSize($name);
-  $thumb_w = $new_w;
-  $thumb_h =round($new_w*$size[1]/$size[0]);
-
-  //$thumb_w=($old_x*$new_h)/$old_y;
-  //$thumb_h=$new_h;
-
-  $co_x=floor(($new_w-$thumb_w)/2);
-  $co_y=0;      
-
-  $dst_img=imagecreatetruecolor($new_w,$thumb_h); 
-  $white=imagecolorallocate($dst_img,255,255,255);
-  imagefill($dst_img,0,0,$white);
-  imagecopyresized($dst_img,$src_img,$co_x,$co_y,0,0,$thumb_w,$thumb_h,$old_x,$old_y);    
-
-  if(preg_match("/png/",$system[1])){
-    imagepng($dst_img,$filename);   
-  }else{
-    imagejpeg($dst_img,$filename); 
-  }
-  imagedestroy($dst_img); 
-  imagedestroy($src_img); 
-}
-
 	public function store()
 	{
 		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
 	try{
 		$destinationPath1 = public_path().'/img/product/';
 		$destinationPath2 =  public_path().'/img/product_tmp/';
-
+		$arr_product = array();
 		$arr_dataImg = array();
 		$j=0;
 		$Input = Input::get();
@@ -111,9 +68,10 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 		if (Input::hasFile($hasPic)){
 
 			$result = ProductImg::where('ProductID','=',$key)->get()->toArray();
+			$type_add = $Input['type_add'.$key.''];
 			if(count($result)){
 				//echo"<pre>";print_r($result);echo "</pre>";
-				$type_add = $Input['type_add'.$key.''];
+				
 				if($type_add=='2'){
 					foreach ($result as $kr => $vr) {
 				# code...
@@ -134,9 +92,10 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$file = $InputFile[$pic][$i];
 
 				$fileNameOri = $file->getClientOriginalName();
-				$fileNameOri  = explode('.',$fileNameOri);
-				
-				$fileName = date('Ymdhis').$i.$j.".".$fileNameOri[1];
+				$fileNameOriEx  = explode('.',$fileNameOri);
+				$fileType = $fileNameOriEx[1];
+
+				$fileName = date('Ymdhis').$i.$j.".".$fileType;
 
 				
 
@@ -154,14 +113,14 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$myImage = "";
 
 				//echo $srcWidth.">>".$srcHeight."<b>";
-
-				if(preg_match('/jpg|jpeg/',$fileNameOri[1])){
+				//echo $fileNameOriEx[1]."<br>";
+				if(preg_match('/jpg|jpeg/',$fileType)){
 					$myImage=imagecreatefromjpeg($destinationPath1."/".$fileName);
 				}
-				if(preg_match('/png/',$fileNameOri[1])){
+				if(preg_match('/png/',$fileType)){
 					$myImage=imagecreatefrompng($destinationPath1."/".$fileName);
 				}
-				//echo $myImage;
+				///echo $myImage;
 				//exit();
 				$destWidth = imagesx($myImage);
 				$destHeight = imagesy($myImage);
@@ -171,18 +130,25 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 				$destX = ($destWidth - $srcWidth) / 2;
 				$destY = ($destHeight - $srcHeight) / 1;
 
-
+				//$myImageThumb = $myImage;
 
 				$white = imagecolorexact($myCopyright, 255, 255, 255);
 				//imagecolortransparent($myCopyright, $white);
 
 				imagecopymerge($myImage, $myCopyright, $destX, $destY, 0, 0, $srcWidth, $srcHeight, 50);
 
-				if(preg_match('/jpg|jpeg/',$fileNameOri[1])){
+				//imagecopymerge($myImageThumb, $myCopyright, $destX, $destY, 0, 0,400,300, 50);
+
+
+
+				if(preg_match('/jpg|jpeg/',$fileType)){
 					imagejpeg($myImage,$destinationPath1."/".$fileName);
+
+					//imagejpeg($myImage,$destinationPath2."/".$fileName);
 				}
-				if(preg_match('/png/',$fileNameOri[1])){
+				if(preg_match('/png/',$fileType)){
 					imagepng($myImage,$destinationPath1."/".$fileName);
+					//imagepng($myImage,$destinationPath2."/".$fileName);
 				}
 				imagedestroy($myImage);
 				imagedestroy($myCopyright);
@@ -208,30 +174,66 @@ private	function createthumb($name,$filename,$new_w,$new_h){
 
 		foreach ($arr_dataImg as $key => $value) {
 			# code...
+			
 			foreach ($value as $key2 => $value2) {
 				# code...
 				$path = $destinationPath1."/".$value2;
 				$target = $destinationPath2."/".$value2;
+				
+				$images = $path;
+				$new_images = $target;
+				$width=400;
+				$size=GetimageSize($images);
+				$height=round($width*$size[1]/$size[0]);
+				$flieEx = explode(".",$value2);
+				$fileType = $flieEx[1];
+				$myImage = "";
 
-				copy($path, $target);
+				if(preg_match('/jpg|jpeg/',$fileType)){
+					$images_orig =imagecreatefromjpeg($path);
+				}
+				if(preg_match('/png/',$fileType)){
+					$images_orig =imagecreatefrompng($path);
+				}
+
+				$photoX = ImagesX($images_orig);
+				$photoY = ImagesY($images_orig);
+				$images_fin = ImageCreateTrueColor($width, $height);
+				ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+
+				if(preg_match('/jpg|jpeg/',$fileType)){
+					imagejpeg($images_fin,$target);
+				}
+				if(preg_match('/png/',$fileType)){
+					imagepng($images_fin,$target);
+				}
+				ImageDestroy($images_orig);
+				ImageDestroy($images_fin);
+				//copy($path, $target);
 				//create thumb
-				$this->createthumb($target,$target,400,400);
+				//$this->createthumb($target,$target,400,400);
 				//end create thumb
 			}
 		}
 	}
 
 
-
+foreach (Input::get('ProductID') as $key => $value) {
+	# code...
+	$arr_product[] = intval($key);
+}
 
 	//echo $uploadSuccess."Upload";
 		//$file = Input::file('pic_1')[0]->getClientOriginalName();
 		//$name = Input::file('pic1')->getClientOriginalName();
-		//echo "<pre>";print_r($file);echo "</pre>";
+		//echo "<pre>";print_r(Input::get('ProductID'));echo "</pre>";
+
+		//echo "<pre>";print_r($arr_product);echo "</pre>";
 		//echo $name.">>>";
 		//echo $uri = Request::path();
 		//echo "store";
-			$result = ProductModel::whereIn('ProductID',Input::get('ProductID'))->with('ProductImg')->get()->toArray();
+			$result = ProductModel::whereIn('ProductID',$arr_product)->with('ProductImg')->get()->toArray();
+			//echo "<pre>";print_r(DB::getQueryLog());echo "</pre>";
 			return View::make("back_setup/ProductPic",array('result'=>$result));
 
 		}

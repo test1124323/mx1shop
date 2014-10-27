@@ -57,7 +57,7 @@ foreach ($detail['product_img'] as $key => $value) {
 <div class="col-sm-12" id="Ppic_<?php echo @++$a;?>" style="padding:0px;border:solid 2px #FFF; box-shadow:0 -2px 10px rgba(100,100,100,0.4);width:<?php echo $style;?>;float:left;">
     <div class="ProductPicDetail " style="background:url(<?php echo $path;?>img/product/<?php echo $value['ProductIMG']?>);
                   background-position:center;
-                  background-size:cover;
+                  background-size:contain;
                   background-repeat:no-repeat; border:none;" >
     </div>
 </div>

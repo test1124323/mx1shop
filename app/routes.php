@@ -34,8 +34,9 @@ Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit'
 Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');
 
 Route::resource('/backoffice/Order','OrderController');
-Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
-Route::resource('/backoffice/deleteAuto','OrderController@deleteAuto');
+//Route::resource('/backoffice/OrderDetail','OrderController@OrderDetail');
+
+Route::resource('/backoffice/confirmOrder','OrderController@confirmOrder');
 Route::resource('/backoffice/OrderDetailConf','OrderController');
 
 Route::resource('/backoffice/Payment','PaymentController');

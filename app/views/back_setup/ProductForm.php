@@ -1,15 +1,16 @@
 <?php
-$act = '1';
+$act = '3';
 include("backHeader.php");
 include("function.php");
 ?>
 <script type="text/javascript">
+
   function remove_id(id){
   $('#'+id).remove();
 
     var table = document.getElementById('tb_data');
     var rowCount = (table.rows.length);
-    alert(rowCount);
+    //alert(rowCount);
     for(i=1;i<=parseInt(rowCount);i++){
       table.rows[i].cells[0].align="center";
       table.rows[i].cells[0].innerHTML= i+".";
@@ -41,7 +42,8 @@ function add_row(){
 
     table.rows[rowCount].cells[0].innerHTML= rowCount+".";
     table.rows[rowCount].cells[1].innerHTML=" <input type=\"hidden\" name=\"HidProductID["+id_tb+"]\" value=\"\"><input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\">";
-    var url = "../backoffice/DropdownCategory";
+    var path = $('#rootPath').val();
+    var url = path+"backoffice/DropdownCategory";
     var random =  id_tb+""+parseInt((Math.random()*1690708)/10);
 
     var data = {id_tb:id_tb+"_"+random,CategoryID:''};
@@ -65,7 +67,8 @@ function add_row(){
   function add_select(id_tb,CategoryID){
    var random =  id_tb+""+parseInt((Math.random()*1600708)/10);
   // alert(random);
-     var url = "../backoffice/DropdownCategory";
+    var path = $('#rootPath').val();
+     var url = path+"backoffice/DropdownCategory";
      var data = {id_tb:id_tb+"_"+random,CategoryID:CategoryID};
      var val = "";
       $.post(url,data,function(msg){
@@ -88,7 +91,7 @@ function add_row(){
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
-  <li><a href="Product">รายการสินค้า</a></li>
+  <li><a href="<?php echo $arr_menuLink[3];?>">รายการสินค้า</a></li>
   <li class="active">จัดการรายการสินค้า</li>
 </ol>
 <div class="panel panel-default" style="margin-top:-20px;">
@@ -104,8 +107,7 @@ function add_row(){
   	data-target=".bs-example-modal-lg" onclick="add_row();" >
   	<i class='glyphicon glyphicon-plus'></i> เพิ่มรายการ</button>
   </div>
-  <form method="post" id="form-input" action="ProductForm" onsubmit="return confirm_save();">
-
+  <form method="post" id="form-input" action="<?php echo $path?>backoffice/ProductForm" onsubmit="return confirm_save();">
   <input  type="hidden" name="_method" value="POST">
   <div class="table-responsive" style="margin-top:10px;">
     <table class="table table-hover table-bordered"  id="tb_data">
@@ -187,7 +189,8 @@ function add_row(){
    </div>
    <div style="text-align:center">
    <button class="btn btn-primary btn-sm" type="submit"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
-  
+    <a href="<?php echo $path."backoffice/Product";?>">
+   <button class="btn btn-default btn-sm" type="button"><i class="glyphicon glyphicon-arrow-left"></i> ย้อนกลับ</button></a>
    </div>    
   </form>
 </div>

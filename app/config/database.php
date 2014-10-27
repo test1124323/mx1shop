@@ -46,10 +46,20 @@ return array(
 
 	'connections' => array(
 
-		'main' => array(
+		// 'main' => array(
+		// 	'driver'    => 'mysql',
+		// 	'host'      => 'localhost',
+		// 	'database'  => 'mx1shop',
+		// 	'username'  => 'root',
+		// 	'password'  => '',
+		// 	'charset'   => 'utf8',
+		// 	'collation' => 'utf8_unicode_ci',
+		// 	'prefix'    => '',
+		// ),
+			'main' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'mx1shop',
+			'database'  => 'mxshopco_shop',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
@@ -65,7 +75,6 @@ return array(
 			// 'charset'   => 'utf8',
 			// 'collation' => 'utf8_unicode_ci',
 			// 'prefix'    => '',
-		// ),
 
 	),
 
