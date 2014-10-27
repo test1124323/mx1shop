@@ -129,7 +129,7 @@ include("function.php");
               <td style=" text-align: center;" >
               <input type="checkbox" name="chk_productID[]" value="<?php echo $value['ProductID'];?>" > <?php echo ++$i.".";?>
               </td>
-              <td><?php echo sprintf("%07s",$value['ProductID']);?></td>
+              <td><a href="ProductForm/<?php echo $value['ProductID'];?>"><?php echo sprintf("%07s",$value['ProductID']);?></a></td>
               <td><?php echo $value['ProductName'];?></td>
               <td><?php
                 if($value['procate_category']){

@@ -5,17 +5,15 @@ include("function.php");
 $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการใช้งาน");
 ?>
 <script type="text/javascript">
-  function UserEdit(UserID){
-    $("#UserID").val(UserID);
-    $('#form-input').attr("method","POST").attr("action","UserEdit").submit();
-  }
   function delData(UserID){
   if(confirm("ยืนยันการลบ !! ")){
-    window.location.href="deleteCustomer/"+UserID;
+    $('#_method').val("DELETE");
+    $('#form-input').attr("method","POST").attr("action","User/"+UserID+"TypeUser=1").submit();
   }
 }
 function AddUser(){
-  $('#form-input').attr("method","POST").attr("action","UserEdit").submit();
+  
+  $('#form-input').attr("action","User/create").submit();
 }
 function Search(){
   $('#form-input').attr("action","Customer").submit();
@@ -35,7 +33,8 @@ function Search(){
 	<div class="panel-body">
 
   <div class="table-responsive" style="margin-top:10px;">
-  <form method="get"  id="form-input" >
+  <form method="GET"  id="form-input" >
+  <input type="hidden" name="_method" id="_method" value="GET">
   <fieldset>
     <legend>ค้นหา</legend>
     <div class="panel panel-default">
@@ -112,7 +111,6 @@ function Search(){
           <th width="10%"><div style=" text-align: center;">เบอร์โทร</div></th>
           <th width="10%"><div style=" text-align: center;">Email</div></th>             
           <th width="10%"><div style=" text-align: center;">Username</div></th>
-          <th width="10%"><div style=" text-align: center;">Password</div></th>
           <th width="10%"><div style=" text-align: center;">สถานะ</div></th>
           <th width="15%"><div style=" text-align: center;">จัดการ</div></th>
         </tr>
@@ -131,9 +129,11 @@ function Search(){
               <td><?php echo $value['UserTel'];?></td>
                <td><?php echo $value['Email'];?></td>
               <td><?php echo $value['UserName'];?></td>
-              <td><?php echo $value['PassWord'];?></td>
               <td><?php echo $arr_UserStatus[$value['ActiveStatus']];?></td>
-              <td class="text-center"><button type="button" class="btn btn-default btn-xs" onclick="UserEdit('<?php echo $value['UserID'];?>');"><i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
+              <td class="text-center">
+              <a href="User/<?php echo $value['UserID'];?>?TypeUser=1">
+              <button type="button" class="btn btn-default btn-xs" >
+              <i class="glyphicon glyphicon-pencil"></i> แก้ไข</button></a>
     <button type="button" class="btn btn-danger btn-xs" onclick="delData('<?php echo $value['UserID'];?>');"><i class="glyphicon glyphicon-trash"></i> ลบ</button></td>
             </tr>
             <?php
