@@ -41,7 +41,7 @@ window.location.href="#list";
 <div class="col-sm-10">
 <h3> </h3>
   <h4 class="h3-label">ที่อยู่ <span class="text-color-red">*</span></h4>
-  <input type="text" class="form-control square" name="address" placeholder="บ้านเลขที่ หมู่บ้าน ถนน เขต แขวง" value="<?php echo @$input['address']?>" required />
+  <input type="text" class="form-control square" name="address" placeholder="ที่อยู่ในการจัดส่งสินค้า" value="<?php echo @$input['address']?>" required />
 </div>
 <div class="col-sm-2"></div>
 <!-- !row -->
@@ -49,7 +49,7 @@ window.location.href="#list";
 <div class="col-sm-5">
 <h3> </h3>
   <h4 class="h3-label">รหัสไปรษณีย์ <span class="text-color-red">*</span></h4>
-  <input type="tel" class="form-control square" name="postcode" placeholder="รหัสไปรษณี" value="<?php echo @$input['postcode']?>" required />
+  <input type="tel" class="form-control square" name="postcode" placeholder="รหัสไปรษณีย์" value="<?php echo @$input['postcode']?>" required />
 </div>
 <div class="col-sm-5">
 <h3> </h3>
@@ -100,6 +100,40 @@ window.location.href="#list";
                                                               border:none;font-size:20px;width:78%;"><i class="glyphicon glyphicon-chevron-right"></i> ดำเนินการสั่งซื้อ</button>
 </div>
 </form>
+<div class="col-sm-11 about-to-pay">
+  <div class="col-sm-12"><h3 style="color:#FF8800;">ช่องทางการชำระเงิน</h3></div>
+  <div class="col-sm-12"><h4>ชื่อบัญชี นายธีรศักดิ์  ลีลาอดิศัย</h4></div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารกสิกรไทย สาขาสระบุรี</div>
+    <div class="col-sm-3">139-2-80992-5</div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารไทยพาณิชย์ โรบินสันสระบุรี</div>
+    <div class="col-sm-3">404-7-46941-3</div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารกรุงศรีอยุธยา โรบินสันสระบุรี</div>
+    <div class="col-sm-3">719-1-02381-9</div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารกรุงเทพ โรบินสันสระบุรี</div>
+    <div class="col-sm-3">585-7-02048-0</div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารกรุงไทย โรบินสันสระบุรี</div>
+    <div class="col-sm-3">982-6-14535-1</div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-6">ธนาคารทหารไทย โรบินสันสระบุรี</div>
+    <div class="col-sm-3">639-2-02909-3</div>
+  </div>
+  
+  <div class="col-sm-12"><hr></div>  
+  <div class="col-sm-12">หมายเหตุ : กรุณาโอนเงินเป็นเศษสตางค์เพื่อง่ายต่อการตรวจสอบ เช่น ยอดชำระ 350.00 บาท โอนเป็น 350.01 บาท เป็นต้น</div>
+  <div class="col-sm-12">หลังการชำระเงินเรียบร้อยแล้วให้ส่งหลักฐานการโอนเงินมาที่ <br/><b style="font-size:16px;"> Line: mx1shop</b><br/>  <b style="font-size:16px;">หรือโทร 061-410-3299</b></div>
+  <div class="col-sm-12"><h3 style="color:rgba(255,0,0,0.5);">อย่าชำระเงินก่อนได้รับการติดต่อกลับจากทางร้านนะครับ</h3></div>
+
+</div>
 <div class="col-sm-12" style="height:200px;"></div>
 </div>
 <!-- /content -->
