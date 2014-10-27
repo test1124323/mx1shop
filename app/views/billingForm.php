@@ -101,6 +101,7 @@ window.location.href="#list";
 </div>
 </form>
 <div class="col-sm-11 about-to-pay">
+<div class="col-sm-12"><h3 style="color:rgba(255,0,0,0.7);">**อย่าชำระเงินก่อนได้รับการติดต่อกลับจากทางร้านนะครับ**</h3></div>
   <div class="col-sm-12"><h3 style="color:#FF8800;">ช่องทางการชำระเงิน</h3></div>
   <div class="col-sm-12"><h4>ชื่อบัญชี นายธีรศักดิ์  ลีลาอดิศัย</h4></div>
   <div class="col-sm-12">
@@ -131,7 +132,7 @@ window.location.href="#list";
   <div class="col-sm-12"><hr></div>  
   <div class="col-sm-12">หมายเหตุ : กรุณาโอนเงินเป็นเศษสตางค์เพื่อง่ายต่อการตรวจสอบ เช่น ยอดชำระ 350.00 บาท โอนเป็น 350.01 บาท เป็นต้น</div>
   <div class="col-sm-12">หลังการชำระเงินเรียบร้อยแล้วให้ส่งหลักฐานการโอนเงินมาที่ <br/><b style="font-size:16px;"> Line: mx1shop</b><br/>  <b style="font-size:16px;">หรือโทร 061-410-3299</b></div>
-  <div class="col-sm-12"><h3 style="color:rgba(255,0,0,0.5);">อย่าชำระเงินก่อนได้รับการติดต่อกลับจากทางร้านนะครับ</h3></div>
+  
 
 </div>
 <div class="col-sm-12" style="height:200px;"></div>
