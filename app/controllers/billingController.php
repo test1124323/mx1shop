@@ -24,7 +24,7 @@ class billingController extends \BaseController {
 	 */
 	public function create()
 	{
-		//   
+		
 	}
 
 
@@ -96,8 +96,7 @@ class billingController extends \BaseController {
 			Cart::clearProduct();
 
 		});
-
-		return View::make('bill',array());
+		return Redirect::to('billing/'.$maxID);
 	}
 
 
@@ -109,7 +108,8 @@ class billingController extends \BaseController {
 	 */
 	public function show($id)
 	{
-
+		$order 	=	OrderModel::find($id)->toArray();
+		return View::make("bill",array('detail'=>$order));
 	}
 
 
