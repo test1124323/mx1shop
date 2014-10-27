@@ -6,9 +6,9 @@ include("webHead.php");
 window.location.href="#list";
 </script>
 <!-- content  -->
-<div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">ตระกร้า</h4></div>
+<div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">ตะกร้าสินค้า</h4></div>
 <div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
-<div style="padding-left:20px;"><h2 class="title-text-x">รายการสินค้าในตระกร้า</h2></div>
+<div style="padding-left:20px;"><h2 class="title-text-x">รายการสินค้าในตะกร้าสินค้า</h2></div>
 <div style="padding-left:0px;"><br/>
 <?php if(Input::has('updated')&&Input::get('updated')=='1'){?>
 <div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-remove-sign" style="font-size:20px;"></i>  ยังไม่มีรายการสั่งซื้อ</div>
@@ -31,7 +31,7 @@ window.location.href="#list";
   {
     ?>
     <tr style="color:#666; font-weight:bold;">
-      <td colspan="6" style="color:#888;padding:15px;">ยังไม่มีสินค้าในตะกร้า</td>
+      <td colspan="6" style="color:#888;padding:15px;">ยังไม่มีสินค้าในตะกร้าสินค้า</td>
     </tr>
     <?php
   }

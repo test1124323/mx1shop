@@ -108,7 +108,7 @@ foreach ($detail['product_img'] as $key => $value) {
           <input type="number" class="form-control" id="ProductCount" name="ProductCount" style="border-radius:0px !important;text-align:right;" min = '1' value="1">
           <span class="input-group-addon">ชิ้น</span>
         </div>
-        <button type="submit" class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="<?php echo $path;?>img/cart.png" width="23px">หยิบใส่ตระกร้า</button>
+        <button type="submit" class="btn btn-default" style="color:#FFF;background:#666;border-radius:2px !important;"><img src="<?php echo $path;?>img/cart.png" width="23px">หยิบใส่ตะกร้า</button>
     </form>
     </div>
 
