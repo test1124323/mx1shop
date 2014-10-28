@@ -42,7 +42,7 @@ $arr_menu = array('0'=>'รายการสั่งสินค้า&nbsp&nb
 );
 $arr_menuLink = array('0'=>$path.'backoffice/Order','2'=>$path.'backoffice/Payment','1'=>'#','3'=>$path.'backoffice/Product');
 $arr_sub1 = array('1'=>'หมวดสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
-$arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>'','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee');
+$arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>$path.'backoffice/Topic','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee');
 ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
