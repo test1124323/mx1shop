@@ -140,6 +140,14 @@ $url = "";
   				<div class="col-sm-4">ชำระเงินเมื่อ : </div>
   				<div class="col-sm-8"><?php echo conv_date($result[0]['PaymantDate']);?></div>
   			</div>
+  			<div class="row">
+  				<div class="col-sm-4">ค้าจัดส่ง : </div>
+  				<div class="col-sm-8"><?php echo number_format($result[0]['DeliverCost'],2)." บาท";?></div>
+  			</div>
+  			<div class="row">
+  				<div class="col-sm-4">จำนวนเงินที่ชำระทั้งหมด : </div>
+  				<div class="col-sm-8"><?php echo number_format($result[0]['payment']['PaymentTotal'],2)." บาท";?></div>
+  			</div>
   		</div>
   	</div>
 </div>
@@ -249,6 +257,19 @@ if($result[0]['OrderStatus']>='3'){
 			</div>
 			<br>
 			<div class="row">
+				<div class="col-sm-3" >ค่าจัดส่ง</div>
+				<div class="col-sm-6">
+
+				<div class="input-group">
+  						<span class="input-group-addon">TH</span>
+  						<input type="text" class="form-control text-right" onblur="NumberFormat(this,2);"  
+  						placeholder="ค่าจัดส่ง" name="DeliverCost" id="DeliverCost" value="<?php echo number_format($result[0]['DeliverCost'],2);?>">
+  					<span class="input-group-addon">บาท</span> 
+				</div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
 				<div class="col-sm-3" >จำนวนเงิน</div>
 				<div class="col-sm-6">
 
@@ -271,6 +292,7 @@ if($result[0]['OrderStatus']>='3'){
 					</div>
 			</div>
 			</div>
+
 		  </div>
 		</div>
 		</div>
