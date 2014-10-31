@@ -1,10 +1,13 @@
 <?php
 include("webHead.php");
 ?>
+<div class="col-sm-12" style="background:#FFF;">
 <script>
 window.location.href="#list";
 </script>
- 
+<!--  header("Content-type:application/pdf");
+header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
+
 <!-- content -->
 <!-- 		// [OrderID] => 201410000015
 	 //    [UserID] => 
@@ -33,16 +36,32 @@ window.location.href="#list";
 	 //                )
 
 	 //        ) -->
-<center>
-<h3>สั่งซื้อสินค้าเรียบร้อย</h3><br/>
-<h4>รหัสการสั่งซื้อ <?php echo $detail['OrderID']?> ผู้สั่งสินค้า <?php echo $detail['FullName']?></h4>
 
-<h5>ที่อยู่ในการจัดส่งสินค้า <?php echo $detail['Address']?> <?php echo $detail['PostCode']?> โทร. <?php echo $detail['TelNumber']?></h5>
-<h5>Email <?php echo $detail['Email']?></h5>
+<div class="col-sm-12"> </div>
+<div class="col-sm-12">
+<center>
+<h3 style="color:#5AD10A;">สั่งซื้อสินค้าเรียบร้อย</h3>
+<h1><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i></h1>
+<hr>
+</div>
 </center>
+<div class="col-sm-5">
+<h4>รหัสการสั่งซื้อ <?php echo $detail['OrderID']?></h4>
+</div>
+<div class="col-sm-6">
+<h4>ผู้สั่งสินค้า <?php echo $detail['FullName']?></h4>
+</div>
+<div class="col-sm-12">
+<h5><b>ที่อยู่ในการจัดส่งสินค้า</b> : <?php echo $detail['Address']?> <?php echo $detail['PostCode']?></h5>
+</div>
+<div class="col-sm-5">
+<h5><b>โทร.</b> <?php echo $detail['TelNumber']?></h5>
+</div>
+<div class="col-sm-6"><b>Email</b> : <?php echo $detail['Email']?></div>
+
 <!-- /content -->
 
-
+</div>
 <?php
 include("webFoot.php");
 ?>
