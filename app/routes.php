@@ -45,3 +45,6 @@ Route::resource('/backoffice/User','UserController');
 Route::resource('/backoffice/Customer','UserController@Customer');
 Route::resource('/backoffice/Employee','UserController@Employee');
 //end uder
+//contact
+Route::resource('/backoffice/Topic','TopicManageController');
+//end contact

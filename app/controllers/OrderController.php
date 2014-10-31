@@ -80,9 +80,11 @@ class OrderController extends \BaseController {
 		$OrderStatus = "";
 		$PaymentTotal = 0;
 		$PaymantDate = NULL;
+		$DeliverCost = 0;
 		//PaymentTotal
 		if (Input::has('PaymentTotal')){
 			$PaymentTotal = preg_replace($pattern,$replacement,Input::get('PaymentTotal'));
+			$DeliverCost = preg_replace($pattern,$replacement,Input::get('DeliverCost'));
 			$PaymantDate = $this->conv_data_db(Input::get('PaymantDate'));
 
 		}
@@ -98,6 +100,7 @@ class OrderController extends \BaseController {
 		$Order->OrderStatus = $OrderStatus;
 		$Order->DeliveredDate = $dateDelivered;
 		$Order->PaymantDate = $PaymantDate;
+		$Order->DeliverCost = $DeliverCost;
 		$Order->save();
 
 		if($PaymantDate!=NULL){
@@ -124,8 +127,8 @@ class OrderController extends \BaseController {
 		if($id){
 			
 			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
-			$result = OrderModel::where('OrderID','=',$id)->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
-			//print_r($result);
+			$result = OrderModel::where('OrderID','=',$id)->with("Payment")->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
+			//echo "<pre>";print_r($result);echo "</pre>";
 			return View::make("/back_setup/OrderDetail",array('result'=>$result));
 		}else{
 			return Redirect::to('backoffice/Order');

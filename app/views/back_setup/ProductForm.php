@@ -56,7 +56,7 @@ function add_row(){
     
     
     table.rows[rowCount].cells[3].innerHTML='<input id="ProductAmount'+id_tb+'" onBlur="NumberFormat(this,0);"  style=" text-align: right;" name="ProductAmount['+id_tb+'][]" class="form-control" value="" placeholder="จำนวน">';
-    table.rows[rowCount].cells[4].innerHTML='<input id="ProductSalePrice'+id_tb+'" style=" text-align: right;" onBlur="NumberFormat(this,2);" name="ProductSalePrice['+id_tb+'][]" class="form-control" value="" placeholder="ราคาขาย">';
+    table.rows[rowCount].cells[4].innerHTML='<div><input id="ProductSalePrice'+id_tb+'" style=" text-align: right;" onBlur="NumberFormat(this,2);" name="ProductSalePrice['+id_tb+'][]" class="form-control" value="" placeholder="ราคาขาย"></div><div style="margin-top:10px">ค่าจัดส่ง</div><div style="margin-top:10px"><input id="DeliverCost'+id_tb+'" style=" text-align: right;" onBlur="NumberFormat(this,2);" name="DeliverCost['+id_tb+'][]" class="form-control" value="" placeholder="ค่าจัดส่ง"></div>';
     
     table.rows[rowCount].cells[5].innerHTML='<div class="row"><div class="col-xs-2">ย่อ</div><div class="col-xs-9"><textarea class="form-control"  placeholder="คำอธิบายย่อ" name="ProductShortDESC['+id_tb+'][]"></textarea></div></div><br><div class="row"><div class="col-xs-2">ละเอียด</div><div class="col-xs-9"><textarea class="form-control"  placeholder="คำอธิบายละเอียด" name="ProductDESC['+id_tb+'][]"></textarea></div></div>';
 
@@ -117,7 +117,7 @@ function add_row(){
     			<th width="20%"><div  style=" text-align: center;">ชื่อรายการสินค้า</div></th>
     			<th width="20%"><div style=" text-align: center;">หมวดสินค้า</div></th>     			
     			<th width="10%"><div style=" text-align: center;">จำนวน</div></th>
-    			<th width="10%"><div style=" text-align: center;">ราคาขาย/หน่วย</div></th>
+    			<th width="10%"><div style=" text-align: center;">ราคาขาย&ค่าจัดส่ง</div></th>
           <th width="30%"><div style=" text-align: center;">คำอธิบาย</div></th>
     			<th width="5%"><div style=" text-align: center;">จัดการ</div></th>
     		</tr>
@@ -165,7 +165,24 @@ function add_row(){
                 ?>
               </td>
               <td style=" text-align: center;"><input id="ProductAmount<?php echo $id_tb;?>" onBlur="number_format(this,0);"  style=" text-align: right;" name="ProductAmount[<?php echo $id_tb;?>][]" class="form-control" value="<?php echo $value['ProductAmount'];?>" placeholder="จำนวน"></td>
-              <td style=" text-align: center;"><input id="ProductSalePrice<?php echo $id_tb;?>" style=" text-align: right;" onBlur="number_format(this,2);" name="ProductSalePrice[<?php echo $id_tb;?>][]" class="form-control" value="<?php echo number_format($value['ProductSalePrice'],2);?>" placeholder="ราคาขาย"></td>
+              <td style=" text-align: center;">
+              <div>
+                <input id="ProductSalePrice<?php echo $id_tb;?>" style=" text-align: right;" 
+              onBlur="number_format(this,2);" name="ProductSalePrice[<?php echo $id_tb;?>][]" 
+              class="form-control" value="<?php echo number_format($value['ProductSalePrice'],2);?>"
+               placeholder="ราคาขาย">
+              </div>
+              <div style="margin-top:10px">
+                ค่าจัดส่ง
+              </div>
+              <div style="margin-top:10px">
+                <input id="DeliverCost<?php echo $id_tb;?>" style=" text-align: right;" 
+              onBlur="number_format(this,2);" name="DeliverCost[<?php echo $id_tb;?>][]" 
+              class="form-control" value="<?php echo number_format($value['DeliverCost'],2);?>"
+               placeholder="ค่าจดส่ง">
+              </div>
+
+              </td>
               <td><div class="row">
               <div class="col-xs-2">ย่อ</div>
                 <div class="col-xs-9">

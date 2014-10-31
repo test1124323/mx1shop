@@ -60,12 +60,13 @@ class ProductManageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//echo "store";exit();
+		//echo "<pre>";print_r(Input::get());echo "</pre>";
+		//exit();
 		try{
 		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
-		$Input = Input::get();
+		$Input = Input::all();
 		//echo preg_replace($pattern, $replacement, $string);
 			//*************//
 		$date = date('Y-m-d');
@@ -79,6 +80,7 @@ class ProductManageController extends \BaseController {
 				$ProductShortDESC = $Input['ProductShortDESC'][$key][0];
 				$ProductAmount = $Input['ProductAmount'][$key][0];
 				$ProductSalePrice = $Input['ProductSalePrice'][$key][0];
+				$DeliverCost = $Input['DeliverCost'][$key][0];
 
 			if(empty($HidProductID)){
 				
@@ -89,8 +91,8 @@ class ProductManageController extends \BaseController {
 				$Product->ProductAmount = preg_replace($pattern,$replacement,$ProductAmount);
 				$Product->ProductShortDESC = $ProductShortDESC;
 				$Product->ProductDESC = $ProductDESC;
+				$Product->DeliverCost = preg_replace($pattern,$replacement,$DeliverCost);
 				$Product->ProductDate = ''.$date;
-
 				$Product->save();
 
 				//get max id
@@ -117,7 +119,7 @@ class ProductManageController extends \BaseController {
 					$Product->ProductShortDESC = $ProductShortDESC;
 					$Product->ProductDESC = $ProductDESC;
 					$Product->ProductDate = ''.$date;
-
+					$Product->DeliverCost = preg_replace($pattern,$replacement,$DeliverCost);
 					$Product->save();
 
 					//cate
