@@ -106,6 +106,15 @@ class billingController extends \BaseController {
 			Cart::clearProduct();
 
 		});
+		// mail
+		$data = array("sss");
+		Mail::send('emails.billingmail', $data, function($message)
+		{
+		    $message->from('lusiaskolonie@gmail.com', 'Laravel');
+
+		    $message->to('lusiaskolonie@gmail.com');
+		});
+
 		return Redirect::to('billing/'.$maxID);
 	}
 

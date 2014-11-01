@@ -62,7 +62,7 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 <div class="col-sm-12">
 	<table class="table"> 
 	  <tr class="tr-head">
-	    <td class="table-head" width="30px;" ></td>
+	    <td class="table-head" width="120px;" ></td>
 	    <td class="table-head" >สินค้า</td>
 	    <td class="table-head"  width="100px;">ราคา</td>
 	    <td class="table-head"  width="100px;">จำนวน</td>
@@ -84,10 +84,10 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 	  ?>
 	  <tr style="color:#666; font-weight:bold;">
 	    <td class="table-head" ><h5><?php echo @++$i;?></h5></td>
-	    <td class="table-head" ><h5><?php echo $value['ProductName'];?></h5></td>
-	    <td class="table-head" ><h5><?php echo empty($value['ProductPrice'])?"":number_format($value['ProductPrice'])." ฿";?></h5></td>
+	    <td class="table-head" ><h5 style="text-align:left;"><?php echo $value['ProductName'];?></h5></td>
+	    <td class="table-head" ><h5 style="text-align:right;"><?php echo empty($value['ProductPrice'])?"":number_format($value['ProductPrice'])." ฿";?></h5></td>
 	    <td class="table-head" ><h5><?php echo empty($value['OrderAmount'])?"":$value['OrderAmount'];?></h5></td>
-	    <td class="table-head" ><h5><?php echo number_format($value['OrderPriceTotal']);?> ฿</h5></td>
+	    <td class="table-head" ><h5 style="text-align:right;"><?php echo number_format($value['OrderPriceTotal']);?> ฿</h5></td>
 	  </tr>
 	  <?php
 	    $total += intval($value['OrderPriceTotal']);
