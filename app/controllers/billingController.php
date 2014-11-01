@@ -83,7 +83,17 @@ class billingController extends \BaseController {
 			array_push($child, $childModel);
 
 		}
-		
+
+			$childModel 					= new OrderDetailModel;
+		    $childModel->OrderID 			= $maxID;
+		    $childModel->ProductID 			= null;
+		    $childModel->ProductName 		= "ค่าจัดส่ง";
+		    $childModel->OrderAmount 		= 0;
+		    $childModel->ProductPrice 		= 0;
+		    $childModel->OrderPriceTotal 	= intval(Session::get('deliverCost'));
+
+			array_push($child, $childModel);
+
 		DB::transaction(function() use ($child,$order)
 		{
 			foreach ( Shelf::buy($child) as $key => $objChild) {

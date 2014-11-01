@@ -16,6 +16,7 @@ class SessionCart{
 				}
 			}
 		}
+		
 		return $productInCart;
 	}
 

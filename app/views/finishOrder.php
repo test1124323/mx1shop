@@ -34,34 +34,45 @@ window.location.href="#list";
       <td colspan="6" style="color:#888;padding:15px;">ยังไม่มีสินค้าในตะกร้าสินค้า</td>
     </tr>
     <?php
-  }
-  $total = 0;
-  foreach ($productInCart as $key => $value) {
-  ?>
-  <tr style="color:#666; font-weight:bold;">
-    <td class="table-head" style="font-size:10px;"><a href="<?php echo Request::root()?>/cancelOrder/<?php echo $key;?>"><i  class="glyphicon glyphicon-remove cancel-order"></i></a></td>
-    <td  class"picCart"><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>">
-    <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo @$value['detail']['product_cover'][0]['ProductIMG'];?>);
-                  background-position:center;
-                  background-size:cover;
-                  background-repeat:no-repeat; border-radius:10px;
-                  margin:0px;">
-    </div></a>
-    </td>
-    <td class="table-head" ><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>"><h5><?php echo $value['detail']['ProductName'];?></h5></td>
-    <td class="table-head" ><h5><?php echo number_format($value['detail']['ProductSalePrice']);?> ฿</h5></td>
-    <td class="table-head" ><h5><?php echo $value['amount'];?></h5></td>
-    <td class="table-head" ><h5><?php $sum = (intval($value['amount'])*intval($value['detail']['ProductSalePrice'])); 
-                                      echo number_format($sum);?> ฿</h5></td>
-  </tr>
-  <?php
-    $total += $sum;
-  }
-  ?>
+  }else{
+      $total = 0;
+      foreach ($productInCart as $key => $value) {
+      ?>
+      <tr style="color:#666; font-weight:bold;">
+        <td class="table-head" style="font-size:10px;"><a href="<?php echo Request::root()?>/cancelOrder/<?php echo $key;?>"><i  class="glyphicon glyphicon-remove cancel-order"></i></a></td>
+        <td  class"picCart"><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>">
+        <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo @$value['detail']['product_cover'][0]['ProductIMG'];?>);
+                      background-position:center;
+                      background-size:cover;
+                      background-repeat:no-repeat; border-radius:10px;
+                      margin:0px;">
+        </div></a>
+        </td>
+        <td class="table-head" ><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>"><h5><?php echo $value['detail']['ProductName'];?></h5></td>
+        <td class="table-head" ><h5><?php echo number_format($value['detail']['ProductSalePrice']);?> ฿</h5></td>
+        <td class="table-head" ><h5><?php echo $value['amount'];?></h5></td>
+        <td class="table-head" ><h5><?php $sum = (intval($value['amount'])*intval($value['detail']['ProductSalePrice'])); 
+                                          echo number_format($sum);?> ฿</h5></td>
+      </tr>
+      <?php
+        $total += $sum;
+      }
+      $dc     = intval(Session::get('deliverCost'));
+      $total  += $dc;
+      ?>
+      <tr style="color:#666; font-weight:bold;">
+        <td class="table-head" style="font-size:10px;"></td>
+        <td  class"picCart"></td>
+        <td class="table-head" ><h5><b>ค่าจัดส่ง</b></h5></td>
+        <td class="table-head" ><h5></h5></td>
+        <td class="table-head" ></td>
+        <td class="table-head" ><h5><?php echo number_format($dc);?> ฿</h5></td>
+      </tr>
+  <?php }?>
   </table>
 </div>
 
-<div class="col-sm-6" style="float:right; width:45%;text-align:right;padding:5px 30px 10px 0; color:#555;"><span style="font-size:18px;">ยอดรวมทั้งหมด</span>  <span style="font-size:24px;"><?php echo number_format($total);?> ฿</span></div>
+<div class="col-sm-6" style="float:right; width:45%;text-align:right;padding:5px 30px 10px 0; color:#555;"><span style="font-size:18px;">ยอดรวมทั้งหมด</span>  <span style="font-size:24px;"><?php echo @number_format($total);?> ฿</span></div>
 
 <div class="col-sm-6">
 <a href="<?php echo Request::root();?>/cart"><button class="btn btn-default" style="z-index:9999; margin-top:10px;"><i class="glyphicon glyphicon-refresh"></i> อัพเดทรายการสินค้า</button></a>

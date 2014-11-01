@@ -10,6 +10,7 @@ class cartController extends \BaseController {
 	public function index()
 	{
 		$productInCart  =  array();
+		$deliverCost 	=	array();
 		foreach (Session::all() as $key => $value) {
 			if(!is_array($value)){
 				if(strpos($key,'P_')!==false){
@@ -17,9 +18,12 @@ class cartController extends \BaseController {
 					$id = substr($key, 2);
 					$productInCart[$key]['amount']	= $value;
 					$productInCart[$key]['detail'] 	= Product::find($id)->toArray();
+					array_push($deliverCost, $productInCart[$key]['detail']['DeliverCost']);			
 				}
 			}
 		}
+		$maxDC	=	@intval(max($deliverCost));
+		Session::put('deliverCost',$maxDC);
 		return View::make('finishOrder',array('productInCart'=>$productInCart));
 	}
 
@@ -84,7 +88,7 @@ class cartController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 *
+	 * 
 	 * @param  int  $id
 	 * @return Response
 	 */
