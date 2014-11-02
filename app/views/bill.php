@@ -107,7 +107,7 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 </style>
 
 <?php 
-if(!Input::has("mode")&&empty($mode)){
+if(@$mode!='email'){
 	include('aboutpay.php');
 }
 ?>

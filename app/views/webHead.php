@@ -58,8 +58,7 @@ $path = $data['path'];
 <nav class="navbar navbar-default navbar-static" style="margin-bottom:0px;z-index:10000;">
 
     <div id="account_head" align="right">
-    ล็อกอิน  |  
-    ติดต่อเรา
+    ล็อกอิน  
     </div>
 
     <div class="navbar-header">
@@ -129,7 +128,7 @@ $path = $data['path'];
             <h2 class="corue-head">MX1 Shop</h2>
             
             <p class="tagDetail" >หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
-            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            <!-- <button class="btn btn-danger"> สั่งซื้อทันที </button> -->
             </p>
             </div>
           </div>
@@ -142,7 +141,7 @@ $path = $data['path'];
             <h2 class="corue-head">ล้อแม็กซ์ราคาถูก</h2>
             
             <p class="tagDetail">หากคุณกำลังมองหาร้านขายอุปกรณ์ประดับยนต์ที่มีคุณภาพ mx1 shop มีให้เลือกสรรค์มากมายกว่า 400 รายการ <br/><br/>
-            <button class="btn btn-danger"> สั่งซื้อทันที </button>
+            <!-- <button class="btn btn-danger"> สั่งซื้อทันที </button> -->
             </p>
             </div>
           </div>
