@@ -9,6 +9,9 @@ window.location.href="#list";
   .h3-label{
     color:#999999;
   }  
+  .input{
+    border: thin solid #FBFBFB !important;
+  }
 </style>
 
 <div class="col-sm-12" style="padding-top:10px;">
@@ -27,20 +30,20 @@ window.location.href="#list";
 <!-- row -->
 <div class="col-sm-5">
   <h3> </h3>
-  <h4 class="h3-label">ชื่อ <span class="text-color-red">*</span></h4>
-  <input type="text" class="form-control square" name="fname" value="<?php echo @$input['fname']?>" required />
+  <!-- <h4 class="h3-label">ชื่อ <span class="text-color-red">*</span></h4> -->
+  <input type="text" class="form-control square" placeholder="ชื่อ" name="fname" value="<?php echo @$input['fname']?>" required />
 </div>
 <div class="col-sm-5">
   <h3> </h3>
-  <h4 class="h3-label">สกุล <span class="text-color-red">*</span></h4>
-  <input type="text" class="form-control square" name="lname" value="<?php echo @$input['lname']?>" required />
+  <!-- <h4 class="h3-label">สกุล <span class="text-color-red">*</span></h4> -->
+  <input type="text" class="form-control square" placeholder="สกุล" name="lname" value="<?php echo @$input['lname']?>" required />
 </div>
 <div class="col-sm-2"></div>
 <!-- !row -->
 <!-- row -->
 <div class="col-sm-10">
 <h3> </h3>
-  <h4 class="h3-label">ที่อยู่ <span class="text-color-red">*</span></h4>
+  <!-- <h4 class="h3-label">ที่อยู่ <span class="text-color-red">*</span></h4> -->
   <input type="text" class="form-control square" name="address" placeholder="ที่อยู่ในการจัดส่งสินค้า" value="<?php echo @$input['address']?>" required />
 </div>
 <div class="col-sm-2"></div>
@@ -48,20 +51,20 @@ window.location.href="#list";
 <!-- row -->
 <div class="col-sm-5">
 <h3> </h3>
-  <h4 class="h3-label">รหัสไปรษณีย์ <span class="text-color-red">*</span></h4>
+  <!-- <h4 class="h3-label">รหัสไปรษณีย์ <span class="text-color-red">*</span></h4> -->
   <input type="tel" class="form-control square" name="postcode" placeholder="รหัสไปรษณีย์" value="<?php echo @$input['postcode']?>" required />
 </div>
 <div class="col-sm-5">
 <h3> </h3>
-  <h4 class="h3-label">เบอร์โทรศัพท์ <span class="text-color-red">*</span></h4>
+  <!-- <h4 class="h3-label">เบอร์โทรศัพท์ <span class="text-color-red">*</span></h4> -->
   <input type="tel" class="form-control square" name="telnumber" placeholder="เบอร์โทรศัพท์" value="<?php echo @$input['telnumber']?>" required />
 </div>
 <div class="col-sm-2"></div>
 <!-- !row -->
 <!-- row -->
-<div class="col-sm-10">
+<div class="col-sm-5">
 <h3> </h3>
-  <h4 class="h3-label">E-mail <span class="text-color-red">*</span></h4>
+  <!-- <h4 class="h3-label">E-mail <span class="text-color-red">*</span></h4> -->
   <input type="email" class="form-control square" name="email" placeholder="example@email.com" value="<?php echo @$input['email']?>" required />
 </div>
 <div class="col-sm-2"></div>
