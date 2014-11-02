@@ -25,6 +25,11 @@ Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 
 Route::resource('/backoffice/catePop','catePopController');
 
+Route::get('How-to-order',function(){
+	return View::make('howtoorder');
+});
+// Route::resuorce('How-to-pay','howtopayController');
+
 
 Route::resource('/backoffice/Product','ProductController');
 Route::resource('/backoffice/ProductForm','ProductManageController');

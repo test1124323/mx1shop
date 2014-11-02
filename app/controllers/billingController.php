@@ -104,14 +104,15 @@ class billingController extends \BaseController {
 				$mChild->save();
 			}
 			Cart::clearProduct();
-
+ 
 		});
 		//pdf
 		//-------
 		// mail
-		Mail::send('emails.billingmail', array(), function($message)
+		$order 	=	OrderModel::find($maxID)->toArray();
+		Mail::send('bill', array('detail'=>$order ,'mode'=>'email'), function($message)
 		{
-		    $message->to(Config::get('mail.adminMail'));
+		    $message->to(Config::get('mail.adminMail'))->subject('สั่งสินค้า');
 		});
 
 		return Redirect::to('billing/'.$maxID);
