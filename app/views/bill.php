@@ -1,41 +1,12 @@
 <?php
 include("webHead.php");
 ?>
-<div class="col-sm-12" style="background:#FFF;">
+<div class="col-sm-12" style="background:#FFF;" id="printarea">
 <script>
 window.location.href="#list";
 </script>
 <!--  header("Content-type:application/pdf");
 header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
-
-<!-- content -->
-<!-- 		// [OrderID] => 201410000015
-	 //    [UserID] => 
-	 //    [OrderDate] => 2014-10-27 14:52:15
-	 //    [DeliveredDate] => 
-	 //    [PaymantDate] => 
-	 //    [PaymentDetail] => 
-	 //    [FullName] => aaaaaa bb
-	 //    [Address] => s
-	 //    [TelNumber] => 1111111111
-	 //    [PostCode] => 30000
-	 //    [Email] => aaaa@aaaa.com
-	 //    [OrderStatus] => 0
-	 //    [StatusNew] => 1
-	 //    [order_detail] => Array
-	 //        (
-	 //            [0] => Array
-	 //                (
-	 //                    [AutoID] => 17
-	 //                    [OrderID] => 201410000015
-	 //                    [ProductID] => 1
-	 //                    [ProductName] => กระจกมองหลัง
-	 //                    [OrderAmount] => 1
-	 //                    [ProductPrice] => 450
-	 //                    [OrderPriceTotal] => 450
-	 //                )
-
-	 //        ) -->
 
 <div class="col-sm-12"> </div>
 <div class="col-sm-12">
@@ -43,8 +14,8 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 <div class="alert alert-success" role="alert"><b>ดำเนินการสั่งซื้อสินค้าเรียบร้อย</b></div>
 <!-- <h1><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i></h1> -->
 <div class="col-sm-12" align="right">
-	<button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-save"></i> save pdf</button>
-	<button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-print"></i> print</button>
+	<a href="<?php echo Request::root();?>/billingSave/<?php echo $detail['OrderID'];?>?mode=pdf" target="_blank"><button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-save"></i> save pdf</button></a>
+	<a href="<?php echo Request::root();?>/billingSave/<?php echo $detail['OrderID'];?>?mode=print" target="_blank"><button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-print"></i> print</button></a>
 
 </div>
 <hr>

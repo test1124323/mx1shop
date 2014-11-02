@@ -30,6 +30,7 @@ return array(
     'Normalizer' => array($vendorDir . '/patchwork/utf8/class'),
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Lowerends\\Mpdf' => array($vendorDir . '/lowerends/l4-mpdf/src'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src'),
     'Illuminate' => array($vendorDir . '/laravel/framework/src'),

@@ -18,6 +18,7 @@ Route::resource('cart','cartController');
 Route::get('cancelOrder/{id}','cartController@destroy');
 
 Route::resource('billing','billingController');
+Route::resource('billingSave','billingPDFController');
 
 Route::resource('/backoffice/Cate','CateController');
 Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
