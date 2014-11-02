@@ -40,7 +40,7 @@ foreach ($productlist as $pkey => $pvalue) {
  ?>
 <div class="col-sm-<?php echo $size?> product-head">
 
-          <a href="main/<?php echo $pvalue['ProductID']?>">
+          <a href="main/<?php echo $pvalue['ProductID']?>" style="text-decoration:none;">
 
           <div class="ProductPic" 
           style="background:url(img/product_tmp/<?php echo @$coverImg[$pvalue['ProductID']];?>);
@@ -48,11 +48,12 @@ foreach ($productlist as $pkey => $pvalue) {
                   background-size:cover;
                   background-repeat:no-repeat;">
           </div>
-          </a>
+          
 
-          <div style="padding:13px 0 0 7px;color:#888;font-size:14px;"><b>รหัสสินค้า : </b><?php echo str_pad($pvalue['ProductID'], 7 , '0' , STR_PAD_LEFT);?></div>
-          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>ชื่อสินค้า : </b><?php echo $pvalue['ProductName'];?></div>
+          <div style="padding:13px 0 0 7px;color:#555;font-size:14px;"><b>ชื่อสินค้า : <?php echo $pvalue['ProductName'];?></b></div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>รหัสสินค้า : </b><?php echo str_pad($pvalue['ProductID'], 7 , '0' , STR_PAD_LEFT);?></div>
           <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>ราคา : <?php echo number_format($pvalue['ProductSalePrice']);?>฿</b></div>
+          </a>
 </div>
 
 <?php

@@ -191,14 +191,14 @@ $path = $data['path'];
 </div>
 
 
-<div class="col-xs-12" style=" background:#EFEFEF;padding:0px;">
+<div class="col-xs-12" style=" background:#F8F8F8;padding:0px;">
 <!-- left side -->
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
 <div class="input-group col-sm-12" style="padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
 <form name="search" method="get" action="<?php echo url('main')?>">
       <div class="search-text">Search</div>
-      <input name="keyword" type="text" class="form-control " placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
+      <input name="keyword" type="text" style="text-align:center;font-weight:bold;" class="form-control " placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
       <select name="cate" class="form-control" style="border-radius:2px;border:none;border-bottom: solid 2px #CCCCCC !important;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
@@ -229,7 +229,7 @@ $path = $data['path'];
       ?>
       </select>
       <br/><br/>
-      <button class="btn btn-default col-sm-6" type="submit" style="float:right"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+      <button class="btn btn-success col-sm-6" type="submit" style="float:right"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
 </form>
 </div><!-- /input-group -->
 
@@ -252,7 +252,7 @@ $path = $data['path'];
   
     foreach ($cate1 as $k1 => $v1) {
       ?>
-      <li class="list-group-item catelist" style="font-size:17px;"><a href="<?php echo url('main')?>?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></li>
+      <li class="list-group-item catelist" style="font-size:14px;"><b><a href="<?php echo url('main')?>?cate=<?php echo $v1['CategoryID'];?>"><?php echo $v1['CategoryName'];?></a></b></li>
       <?php
       foreach ($cate2 as $k2 => $v2) {
         if($v2['CateParentID']==$v1['CategoryID']){
