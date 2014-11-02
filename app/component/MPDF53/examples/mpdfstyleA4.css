@@ -1,0 +1,15 @@
+.linepdf{ 	 
+		 border-bottom-width: 1px;
+        border-bottom-style: dotted;
+        border-bottom-color: #000;
+		}
+div.color {
+  border-bottom-width:2px;
+  border-bottom-style:dotted;
+  border-bottom-color:#ff9900;
+  }
+  }		
+#mydiv{
+	color: purple;
+    background-color: #d8da3d;
+}		
