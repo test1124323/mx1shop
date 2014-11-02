@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'mail',
+	'driver' => 'smtp',
 
 	
 
@@ -30,7 +30,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'lusiaskolonie@gmail.com', 'name' => 'mx1shop'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'mx1app.info@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'b4ec18ff92ec7715020d16d10b0aeda4',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,6 +120,7 @@ return array(
 	| you may inspect the message. This is great for local development.
 	|
 	*/
+	'adminMail' => 'lusiaskolonie@gmail.com',
 
 	'pretend' => false,
 

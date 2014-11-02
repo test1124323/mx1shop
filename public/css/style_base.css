@@ -1,3 +1,11 @@
+.bill-btn{
+	width: 100px;
+	background: #F5F5F5;
+}
+.flat-btn{
+	border: none;
+	box-shadow: none !important;
+}
 .about-to-pay{
 	margin-top: 20px;
 	padding: 20px; 

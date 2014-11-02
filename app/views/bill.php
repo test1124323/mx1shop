@@ -40,8 +40,13 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 <div class="col-sm-12"> </div>
 <div class="col-sm-12">
 <center>
-<h3 style="color:#5AD10A;">ดำเนินการสั่งซื้อสินค้าเรียบร้อย</h3>
-<h1><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i></h1>
+<div class="alert alert-success" role="alert"><b>ดำเนินการสั่งซื้อสินค้าเรียบร้อย</b></div>
+<!-- <h1><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i><i class="glyphicon glyphicon-barcode"></i></h1> -->
+<div class="col-sm-12" align="right">
+	<button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-save"></i> save pdf</button>
+	<button class="btn btn-default square flat-btn bill-btn " style="color:#666;"><i class="glyphicon glyphicon-print"></i> print</button>
+
+</div>
 <hr>
 </div>
 </center>
@@ -93,10 +98,24 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 	    $total += intval($value['OrderPriceTotal']);
 	  }
 	  ?>
+	  <tr style="color:#666; font-weight:bold;">
+	    <td class="table-head" ><h5></h5></td>
+	    <td class="table-head" ><h3 style="text-align:left;">รวม</h3></td>
+	    <td class="table-head" ><h5 style="text-align:right;"></h5></td>
+	    <td class="table-head" ><h5></h5></td>
+	    <td class="table-head" ><h3 style="text-align:right;"><?php echo number_format($total);?> ฿</h3></td>
+	  </tr>
 	  </table>
+
 </div>
-
-
+<style type="text/css">
+	.about-to-pay{
+		background: none;
+	}
+</style>
+<?php include('aboutpay.php');?>
+<div class="col-sm-12" style="height:200px;"></div>
+</div>
 <!-- /content -->
 
 </div>
