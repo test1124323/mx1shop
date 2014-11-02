@@ -120,7 +120,7 @@ return array(
 	| you may inspect the message. This is great for local development.
 	|
 	*/
-	'adminMail' => 'lusiaskolonie@gmail.com',
+	'adminMail' => 'Mx1shop_customerservice@gmail.com',
 
 	'pretend' => false,
 
