@@ -11,10 +11,10 @@ class ProductImg extends Eloquent{
 	protected $primaryKey = 'ProductImgID';
 	public $timestamps = false;
 
-	public function productImage($query,$pid){
+	public function productImage(){
 		return $query->belongsTo('Product','ProductID');
 	}
-	public function Product($query,$pid){
+	public function Product(){
 		return $query->belongsTo('Product','ProductID');
 	}
 }

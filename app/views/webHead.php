@@ -41,9 +41,9 @@ $path = $data['path'];
   <link rel='stylesheet' href='<?php echo $path;?>css/style_base.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/scrollstyle.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/color.css'>
-
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+ 
+ <!--  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
   <style>
     @import url(//fonts.googleapis.com/css?family=Lato:700);
   </style>

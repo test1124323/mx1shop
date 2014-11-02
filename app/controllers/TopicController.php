@@ -15,6 +15,7 @@ class TopicController extends \BaseController {
 											->Name($keyword)
 											->with('ProductImg')
 											->paginate(17);
+											
 		$data['coverImg']	=	array();
 		foreach ($data['productlist'] as $key => $value) {
 			foreach ($value['product_img'] as $k => $v) {
@@ -22,10 +23,8 @@ class TopicController extends \BaseController {
 					$data['coverImg'][$value['ProductID']] = $v['ProductIMG'];
 				}
 			}
+
 		}
-		// echo "<pre>";
-		// print_r($data['coverImg']);
-		// exit;
 		return View::make('main',$data);
 	}
 
@@ -61,15 +60,17 @@ class TopicController extends \BaseController {
 	public function show($id)
 	{
 		$coverImg = 'noimage.png';
-		$imgCount = 0;
+		$imgCount = 1;
+		$id 	=	str_pad($id, 7 , '0' ,STR_PAD_LEFT);
 		$product 	= 	Product::where('ProductID',$id);
 		if(is_object($product))
-		$product 	=	$product->with('ProductImg')->first()->toArray();
+		$product 	=	$product->with('ProductImg')->first();
+		
 		foreach ($product['product_img'] as $key => $value) {
 			if($value['StatusFirst']==1){
 				$coverImg	=	$value['ProductIMG'];
 			}
-			@++$imgCount;
+			$imgCount++;
 		}
 
 		return View::make('productDetail',array('detail'=>$product , 'coverImg'=>$coverImg , 'imgCount'=>$imgCount ));

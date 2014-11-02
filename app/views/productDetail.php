@@ -36,7 +36,7 @@ if($imgCount==0){
 
   ?>
 <div class="col-sm-12" id="Ppic_<?php echo @++$a;?>" style="padding:0px;border:solid 2px #FFF; box-shadow:0 -2px 10px rgba(100,100,100,0.4);float:left;">
-    <div class="ProductPicDetail " style="background:url(<?php echo $path;?>img/product/noimage.png);
+    <div class="ProductPicDetail " style="background:url(img/product/noimage.png);
                   background-position:center;
                   background-size:cover;
                   background-repeat:no-repeat; border:none;" >
