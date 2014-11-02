@@ -41,7 +41,12 @@ $arr_menu = array('0'=>'รายการสั่งสินค้า&nbsp&nb
   '1' =>'ตั้งค่า',
 );
 $arr_menuLink = array('0'=>$path.'backoffice/Order','2'=>$path.'backoffice/Payment','1'=>'#','3'=>$path.'backoffice/Product');
-$arr_sub1 = array('1'=>'หมวดสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
+$arr_sub1 = array();
+if(Session::get('SuperUser')=='1'){
+  $arr_sub1 = array('1'=>'หมวดสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','5'=>'ข้อมูลพนักงาน');
+}else{
+  $arr_sub1 = array('1'=>'หมวดสินค้า','3'=>'บทความ','4'=>'ข้อมูลลูกค้า');
+}
 $arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>$path.'backoffice/Topic','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee');
 ?>
 <nav class="navbar navbar-default" role="navigation">
@@ -68,6 +73,7 @@ $arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>$path.'backoffice/Topic'
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $value;?><span class="caret"></span></a>
 			          <ul class="dropdown-menu" role="menu">
 			          <?php foreach ($arr_sub1 as $key1 => $value1) {
+
 			          	?>
 			          	<li><a href="<?php echo $arr_subLink1[$key1]?>"><?php echo $value1;?></a></li>
 			          	<?php
@@ -85,8 +91,11 @@ $arr_subLink1 = array('1'=>$path.'backoffice/Cate','3'=>$path.'backoffice/Topic'
       ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-         <li><a href="#">คุณจักรยาน แกนล่อน</a></li>
-    	   <li><button style="margin-top:15px" type="button" class="btn btn-danger btn-xs">Logout</button></li>
+         <li><a href="#"><?php echo Session::get("FullName");?></a></li>
+    	   <li><a href="Logout">
+         <button  type="button" class="btn btn-danger btn-xs">
+         Logout</button>
+         </a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
