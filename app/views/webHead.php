@@ -168,7 +168,7 @@ $path = $data['path'];
 
 
 <div class="col-sm-12 onsale scroll-wrapper">
-  <div class="col-sm-6 saleItem bg-color-pinkred text-color-white">
+  <div class="col-sm-6 saleItem bg-color-pinkred text-color-white ">
     <h2>ลดราคารับสิ้นปี 60%</h2>
     <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
@@ -191,15 +191,15 @@ $path = $data['path'];
 </div>
 
 
-<div class="col-xs-12" style=" background:#F6F6F6;padding:0px;">
+<div class="col-xs-12" style=" background:#EFEFEF;padding:0px;">
 <!-- left side -->
 <div class="col-sm-3" style="padding:10px 10px 0 10px;">
 <!-- <h4>Search</h4> -->
-<div class="input-group col-sm-12" style="background:#E9E9E9;padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
+<div class="input-group col-sm-12" style="padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
 <form name="search" method="get" action="<?php echo url('main')?>">
       <div class="search-text">Search</div>
-      <input name="keyword" type="text" class="form-control" placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
-      <select name="cate" class="form-control" style="border-radius:30px;">
+      <input name="keyword" type="text" class="form-control " placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
+      <select name="cate" class="form-control" style="border-radius:2px;border:none;border-bottom: solid 2px #CCCCCC !important;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
           $cate = Input::get('cate');
@@ -229,7 +229,7 @@ $path = $data['path'];
       ?>
       </select>
       <br/><br/>
-      <button class="btn btn-default col-sm-6" type="submit" style="float:right">ค้นหา</button>
+      <button class="btn btn-default col-sm-6" type="submit" style="float:right"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
 </form>
 </div><!-- /input-group -->
 
@@ -272,5 +272,5 @@ $path = $data['path'];
 </div>
 
 <span id="list"></span>
-<div class="col-sm-9" style="padding:0px;">
+<div class="col-sm-9" style="padding:0px;background:#FFF;">
 <!-- !left side -->

@@ -1,3 +1,6 @@
+.shadow-line{
+	border-bottom:solid medium rgba(0,0,0,0.2);
+}
 .bill-btn{
 	width: 100px;
 	background: #F5F5F5;
@@ -233,10 +236,12 @@
 
 }
 input{
-	border-radius: 30px !important;
+	border-radius: 2px !important;
+	border: none !important;
+	border-bottom: solid 2px #CCCCCC !important;
 }
 button{
-	border-radius: 30px !important;
+	/*border-radius: 30px !important;*/
 }
 a{
 	cursor: pointer;

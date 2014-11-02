@@ -19,6 +19,9 @@ Route::get('cancelOrder/{id}','cartController@destroy');
 
 Route::resource('billing','billingController');
 Route::resource('billingSave','billingPDFController');
+Route::get('How-to-order',function(){
+	return View::make('howtoorder');
+});
 
 Route::filter('check', function()
 {
@@ -35,9 +38,7 @@ Route::group(array('before' => 'check'), function(){
 			Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 			Route::resource('/backoffice/catePop','catePopController');
 
-Route::get('How-to-order',function(){
-	return View::make('howtoorder');
-});
+
 // Route::resuorce('How-to-pay','howtopayController');
 			Route::resource('/backoffice/Product','ProductController');
 			Route::resource('/backoffice/ProductForm','ProductManageController');

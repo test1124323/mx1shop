@@ -15,7 +15,9 @@ if(Input::has('cate')){
 
 <!-- right side -->
 
-<div class="head-marquee">
+<!-- <div class="col-sm-12" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการสั่งซื้อ</h3></div> -->
+<div class="head-marquee shadow-line" style="background:rgba(255,0,20,0.8);margin-top:15px; color:#fff;">
+
 <span id="list"></span>
   <marquee><b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b></marquee>
 </div>
