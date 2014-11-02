@@ -19,7 +19,7 @@ if(Input::has('cate')){
 <div class="head-marquee shadow-line" style="background:rgba(255,0,20,0.8);margin-top:15px; color:#fff;">
 
 <span id="list"></span>
-  <marquee><b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b></marquee>
+  <b><h5>MX1 Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ</h5></b>
 </div>
 <?php 
 $i=1;

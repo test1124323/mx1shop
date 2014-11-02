@@ -185,7 +185,7 @@ $path = $data['path'];
   <a href="<?php echo $path;?>How-to-order">
   <div class="col-sm-3 saleItem bg-color-silver">
   <h2 class=" text-color-grey howtobuy" style="padding:5px;">วิธีสั่งซื้อ และชำระเงิน</h2>
-  <button class="btn btn-info btn-howtopay" style="width:100%;">คลิกที่นี่</button>
+  <button class="btn btn-warning btn-howtopay" style="width:100%;">คลิกที่นี่</button>
   </div>
   </a>
 </div>
@@ -197,9 +197,9 @@ $path = $data['path'];
 <!-- <h4>Search</h4> -->
 <div class="input-group col-sm-12" style="padding:4px 14px 14px 14px;border-radius:4px;width:100%;">
 <form name="search" method="get" action="<?php echo url('main')?>">
-      <div class="search-text">Search</div>
+      <div class="search-text"> </div>
       <input name="keyword" type="text" style="text-align:center;font-weight:bold;" class="form-control " placeholder='ค้นหาสินค้า' value="<?php echo Input::get('keyword');?>"><br/><br/>
-      <select name="cate" class="form-control" style="border-radius:2px;border:none;border-bottom: solid 2px #CCCCCC !important;">
+      <select name="cate" class="form-control" style="border-radius:2px;border:none;border-bottom: solid 2px #DDDDDD !important;">
         <option class="option-pad" value="">- - - ทุกหมวดหมู่ - - -</option>
         <?php 
           $cate = Input::get('cate');

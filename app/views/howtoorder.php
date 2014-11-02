@@ -10,10 +10,10 @@ window.location.href="#list";
 	}
 </style>
 <br/>
-<div class="col-sm-12" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการสั่งซื้อ</h3></div>
+<div class="col-sm-12 shadow-line" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการสั่งซื้อ</h3></div>
 <?php include('aboutorder.php');?>
 <div class="col-sm-12" style="height:50px;"></div>
-<div class="col-sm-12" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการชำระเงิน</h3></div>
+<div class="col-sm-12 shadow-line" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการชำระเงิน</h3></div>
 <?php include('aboutpay.php');
 ?>
 <div class="col-sm-12" style="height:200px;"></div>

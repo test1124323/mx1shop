@@ -7,20 +7,20 @@ window.location.href="#list";
 </script>
 <!-- content  -->
 <div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">ตะกร้าสินค้า</h4></div>
-<div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
+<div style="border:1px solid rgba(255,0,20,0.6); margin:40px 0px 0 8px; border-radius:0px; width:98%;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x">รายการสินค้าในตะกร้าสินค้า</h2></div>
 <div style="padding-left:0px;"><br/>
 <?php if(Input::has('updated')&&Input::get('updated')=='1'){?>
 <div class="alert alert-danger" role="alert"><i class="glyphicon glyphicon-remove-sign" style="font-size:20px;"></i>  ยังไม่มีรายการสั่งซื้อ</div>
 <?php }?>
 
-<div class="panel panel-default" style="margin:10px;">
+<div class="panel panel-default" style="margin:10px;border-radius:1px !important; border:none;">
   <!-- Default panel contents -->
   
   <table class="table"> 
   <tr class="tr-head">
     <td class="table-head" width="30px;" ></td>
-    <td class="table-head" ></td>
+    <td class="table-head"  width="100px" ></td>
     <td class="table-head" >สินค้า</td>
     <td class="table-head"  width="100px;">ราคา</td>
     <td class="table-head"  width="100px;">จำนวน</td>
@@ -44,8 +44,8 @@ window.location.href="#list";
         <div class="  productPictmp" style="background:url(<?php echo $path;?>img/product_tmp/<?php echo @$value['detail']['product_cover'][0]['ProductIMG'];?>);
                       background-position:center;
                       background-size:cover;
-                      background-repeat:no-repeat; border-radius:10px;
-                      margin:0px;">
+                      background-repeat:no-repeat; border-radius:0px;
+                      margin:0px;opacity:0.8;">
         </div></a>
         </td>
         <td class="table-head" ><a href="<?php echo Request::root()?>/main/<?php echo $value['detail']['ProductID'];?>"><h5><?php echo $value['detail']['ProductName'];?></h5></td>
@@ -72,7 +72,7 @@ window.location.href="#list";
   </table>
 </div>
 
-<div class="col-sm-6" style="float:right; width:45%;text-align:right;padding:5px 30px 10px 0; color:#555;"><span style="font-size:18px;">ยอดรวมทั้งหมด</span>  <span style="font-size:24px;"><?php echo @number_format($total);?> ฿</span></div>
+<div class="col-sm-6" style="float:right; width:45%;text-align:right;padding:5px 30px 10px 0; color:#555;"><span style="font-size:18px;">ยอดรวม</span>  <span style="font-size:24px;"><?php echo @number_format($total);?> ฿</span></div>
 
 <div class="col-sm-6">
 <a href="<?php echo Request::root();?>/cart"><button class="btn btn-default" style="z-index:9999; margin-top:10px;"><i class="glyphicon glyphicon-refresh"></i> อัพเดทรายการสินค้า</button></a>

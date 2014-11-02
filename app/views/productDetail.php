@@ -21,7 +21,7 @@ function switchImg(id){
 <!-- content  -->
 
 <div class="headtag col-lg-4"><h4 class="textwhite headtext" style="color:#888;">รายละเอียดสินค้า</h4></div>
-<div style="border:2px solid #F22; margin:40px 0px 0 8px; border-radius:0px; width:98%; border-top-left-radius:5px;border-top-right-radius:5px;"></div>
+<div style="border:1px solid rgba(255,0,20,0.6); margin:40px 0px 0 8px; border-radius:0px; width:98%;"></div>
 <div style="padding-left:20px;"><h2 class="title-text-x"><?php echo $detail['ProductName']?></h2></div>
 <?php if(Input::has('updated')&&Input::get('updated')=='1') {?>
 <div class="alert alert-info" role="alert">เพิ่ม <?php echo $detail['ProductName']?> ลงในตระกร้าเรียบร้อยแล้ว หากต้องการตรวจสอบรายการ <a href="<?php echo Request::root();?>/cart">คลิกที่นี่</a></div>
@@ -54,7 +54,7 @@ foreach ($detail['product_img'] as $key => $value) {
   }
 
   ?>
-<div class="col-sm-12" id="Ppic_<?php echo @++$a;?>" style="padding:0px;border:solid 2px #FFF; box-shadow:0 -2px 10px rgba(100,100,100,0.4);width:<?php echo $style;?>;float:left;">
+<div class="col-sm-12" id="Ppic_<?php echo @++$a;?>" style="padding:0px;border:solid 2px #FFF; width:<?php echo $style;?>;float:left;">
     <div class="ProductPicDetail " style="background:url(<?php echo $path;?>img/product/<?php echo $value['ProductIMG']?>);
                   background-position:center;
                   background-size:contain;
