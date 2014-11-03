@@ -126,6 +126,7 @@ function add_row(){
       <?php 
         if(isset($result)){
           $i=1;
+          echo "<pre>";print_r($result);echo "</pre>";
           foreach ($result as $key => $value) {
             $id_tb = $i."_A";
             # code...
@@ -142,7 +143,7 @@ function add_row(){
                   </div><br>
                 <?php 
 
-                if($value['procate_category']){
+                if(isset($value['procate_category'])){
                   echo "<pre>";print_r($value['procate_category']);echo "</pre>";
                   foreach ($value['procate_category'] as $key2 => $value2) {
                   # code...
