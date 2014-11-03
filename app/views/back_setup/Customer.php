@@ -94,11 +94,11 @@ function Search(){
         </div>
     </div>
   </fieldset>
-    <div  style="margin-top:10px;">
+    <!-- <div  style="margin-top:10px;">
     <button class="btn btn-success btn-xs"  onclick="AddUser();" data-toggle="modal" 
     data-target=".bs-example-modal-lg" >
     <i class='glyphicon glyphicon-plus'></i> เพิ่มข้อมูล</button>
-  </div>
+  </div>-->
 
   <input type="hidden" name="UserID" id="UserID" value="">
   <input type="hidden" name="TypeUser" id="TypeUser" value="1">

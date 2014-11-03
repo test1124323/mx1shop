@@ -141,9 +141,12 @@ function add_row(){
                     <i class="glyphicon glyphicon-plus" ></i> เพิ่มหมวดสินค้า</a>
                   </div><br>
                 <?php 
+
                 if($value['procate_category']){
+                  echo "<pre>";print_r($value['procate_category']);echo "</pre>";
                   foreach ($value['procate_category'] as $key2 => $value2) {
                   # code...
+                  //echo $value2["CategoryID"]."<br>";
                   $random = rand(10,1000000);
                   ?>
                   

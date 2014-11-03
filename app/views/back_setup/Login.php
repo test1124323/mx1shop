@@ -53,7 +53,7 @@ $path = Request::root()."/";
 <body style="background-color: #000000;">
 	        <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
-            <form action="Login" method="post">
+            <form action="Login" method="post" >
                 <div class="body bg-gray">
                     <div class="form-group">
                     <span style="color:red"; id="sp_user"></span>

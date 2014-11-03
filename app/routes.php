@@ -25,6 +25,7 @@ Route::filter('check', function()
 		return Redirect::to('backoffice/Login');
 	}
 });
+
 Route::get('/backoffice/', function()
     {
     	return Redirect::to('backoffice/Login');
