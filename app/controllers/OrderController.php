@@ -103,6 +103,26 @@ class OrderController extends \BaseController {
 		$Order->DeliverCost = $DeliverCost;
 		$Order->save();
 
+		$product = OrderDetailModel::where("OrderID","=",Input::get('OrderID'))->get()->toArray();
+		if(Input::get("OldStatus")=='5'){
+			foreach ($product as $key => $value) {
+				# code...
+				$pro = ProductModel::find($value['ProductID']);
+				$pro->ProductAmount = ($pro->ProductAmount-$value['OrderAmount']);
+				$pro->save();
+			}
+		}
+		if($OrderStatus=='5'){//if cancel  add increat product amount
+			
+			foreach ($product as $key => $value) {
+				# code...
+				$pro = ProductModel::find($value['ProductID']);
+				$pro->ProductAmount = ($pro->ProductAmount+$value['OrderAmount']);
+				$pro->save();
+			}
+		}
+
+
 		if($PaymantDate!=NULL){
 			$del = PaymentModel::where("OrderID",'=',Input::get('OrderID'))->delete();
 			

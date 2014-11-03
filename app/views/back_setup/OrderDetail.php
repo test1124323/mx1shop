@@ -63,6 +63,20 @@ include("function.php");
 		}
 		
 	}
+	function delivery(){
+		//alert($("#OrderStatus").prop('checked'));
+		if($("#OrderStatus").prop('checked')!=true){
+			alert("กรุณาเลือกสถานะการจัดส่ง");
+			$("#OrderStatus").focus();
+			return false;
+		}
+		if($("#DeliveredDate").val()==""){
+			alert("กรุณากรอกวันที่จัดส่ง");
+			$("#DeliveredDate").focus();
+			return false;
+		}
+		$('#form-input').submit();
+	}
 </script>
 <?php 
 $link = $path."backoffice/";
@@ -157,7 +171,7 @@ $url = "";
 	<input type="hidden" name="OrderID" id="OrderID" value="<?php echo $result[0]['OrderID'];?>">
 	<input type="hidden" name="CanOrderStaus" id="CanOrderStaus" value="">
 	<input type="hidden" name="UrlRe" id="UrlRe" value="<?php echo $url;?>">
-
+	<input type="hidden" name="OldStatus" value="<?php echo $result[0]['OrderStatus'];?>">
 	<input type="hidden" name="_method" id="_method" value="POST">
 
 	<div class="table-responsive">
@@ -337,21 +351,21 @@ if($result[0]['OrderStatus']>='3'){
 		<div class="row">
 			<div class="col-sm-12 text-center">
 			<?php 
-			if($result[0]['OrderStatus']=='2'){
+			if($result[0]['OrderStatus']=='2'){//wait payment
 				?>
 				<button class="btn btn-primary btn-sm" type="button" onclick="chkInput();">
 				<i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
 				<?php
 
 			}
-			else if($result[0]['OrderStatus']=='0'){
+			else if($result[0]['OrderStatus']=='0'){//wait confirm
 				?>
 				<button class="btn btn-primary btn-sm" type="button"  onclick="confirmOrder();" >
 				<i class="glyphicon glyphicon-saved" ></i> ยืนยันการสั่งซื้อ</button>
 				<?php
-			}else{
+			}else{//delivery
 				?>
-				<button class="btn btn-primary btn-sm"  type="submit">
+				<button class="btn btn-primary btn-sm"  type="button" onclick="delivery();">
 				<i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
 				<?php
 			}
