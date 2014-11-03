@@ -43,10 +43,10 @@ class LoginController extends \BaseController {
 			Session::put('SuperUser',$login['SuperUser']);
 			Session::put('ActiveStatus',$login['ActiveStatus']);
 			Session::put('FullName',$login['FullName']);
-			echo Session::get("UserID");
-			//return Redirect::to('backoffice/Order');
+			//echo Session::get("UserID");
+			return Redirect::to('backoffice/Order');
 		}else{
-			//return Redirect::to('backoffice/Login');
+			return Redirect::to('backoffice/Login/1');
 		}
 		
 
@@ -66,7 +66,9 @@ class LoginController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		echo "show".$id;
+		return View::make("back_setup/Login",array("incorrect"=>'1'));
+
+		//echo "show".$id;
 	}
 
 

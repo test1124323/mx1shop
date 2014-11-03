@@ -18,6 +18,7 @@ $path = Request::root()."/";
   function checkLogin(){
   	$('#sp_user').html("");
   	$('#sp_pass').html("");
+    $("#sp_incorrect").html("");
   	if($('#userid').val()==""){
   		$('#userid').focus();
   		$('#sp_user').html("**กรุณากรอก User Name");
@@ -28,7 +29,7 @@ $path = Request::root()."/";
   		$('#sp_pass').html("**กรุณากรอก password");
   		return false;
   	}
-  	var path = $('#rootPath').val();
+  	/*var path = $('#rootPath').val();
     var url = path+"backoffice/Login";
     $.post(url,{userid:$('#userid').val(),password:$('#password').val()},function(msg){
     	if(!msg){
@@ -38,7 +39,7 @@ $path = Request::root()."/";
     	else{
     		window.location.href = path+"backoffice/Order";
     	}
-    });
+    });*/
   }
   </script>
 	<style>
@@ -53,7 +54,7 @@ $path = Request::root()."/";
 <body style="background-color: #000000;">
 	        <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
-            <form action="Login" method="post" >
+            <form action="<?php echo $path."backoffice/"?>Login" method="post"  onsubmit="return checkLogin();">
                 <div class="body bg-gray">
                     <div class="form-group">
                     <span style="color:red"; id="sp_user"></span>
@@ -64,11 +65,12 @@ $path = Request::root()."/";
                     <div class="form-group">
                     <span style="color:red"; id="sp_pass"></span>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>    	
-                    <span style="color:red"; id="sp_incorrect"></span>
+                    
+                    <span style="color:red"; id="sp_incorrect"><?php echo (@$incorrect=='1')?"**Username or Password Incorrect":"";?></span>
                     </div>          
                 </div>
                 <div class="footer">                                                               
-                    <button type="button" onclick="checkLogin();" class="btn bg-olive btn-block">Sign me in</button>  
+                    <button type="submit"  class="btn bg-olive btn-block">Sign me in</button>  
                 </div>
             </form>
         </div>
