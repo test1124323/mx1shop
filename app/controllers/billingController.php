@@ -48,7 +48,7 @@ class billingController extends \BaseController {
 		}
 
 		$input 		=	Input::all();
-		$FullName 	=	$input['fname']." ".$input['lname'];
+		$FullName 	=	preg_replace(" ", $input['fname'])." ".preg_replace(" ", $input['lname']);
 		$Address 	= 	$input['address'];
 		$tel 		= 	$input['telnumber'];
 		$PostCode 	= 	$input['postcode'];

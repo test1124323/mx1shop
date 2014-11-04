@@ -32,7 +32,6 @@ class UserModel extends Eloquent{
 	public function scopeLogin($query,$username,$password){
 		return $query->where('UserName','=',$username)
 		->where('PassWord','=',$password)
-		->where('ActiveStatus','=','1')
-		->where('TypeUser','=','2');
+		->where('ActiveStatus','=','1');
 	}
 }

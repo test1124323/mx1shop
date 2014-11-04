@@ -58,7 +58,7 @@ $path = $data['path'];
 <nav class="navbar navbar-default navbar-static" style="margin-bottom:0px;z-index:10000;">
 
     <div id="account_head" align="right">
-    ล็อกอิน  
+    <a href="<?php echo Request::root()?>/login">ล็อกอิน</a>
     </div>
 
     <div class="navbar-header">
