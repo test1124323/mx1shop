@@ -58,7 +58,16 @@ $path = $data['path'];
 <nav class="navbar navbar-default navbar-static" style="margin-bottom:0px;z-index:10000;">
 
     <div id="account_head" align="right">
-    <a href="<?php echo Request::root()?>/login">ล็อกอิน</a>
+    <?php 
+        if(Session::has('profile')){
+
+        }else{
+          ?>
+          <a href="<?php echo Request::root()?>/login"><b>เข้าสู่ระบบ</b></a><!--  | <a href="<?php //echo Request::root()?>/register"><b>ลงทะเบียน</b></a> -->
+          <?php
+        }
+    ?>
+    
     </div>
 
     <div class="navbar-header">

@@ -48,6 +48,14 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('isLogedin', function(){
+	if(Session::has('profile')){
+		$profile 	=	Session::get('profile');
+		if(!empty($profile['userid'])){
+			return Redirect::to(Request::root()."/main");
+		}
+	}
+});
 
 Route::filter('auth.basic', function()
 {

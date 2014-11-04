@@ -20,7 +20,9 @@ Route::get('cancelOrder/{id}','cartController@destroy');
 Route::resource('billing','billingController');
 Route::resource('billingSave','billingPDFController');
 
-Route::resource('login','FrontLoginController');
+Route::group(array('before' => 'isLogedin'), function(){
+	Route::resource('login','FrontLoginController');
+});
 
 Route::get('How-to-order',function(){
 	return View::make('howtoorder');

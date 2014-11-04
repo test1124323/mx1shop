@@ -33,29 +33,33 @@ class FrontLoginController extends \BaseController {
 	public function store()
 	{
 		if( !Input::has('loguser') || !Input::has('logpass') ){
-			return View::make('loginFront',array('stat'=> '1'));
+			return View::make('loginFront',array('stat'=> '1'));	//empty field
 		}
 		$login 	=	UserModel::Login(Input::get('loguser') , Input::get('logpass'))->first();
 	
 		if(is_object($login)){
-			// print_r($login->UserID);exit;
-			if(empty($login->UserID)){
-				return View::make('loginFront',array('stat'=> '2'));
+			if(empty($login->UserID) || $login->TypeUser!='1'){ //user only
+				return View::make('loginFront',array('stat'=> '2')); //invalid login data
 			}
 			$login 	=	$login->toArray();
-			// UserID----1
-			// UserName----kobpeapoo25@gmail.com
-			// PassWord----12345
-			// Email----kobpeapoo25@gmail.com
-			// Lastvist_at----
-			// SuperUser----
-			// TypeUser----1
-			// ActiveStatus----1
-			// UserAddress----55 หมู่ 2 ต.เอราวัณ อ.เอราวัณ จ.เลย 42220
-			// UserTel----0854661507
-			// FullName----นายณัฐพงษ์ เพียภู
-			// FacebookID----
-			$fullname 	=	split(' ', string)$login['FullName']);
+
+			$userInfo 				=	array();
+			$fullname 				=	explode(" ", $login['FullName']);
+			$userInfo['fullname']	=	$login['FullName'];
+			$userInfo['fname'] 		=	$fullname[0];
+			$userInfo['lname'] 		=	$fullname[1];
+			$userInfo['address'] 	=	$login['UserAddress'];
+			$userInfo['postcode'] 	=	substr($login['UserAddress'], -5);
+			$userInfo['email'] 		=	$login['Email'];
+			$userInfo['telnumber']	=	$login['UserTel'];
+			$userInfo['userid']		=	$login['UserID'];
+			$userInfo['typeuser']	=	$login['TypeUser'];
+			Session::put('input',$userInfo);
+			Session::put('profile',$userInfo);
+			return Redirect::to(Request::root()."/main");
+		}else{
+			return View::make('loginFront',array('stat'=> '2')); //invalid login data
+
 		}
 	}
 

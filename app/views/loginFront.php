@@ -3,9 +3,7 @@ $path   = Request::root()."/";
 include("funcHead.php");
 echo $stat;
 ?>
-<script>
-window.location.href="#list";
-</script>
+
 <style type="text/css">
   body{
     background:#F1F1F1 !important;
