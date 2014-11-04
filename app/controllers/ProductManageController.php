@@ -26,8 +26,8 @@ class ProductManageController extends \BaseController {
 		try{
 			if(Input::has('chk_productID')){
 
-				$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))
-				->with('ProcateCategory')
+				$result = ProductModel::with('ProcateCategory')
+				->whereIn('ProductID',Input::get('chk_productID'))
 				->get()
 				->toArray();
 				//echo "<pre>";print_r($result);echo "</pre>";
@@ -170,7 +170,7 @@ class ProductManageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$result = ProductModel::where('ProductID','=',$id)->with('ProcateCategory')->get()->toArray();
+		$result = ProductModel::with('ProcateCategory')->where('ProductID','=',$id)->get()->toArray();
 		//echo "<pre>";print_r($result);echo "</pre>";
 
 		return View::make("back_setup/ProductForm",array('result'=>$result));
