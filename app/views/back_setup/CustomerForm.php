@@ -21,13 +21,14 @@ $path1 = $path."backoffice/";
   function checkPass(){
     var p1 = $('#PassWord').val();
     var p2 = $('#PassWord2').val();
-    if(p1!=p2&&p1==""){
-      $('#s2').html("รหัสผ่านไม่ถูกต้อง");
+   // alert(p2);
+    if(p1!=p2){
+      $('#sp_con').html("<font style='color:red;'>**รหัสผ่านไม่ถูกต้อง</font>");
       $('#p2').removeClass("input-group has-success").addClass("input-group has-warning");
       $("#flag").val('1');
     }
     else{
-      $('#s2').html("รหัสผ่านถูกต้อง");
+      $('#sp_con').html("<font style='color:green;'>**รหัสผ่านถูกต้อง</font>");
       $('#p2').removeClass("input-group has-warning").addClass("input-group has-success");
       $("#flag").val("");
     }
@@ -141,7 +142,7 @@ if($TypeUser=='2'){
     <div class="col-xs-2">
       รหัสผ่าน
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-2">
   
             <input type="password" class="form-control" id="PassWord" name="PassWord" 
       value="<?php echo $data['PassWord'];?>" placeholder="รหัสผ่าน">
@@ -153,12 +154,10 @@ if($TypeUser=='2'){
       ยืนยันรหัสผ่าน
     </div>
 
-    <div class="col-xs-3">
-    <div class="input-group <?php echo $class_status;?>" id="p2">
+    <div class="col-xs-2">
       <input type="password" onkeyup="checkPass();"  class="form-control" id="PassWord2" name="PassWord2" value="<?php echo $data['PassWord'];?>" 
-      placeholder="รหัสผ่าน">
-      <span class="input-group-addon" id="s2"><?php echo $text_show;?></span>
-    </div>
+      placeholder="ยืนยันรหัสผ่าน">
+      <span   id="sp_con"></span>
     </div>
   </div>
 
