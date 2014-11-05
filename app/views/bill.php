@@ -19,7 +19,7 @@ if(!Input::has("mode")&&empty($mode)){
 		}
 	</style>
 	<?php
-}
+} 
 ?> 
 <div class="col-sm-12" style="background:#FFF;" id="printarea">
 <script>
@@ -49,14 +49,14 @@ header("Content-Disposition:attachment;filename='downloaded.pdf'"); -->
 <h4>ผู้สั่งสินค้า <?php echo $detail['FullName']?></h4>
 </div>
 <div class="col-sm-12">
-<h5><b>ที่อยู่ในการจัดส่งสินค้า</b> : <?php echo $detail['Address']?> <?php echo $detail['PostCode']?></h5>
+<h5><b>ที่อยู่ในการจัดส่งสินค้า</b> : <?php echo $detail['Address']?></h5>
 </div>
 <div class="col-sm-5">
 <p><b>โทร.</b> <?php echo $detail['TelNumber']?></p>
 <p><b>Email</b> : <?php echo $detail['Email']?></p>
-<hr>
 </div>
-<div class="col-sm-12">
+
+<div class="col-sm-12"><hr>
 	<table class="table"> 
 	  <tr class="tr-head" style="border-bottom:thin solid #666;">
 	    <td class="table-head head-gray" width="50px;"  align="center"></td>
