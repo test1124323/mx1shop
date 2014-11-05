@@ -31,7 +31,7 @@ class FrontLoginController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
+	{ 
 		if( !Input::has('loguser') || !Input::has('logpass') ){
 			return View::make('loginFront',array('stat'=> '1'));	//empty field
 		}

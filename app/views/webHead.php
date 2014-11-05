@@ -63,7 +63,7 @@ $path = $data['path'];
 
         }else{
           ?>
-          <a href="<?php echo Request::root()?>/login"><b>เข้าสู่ระบบ</b></a><!--  | <a href="<?php //echo Request::root()?>/register"><b>ลงทะเบียน</b></a> -->
+          <b><a href="<?php echo Request::root()?>/login">เข้าสู่ระบบ</a> | <a href="<?php echo Request::root()?>/login">สมัครสมาชิก</a></b><!--  | <a href="<?php //echo Request::root()?>/register"><b>ลงทะเบียน</b></a> -->
           <?php
         }
     ?>

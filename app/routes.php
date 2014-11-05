@@ -20,6 +20,8 @@ Route::get('cancelOrder/{id}','cartController@destroy');
 Route::resource('billing','billingController');
 Route::resource('billingSave','billingPDFController');
 
+Route::resource('registeration','regisController');
+
 Route::group(array('before' => 'isLogedin'), function(){
 	Route::resource('login','FrontLoginController');
 });
