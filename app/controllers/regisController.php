@@ -46,13 +46,14 @@ class regisController extends \BaseController {
 		$user 				=	new UserModel;
 		$user->FullName		=	$input['fname']." ".$input['lname'];
 		$user->UserName 	=	$input['email'];
-		$user->PassWord 	=	md5(substr(md5($user->Fullname),12,6)); 
+		$realpass 			=	substr(md5($user->Fullname),12,6);
+		$user->PassWord 	=	md5($realpass); 
 		$user->Email 		=	$input['email'];
 		$user->TypeUser		=	'1';
 		$user->UserAddress 	=	$input['address']." ".$input['postcode'];
 		$user->UserTel 		=	$input['telnumber'];
-
-		Mail::send('emails.regisApprove', array('user'=>$user), function($message) use ($user)
+ 
+		Mail::send('emails.regisApprove', array('user'=>$user , 'realpass'=> $realpass), function($message) use ($user)
 		{
 		    $message->to($user->Email)->subject('ยืนยันการสมัครสมาชิก');
 		});
