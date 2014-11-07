@@ -36,6 +36,7 @@ Route::group(array('before' => 'check'), function(){
 			Route::resource('/backoffice/catePop','catePopController');
 			Route::resource('/backoffice/Product','ProductController');
 			Route::resource('/backoffice/ProductForm','ProductManageController');
+
 			Route::resource('/backoffice/DropdownCategory','ProductManageController@DropdownCategory');
 			Route::resource('/backoffice/ProductPic','ProductPicController@show_product');
 			Route::resource('/backoffice/ProductPicManage','ProductPicController');
@@ -43,6 +44,8 @@ Route::group(array('before' => 'check'), function(){
 			Route::resource('/backoffice/deletePic','ProductPicController@deletePic');
 			Route::resource('/backoffice/ProductEdit','ProductManageController@ShowDataEdit');
 			Route::resource('/backoffice/ProductDel','ProductManageController@DeleteData');
+			Route::resource('/backoffice/DropdownBrandCar','ProductManageController@DropdownBrandCar');
+			Route::resource('/backoffice/DropdownModelCar','ProductManageController@DropdownModelCar');
 
 			//order
 			Route::resource('/backoffice/Order','OrderController');
@@ -57,6 +60,17 @@ Route::group(array('before' => 'check'), function(){
 			//contact
 			Route::resource('/backoffice/Topic','TopicManageController');
 			//end contact
+			//Brand Car
+			Route::resource('/backoffice/BrandCar','BrandCarController');
+			Route::resource('/backoffice/BrandCarPop','BrandCarController@CreatePop');
+			Route::get('/backoffice/BrandCarDel/{id}','BrandCarController@destroy');
+			/////
+			//Model Car
+			Route::resource('/backoffice/ModelCar','ModelCarController');
+			Route::resource('/backoffice/ModelCarPop','ModelCarController@CreatePop');
+			Route::get('/backoffice/ModelCarDel/{id}','ModelCarController@destroy');
+
+			//
 			
 		
 });

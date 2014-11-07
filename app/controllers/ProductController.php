@@ -10,7 +10,22 @@ class ProductController extends \BaseController {
 	public function index()
 	{
 		//$result = ProductModel::all()->toArray();
-		$result = ProductModel::with('ProcateCategory')->Search(Input::get('SProductID'),Input::get('SProductName'),Input::get('SCategoryID'))->paginate(20);
+		$result = ProductModel::with('ProcateCategory')
+		->Search(Input::get('SProductID'),Input::get('SProductName'),Input::get('SCategoryID'))
+		->paginate(20);
+		$BrandCar = BrandCarModel::get()->toArray();
+		$ModelCar = ModelCarModel::get()->toArray();
+		$arr_brand = array();
+		$arr_model = array();
+
+		foreach ($BrandCar as $key => $value) {
+			# code...
+			$arr_brand[$value['BrandCarID']] = $value['BrandCarName'];
+		}
+		foreach ($ModelCar as $key => $value) {
+			# code...
+			$arr_model[$value['ModelCarID']] = $value['ModelCarName'];
+		}
 	
 		$result1 = CategoryModel::level1Cate()->get()->toArray();
    		$result2 = CategoryModel::level2Cate()->get()->toArray();
@@ -38,7 +53,8 @@ class ProductController extends \BaseController {
  }
 		return View::make('back_setup/Product',
 			array('product'=>$result,'Input'=>Input::all(),
-				'arr_dataSel'=>$arr_dataSel,'arr_dataAll'=>$arr_dataAll));
+				'arr_dataSel'=>$arr_dataSel,'arr_dataAll'=>$arr_dataAll,
+				'arr_brand'=>$arr_brand,'arr_model'=>$arr_model));
 		//echo "index";
 	}
 	/**
