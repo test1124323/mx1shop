@@ -60,7 +60,7 @@ include("funcHead.php");
       </div>
       <form method="post" name='loginform' action = "<?php echo Request::root()?>/login">
       <div class="col-sm-12 form-row" style="padding:40px;">
-        <input type="text" class="form-control square" placeholder="Username" name="loguser" />
+        <input type="text" class="form-control square" placeholder="Username or Email" name="loguser" />
         <div class="col-sm-12" style="padding:15px"></div>
         <input type="password" class="form-control square" placeholder="Password" name="logpass" />
         <div class="col-sm-12" style="padding:15px"></div>
