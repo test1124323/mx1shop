@@ -16,9 +16,15 @@ class OrderController extends \BaseController {
 			Input::get('SOrderStatus'))
 		->orderby('OrderDate','DESC')
 		->paginate(20);
+		$Payment1 = PaymentModel::get()->toArray();
 		//$result = OrderModel::paginate(20);
-		//echo "<pre>";print_r(Input::get('SOrderID'));echo "</pre>";
-		return View::make("back_setup/OrderAll",array('result'=>$result,'Input'=>Input::all()));
+		//echo "<pre>";print_r($Payment);echo "</pre>";
+		$Payment = array();
+		foreach ($Payment1 as $key => $value) {
+			$Payment[$value['OrderID']] = $value['PaymentDate'];
+		}
+		return View::make("back_setup/OrderAll",array('result'=>$result,
+			'Input'=>Input::all(),'Payment'=>$Payment));
 	}
 
 
@@ -95,12 +101,11 @@ class OrderController extends \BaseController {
 			$dateDelivered = NULL;
 		}
 
-
 		$Order = OrderModel::find(Input::get('OrderID'));
 		$Order->OrderStatus = $OrderStatus;
 		$Order->DeliveredDate = $dateDelivered;
-		$Order->PaymantDate = $PaymantDate;
-		$Order->DeliverCost = $DeliverCost;
+		//$Order->PaymantDate = $PaymantDate;
+		//$Order->DeliverCost = $DeliverCost;
 		$Order->save();
 
 		$product = OrderDetailModel::where("OrderID","=",Input::get('OrderID'))->get()->toArray();
@@ -112,6 +117,7 @@ class OrderController extends \BaseController {
 				$pro->save();
 			}
 		}
+
 		if($OrderStatus=='5'){//if cancel  add increat product amount
 			
 			foreach ($product as $key => $value) {
@@ -123,7 +129,7 @@ class OrderController extends \BaseController {
 		}
 
 
-		if($PaymantDate!=NULL){
+		/*if($PaymantDate!=NULL){
 			$del = PaymentModel::where("OrderID",'=',Input::get('OrderID'))->delete();
 			
 
@@ -131,7 +137,7 @@ class OrderController extends \BaseController {
 			$Payment->PaymantDate = $PaymantDate;
 			$Payment->PaymentTotal = $PaymentTotal;
 			$Order->Payment()->save($Payment);
-		}
+		}*/
 
 		return Redirect::to('backoffice/'.Input::get("UrlRe"));
 	}
@@ -149,6 +155,7 @@ class OrderController extends \BaseController {
 			//$result = OrderModel::where('OrderID','=',Input::get('OrderID'))->with('OrderDetail')->get()->toArray();
 			$result = OrderModel::where('OrderID','=',$id)->with("Payment")->with('OrderDetail')->orderby('OrderDate','DESC')->get()->toArray();
 			//echo "<pre>";print_r($result);echo "</pre>";
+
 			return View::make("/back_setup/OrderDetail",array('result'=>$result));
 		}else{
 			return Redirect::to('backoffice/Order');

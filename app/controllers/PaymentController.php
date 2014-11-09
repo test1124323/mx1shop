@@ -18,8 +18,15 @@ class PaymentController extends \BaseController {
 			'2')
 		->orderby('OrderDate','DESC')
 		->paginate(20);
+		$Payment1 = PaymentModel::get()->toArray();
+		//$result = OrderModel::paginate(20);
+		//echo "<pre>";print_r($Payment);echo "</pre>";
+		$Payment = array();
+		foreach ($Payment1 as $key => $value) {
+			$Payment[$value['OrderID']] = $value['PaymentDate'];
+		}
 		//echo "<pre>";print_r($result);echo "</pre>";
-		return View::make("back_setup/Payment",array('result'=>$result));
+		return View::make("back_setup/Payment",array('result'=>$result,'Payment'=>$Payment));
 	}
 
 	public function Search(){
