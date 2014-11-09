@@ -58,6 +58,7 @@ class ProductPicController extends \BaseController {
 		$arr_dataImg = array();
 		$j=0;
 		$Input = Input::get();
+
 		$InputFile = Input::file();
 		foreach ($Input['ProductID'] as $key => $value) {
 			# code...
@@ -84,9 +85,16 @@ class ProductPicController extends \BaseController {
 
 			if($type_add=='2'){
 				$delete = ProductImg::where('ProductID', '=',$key)->delete();
+				
+			}
+			$imgCount = ProductImg::where('ProductID', '=',$key)->get()->toArray();
+			$StatusFirst='2';
+			if(count($imgCount)==0){
+				$StatusFirst='1';
 			}
 			$pic = "pic_";
 			$pic .= $key;
+			
 			foreach(Input::file($pic) as $key2 => $value2){
 
 				$file = $InputFile[$pic][$i];
@@ -159,9 +167,12 @@ class ProductPicController extends \BaseController {
 				$Pro_img = new ProductImg;
 				$Pro_img->ProductID = $key;
 				$Pro_img->ProductIMG = $fileName; 
+				$Pro_img->StatusFirst = $StatusFirst;
+				
 				$Pro_img->save();
 
 				//echo"<pre>";print_r(Input::file('pic_'.$key)[$i]);echo "</pre>";
+				$StatusFirst = '2';
 				$i++;
 
 			}

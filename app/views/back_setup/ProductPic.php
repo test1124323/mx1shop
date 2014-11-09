@@ -22,6 +22,7 @@ $ImgPath = public_path().'/img/product/';
     //alert(ProductID+">>"+ProductImgID);
   }
   function deletePic(id,ProductImgID){
+    //alert(ProductImgID);
     if(confirm('ยืนยันการลบภาพ อีกครั้ง')){
       $('#'+id).remove();
       var path = $('#rootPath').val();
@@ -74,7 +75,7 @@ if($result){
       <?php echo $value['ProductName'];?></td>
       <td>
       <div>
-        <input  class="form-control" type="file" name="pic_<?php echo $value['ProductID'];?>[]" id="pic_<?php echo $value['ProductID'];?>" multiple >
+        <input  class="form-control"  type="file" name="pic_<?php echo $value['ProductID'];?>[]" id="pic_<?php echo $value['ProductID'];?>" multiple >
        </div>
        <div>
          <label><input type="radio" name="type_add<?php echo $value['ProductID'];?>" value="1" checked> เก็บภาพเดิมไว้</label>
