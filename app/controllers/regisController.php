@@ -35,20 +35,20 @@ class regisController extends \BaseController {
 		$user 				=	new UserModel;
 		$user->FullName		=	$input['fname']." ".$input['lname'];
 		$user->UserName 	=	$input['email'];
-		$realpass 			=	substr(md5($user->Fullname),12,6);
-		$user->PassWord 	=	md5($realpass); 
 		$user->Email 		=	$input['email'];
 		$user->TypeUser		=	'1';
 		$user->UserAddress 	=	$input['address']." ".$input['postcode'];
 		$user->UserTel 		=	$input['telnumber'];
- 
+		$realpass 			=	substr(md5($user->Fullname.$user->Email.$user->UserTel.rand(1,100000)),12,6);
+		$user->PassWord 	=	md5($realpass); 
+		
 		Mail::send('emails.regisApprove', array('user'=>$user , 'realpass'=> $realpass), function($message) use ($user)
 		{
 		    $message->to($user->Email)->subject('ยืนยันการสมัครสมาชิก');
 		});
 
 		$user->save();
-		
+		return Redirect::to('registeration/'.$user->UserID);
 
 	}
 
@@ -61,7 +61,7 @@ class regisController extends \BaseController {
 	 */
 	public function show($id)
 	{
-
+		print_r($id);
 	}
 
 
