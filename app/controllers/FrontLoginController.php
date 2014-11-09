@@ -10,7 +10,8 @@ class FrontLoginController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		$stat	=	(empty(Input::has('stat')))?(Input::get('stat')):"";
+		$input 	=	Input::has('stat');
+		$stat	=	(empty($input))?(Input::get('stat')):"";
 		return View::make('loginFront',array('stat'=>$stat));
 	}
 
