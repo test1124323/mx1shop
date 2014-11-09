@@ -29,7 +29,7 @@ include("function.php");
 			$('#PaymentTotal').focus();
 			return false;
 		}
-		 PaymentTotal = parseFloat($('#PaymentTotal').val().split(",").join(""));
+		 PaymentTotal = parseFloat($('#payAmount').val().split(",").join(""));
 		 PriceTotal = parseFloat($('#PriceTotal').val());
 		if(PaymentTotal<PriceTotal){
 			alert("ระบุ จำนวนเงินน้อยกว่ายอดรวม");
@@ -82,11 +82,12 @@ include("function.php");
 $link = $path."backoffice/";
 $text = "";
 $url = "";
-
+$status = "";
 	if($result[0]['OrderStatus']=='2'){
 		$link .= "Payment";
 		$text = "รายการรอชำระเงิน";
 		$url = "Payment";
+		$status = "3";
 	}
 	else{
 		$link .= "Order";
@@ -151,16 +152,16 @@ $url = "";
   				<div class="col-sm-8"><?php echo conv_date($result[0]['OrderDate']);?></div>
   			</div>
   			<div class="row">
-  				<div class="col-sm-4">ชำระเงินเมื่อ : </div>
-  				<div class="col-sm-8"><?php echo conv_date($result[0]['PaymantDate']);?></div>
+  				<div class="col-sm-4">แจ้งชำระเงินเมื่อ : </div>
+  				<div class="col-sm-8"><?php echo conv_date($result[0]['payment']['timestamp']);?></div>
   			</div>
   			<div class="row">
-  				<div class="col-sm-4">ค้าจัดส่ง : </div>
+  				<div class="col-sm-4">ค่าจัดส่ง : </div>
   				<div class="col-sm-8"><?php echo number_format($result[0]['DeliverCost'],2)." บาท";?></div>
   			</div>
   			<div class="row">
   				<div class="col-sm-4">จำนวนเงินที่ชำระทั้งหมด : </div>
-  				<div class="col-sm-8"><?php echo number_format($result[0]['payment']['PaymentTotal'],2)." บาท";?></div>
+  				<div class="col-sm-8"><?php echo number_format($result[0]['payment']['payAmount'],2)." บาท";?></div>
   			</div>
   		</div>
   	</div>
@@ -173,6 +174,7 @@ $url = "";
 	<input type="hidden" name="UrlRe" id="UrlRe" value="<?php echo $url;?>">
 	<input type="hidden" name="OldStatus" value="<?php echo $result[0]['OrderStatus'];?>">
 	<input type="hidden" name="_method" id="_method" value="POST">
+	<input type="hidden" name="status" id="status" value="<?php echo $status;?>"> 
 
 	<div class="table-responsive">
         <table class="table table-hover table-bordered" >
@@ -233,6 +235,7 @@ if($result[0]['OrderStatus']>='3'){
 			<div class="panel panel-default">
 		  	<div class="panel-body">
 		    	<div class="row">
+		    	
 				<div class="col-sm-5 bg-info">
 					<strong>ข้อมูลการจัดส่ง</strong>
 				</div>
@@ -271,25 +274,35 @@ if($result[0]['OrderStatus']>='3'){
 			</div>
 			<br>
 			<div class="row">
+  				<div class="col-sm-3">แจ้งชำระเงินเมื่อ : </div>
+  				<div class="col-sm-8"><?php echo conv_date($result[0]['payment']['timestamp']);?></div>
+  			</div>
+			<br>
+			<div class="row">
 				<div class="col-sm-3" >ค่าจัดส่ง</div>
 				<div class="col-sm-6">
 
 				<div class="input-group">
   						<span class="input-group-addon">TH</span>
   						<input type="text" class="form-control text-right" onblur="NumberFormat(this,2);"  
-  						placeholder="ค่าจัดส่ง" name="DeliverCost" id="DeliverCost" value="<?php echo number_format($result[0]['DeliverCost'],2);?>">
+  						placeholder="ค่าจัดส่ง" name="DeliverCost" id="DeliverCost" 
+  						value="<?php echo number_format($result[0]['DeliverCost'],2);?>" readonly>
   					<span class="input-group-addon">บาท</span> 
 				</div>
 				</div>
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-sm-3" >จำนวนเงิน</div>
+				<div class="col-sm-3" >จำนวนเงินที่ชำระ</div>
 				<div class="col-sm-6">
 
 				<div class="input-group">
   						<span class="input-group-addon">TH</span>
-  						<input type="text" class="form-control text-right" onblur="NumberFormat(this,2);"  placeholder="จำนวนเงิน" name="PaymentTotal" id="PaymentTotal">
+  						<input type="text" class="form-control text-right" 
+  						onblur="NumberFormat(this,2);"  placeholder="จำนวนเงิน" 
+  						name="payAmount" id="payAmount" 
+  						value="<?php echo number_format($result[0]['payment']['payAmount'],2);?>" 
+  						readonly>
   					<span class="input-group-addon">บาท</span> 
 				</div>
 				</div>
@@ -297,16 +310,29 @@ if($result[0]['OrderStatus']>='3'){
 			<br>
 			<div class="row">
 				<div class="col-sm-3" >
-					วันที่ชำระเงิน
+					วันเวลาการชำระเงิน
 				</div>
-				<div class="col-sm-5">
+				<div class="col-sm-8">
+				<input type="text" class="form-control" value="<?php echo $result[0]['payment']['PaymentDate'];?>" readonly="">
+				<!--
 					<div class="input-group">
 		  				<input type="text"  class="form-control datepicker" for="PaymantDate" name="PaymantDate" id="PaymantDate" placeholder="dd/mm/yyyy" readonly="readonly" value="<?php echo conv_date($result[0]['DeliveredDate']);?>">
 		  				<span class="input-group-addon" for="PaymantDate"><i class="glyphicon glyphicon-calendar"></i></span>
 					</div>
+					-->
 			</div>
 			</div>
-
+			<br>
+			<div class="row">
+				<div class="col-sm-3" >
+					ธนาคาร
+				</div>
+				<div class="col-sm-8">
+				<input type="text" class="form-control" value="<?php echo $result[0]['payment']['payBank'];?>" readonly="">
+				
+			</div>
+			</div>
+			
 		  </div>
 		</div>
 		</div>

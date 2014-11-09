@@ -98,7 +98,6 @@ $arr_OrderStatus = ArrOrderStatus();
           <th width="8%"><div style=" text-align: center;">จำนวน</div></th>
           <th width="8%"><div style=" text-align: center;">ราคารวม</div></th>
           <th width="8%"><div style=" text-align: center;">วันที่ชำระเงิน</div></th>
-          <th width="8%"><div style=" text-align: center;">วันที่ส่งสินค้า</div></th>
           <th width="8%"><div style=" text-align: center;">สถานะ</div></th>
           <th width="8%"><div style=" text-align: center;">จัดการ</div></th>
         </tr>
@@ -125,7 +124,7 @@ if(count($result)>0){
 			</td>
 			<?php 
 			$OrderAmount = 0;
-			$OrderPriceTotal = 0;
+			$OrderPriceTotal = $value['DeliverCost'];
 			foreach ($value['order_detail'] as $key2 => $value2) {
 				# code...
 				$OrderAmount+=$value2['OrderAmount'];
@@ -134,8 +133,7 @@ if(count($result)>0){
 			?>
 			<td style=" text-align: right;"><?php echo $OrderAmount;?></td>
 			<td style=" text-align: right;"><?php echo number_format($OrderPriceTotal,2);?></td>
-			<td style=" text-align: center;"><?php echo conv_date($value['PaymantDate']);?></td>
-			<td style=" text-align: center;"><?php echo conv_date($value['DeliveredDate']);?></td>
+			<td style=" text-align: center;"><?php echo @$Payment[$value['OrderID']];?></td>
 			<td style=" text-align: center;"><?php echo $arr_OrderStatus[$value['OrderStatus']];?></td>
 			<td style=" text-align: center;">
       <a href="Order/<?php echo $value['OrderID'];?>">
