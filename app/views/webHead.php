@@ -99,7 +99,7 @@ $path = $data['path'];
       </li>
 
       <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">แจ้งชำระเงิน</a>
+        <a href="<?php echo Request::root();?>/payment">แจ้งชำระเงิน</a>
       </li>
 
       <li class="dropdown dropdown-large">

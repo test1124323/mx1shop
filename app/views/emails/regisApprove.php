@@ -6,4 +6,4 @@
 <h3>รหัสผ่าน</h3>
 <span style="background:#444;color:#888;padding:10px;font-size:26px;"><?php echo $realpass?></span>
 <h4>กรุณาใช้ Email ของท่านในการ login บนหน้าเว็ปในครั้งต่อ ๆ เพื่อตรวจสอบและสั่งซื้อสินค้าจากทางร้าน</h4>
-<h4>คุณสามารถเข้าสู่ระบบเพื่อทำการสั่งซื้อสินค้ากับทางร้านของเราได้ที่ <a href="http://mx1shop.com/public/login">Mx1Shop</a></h4>
+<h4>คุณสามารถเข้าสู่ระบบเพื่อทำการสั่งซื้อสินค้ากับทางร้านของเราได้ที่ <a href="http://mx1shop.com/public/login">Mx1Shop</a> หรือเปลี่ยนรหัสผ่าน <a href="http://mx1shop.com/public/passwordchange">คลิก ที่นี่</a></h4>
