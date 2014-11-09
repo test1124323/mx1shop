@@ -56,7 +56,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'lusiaskolonie@gmail.com', 'name' => 'mx1shop'),
+	'from' => array('address' => 'mx1app.info@gmail.com', 'name' => 'mx1shop'),
 
 	/*
 	|--------------------------------------------------------------------------
