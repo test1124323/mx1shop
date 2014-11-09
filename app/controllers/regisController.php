@@ -31,18 +31,7 @@ class regisController extends \BaseController {
 	 */
 	public function store()
 	{
-		print_r(Input::all());
 		$input 	=	Input::all();
-		// Array
-		// 	(
-		// 	    [fname] => a
-		// 	    [lname] => a
-		// 	    [address] => a
-		// 	    [postcode] => a
-		// 	    [telnumber] => a
-		// 	    [email] => lusiaskolonie@gmail.com
-		// 	)
-		// exit;
 		$user 				=	new UserModel;
 		$user->FullName		=	$input['fname']." ".$input['lname'];
 		$user->UserName 	=	$input['email'];
@@ -58,7 +47,9 @@ class regisController extends \BaseController {
 		    $message->to($user->Email)->subject('ยืนยันการสมัครสมาชิก');
 		});
 
-		print_r($user->PassWord);exit;
+		$user->save();
+		
+
 	}
 
 

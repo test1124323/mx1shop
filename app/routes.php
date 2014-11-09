@@ -21,6 +21,8 @@ Route::resource('billing','billingController');
 Route::resource('billingSave','billingPDFController');
 
 Route::resource('registeration','regisController');
+Route::resource('profile','FrontProfileController');
+Route::get('passwordchange','FrontProfileController@changepassform');
 
 Route::group(array('before' => 'isLogedin'), function(){
 	Route::resource('login','FrontLoginController');
@@ -36,6 +38,9 @@ Route::filter('check', function()
 		return Redirect::to('backoffice/Login');
 	}
 });
+
+Route::get('logout','FrontLoginController@logout');
+
 
 Route::get('/backoffice/', function()
     {

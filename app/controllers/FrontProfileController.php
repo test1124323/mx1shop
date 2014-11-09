@@ -1,5 +1,5 @@
 <?php
-class FrontLoginController extends \BaseController {
+class FrontProfileController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,11 +9,14 @@ class FrontLoginController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		$stat	=	(empty(Input::has('stat')))?(Input::get('stat')):"";
-		return View::make('loginFront',array('stat'=>$stat));
+		$pf 	=	Session::get('profile');
+		$user 	=	UserModel::find($pf['userid']);
+		return View::make('Profile',array('user'=>$user));
 	}
 
-
+	public function changepassform(){
+		return View::make('passwordchg');
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -121,7 +124,6 @@ class FrontLoginController extends \BaseController {
 	public function logout(){
 		Session::forget('profile');
 		Session::forget('input');
-		return Redirect::to(Request::root()."/main");
 	}
 	//--------------------------Custome function------------------------------------
 

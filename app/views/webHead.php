@@ -17,7 +17,7 @@ $path = $data['path'];
 
 
 ?>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -31,7 +31,7 @@ $path = $data['path'];
 อีเมลล์ : lee.pradubyon@gmail.com">
 
   <!-- <link rel="shortcut icon" href="<?php echo $path;?>img/mx1-logo-tile.png"> -->
-
+  
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
   <link rel='stylesheet' href='<?php echo $path;?>css/bootstrap.css'>
@@ -60,7 +60,9 @@ $path = $data['path'];
     <div id="account_head" align="right">
     <?php 
         if(Session::has('profile')){
-
+          ?>
+          <b><a href="<?php echo Request::root()?>/profile">โปรไฟล์</a></b> | <b><a href="<?php echo Request::root()?>/logout">ออกจากระบบ</a></b>
+          <?php
         }else{
           ?>
           <b><a href="<?php echo Request::root()?>/login">เข้าสู่ระบบ</a> | <a href="<?php echo Request::root()?>/login">สมัครสมาชิก</a></b><!--  | <a href="<?php //echo Request::root()?>/register"><b>ลงทะเบียน</b></a> -->
