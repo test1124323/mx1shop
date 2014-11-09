@@ -1,4 +1,5 @@
 <?php
+use component\Profile;
 class regisController extends \BaseController {
 
 	/**
@@ -41,15 +42,14 @@ class regisController extends \BaseController {
 		$user->UserTel 		=	$input['telnumber'];
 		$realpass 			=	substr(md5($user->Fullname.$user->Email.$user->UserTel.rand(1,100000)),12,6);
 		$user->PassWord 	=	md5($realpass); 
-		
+
 		Mail::send('emails.regisApprove', array('user'=>$user , 'realpass'=> $realpass), function($message) use ($user)
 		{
 		    $message->to($user->Email)->subject('ยืนยันการสมัครสมาชิก');
 		});
 
 		$user->save();
-		return Redirect::to('registeration/'.$user->UserID);
-
+		return Redirect::to('login?E=success');
 	}
 
 
@@ -61,7 +61,7 @@ class regisController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		print_r($id);
+
 	}
 
 
@@ -73,7 +73,6 @@ class regisController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
 	}
 
 
@@ -85,6 +84,35 @@ class regisController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$input 	=	Input::all();
+		$user 	=	UserModel::find($id);
+		
+		if($input['mode']=='profile'){
+			$aa 	=	UserModel::Checkmail($input['email'])->get()->toArray();
+			if(!empty($aa)&&$input['email']!=$user->Email){
+				$txt 	=	base64_encode('อีเมล์นี้ถูกใช้งานโดยผู้ใช้อื่นแล้ว');
+				
+				return Redirect::to('profile?error='.$txt);
+			}
+
+			$user->FullName		=	$input['fname']." ".$input['lname'];
+			$user->UserName 	=	$input['email'];
+			$user->Email 		=	$input['email'];
+			$user->UserAddress 	=	$input['address']." ".$input['postcode'];
+			$user->UserTel 		=	$input['telnumber'];
+			$user->save();
+
+			Profile::save($user);
+			$txt 	=	base64_encode('อัพเดตข้อมูลแล้ว');
+			return Redirect::to('profile?success='.$txt);
+
+		}else{
+			$realpass 			=	substr(md5($user->Fullname.$user->Email.$user->UserTel.rand(1,100000)),12,6);
+			$user->PassWord 	=	md5($realpass); 
+		}
+		echo "<pre>";
+		print_r($user);
+
 		
 	}
 

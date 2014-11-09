@@ -21,8 +21,11 @@ Route::resource('billing','billingController');
 Route::resource('billingSave','billingPDFController');
 
 Route::resource('registeration','regisController');
-Route::resource('profile','FrontProfileController');
 Route::get('passwordchange','FrontProfileController@changepassform');
+
+Route::group(array('before' => 'isNonLogin'), function(){
+	Route::resource('profile','FrontProfileController');
+});
 
 Route::group(array('before' => 'isLogedin'), function(){
 	Route::resource('login','FrontLoginController');

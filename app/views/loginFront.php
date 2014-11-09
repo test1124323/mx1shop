@@ -25,10 +25,36 @@ include("funcHead.php");
 <div class="col-sm-12 " style="padding-bottom:100px;">
   <div class="col-sm-1 "></div>
 
-  <div class="col-sm-9 login">
-    <div class="col-xs-1 login"></div>
+
+  <div class="col-sm-9 login"> 
+  <div class="col-sm-12">
+    <div class="col-sm-1 login"></div>
+    <div class="col-sm-11">
+
+    <?php
+    if(Input::has('E')&&Input::get('E')=='success'){ ?>
+      <h4>
+      <div class="alert alert-success" role="alert" align="center">ลงทะเบียนเรียบร้อยกรุณารับรหัสผ่านจากอีเมล์ที่ใช้ลงทะเบียน</div>
+      </h4>
+    <?php }elseif(!empty($E)){
+      if($E=='1'||$E=='2'){
+      ?>
+      <h4>
+      <div class="alert alert-danger" role="alert" align="center">ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง</div>
+      </h4>
+      <?php
+      }
+    }
+
+    ?>
+
+    </div>
+  </div>
+
+    <div class="col-sm-1 login"></div>
     
     <div class="col-sm-5" style="background:#FFF;padding:0px;">
+
       <div class="col-sm-12 login-head">
          ล็อกอิน
       </div>

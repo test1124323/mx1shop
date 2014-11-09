@@ -34,4 +34,7 @@ class UserModel extends Eloquent{
 		->where('PassWord','=',$password)
 		->where('ActiveStatus','=','1');
 	}
+	public function scopeCheckmail($query,$email){
+		return $query->where('Email',$email);
+	}
 }

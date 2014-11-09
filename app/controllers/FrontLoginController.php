@@ -33,39 +33,19 @@ class FrontLoginController extends \BaseController {
 	public function store()
 	{ 
 		if( !Input::has('loguser') || !Input::has('logpass') ){
-			return View::make('loginFront',array('stat'=> '1'));	//empty field
+			return View::make('loginFront',array('E'=> '1'));	//empty field
 		}
 		$login 	=	UserModel::Login(Input::get('loguser') , md5(Input::get('logpass')))->first();
-	
 		if(is_object($login)){
+
 			if(empty($login->UserID) || $login->TypeUser!='1'){ //user only
-				return View::make('loginFront',array('stat'=> '2')); //invalid login data
+				return View::make('loginFront',array('E'=> '2')); //invalid login data
 			}
-			$login 	=	$login->toArray();
-
-			$userInfo 				=	array();
-			$fullname 				=	explode(" ", $login['FullName']);
-			$userInfo['fullname']	=	$login['FullName'];
-			$userInfo['fname'] 		=	$fullname[0];
-			$userInfo['lname'] 		=	$fullname[1];
-			$userInfo['address'] 	=	$login['UserAddress'];
-			$addr 					=	substr($login['UserAddress'], -5);
-			if($addr <= 0){
-				$addr = '';
-			}else{
-				$userInfo['address'] 	=	str_replace($addr, '', $userInfo['address']);
-			}
-			$userInfo['postcode'] 	=	$addr;
-			$userInfo['email'] 		=	$login['Email'];
-			$userInfo['telnumber']	=	$login['UserTel'];
-			$userInfo['userid']		=	$login['UserID'];
-			$userInfo['typeuser']	=	$login['TypeUser'];
-
-			Session::put('input',$userInfo);
-			Session::put('profile',$userInfo);
+			
+			$user->save($login);
 			return Redirect::to(Request::root()."/main");
 		}else{
-			return View::make('loginFront',array('stat'=> '2')); //invalid login data
+			return View::make('loginFront',array('E'=> '2')); //invalid login data
 
 		}
 	}

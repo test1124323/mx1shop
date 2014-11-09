@@ -57,6 +57,12 @@ Route::filter('isLogedin', function(){
 	}
 });
 
+Route::filter('isNonLogin', function(){
+	if(!Session::has('profile')){
+			return Redirect::to(Request::root()."/main");
+	}
+});
+
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
