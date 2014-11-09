@@ -11,7 +11,7 @@ class FrontProfileController extends \BaseController {
 	{
 		$pf 	=	Session::get('profile');
 		$user 	=	UserModel::find($pf['userid']);
-		return View::make('Profile',array('user'=>$user));
+		return View::make('profile',array('user'=>$user));
 	}
 
 	public function changepassform(){
