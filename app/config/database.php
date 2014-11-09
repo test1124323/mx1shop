@@ -49,7 +49,7 @@ return array(
 		'main' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'mxshopco_shop',
+			'database'  => 'mx1shop',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

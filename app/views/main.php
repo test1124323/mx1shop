@@ -12,7 +12,6 @@ if(Input::has('cate')){
 <!-- content  -->
 
 
-
 <!-- right side -->
 
 <!-- <div class="col-sm-12" style="background:rgba(255,0,20,0.7);padding:20px;"><h3 style="color:#FFF;">วิธีการสั่งซื้อ</h3></div> -->
@@ -23,11 +22,10 @@ if(Input::has('cate')){
 </div>
 <?php 
 $i=1;
-  
 
-if(empty($productlist)){
+if($a==0){
 ?>
-<div style=" padding:0 20px 0 20px;">
+<div class="col-sm-12" style=" padding:0 20px 0 20px;">
 <pre style="font-size:20px; color:#999; text-shadow:1px 2px 0px rgba(255,255,255,0.8); background:#FCFCFC;" align="center">
 ไม่พบผลการค้นหา
 </pre>

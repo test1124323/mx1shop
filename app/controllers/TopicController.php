@@ -15,7 +15,11 @@ class TopicController extends \BaseController {
 											->Name($keyword)
 											->with('ProductImg')
 											->paginate(17);
-											
+		$dat 	=	$data['productlist']->toArray();
+		if (empty($dat['data'])) {
+			$a=0;
+		}
+		else{$a=1;}
 		$data['coverImg']	=	array();
 		foreach ($data['productlist'] as $key => $value) {
 			foreach ($value['product_img'] as $k => $v) {
@@ -25,6 +29,7 @@ class TopicController extends \BaseController {
 			}
 
 		}
+		$data['a'] = $a;
 		return View::make('main',$data);
 	}
 

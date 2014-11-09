@@ -120,8 +120,8 @@ return array(
 	| you may inspect the message. This is great for local development.
 	|
 	*/
-	// 'adminMail' => 'mx1shop.customerservice@gmail.com',
-	'adminMail' => 'lusiaskolonie@gmail.com',
+	'adminMail' => 'mx1shop.customerservice@gmail.com',
+	// 'adminMail' => 'lusiaskolonie@gmail.com',
 
 	'pretend' => false,
 
