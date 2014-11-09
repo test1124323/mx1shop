@@ -94,16 +94,16 @@ $path = $data['path'];
         <a href="<?php echo Request::root();?>/main">หน้าแรก</a>
       </li>
       </li>
-      <li class="dropdown dropdown-large">
+     <!--  <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">บทความ</a>
-      </li>
+      </li> -->
 
       <li class="dropdown dropdown-large">
         <a href="<?php echo Request::root();?>/payment">แจ้งชำระเงิน</a>
       </li>
 
       <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">เกี่ยวกับเรา</a>
+        <a href="<?php echo Request::root();?>/about-us">ติดต่อเรา</a>
       </li>
 
       <li class="dropdown dropdown-large">
@@ -180,7 +180,7 @@ $path = $data['path'];
 
 <div class="col-sm-12 onsale scroll-wrapper">
   <div class="col-sm-6 saleItem bg-color-pinkred text-color-white ">
-    <h2>ลดราคารับสิ้นปี 60%</h2>
+    <h2>ลุ้นลดราคารับสิ้นปี 60%</h2>
     <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
   </div>
   <a href="#">

@@ -36,6 +36,10 @@ Route::get('How-to-order',function(){
 	return View::make('howtoorder');
 });
 
+Route::get('about-us',function(){
+	return View::make('aboutus');
+});
+
 Route::filter('check', function()
 {
 	if(!Session::has("UserID")){

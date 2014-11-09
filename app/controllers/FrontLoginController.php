@@ -1,4 +1,5 @@
 <?php
+use component\Profile;
 class FrontLoginController extends \BaseController {
 
 	/**
@@ -30,7 +31,7 @@ class FrontLoginController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store() 
 	{ 
 		if( !Input::has('loguser') || !Input::has('logpass') ){
 			return View::make('loginFront',array('E'=> '1'));	//empty field
@@ -42,7 +43,7 @@ class FrontLoginController extends \BaseController {
 				return View::make('loginFront',array('E'=> '2')); //invalid login data
 			}
 			
-			$user->save($login);
+			Profile::save($login);
 			return Redirect::to(Request::root()."/main");
 		}else{
 			return View::make('loginFront',array('E'=> '2')); //invalid login data

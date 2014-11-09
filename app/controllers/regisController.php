@@ -106,12 +106,18 @@ class regisController extends \BaseController {
 			$txt 	=	base64_encode('อัพเดตข้อมูลแล้ว');
 			return Redirect::to('profile?success='.$txt);
 
-		}else{
-			$realpass 			=	substr(md5($user->Fullname.$user->Email.$user->UserTel.rand(1,100000)),12,6);
-			$user->PassWord 	=	md5($realpass); 
+		}elseif($input['mode']=='password'){
+			$profile 	=	Session::get('profile');
+			$pas 		=	UserModel::Checkpass($profile['userid'],md5($input['oldpass']))->get()->toArray();
+			if(empty($pas)||$input['newpass1']!=$input['newpass2']){
+				$txt 	=	base64_encode('พาสเวิร์ดไม่ถูกต้อง');
+				return Redirect::to('passwordchange?error='.$txt);
+			}
+			$user->PassWord 	=	md5($input['newpass1']);
+			$user->save();
+			$txt 	=	base64_encode('เปลี่ยนพาสเวิร์ดเรียบร้อย');
+			return Redirect::to('passwordchange?success='.$txt); 
 		}
-		echo "<pre>";
-		print_r($user);
 
 		
 	}

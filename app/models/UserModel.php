@@ -37,4 +37,8 @@ class UserModel extends Eloquent{
 	public function scopeCheckmail($query,$email){
 		return $query->where('Email',$email);
 	}
+
+	public function scopeCheckpass($query,$uid,$pass){
+		return $query->where('PassWord',$pass)->where('UserID',$uid);
+	}
 }
