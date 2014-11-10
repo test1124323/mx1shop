@@ -32,6 +32,17 @@ class regisController extends \BaseController {
 	 */
 	public function store()
 	{
+		require_once('recaptchalib.php');
+		$privatekey = "6LeiRvwSAAAAAN80ZpfLfcxJYXGfLNu-8NAVJp4v";
+		$resp = recaptcha_check_answer ($privatekey,
+		                                $_SERVER["REMOTE_ADDR"],
+		                                Input::get("recaptcha_challenge_field"),
+		                                Input::get("recaptcha_response_field"));
+
+		if (!$resp->is_valid) {
+		   	return Redirect::to('login');
+		}
+
 		$input 	=	Input::all();
 		$user 				=	new UserModel;
 		$user->FullName		=	$input['fname']." ".$input['lname'];

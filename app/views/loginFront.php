@@ -26,7 +26,7 @@ include("funcHead.php");
   <div class="col-sm-1 "></div>
 
 
-  <div class="col-sm-9 login"> 
+  <div class="col-sm-9 login" style="margin-top:10px;"> 
   <div class="col-sm-12">
     <div class="col-sm-1 login"></div>
     <div class="col-sm-11">
@@ -139,6 +139,29 @@ include("funcHead.php");
             <input type="email" class="form-control square" name="email" placeholder="example@email.com" required />
           </div>
           </div>
+
+          <!--  -->
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+             <script type="text/javascript">
+             var RecaptchaOptions = {
+                theme : 'clean'
+             };
+             </script>
+            <script type="text/javascript"
+               src="http://www.google.com/recaptcha/api/challenge?k=6LeiRvwSAAAAAGfY9vwa_bzBaMhh1yzYIsWEjLAe">
+            </script>
+            <noscript>
+               <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LeiRvwSAAAAAGfY9vwa_bzBaMhh1yzYIsWEjLAe"
+                   height="300" width="500" frameborder="0"></iframe><br>
+               <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+               </textarea>
+               <input type="hidden" name="recaptcha_response_field"
+                   value="manual_challenge">
+            </noscript>
+            </div>
+          <!--  -->
+
           <div class="col-sm-12" style="padding:20px;">
             <button class="btn btn-danger col-sm-12" style="padding:10px;font-size:18px;" type="submit"><b>ลงทะเบียน</b></button>          
         </div>
