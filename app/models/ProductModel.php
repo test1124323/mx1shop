@@ -25,9 +25,11 @@ class ProductModel extends Eloquent{
 		if(!empty($ProductName)){
 			$query->where('ProductName','LIKE','%'.$ProductName.'%');
 		}
-		if($CategoryID){
-			
+		if(!empty($CategoryID)){
+			$query->join('tbl_productcate', 'tbl_product.ProductID', '=', 'tbl_productcate.ProductID')
+			->where('tbl_productcate.CategoryID','=',$CategoryID);
 		}
+		
 		
 		return $query;
 	}
