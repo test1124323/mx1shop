@@ -1,3 +1,3 @@
 <script>
-window.location.href="public/main";
+window.location.href="/main";
 </script>

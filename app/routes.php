@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/','TopicController@index');
 Route::resource('main','TopicController');
 Route::resource('cartStore','TopicController');
 

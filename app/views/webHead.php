@@ -30,7 +30,7 @@ $path = $data['path'];
 ไลน์ : oxymaxy
 อีเมลล์ : lee.pradubyon@gmail.com">
 
-  <!-- <link rel="shortcut icon" href="<?php echo $path;?>img/mx1-logo-tile.png"> -->
+  <link rel="shortcut icon" href="<?php echo $path;?>img/miniicon.png">
   
   <script src="<?php echo $path;?>js/jquery-1.10.2.js"></script>
   <script src="<?php echo $path;?>js/bootstrap.min.js"></script>
