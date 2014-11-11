@@ -9,7 +9,13 @@ class LoginController extends \BaseController {
 	 */
 	public function index()
 	{
+		if(Session::has("UserID")){
+			return Redirect::to('backoffice/Order');
+		}else{
 			return View::make("back_setup/Login");
+		}
+			
+			
 
 		
 	}

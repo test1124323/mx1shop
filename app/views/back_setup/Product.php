@@ -75,18 +75,18 @@ include("function.php");
               value="<?php echo @$Input['SProductName'];?>" name="SProductName" placeholder="ชื่อรายการสินค้า">
             </div>
           </div>
-         <!-- <div class="row" style="margin-top:10px;">
+         <div class="row" style="margin-top:10px;">
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
               หมวดสินค้า
             </div>
             <div class="col-xs-3">
               <?php
-                //echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
+                echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
               ?>
             </div>
           </div>
-          -->
+         
           <div class="row" style="margin-top:10px;">
             <div class="col-xs-12f^ text-center" >
               <button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
@@ -130,7 +130,13 @@ include("function.php");
               <input type="checkbox" name="chk_productID[]" value="<?php echo $value['ProductID'];?>" > <?php echo ++$i.".";?>
               </td>
               <td><a href="ProductForm/<?php echo $value['ProductID'];?>"><?php echo sprintf("%07s",$value['ProductID']);?></a></td>
-              <td><?php echo $value['ProductName'];?></td>
+              <td>
+              <?php 
+              echo $value['ProductName']."<hr>";
+              echo ($value['BrandCarID']<>'')?"ยี่ห้อรถ : ".(@$arr_brand[$value['BrandCarID']])."<br>":"";
+              echo ($value['ModelCarID']<>'')?"รุ่นรถ : ".(@$arr_model[$value['ModelCarID']])."<br>":"";
+              ?>
+              </td>
               <td><?php
                 if($value['procate_category']){
                   foreach ($value['procate_category'] as $key2 => $value2) {

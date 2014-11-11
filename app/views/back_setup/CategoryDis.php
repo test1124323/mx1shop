@@ -84,7 +84,9 @@ function delData(CategoryID){
 			    		<button type="button" class="btn btn-primary btn-xs" 
 			    		onclick="show_pop('myModal','../backoffice/catePop/<?php echo $value['CategoryID'];?>','showdisp1','PUT','0','1','<?php echo $value['CategoryID'];?>','<?php echo $value['CategoryName'];?>');">
 			    		<i class="glyphicon glyphicon-pencil"></i> แก้ไข</button>
-			    		<button type="button" class="btn btn-danger btn-xs" onclick="delData('<?php echo $value['CategoryID'];?>');" ><i class="glyphicon glyphicon-trash"></i> ลบ</button>
+			    		<button type="button" class="btn btn-danger btn-xs" 
+			    		onclick="delData('<?php echo $value['CategoryID'];?>');" >
+			    		<i class="glyphicon glyphicon-trash"></i> ลบ</button>
 			    		</td>
 			    	</tr>
 				<?php

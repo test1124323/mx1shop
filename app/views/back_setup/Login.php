@@ -48,28 +48,31 @@ $path = Request::root()."/";
 	<style type="text/css">
 		.bg_tb{
 			background-color: #5bc0de;
+     
 		}
 	</style>
 </head>
-<body style="background-color: #000000;">
+<body style="background-color: #777;">
 	        <div class="form-box" id="login-box">
-            <div class="header">Sign In</div>
+            <div class="header">
+            Sign In
+            </div>
             <form action="<?php echo $path."backoffice/"?>Login" method="post"  onsubmit="return checkLogin();">
-                <div class="body bg-gray">
+                <div class="body" style="background-color: #eee;">
                     <div class="form-group">
                     <span style="color:red"; id="sp_user"></span>
                         <input type="text" id="userid" name="userid" class="form-control" placeholder="User Name"/>
                     
                     </div> 
         
-                    <div class="form-group">
+                    <div class="form-group" >
                     <span style="color:red"; id="sp_pass"></span>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>    	
                     
                     <span style="color:red"; id="sp_incorrect"><?php echo (@$incorrect=='1')?"**Username or Password Incorrect":"";?></span>
                     </div>          
                 </div>
-                <div class="footer">                                                               
+                <div class="footer" >                                                               
                     <button type="submit"  class="btn bg-olive btn-block">Sign me in</button>  
                 </div>
             </form>
