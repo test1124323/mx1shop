@@ -47,7 +47,82 @@ class ProductPicController extends \BaseController {
 	{
 		//
 	}
+	public function create_cropped_thumbnail($image_path, $thumb_width, $thumb_height, $prefix) {
 
+    if (!(is_integer($thumb_width) && $thumb_width > 0) && !($thumb_width === "*")) {
+        echo "The width is invalid";
+        exit(1);
+    }
+
+    if (!(is_integer($thumb_height) && $thumb_height > 0) && !($thumb_height === "*")) {
+        echo "The height is invalid";
+        exit(1);
+    }
+
+    $extension = pathinfo($image_path, PATHINFO_EXTENSION);
+    switch (strtolower($extension)){
+        case "jpg":
+        case "jpeg":
+            $source_image = imagecreatefromjpeg($image_path);
+            break;
+        case "gif":
+            $source_image = imagecreatefromgif($image_path);
+            break;
+        case "png":
+            $source_image = imagecreatefrompng($image_path);
+            break;
+        default:
+        echo $extension.">>";
+            exit(1);
+            break;
+    }
+
+    $source_width = imageSX($source_image);
+    $source_height = imageSY($source_image);
+
+    if (($source_width / $source_height) == ($thumb_width / $thumb_height)) {
+        $source_x = 0;
+        $source_y = 0;
+    }
+
+    if (($source_width / $source_height) > ($thumb_width / $thumb_height)) {
+        $source_y = 0;
+        $temp_width = $source_height * $thumb_width / $thumb_height;
+        $source_x = ($source_width - $temp_width) / 2;
+        $source_width = $temp_width;
+    }
+
+    if (($source_width / $source_height) < ($thumb_width / $thumb_height)) {
+        $source_x = 0;
+        $temp_height = $source_width * $thumb_height / $thumb_width;
+        $source_y = ($source_height - $temp_height) / 2;
+        $source_height = $temp_height;
+    }
+
+    $target_image = ImageCreateTrueColor($thumb_width, $thumb_height);
+
+    imagecopyresampled($target_image, $source_image, 0, 0, $source_x, $source_y, $thumb_width, $thumb_height, $source_width, $source_height);
+
+    switch (strtolower($extension)) {
+        case "jpg":
+        case "jpeg":
+            imagejpeg($target_image,$image_path);
+            break;
+        case "gif":
+            imagegif($target_image,$image_path);
+            break;
+        case "png":
+            imagepng($target_image,$image_path);
+            break;
+        default:
+        echo $extension."";
+            exit(1);
+            break;
+    }
+
+    imagedestroy($target_image);
+    imagedestroy($source_image);
+}
 	public function store()
 	{
 		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
@@ -106,30 +181,33 @@ class ProductPicController extends \BaseController {
 				$fileName = date('Ymdhis').$i.$j.".".$fileType;
 
 				
-
-
-
 				$file->move($destinationPath1, $fileName);
 
-				
+				 $width = 720;
+				 $height = 540;
 
+				
+               	$this->create_cropped_thumbnail($destinationPath1.$fileName,720,540,'');
+
+				//echo "AAAAAAAAAA";
+                //exit();
 				//add copy right
-				//$myCopyright = imagecreatefrompng(public_path().'/img/water_mask1_200.png');
+				
 				$myCopyright = imagecreatefromjpeg(public_path().'/img/water_mask1_350.jpg');
 				$srcWidth = imagesx($myCopyright);
 				$srcHeight = imagesy($myCopyright);
+
 				$myImage = "";
 
 				//echo $srcWidth.">>".$srcHeight."<b>";
 				//echo $fileNameOriEx[1]."<br>";
-				if(preg_match('/jpg|jpeg/',$fileType)){
+				if(preg_match('/jpg|jpeg/',strtolower($fileType))){
 					$myImage=imagecreatefromjpeg($destinationPath1."/".$fileName);
 				}
-				if(preg_match('/png/',$fileType)){
+				if(preg_match('/png/',strtolower($fileType))){
 					$myImage=imagecreatefrompng($destinationPath1."/".$fileName);
 				}
-				///echo $myImage;
-				//exit();
+
 				$destWidth = imagesx($myImage);
 				$destHeight = imagesy($myImage);
 
@@ -141,23 +219,17 @@ class ProductPicController extends \BaseController {
 				//$myImageThumb = $myImage;
 
 				$white = imagecolorexact($myCopyright, 255, 255, 255);
-				//imagecolortransparent($myCopyright, $white);
-
 				imagecopymerge($myImage, $myCopyright, $destX, $destY, 0, 0, $srcWidth, $srcHeight, 50);
 
-				//imagecopymerge($myImageThumb, $myCopyright, $destX, $destY, 0, 0,400,300, 50);
 
 
-
-				if(preg_match('/jpg|jpeg/',$fileType)){
+				if(preg_match('/jpg|jpeg/',strtolower($fileType))){
 					imagejpeg($myImage,$destinationPath1."/".$fileName);
-
-					//imagejpeg($myImage,$destinationPath2."/".$fileName);
 				}
-				if(preg_match('/png/',$fileType)){
+				if(preg_match('/png/',strtolower($fileType))){
 					imagepng($myImage,$destinationPath1."/".$fileName);
-					//imagepng($myImage,$destinationPath2."/".$fileName);
 				}
+
 				imagedestroy($myImage);
 				imagedestroy($myCopyright);
 				//end add copy right
@@ -200,10 +272,10 @@ class ProductPicController extends \BaseController {
 				$fileType = $flieEx[1];
 				$myImage = "";
 
-				if(preg_match('/jpg|jpeg/',$fileType)){
+				if(preg_match('/jpg|jpeg/',strtolower($fileType))){
 					$images_orig =imagecreatefromjpeg($path);
 				}
-				if(preg_match('/png/',$fileType)){
+				if(preg_match('/png/',strtolower($fileType))){
 					$images_orig =imagecreatefrompng($path);
 				}
 
@@ -249,7 +321,12 @@ foreach (Input::get('ProductID') as $key => $value) {
 
 		}
 		catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			echo $e->getMessage();
+			 $path = Request::root()."/";
+			//echo '<br>File is unreachable or not a supported image';
+			echo '<br><a href= "'.$path.'backoffice/Product">Chick here...</a>';
+
+			//echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 }
 
