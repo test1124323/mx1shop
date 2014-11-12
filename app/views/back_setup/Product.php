@@ -75,18 +75,18 @@ include("function.php");
               value="<?php echo @$Input['SProductName'];?>" name="SProductName" placeholder="ชื่อรายการสินค้า">
             </div>
           </div>
-         <!-- <div class="row" style="margin-top:10px;">
+        <div class="row" style="margin-top:10px;">
             <div class="col-xs-1"></div>
             <div class="col-xs-2">
               หมวดสินค้า
             </div>
             <div class="col-xs-3">
               <?php
-                //echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
+                echo Form::select('SCategoryID',$arr_dataSel,@$Input['SCategoryID'],array('class'=>'form-control'));
               ?>
             </div>
           </div>
-          -->
+      
           <div class="row" style="margin-top:10px;">
             <div class="col-xs-12f^ text-center" >
               <button type="button" class="btn btn-primary" onclick="Search();"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
