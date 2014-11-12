@@ -59,7 +59,7 @@ foreach ($productlist as $pkey => $pvalue) {
 }
 ?>
  <div class="col-sm-12" style="text-align:center;" ><?php echo $productlist->links(); ?></div>
-
+<div class="col-sm-12" style="height:200px;"></div>
 <!-- !right side -->
 
 
