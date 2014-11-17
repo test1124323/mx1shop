@@ -7,7 +7,9 @@
 		"laravel/framework": "4.1.*",
 		"intervention/image": "2.0",
 		"barryvdh/laravel-dompdf": "*",
-		"lowerends/l4-mpdf": "dev-master"
+		"lowerends/l4-mpdf": "dev-master",
+		"facebook/php-sdk-v4" : "4.0.*"
+
 	},
 
 	"autoload": {
