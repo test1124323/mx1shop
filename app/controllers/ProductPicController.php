@@ -331,6 +331,13 @@ foreach (Input::get('ProductID') as $key => $value) {
 }
 
 public function deletePic(){
+	$destinationPath1 = public_path().'/img/product/';
+	$destinationPath2 =  public_path().'/img/product_tmp/';
+
+	$result = ProductImg::where('ProductImgID','=',$_POST['ProductImgID'])->get()->toArray();
+	$path_img = $result[0]['ProductIMG'];
+	@unlink($destinationPath1."/".$path_img);
+	@unlink($destinationPath2."/".$path_img);
 	$delete = ProductImg::where('ProductImgID', '=',$_POST['ProductImgID'])->delete();
 }
 	/**
