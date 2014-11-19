@@ -130,7 +130,13 @@ include("function.php");
               <input type="checkbox" name="chk_productID[]" value="<?php echo $value['ProductID'];?>" > <?php echo ++$i.".";?>
               </td>
               <td><a href="ProductForm/<?php echo $value['ProductID'];?>"><?php echo sprintf("%07s",$value['ProductID']);?></a></td>
-              <td><?php echo $value['ProductName'];?></td>
+              <td>
+              <?php 
+              echo $value['ProductName']."<hr>";
+              echo ($value['BrandCarID']<>'')?"ยี่ห้อรถ : ".(@$arr_brand[$value['BrandCarID']])."<br>":"";
+              echo ($value['ModelCarID']<>'')?"รุ่นรถ : ".(@$arr_model[$value['ModelCarID']])."<br>":"";
+              ?>
+              </td>
               <td><?php
                 if($value['procate_category']){
                   foreach ($value['procate_category'] as $key2 => $value2) {
