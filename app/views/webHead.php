@@ -106,7 +106,7 @@ $path = $data['path'];
         <a href="<?php echo Request::root();?>/about-us">ติดต่อเรา</a>
       </li>
 
-      <li class="dropdown dropdown-large">
+      <li class="dropdown dropdown-large" style="width:200px;">
         <a href="<?php echo Request::root();?>/cart">ตะกร้าสินค้า <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
       </li>
 

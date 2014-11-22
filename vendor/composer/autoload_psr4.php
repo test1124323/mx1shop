@@ -7,6 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
     'Barryvdh\\DomPDF\\' => array($vendorDir . '/barryvdh/laravel-dompdf/src'),
 );

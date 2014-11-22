@@ -10,6 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/testfacebook','loginFacebookController@index');
+
 
 Route::get('/','TopicController@index');
 Route::resource('main','TopicController');

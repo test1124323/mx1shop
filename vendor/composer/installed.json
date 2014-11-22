@@ -1950,54 +1950,50 @@
         ]
     },
     {
-        "name": "facebook/php-sdk-v4",
-        "version": "4.0.12",
-        "version_normalized": "4.0.12.0",
+        "name": "pitchanon/facebook-connect",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-            "reference": "0683838b6966446b2cbef841f01f1d447ae7a5f9"
+            "url": "https://github.com/Pitchanon/Laravel4-FacebookConnect.git",
+            "reference": "995396b6d2ca991dbfe3bdd5597c537fb7ac4eaa"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/0683838b6966446b2cbef841f01f1d447ae7a5f9",
-            "reference": "0683838b6966446b2cbef841f01f1d447ae7a5f9",
+            "url": "https://api.github.com/repos/Pitchanon/Laravel4-FacebookConnect/zipball/995396b6d2ca991dbfe3bdd5597c537fb7ac4eaa",
+            "reference": "995396b6d2ca991dbfe3bdd5597c537fb7ac4eaa",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0"
+            "illuminate/support": "4.x",
+            "php": ">=5.3.0"
         },
-        "require-dev": {
-            "guzzlehttp/guzzle": "~4.0",
-            "mockery/mockery": "dev-master",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "suggest": {
-            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
-        },
-        "time": "2014-10-30 23:02:36",
+        "time": "2014-09-17 00:06:11",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Facebook\\": "src/Facebook/"
+            "psr-0": {
+                "Pitchanon\\FacebookConnect": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "Facebook Platform"
+            "GNU General Public License (GPL)"
         ],
         "authors": [
             {
-                "name": "Facebook",
-                "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
+                "name": "Pitchanon D.",
+                "email": "Pitchanon.d@gmail.com",
+                "homepage": "https://github.com/Pitchanon",
+                "role": "Developer"
             }
         ],
-        "description": "Facebook SDK for PHP",
-        "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
+        "description": "A vendor facebook connect package",
+        "homepage": "https://github.com/Pitchanon/Laravel4-FacebookConnect",
         "keywords": [
             "facebook",
-            "sdk"
+            "laravel",
+            "vendor"
         ]
     }
 ]
