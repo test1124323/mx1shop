@@ -66,11 +66,13 @@ include("funcHead.php");
         <div class="col-sm-12" style="padding:15px"></div>
         <div class="col-sm-12">
             <button class="btn btn-danger col-sm-12" style="padding:5px;font-size:18px;" type="submit"><b>เข้าสู่ระบบ</b></button>          
+
         </div>
         
         <div class="col-sm-12" style="padding:5px"></div>
         <div class="col-sm-12">
-            <a href="<?php echo Request::root()?>/main"><button class="btn btn-default col-sm-12" type="button">กลับสู่หน้าหลัก</button></a>
+        <a href="<?php echo Request::root()?>/loginfb"><button class="btn btn-default col-sm-12" style="padding:5px;font-size:18px;margin-top:10px;background:#306096;color:#FFF;" type="button" >Login with Facebook</button></a>
+            <!-- <a href="<?php echo Request::root()?>/main"><button class="btn btn-default col-sm-12" type="button">กลับสู่หน้าหลัก</button></a> -->
         </div>
 
 

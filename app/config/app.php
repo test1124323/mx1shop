@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
+		'Pitchanon\FacebookConnect\FacebookConnectServiceProvider',
 	),
 
 	/*
@@ -190,6 +191,14 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'PDF'             => 'Barryvdh\DomPDF\Facade',
 
+	),
+	'faceook_api' => array(
+		'application' => array(
+		    'appId' => '677710455671892',
+		    'secret' => '6f23cfff4698deae73f9f9d36913e19f'
+    	),
+    	'permissions' => 'public_profile,email,user_birthday',
+    	'url_app' => 'http://www.mx1shop.com/',
 	),
 
 );

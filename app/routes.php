@@ -10,7 +10,15 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/testfacebook','loginFacebookController@index');
+Route::get('/loginfb' , function(){
+
+	FacebookConnect::getFacebook(Config::get('app.faceook_api.application'));
+	$getUser = FacebookConnect::getUser(Config::get('app.faceook_api.permissions'), url('/login/fb'));
+	if ($getUser['user_profile']) {
+		print_r($getUser);
+	}
+
+});
 
 
 Route::get('/','TopicController@index');

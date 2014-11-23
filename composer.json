@@ -8,7 +8,8 @@
 		"intervention/image": "2.0",
 		"barryvdh/laravel-dompdf": "*",
 		"lowerends/l4-mpdf": "dev-master",
-		"pitchanon/facebook-connect": "dev-master"
+		"pitchanon/facebook-connect": "dev-master",
+		"facebook/php-sdk-v4" : "4.0.*"
 
 	},
 
