@@ -12,10 +12,11 @@
 */
 Route::get('/loginfb' , function(){
 
-	FacebookConnect::getFacebook(Config::get('app.faceook_api.application'));
-	$getUser = FacebookConnect::getUser(Config::get('app.faceook_api.permissions'), url('/login/fb'));
+	FacebookConnect::getFacebook(Config::get('app.faceook_api.application'));print_r($getUser);exit;
+	$getUser = FacebookConnect::getUser(Config::get('app.faceook_api.permissions'), url('/login'));
+	
 	if ($getUser['user_profile']) {
-		print_r($getUser);
+		print_r($getUser);exit;
 	}
 
 });

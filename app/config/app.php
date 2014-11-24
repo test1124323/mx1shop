@@ -197,7 +197,7 @@ return array(
 		    'appId' => '677710455671892',
 		    'secret' => '6f23cfff4698deae73f9f9d36913e19f'
     	),
-    	'permissions' => 'public_profile,email,user_birthday',
+    	'permissions' => 'public_profile,email',
     	'url_app' => 'http://www.mx1shop.com/',
 	),
 
