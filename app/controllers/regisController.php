@@ -33,7 +33,7 @@ class regisController extends \BaseController {
 	public function store()
 	{
 		require_once('recaptchalib.php');
-		$privatekey = "6LeiRvwSAAAAAN80ZpfLfcxJYXGfLNu-8NAVJp4v";
+		$privatekey = "6LeiRvwSAAAAAN80ZpfLfcxJYXGfLNu-8NAVJp4v"; 
 		$resp = recaptcha_check_answer ($privatekey,
 		                                $_SERVER["REMOTE_ADDR"],
 		                                Input::get("recaptcha_challenge_field"),

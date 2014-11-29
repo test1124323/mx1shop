@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,16 +9,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/loginfb' , function(){
+Route::resource('loginfb' , 'loginfbController');
 
-	FacebookConnect::getFacebook(Config::get('app.faceook_api.application'));print_r($getUser);exit;
-	$getUser = FacebookConnect::getUser(Config::get('app.faceook_api.permissions'), url('/login'));
-	
-	if ($getUser['user_profile']) {
-		print_r($getUser);exit;
-	}
-
-});
 
 
 Route::get('/','TopicController@index');

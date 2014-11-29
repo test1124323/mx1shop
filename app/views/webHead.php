@@ -23,7 +23,20 @@ $path = $data['path'];
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="mx1shop">
   <meta name="type" content="website">
-  <title>MX1 Shop::</title>
+    <?php 
+    $req1     =   Request::segment(2);
+    $req2     =   Request::segment(1);
+    if (!empty($req1) && $req2=='main' ){
+      ?>
+      <title><?php echo $detail['ProductName'];?> Mx1Shop ศูนย์รวมประดับยนต์คุณภาพสำหรับคุณ</title>
+      <?php
+    }else{
+      ?>
+      <title>MX1 Shop::</title>
+      <?php
+      }
+      ?>
+    
   <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
 แม็กซ์
 โทร : 081-7009767, 083-0208068
@@ -41,6 +54,14 @@ $path = $data['path'];
   <link rel='stylesheet' href='<?php echo $path;?>css/style_base.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/scrollstyle.css'>
   <link rel='stylesheet' href='<?php echo $path;?>css/color.css'>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
  
  <!--  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
@@ -53,11 +74,15 @@ $path = $data['path'];
 <body>
 
 <div class="container back-container">
-
+<!-- <div style="background:#FFF;" align="right">
+  <div class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+</div> -->
 <!-- menu -->
+
 <nav class="navbar navbar-default navbar-static" style="margin-bottom:0px;z-index:10000;">
 
     <div id="account_head" align="right">
+      <!-- <div class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div> -->
     <?php 
         if(Session::has('profile')){
           ?>
@@ -106,10 +131,14 @@ $path = $data['path'];
         <a href="<?php echo Request::root();?>/about-us">ติดต่อเรา</a>
       </li>
 
-      <li class="dropdown dropdown-large" style="width:200px;">
+      <li class="dropdown dropdown-large" style="width:150px;">
         <a href="<?php echo Request::root();?>/cart">ตะกร้าสินค้า <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
       </li>
 
+
+      <li class="dropdown dropdown-large" style="width:70px;margin-top:15px; padding-left:5px;">
+        <div class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+      </li>
     </ul>
     
   </div><!-- /.nav-collapse -->

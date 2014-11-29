@@ -29,6 +29,11 @@ class UserModel extends Eloquent{
 		}
 		return $query->where('TypeUser','=',$data);
 	}
+
+	public function scopefbID($query,$id){
+		return $query->where('FacebookID',$id);
+	}
+
 	public function scopeLogin($query,$username,$password){
 		return $query->where('UserName','=',$username)
 		->where('PassWord','=',$password)

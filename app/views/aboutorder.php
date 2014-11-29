@@ -12,7 +12,7 @@
   <div class="col-sm-12"><h3 style="color:rgba(255,0,20,0.7);"><i class="glyphicon glyphicon-tags"></i>  ทาง Facebook </h3></div>
   <div class="col-sm-1"></div><div class="col-sm-11"><h5>สั่งสินค้าโดยส่งข้อความ Inbox มาที่เพจ  </h5><h4><b>MX1shop ( www.facebook.com/mx1shop )</b> </h4></div>
 
-  <div class="col-sm-12"><h3 style="color:rgba(255,0,20,0.7);"><i class="glyphicon glyphicon-tags"></i>  ทางโทรศัพท์ Tel : 061- 410-3299 (ติดต่อ คุณธีรศักดิ์)</div>
+  <div class="col-sm-12"><h3 style="color:rgba(255,0,20,0.7);"><i class="glyphicon glyphicon-tags"></i>  ทางโทรศัพท์ Tel : 061- 410-3299 (ติดต่อ แม็กซ์)</div>
 
   
   

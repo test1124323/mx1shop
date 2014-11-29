@@ -2,6 +2,9 @@
 include("webHead.php");
 
 ?>
+<div id="fb-root"></div>
+<title><?php echo $detail['ProductName']?> ประดับยนต์คุณภาพจาก Mx1Shop</title>
+
 <script>
 window.location.href="#list";
 
@@ -88,6 +91,10 @@ foreach ($detail['product_img'] as $key => $value) {
 
   <div class="col-sm-7 description" align="left" >
     <i><h3>รายละเอียดสินค้า</h3></i>
+    
+     <div style="margin-top:-12px !important;" class="fb-share-button" data-href="http://www.mx1shop.com/main/<?php echo $detail['ProductID']?>&t=Mx1Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ" data-width="50"></div>
+    
+       <!-- <a href="http://www.facebook.com/sharer.php?u=http://www.mx1shop.com/main/<?php echo $detail['ProductID']?>&t=Mx1Shop ศูนย์รวมสินค้าคุณภาพสำหรับคุณ" style="color:#27C;"><button type="button" class="facebook-button-share">f Share</button> แชร์สินค้าให้เพื่อน ๆ </a>   -->
     <hr>
                     <span style="font-size: 15px !important;"><?php echo $detail['ProductDESC']?></span>
     <br/><br/>

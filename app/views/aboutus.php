@@ -36,7 +36,7 @@ window.location.href="#list";
 		<img src="<?php echo $path;?>img/tel2221.png" width='100%'>
 	</p>
 	<p>
-		Tel : 061- 410-3299 <br/>(ติดต่อ คุณธีรศักดิ์)
+		Tel : 061- 410-3299 <br/>(ติดต่อ แม็กซ์)
 	</p>
 	</div>
 </div>

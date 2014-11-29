@@ -9,7 +9,13 @@ window.location.href="#list";
 <div class="col-sm-8" style="padding-top:10px;">
 <div style="border-bottom:solid thin #F0F0F0;">
 <button class="btn" style="padding:15px; font-size:14px;color:#666;background:#DEDEDE;">จัดการโปรไฟล์</button>
+<?php
+// print_r(Session::get('profile'));exit;
+?>
 <a href="<?php echo Request::root().'/passwordchange'?>"><button class="btn btn-default" style="padding:15px; font-size:14px;color:#666;">เปลี่ยน password</button></a>
+<?php
+
+?>
 
 <form method="post" name="registerform" action = "<?php echo Request::root()?>/registeration/<?php echo $profile['userid']?>">
           <input type="hidden" value="profile" name="mode">
