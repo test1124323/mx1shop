@@ -62,7 +62,6 @@ class ProductManageController extends \BaseController {
 	{
 		//echo "<pre>";print_r(Input::get());echo "</pre>";
 		//exit();
-		try{
 		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
@@ -81,6 +80,8 @@ class ProductManageController extends \BaseController {
 				$ProductAmount = $Input['ProductAmount'][$key][0];
 				$ProductSalePrice = $Input['ProductSalePrice'][$key][0];
 				$DeliverCost = $Input['DeliverCost'][$key][0];
+				$BrandCarID =$Input['BrandCarID'][$key][0];; 
+				$ModelCarID = $Input['ModelCarID'][$key][0];;
 
 			if(empty($HidProductID)){
 				
@@ -93,6 +94,9 @@ class ProductManageController extends \BaseController {
 				$Product->ProductDESC = $ProductDESC;
 				$Product->DeliverCost = preg_replace($pattern,$replacement,$DeliverCost);
 				$Product->ProductDate = ''.$date;
+				$Product->BrandCarID = ''.$BrandCarID;
+				$Product->ModelCarID = ''.$ModelCarID;
+
 				$Product->save();
 
 				//get max id
@@ -120,6 +124,8 @@ class ProductManageController extends \BaseController {
 					$Product->ProductDESC = $ProductDESC;
 					$Product->ProductDate = ''.$date;
 					$Product->DeliverCost = preg_replace($pattern,$replacement,$DeliverCost);
+					$Product->BrandCarID = ''.$BrandCarID;
+					$Product->ModelCarID = ''.$ModelCarID;
 					$Product->save();
 
 					//cate
@@ -152,10 +158,6 @@ class ProductManageController extends \BaseController {
 		return Redirect::to('backoffice/Product');
 		}
 	
-		}
-		catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
 
 	
 		//echo "store";
@@ -257,5 +259,38 @@ $html = '<select id="Category'.$_POST["id_tb"].'"  name="CategoryName['.$id[0].'
 $html .='</select>';
  	return $html;
 }
+public function DropdownBrandCar(){
+	//$id = explode("_",$_POST["id_tb"]);
+	$BrandCar = BrandCarModel::get()->toArray();
+	$arr_data1 = array();
+	$arr_data1[] = "---เลือกยี่ห้อรถ---";
+	foreach ($BrandCar as $key => $value) {
+		# code...
+		$arr_data1[$value['BrandCarID']] = $value['BrandCarName'];
+	}
 
+	$BrandCar = '<div style="margin-top:10px;" >'.Form::select('BrandCarID['.$_POST["id_tb"].'][]',$arr_data1,$_POST['BrandCarID'],array("class"=>'form-control','id'=>'BrandCarID'.$_POST["id_tb"].'','onChange'=>"add_modelcar('".$_POST["id_tb"]."',this.value)")).'</div>';
+
+	$ModelCar = ModelCarModel::where('BrandCarID','=',$_POST['BrandCarID'])->get()->toArray();
+	$arr_data2 = array();
+	$arr_data2[] = "---เลือกรุ่นรถ---";
+	foreach ($ModelCar as $key => $value) {
+		# code...
+		$arr_data2[$value['ModelCarID']] = $value['ModelCarName'];
+	}
+	
+	$ModelCar = '<div style="margin-top:10px;" id="ModelCar_'.$_POST["id_tb"].'" > '.Form::select('ModelCarID['.$_POST["id_tb"].'][]',$arr_data2,Input::get("ModelCarID"),array("class"=>'form-control','id'=>'ModelCarID'.$_POST["id_tb"].'')).'</div>';
+	return $BrandCar.$ModelCar;
+}
+public function DropdownModelCar(){
+	$ModelCar = ModelCarModel::where('BrandCarID','=',$_POST['BrandCarID'])->get()->toArray();
+	$arr_data = array();
+	$arr_data[] = "---เลือกรุ่นรถ---";
+	foreach ($ModelCar as $key => $value) {
+		# code...
+		$arr_data[$value['ModelCarID']] = $value['ModelCarName'];
+	}
+	//$id = explode("_",$_POST["id_tb"]);
+	return Form::select('ModelCarID['.$_POST["id_tb"].'][]',$arr_data,Input::get("ModelCarID"),array("class"=>'form-control','id'=>'ModelCarID'.$_POST["id_tb"].''));
+}
 }

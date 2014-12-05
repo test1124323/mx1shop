@@ -38,13 +38,19 @@ function add_row(){
     table.rows[rowCount].cells[4].align="left";
     table.rows[rowCount].cells[5].align="left";
     table.rows[rowCount].cells[6].align="center";
-  
+
+    var path = $('#rootPath').val();
+    var random =  id_tb+""+parseInt((Math.random()*1690708)/10);
 
     table.rows[rowCount].cells[0].innerHTML= rowCount+".";
-    table.rows[rowCount].cells[1].innerHTML=" <input type=\"hidden\" name=\"HidProductID["+id_tb+"]\" value=\"\"><input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\">";
-    var path = $('#rootPath').val();
+    var urlB = path+"backoffice/DropdownBrandCar";
+    var dataB = {id_tb:id_tb,BrandCarID:''};
+    $.post(urlB,dataB,function(msg){
+      var ProductName = "<div><input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\"></div>";
+      var BrandCar = '<div style="margin-top:10px;">'+msg+'</div>';
+      table.rows[rowCount].cells[1].innerHTML=" <input type=\"hidden\" name=\"HidProductID["+id_tb+"]\" value=\"\">"+ProductName+""+BrandCar;
+    });
     var url = path+"backoffice/DropdownCategory";
-    var random =  id_tb+""+parseInt((Math.random()*1690708)/10);
 
     var data = {id_tb:id_tb+"_"+random,CategoryID:''};
     var html = "";
@@ -75,6 +81,24 @@ function add_row(){
           val +='<div class="input-group"  id="sel'+random+'"  style="margin-top:10px;"><span class="input-group-btn"><button class="btn btn-danger" onclick=\'remove_id("sel'+random+'");\' type="button"><i class="glyphicon glyphicon-trash"></i></button></span>'+msg+'</div></div>';
           $('#select'+id_tb).append(''+val);
       });
+  }
+  function add_modelcar(id_tb,BrandCarID){
+   // var random =  id_tb+""+parseInt((Math.random()*1600708)/10);
+    var path = $('#rootPath').val();
+    var url = path+"backoffice/DropdownModelCar";
+    var data = {id_tb:id_tb,BrandCarID:BrandCarID};
+    $.post(url,data,function(msg){
+       $('#ModelCar_'+id_tb).html(''+msg);
+    });
+  }
+  function add_brand(id_tb,BrandCarID,ModelCarID){
+    
+    var path = $('#rootPath').val();
+    var url = path+"backoffice/DropdownBrandCar";
+    var data = {id_tb:id_tb,BrandCarID:BrandCarID,ModelCarID:ModelCarID};
+    $.post(url,data,function(msg){
+       $('#div_brand'+id_tb).html(''+msg);
+    });
   }
     function confirm_save(){
     var table = document.getElementById('tb_data');
@@ -128,14 +152,24 @@ function add_row(){
           $i=1;
          // echo "<pre>";print_r($result);echo "</pre>";
           foreach ($result as $key => $value) {
-            $id_tb = $i."_A";
+            $id_tb = $i."A";
             # code...
             ?>
             <tr id="<?php echo $id_tb;?>">
               <td style=" text-align: center;"><?php echo $i;?>
               <input type="hidden" name="HidProductID[<?php echo $id_tb;?>]" value="<?php echo $value['ProductID'];?>">
               </td>
-              <td><input type="text" id="ProductName<?php echo $id_tb;?>" name="ProductName[<?php echo $id_tb;?>][]" value="<?php echo $value['ProductName']?>" class="form-control" placeholder="ชื่อรายการสินค้า"></td>
+              <td>
+              <div>
+                <input type="text" id="ProductName<?php echo $id_tb;?>" name="ProductName[<?php echo $id_tb;?>][]" 
+              value="<?php echo $value['ProductName']?>" class="form-control" placeholder="ชื่อรายการสินค้า">
+              </div>
+              <div id="div_brand<?php echo $id_tb;?>">
+                <script type="text/javascript">
+                  add_brand('<?php echo $id_tb;?>','<?php echo $value["BrandCarID"];?>','<?php echo $value["ModelCarID"];?>');
+              </script>
+              </div>
+              </td>
               <td>
                 <div>
                     <a data-toggle="modal" class="btn btn-info btn-xs" data-backdrop="static"  onclick="add_select('<?php echo $id_tb;?>','');" >

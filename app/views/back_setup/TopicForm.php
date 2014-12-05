@@ -36,6 +36,15 @@ $path1 = $path."backoffice/";
     return true;
 
   }
+  function add_vdo(){
+    if($('#text_vdo').val()!=""){
+      var url = $('#text_vdo').val();
+      var html = "[vdo]"+url+"[/vdo]";
+      var TopicDetail = $('#TopicDetail').val();
+      $('#TopicDetail').val(TopicDetail+html);
+    }
+    
+  }
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
@@ -79,6 +88,16 @@ $path1 = $path."backoffice/";
     <div class="col-xs-4">
       <textarea class="form-control" 
       placeholder="บทความ" id="TopicDetail"  rows="10" name="TopicDetail"><?php echo $data['TopicDetail'];?></textarea>
+    </div>
+    <div class="col-xs-1">
+    เพิ่ม URL วีดีโอ
+    </div>
+    <div class="col-xs-2">
+      <input type="text" class="form-control" placeholder="วาง url วีดีโอที่นี่" id="text_vdo">
+    </div>
+    <div class="col-xs-1">
+      <button type="button" class="btn btn-primary btn-sm" onclick="add_vdo();">
+      <i class="glyphicon glyphicon-saved"></i> แทรกวีดีโอ</button>
     </div>
   </div>
   <div class="row" style="margin-top:10px;">
