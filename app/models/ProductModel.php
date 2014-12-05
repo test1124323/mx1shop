@@ -18,6 +18,7 @@ class ProductModel extends Eloquent{
 	public function ProductImg(){
 		return $this->hasMany('ProductImg','ProductID')->orderby('StatusFirst','ASC');
 	}
+	
 	public function scopeSearch($query,$ProductID,$ProductName,$CategoryID){
 		if(!empty($ProductID)){
 			$query->where('ProductID','LIKE','%'.$ProductID.'%');
