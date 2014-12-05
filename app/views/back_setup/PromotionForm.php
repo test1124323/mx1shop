@@ -1,5 +1,5 @@
 <?php
-$act = '1';
+$act = '5';
 include("backHeader.php");
 include("function.php");
 $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการใช้งาน");

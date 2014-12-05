@@ -1,5 +1,5 @@
 <?php
-$act = '1';
+$act = '4';
 include("backHeader.php");
 include("function.php");
 
