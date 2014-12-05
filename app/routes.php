@@ -70,6 +70,10 @@ Route::group(array('before' => 'check'), function(){
 			Route::resource('/backoffice/ModelCarPop','ModelCarController@CreatePop');
 			Route::get('/backoffice/ModelCarDel/{id}','ModelCarController@destroy');
 
+			Route::resource('/backoffice/Promotion','PromotionController');
+
+
+
 			//
 			
 		

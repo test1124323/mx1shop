@@ -41,11 +41,11 @@ $arr_menu = array('0'=>'รายการสั่งสินค้า&nbsp&nb
   '1' =>'ตั้งค่า',
 );
 $arr_menuLink = array('0'=>$path.'backoffice/Order','2'=>$path.'backoffice/Payment','1'=>'#','3'=>$path.'backoffice/Product');
- $arr_sub1 = array('1'=>'หมวดสินค้า','6'=>'ยี่ห้อรถ','7'=>'รุ่นรถ','3'=>'บทความ','4'=>'ข้อมูลลูกค้า');
+ $arr_sub1 = array('1'=>'หมวดสินค้า','6'=>'ยี่ห้อรถ','7'=>'รุ่นรถ','3'=>'บทความ','4'=>'ข้อมูลลูกค้า','8'=>'ส่งเมล์ถึงลูกค้า');
 if(Session::get('SuperUser')=='1'){
   $arr_sub1['5']="ข้อมูลพนักงาน";
 }
-$arr_subLink1 = array('1'=>$path.'backoffice/Cate','6'=>$path.'backoffice/BrandCar','7'=>$path.'backoffice/ModelCar','3'=>$path.'backoffice/Topic','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee');
+$arr_subLink1 = array('1'=>$path.'backoffice/Cate','6'=>$path.'backoffice/BrandCar','7'=>$path.'backoffice/ModelCar','3'=>$path.'backoffice/Topic','4'=>$path.'backoffice/Customer','5'=>$path.'backoffice/Employee','8'=>$path.'backoffice/Promotion');
 ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
