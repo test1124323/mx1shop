@@ -9,6 +9,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::resource('blog' , 'blogController');
 Route::resource('loginfb' , 'loginfbController');
 
 

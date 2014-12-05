@@ -208,10 +208,13 @@ $path = $data['path'];
 
 
 <div class="col-sm-12 onsale scroll-wrapper">
+  <a href="<?php echo $path;?>blog">
   <div class="col-sm-6 saleItem bg-color-pinkred text-color-white ">
-    <h2>ลุ้นลดราคารับสิ้นปี 60%</h2>
-    <p class="deal-text">กระหน่ำลดราคาสินค้ามากกว่า 100 รายการ เพียงกด Like และ Share Fan page พร้อมบอกว่าอยากให้ลดราคาสินค้าชิ้นใด สิ้นสุดระยะเวลากิจกรรมและประกาศผลในวันที่ 1 มกราคม 2558 นี้เท่านั้น</p>
+    <h2>บทความ</h2>
+    <p class="deal-text">บทความและสาระน่ารู้เกี่ยวกับ รถและอุปกรณ์ประดับยนต์ เผยเรื่องราวเทคนิคการแต่งรถที่คุณอาจไม่เคยรู้</p>
   </div>
+  </a>
+
   <a href="#">
   <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(<?php echo $path;?>img/accesorie60a.jpg);
   background-position: center;
