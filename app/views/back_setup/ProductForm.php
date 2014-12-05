@@ -44,7 +44,7 @@ function add_row(){
 
     table.rows[rowCount].cells[0].innerHTML= rowCount+".";
     var urlB = path+"backoffice/DropdownBrandCar";
-    var dataB = {id_tb:id_tb+"_"+random,BrandCarID:''};
+    var dataB = {id_tb:id_tb,BrandCarID:''};
     $.post(urlB,dataB,function(msg){
       var ProductName = "<div><input type=\"text\" id=\"ProductName"+id_tb+"\" name=\"ProductName["+id_tb+"][]\" value=\"\" class=\"form-control\" placeholder=\"ชื่อรายการสินค้า\"></div>";
       var BrandCar = '<div style="margin-top:10px;">'+msg+'</div>';

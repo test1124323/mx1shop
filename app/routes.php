@@ -21,27 +21,6 @@ Route::resource('cart','cartController');
 Route::get('cancelOrder/{id}','cartController@destroy');
 
 Route::resource('billing','billingController');
-Route::resource('billingSave','billingPDFController');
-
-Route::resource('registeration','regisController');
-Route::get('passwordchange','FrontProfileController@changepassform');
-Route::resource('payment','FrontPaymentController');
-
-Route::group(array('before' => 'isNonLogin'), function(){
-	Route::resource('profile','FrontProfileController');
-});
-
-Route::group(array('before' => 'isLogedin'), function(){
-	Route::resource('login','FrontLoginController');
-});
-
-Route::get('How-to-order',function(){
-	return View::make('howtoorder');
-});
-
-Route::get('about-us',function(){
-	return View::make('aboutus');
-});
 
 Route::filter('check', function()
 {
@@ -49,9 +28,6 @@ Route::filter('check', function()
 		return Redirect::to('backoffice/Login');
 	}
 });
-
-Route::get('logout','FrontLoginController@logout');
-
 
 Route::get('/backoffice/', function()
     {
@@ -61,9 +37,6 @@ Route::group(array('before' => 'check'), function(){
 			Route::resource('/backoffice/Cate','CateController');
 			Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
 			Route::resource('/backoffice/catePop','catePopController');
-
-
-// Route::resuorce('How-to-pay','howtopayController');
 			Route::resource('/backoffice/Product','ProductController');
 			Route::resource('/backoffice/ProductForm','ProductManageController');
 

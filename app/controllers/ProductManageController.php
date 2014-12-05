@@ -62,7 +62,6 @@ class ProductManageController extends \BaseController {
 	{
 		//echo "<pre>";print_r(Input::get());echo "</pre>";
 		//exit();
-		try{
 		$arr_data = array();
 		$pattern = '/,/';
 		$replacement = '';
@@ -159,10 +158,6 @@ class ProductManageController extends \BaseController {
 		return Redirect::to('backoffice/Product');
 		}
 	
-		}
-		catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
 
 	
 		//echo "store";
