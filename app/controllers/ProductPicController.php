@@ -223,10 +223,10 @@ class ProductPicController extends \BaseController {
 
 
 				if(preg_match('/jpg|jpeg/',strtolower($fileType))){
-					imagejpeg($myImage,$destinationPath1."/".$fileName);
+					imagejpeg($myImage,$destinationPath1."".$fileName);
 				}
 				if(preg_match('/png/',strtolower($fileType))){
-					imagepng($myImage,$destinationPath1."/".$fileName);
+					imagepng($myImage,$destinationPath1."".$fileName);
 				}
 
 				imagedestroy($myImage);
@@ -260,7 +260,8 @@ class ProductPicController extends \BaseController {
 			foreach ($value as $key2 => $value2) {
 				# code...
 				$path = $destinationPath1."/".$value2;
-				$target = $destinationPath2."/".$value2;
+				$target = $destinationPath2."".$value2;
+				
 				
 				$images = $path;
 				$new_images = $target;
@@ -271,7 +272,7 @@ class ProductPicController extends \BaseController {
 				$fileType = $flieEx[1];
 				$myImage = "";
 
-				if(preg_match('/jpg|jpeg/',strtolower($fileType))){
+				if(preg_match('/jpg|jpeg|JPG/',strtolower($fileType))){
 					$images_orig =imagecreatefromjpeg($path);
 				}
 				if(preg_match('/png/',strtolower($fileType))){
@@ -283,7 +284,7 @@ class ProductPicController extends \BaseController {
 				$images_fin = ImageCreateTrueColor($width, $height);
 				ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
 
-				if(preg_match('/jpg|jpeg/',$fileType)){
+				if(preg_match('/jpg|jpeg|JPG/',$fileType)){
 					imagejpeg($images_fin,$target);
 				}
 				if(preg_match('/png/',$fileType)){
@@ -291,10 +292,8 @@ class ProductPicController extends \BaseController {
 				}
 				ImageDestroy($images_orig);
 				ImageDestroy($images_fin);
-				//copy($path, $target);
-				//create thumb
-				//$this->createthumb($target,$target,400,400);
-				//end create thumb
+				echo $target;
+				exit();
 			}
 		}
 	}
