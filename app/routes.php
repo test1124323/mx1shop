@@ -21,6 +21,27 @@ Route::resource('cart','cartController');
 Route::get('cancelOrder/{id}','cartController@destroy');
 
 Route::resource('billing','billingController');
+Route::resource('billingSave','billingPDFController');
+
+Route::resource('registeration','regisController');
+Route::get('passwordchange','FrontProfileController@changepassform');
+Route::resource('payment','FrontPaymentController');
+
+Route::group(array('before' => 'isNonLogin'), function(){
+	Route::resource('profile','FrontProfileController');
+});
+
+Route::group(array('before' => 'isLogedin'), function(){
+	Route::resource('login','FrontLoginController');
+});
+
+Route::get('How-to-order',function(){
+	return View::make('howtoorder');
+});
+
+Route::get('about-us',function(){
+	return View::make('aboutus');
+});
 
 Route::filter('check', function()
 {
@@ -28,6 +49,10 @@ Route::filter('check', function()
 		return Redirect::to('backoffice/Login');
 	}
 });
+
+Route::get('logout','FrontLoginController@logout');
+
+
 
 Route::get('/backoffice/', function()
     {
