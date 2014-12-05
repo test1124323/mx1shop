@@ -85,7 +85,7 @@ if($result){
       </td>
        <td>
        <?php 
-       echo "<pre>";print_r($value['product_img']);echo "</pre>";
+       //echo "<pre>";print_r($value['product_img']);echo "</pre>";
           if($value['product_img']){
             foreach ($value['product_img'] as $keyImg => $valueImg) {
               # code...

@@ -22,12 +22,12 @@ class ProductPicController extends \BaseController {
 	}
 	public function show_product(){
 
-		// print_r(Input::get('chk_productID'));
+		echo "<pre>"; print_r(Input::get('chk_productID'));echo "</pre>";
 		$result = array();
 		if(count(Input::get('chk_productID'))){
 			$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->with('ProductImg')->get()->toArray();
 
-			//echo "<pre>";print_r($result);echo "</pre>";
+			echo "<pre>";print_r($result);echo "</pre>";
 			// Product::Category($cateid)->Name($keyword)
 			return View::make("back_setup/ProductPic",array('result'=>$result));
 		}
