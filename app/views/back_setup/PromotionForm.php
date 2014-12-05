@@ -37,7 +37,7 @@ $path1 = $path."backoffice/";
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
-  <li ><a href="<?php echo $path1."Promotion";?>">ข่าวสารและโปรโมชันถึงลูกค้า</a></li>
+  <li ><a href="<?php echo $path1."Promotion";?>">ข่าวสารและโปรโมชั่นถึงลูกค้า</a></li>
   <li class="active">ส่งอีเมล์</li>
 </ol>
 <div class="panel panel-default" style="margin-top:-20px;">

@@ -83,9 +83,9 @@ $arr_show = array(''=>'ทั้งหมด','1'=>'แสดงหน้าแ�
     <table class="table table-hover table-bordered" style="margin-top:10px;" >
       <thead class="bg_tb">
         <tr>
-          <th width="5%"><div style=" text-align: center;">ลำดับ</div></th>
+          <th width="10%"><div style=" text-align: center;">ลำดับ</div></th>
+          <th width="15%"><div style=" text-align: center;">ภาพหน้าปก</div></th>
           <th width="20%"><div style=" text-align: center;">ชื่อบทความ</div></th>
-          <th width="40%"><div style=" text-align: center;">บทความ</div></th>
           <th width="10%"><div style=" text-align: center;">สถานะแสดง</div></th>
           <th width="10%"><div style=" text-align: center;">สถานะ New</div></th>           
           <th width="15%"><div style=" text-align: center;">จัดการ</div></th>
@@ -99,8 +99,14 @@ if(count($Topic)>0){
   ?>
   <tr>
     <td class="text-center"><?php echo ++$i;?></td>
+    <td>
+    <?php if($value['TopicPic']){
+      ?>
+      <img src="<?php echo $path."img/picTopic/".$value['TopicPic'];?>" height="150" width="200">
+      <?php
+      }?>
+    </td>
     <td ><?php echo $value['TopicName'];?></td>
-    <td><?php echo $value['TopicDetail'];?></td>
      <td><?php echo $arr_show[$value['TopicStatus']];?></td>
     <td><?php echo $arr_new[$value['TopicNew']];?></td>
     <td class="text-center">

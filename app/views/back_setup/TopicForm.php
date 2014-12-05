@@ -6,7 +6,9 @@ $arr_UserStatus = array("1"=>"ใช้งาน","2"=>"ระงับการ
 $data = @$Topic[0];
 
 $path1 = $path."backoffice/";
+$destinationPath1 = public_path().'/img/picTopic/';
 ?>
+<script src="<?php echo $path;?>js/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
   function checkPass(){
     var p1 = $('#PassWord').val();
@@ -28,20 +30,21 @@ $path1 = $path."backoffice/";
       $('#TopicName').focus();
       return false;
     }
-    if($("#TopicDetail").val()==""){
-      alert("ระบุ "+$("#TopicDetail").attr("placeholder"));
-      $('#TopicDetail').focus();
-      return false;
-    }
+    //if($("#TopicDetail").val()==""){
+     // alert("ระบุ "+$("#TopicDetail").attr("placeholder"));
+     // $('#TopicDetail').focus();
+     // return false;
+   // }
     return true;
 
   }
   function add_vdo(){
+
+    var data = CKEDITOR.instances.TopicDetail.getData();    
     if($('#text_vdo').val()!=""){
       var url = $('#text_vdo').val();
       var html = "[vdo]"+url+"[/vdo]";
-      var TopicDetail = $('#TopicDetail').val();
-      $('#TopicDetail').val(TopicDetail+html);
+      CKEDITOR.instances.TopicDetail.insertText(html);
     }
     
   }
@@ -68,10 +71,9 @@ $path1 = $path."backoffice/";
       $action =$path."backoffice/Topic/".$data['TopicID']; 
     }
   ?>
-  <form method="post"  id="form-input" action="<?php echo $action;?>" onSubmit="return checkInput();">
+  <form method="post"  enctype="multipart/form-data"  id="form-input" action="<?php echo $action;?>" onSubmit="return checkInput();">
   <input type="hidden" name="_method" value="<?php echo ($data['TopicID']!='')?"PUT":"POST";?>">
   <div class="row">
-    <div class="col-xs-1"></div>
     <div class="col-xs-2">
       ชื่อบทความ
     </div>
@@ -80,19 +82,40 @@ $path1 = $path."backoffice/";
       name="TopicName"  value="<?php echo $data['TopicName'];?>" placeholder="ชื่อบทความ">
     </div>
   </div>
-  <div class="row" style="margin-top:10px;">
-    <div class="col-xs-1"></div>
+  <br>
+  <div class="row">
     <div class="col-xs-2">
-      บทความ
+      ภาพหน้าปก
     </div>
-    <div class="col-xs-4">
-      <textarea class="form-control" 
-      placeholder="บทความ" id="TopicDetail"  rows="10" name="TopicDetail"><?php echo $data['TopicDetail'];?></textarea>
+    <div class="col-xs-3"> 
+      <input type="file" class="form-control" id="TopicPic" 
+      name="TopicPic"   placeholder="ชื่อบทความ">
     </div>
-    <div class="col-xs-1">
+
+  </div>
+  <br>
+  <div>
+  <?php 
+if($data['TopicPic']){
+  ?>
+    <div class="row">
+    <div class="col-xs-2">  
+    </div>
+    <div class="col-xs-3"> 
+      <img src="<?php echo $path."img/picTopic/".$data['TopicPic'];?>"
+      height="200" width="200" >
+    </div>
+  </div>
+  <?php
+}
+  ?>
+
+  </div>
+  <div class="row" style="margin-top:10px;">
+    <div class="col-xs-2">
     เพิ่ม URL วีดีโอ
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-3">
       <input type="text" class="form-control" placeholder="วาง url วีดีโอที่นี่" id="text_vdo">
     </div>
     <div class="col-xs-1">
@@ -101,7 +124,15 @@ $path1 = $path."backoffice/";
     </div>
   </div>
   <div class="row" style="margin-top:10px;">
-  <div class="col-xs-1"></div>
+    <div class="col-xs-2">
+      บทความ
+    </div>
+    <div class="col-xs-6">
+      <textarea class="ckeditor form-control" 
+      placeholder="บทความ" id="TopicDetail"  rows="10" name="TopicDetail"><?php echo $data['TopicDetail'];?></textarea>
+    </div>
+  </div>
+  <div class="row" style="margin-top:10px;">
   <div class="col-xs-2">สถานะ New</div>
   <div class="col-xs-4">
       <div class="btn-group" data-toggle="buttons">
@@ -116,7 +147,6 @@ $path1 = $path."backoffice/";
   </div>
   </div>
   <div class="row" style="margin-top:10px;">
-  <div class="col-xs-1"></div>
   <div class="col-xs-2">สถานะแสดง</div>
   <div class="col-xs-4">
       <div class="btn-group" data-toggle="buttons">
@@ -131,7 +161,7 @@ $path1 = $path."backoffice/";
   </div>
   </div>
   <div class="row" style="margin-top:10px;">
-    <div class="col-xs-3"></div>
+    <div class="col-xs-2"></div>
     <div class="col-xs-4">
       <button type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-saved"></i> บันทึกข้อมูล</button>
       <a href="<?php echo $path1."Topic";?>">
