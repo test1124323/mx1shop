@@ -44,10 +44,24 @@ class ProductManageController extends \BaseController {
 
 	}
 	public function  DeleteData(){
+		$destinationPath1 = public_path().'/img/product';
+		$destinationPath2 =  public_path().'/img/product_tmp';
 		//echo "<pre>";print_r(Input::get('chk_productID'));echo  "</pre>";exit();
 		if(count(Input::get('chk_productID'))){
 			$delete1 = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->delete();
 			$delete2 = ProductCateModel::whereIn('ProductID',Input::get('chk_productID'))->delete();
+
+			foreach (Input::get('chk_productID') as $key => $value) {
+				# code...
+				$result = ProductImg::where('ProductID','=',$value)->get()->toArray();
+				foreach ($result as $kr => $vr) {
+				# code...
+					@unlink($destinationPath1."/".$vr['ProductIMG']);
+					@unlink($destinationPath2."/".$vr['ProductIMG']);
+					}
+			}
+
+			$delete2 = ProductImg::whereIn('ProductID',Input::get('chk_productID'))->delete();
 			
 		}
 		return Redirect::to('backoffice/Product');
