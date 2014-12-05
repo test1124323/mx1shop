@@ -22,12 +22,12 @@ class ProductPicController extends \BaseController {
 	}
 	public function show_product(){
 
-		echo "<pre>"; print_r(Input::get('chk_productID'));echo "</pre>";
+		//echo "<pre>"; print_r(Input::get('chk_productID'));echo "</pre>";
 		$result = array();
 		if(count(Input::get('chk_productID'))){
 			$result = ProductModel::whereIn('ProductID',Input::get('chk_productID'))->with('ProductImg')->get()->toArray();
 
-			echo "<pre>";print_r($result);echo "</pre>";
+			//echo "<pre>";print_r($result);echo "</pre>";
 			// Product::Category($cateid)->Name($keyword)
 			return View::make("back_setup/ProductPic",array('result'=>$result));
 		}
@@ -292,8 +292,8 @@ class ProductPicController extends \BaseController {
 				}
 				ImageDestroy($images_orig);
 				ImageDestroy($images_fin);
-				echo $target;
-				exit();
+				//echo $target;
+				//exit();
 			}
 		}
 	}
