@@ -30,7 +30,7 @@ foreach ($list as $key => $value) {
 					[TopicStatus] => 1 
 					[TopicPic] => 20141205041116.png ) -->
 	
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="margin-top:20px;">
 	<a href="blog/<?php echo $value['TopicID']?>">
 	<div class="ProductPic" style="background:url(img/picTopic/<?php echo @$value['TopicPic'];?>);
                   background-position:center;

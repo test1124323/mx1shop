@@ -1,7 +1,7 @@
 <!doctype html>
 <?php 
 function vidyoutube($string){
-  $content  = preg_replace('/\[vdo\]/', "<div align='center' style='padding-top:20px;'><iframe width='85%' height='345' src='", $string);
+  $content  = preg_replace('/\[vdo\]/', "<div align='center' style='padding-top:20px;'><iframe width='90%' height='325' src='", $string);
   $content  = preg_replace('/\[\/vdo\]/', "'' frameborder='0' allowfullscreen></iframe></div>", $content);
   $content  = str_replace("watch?v=", 'embed/', $content);
   $content  = str_replace("<p>", '', $content);
@@ -126,6 +126,9 @@ $path = $data['path'];
     <li class="dropdown dropdown-large">
         <a href="<?php echo Request::root();?>/main">สินค้า</a>
       </li>
+
+      <li class="dropdown dropdown-large">
+        <a href="<?php echo Request::root();?>/blog">บทความ</a>
       </li>
      <!--  <li class="dropdown dropdown-large">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">บทความ</a>
@@ -139,13 +142,13 @@ $path = $data['path'];
         <a href="<?php echo Request::root();?>/about-us">ติดต่อเรา</a>
       </li>
 
-      <li class="dropdown dropdown-large" style="width:150px;">
+      <li class="dropdown dropdown-large" style="width:130px;">
         <a href="<?php echo Request::root();?>/cart">ตะกร้าสินค้า <?php if(isset($incart)){?><span class="label label-default"><?php echo $incart;?></span><?php }?></a>
       </li>
 
 
-      <li class="dropdown dropdown-large" style="width:70px;margin-top:15px; padding-left:5px;">
-        <div class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+      <li class="dropdown dropdown-large" style="width:50px;margin-top:15px; padding-left:5px;">
+        <div style="width:100% !important; overflow:hidden;" class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
       </li>
     </ul>
     

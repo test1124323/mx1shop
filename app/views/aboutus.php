@@ -11,7 +11,7 @@ window.location.href="#list";
 </style>
 <br/>
 <div class="col-sm-12">
-	<a href="https://www.facebook.com/pages/Mx1shop/857464980939365" style="text-decoration:none;color:#000;">
+	<a href="https://www.facebook.com/pages/MX1shop/489895114484301?ref=br_tf" style="text-decoration:none;color:#000;">
 	<div class="col-sm-4" align="center">
 	<p>
 		<img src="<?php echo $path;?>img/face221.png" width='100%'>
