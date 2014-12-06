@@ -48,7 +48,7 @@ class blogController extends \BaseController {
 	public function show($id)
 	{
 		$bl 	=	TopicModel::find($id)->toArray();
-		print_r($bl);
+		return View::make('blogDetail',array('detail'=>$bl));
 	}
 
 

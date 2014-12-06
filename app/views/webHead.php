@@ -1,5 +1,13 @@
 <!doctype html>
 <?php 
+function vidyoutube($string){
+  $content  = preg_replace('/\[vdo\]/', "<div align='center' style='padding-top:20px;'><iframe width='85%' height='345' src='", $string);
+  $content  = preg_replace('/\[\/vdo\]/', "'' frameborder='0' allowfullscreen></iframe></div>", $content);
+  $content  = str_replace("watch?v=", 'embed/', $content);
+  $content  = str_replace("<p>", '', $content);
+  return "        ".$content;
+}
+
 $data['path'] = (Request::segment(2)=='')?'':'../';
 $path = $data['path'];
 
@@ -116,7 +124,7 @@ $path = $data['path'];
   <div class="collapse navbar-collapse js-navbar-collapse">
     <ul class="nav navbar-nav">
     <li class="dropdown dropdown-large">
-        <a href="<?php echo Request::root();?>/main">หน้าแรก</a>
+        <a href="<?php echo Request::root();?>/main">สินค้า</a>
       </li>
       </li>
      <!--  <li class="dropdown dropdown-large">
@@ -211,7 +219,7 @@ $path = $data['path'];
   <a href="<?php echo $path;?>blog">
   <div class="col-sm-6 saleItem bg-color-pinkred text-color-white ">
     <h2>บทความ</h2>
-    <p class="deal-text">บทความและสาระน่ารู้เกี่ยวกับ รถและอุปกรณ์ประดับยนต์ เผยเรื่องราวเทคนิคการแต่งรถที่คุณอาจไม่เคยรู้</p>
+    <p class="deal-text">บทความและสาระน่ารู้เกี่ยวกับรถ อุปกรณ์ประดับยนต์ และข่าวสารเทคโนโลยียานยนต์ เผยเรื่องราวเทคนิคการแต่งรถที่คุณอาจไม่เคยรู้</p>
   </div>
   </a>
 
