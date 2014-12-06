@@ -30,7 +30,7 @@ $destinationPath1 = public_path().'/img/picEmail/';
 if($detail['Picture']!=""){
 	?>
 	<div class="col-sm-6">
-		<img src="http://www.mx1shop.com/public/img/product/<?php echo $detail['Picture'];?>" >
+		<img src="http://www.mx1shop.com/public/img/picEmail/<?php echo $detail['Picture'];?>" >
 	</div>
 	<?php
 	}
