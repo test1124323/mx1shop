@@ -3,6 +3,12 @@
 </div>
 
 </div>
+<style type="text/css">
+	img{
+		border-radius: 10px;
+	}
+</style>
+
 <div class="about-us col-xs-12" style="color:#FFF;">
 <div class="container" style="padding:15px;">
 <div class="col-sm-12" align="center">
