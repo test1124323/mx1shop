@@ -226,7 +226,7 @@ $path = $data['path'];
   </div>
   </a>
 
-  <a href="#">
+  <a href="<?php echo $path;?>track">
   <div align="center" class="col-sm-3 saleItem text-color-white bgdeal" style="background:url(<?php echo $path;?>img/accesorie60a.jpg);
   background-position: center;
   background-size: cover; 
