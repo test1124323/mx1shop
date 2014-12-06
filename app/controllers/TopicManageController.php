@@ -32,11 +32,26 @@ class TopicManageController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		$destinationPath1 = public_path().'/img/picTopic/';
+		$fileName = "";
+		if(Input::hasFile('TopicPic')){
+		$file = Input::file('TopicPic');
+		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
+		$fileNameOri = $file->getClientOriginalName();
+		$fileNameOriEx  = explode('.',$fileNameOri);
+		$fileType = $fileNameOriEx[1];
+
+		$fileName = date('Ymdhis').".".$fileType;
+		$file->move($destinationPath1, $fileName);
+		}
+
 		$Topic = new TopicModel;
 		$Topic->TopicName = Input::get('TopicName');
 		$Topic->TopicDetail = Input::get('TopicDetail');
 		$Topic->TopicNew = Input::get('TopicNew');
 		$Topic->TopicStatus = Input::get('TopicStatus');
+		$Topic->TopicPic = $fileName;
 		$Topic->save();
 		return Redirect::to('backoffice/Topic');
 	}
@@ -76,11 +91,30 @@ class TopicManageController extends \BaseController {
 	public function update($id)
 	{
 
+		$destinationPath1 = public_path().'/img/picTopic/';
+		if(Input::hasFile('TopicPic')){
+			$Topic = TopicModel::where('TopicID','=',$id)->get()->toArray();
+
+			@unlink($destinationPath1."/".$Topic[0]['TopicPic']);
+
+		$file = Input::file('TopicPic');
+		//echo "<pre>";print_r(Input::file());echo "</pre>";exit();
+		$fileNameOri = $file->getClientOriginalName();
+		$fileNameOriEx  = explode('.',$fileNameOri);
+		$fileType = $fileNameOriEx[1];
+
+		$fileName = date('Ymdhis').".".$fileType;
+		$file->move($destinationPath1, $fileName);
+		}
+
 		$Topic = TopicModel::find($id);
 		$Topic->TopicName = Input::get('TopicName');
 		$Topic->TopicDetail = Input::get('TopicDetail');
 		$Topic->TopicNew = Input::get('TopicNew');
 		$Topic->TopicStatus = Input::get('TopicStatus');
+		if(Input::hasFile('TopicPic')){
+			$Topic->TopicPic = $fileName;
+		}
 		$Topic->save();
 		return Redirect::to('backoffice/Topic');
 	}

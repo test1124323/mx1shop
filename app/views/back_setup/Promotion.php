@@ -16,14 +16,14 @@ $arr_show = array(''=>'ทั้งหมด','1'=>'แสดงหน้าแ�
 </script>
 <ol class="breadcrumb" style="margin-top:-15px;">
   <li><a href="#">หน้าแรก</a></li>
-  <li class="active">ข่าวสารและโปรโมชันถึงลูกค้า</li>
+  <li class="active">ข่าวสารและโปรโมชั่นถึงลูกค้า</li>
 </ol>
 <div class="panel panel-default" style="margin-top:-20px;">
   <div class="panel-body">
 
 <div class="panel panel-primary" style="width:100%;">
 	<div class="panel-heading">
-		<h3 class="panel-title"><i class='glyphicon glyphicon-envelope'></i> ข่าวสารและโปรโมชันถึงลูกค้า</h3>
+		<h3 class="panel-title"><i class='glyphicon glyphicon-envelope'></i> ข่าวสารและโปรโมชั่นถึงลูกค้า</h3>
 	</div>
 	<div class="panel-body">
 

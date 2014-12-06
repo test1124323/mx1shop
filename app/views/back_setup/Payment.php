@@ -63,7 +63,7 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SOrderDate'];?>" for="SOrderDate" name="SOrderDate" id="SOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['SOrderDate'];?>" for="SOrderDate" name="SOrderDate" id="SOrderDate" placeholder="dd/mm/yyyy"  >
 		  					<span class="input-group-addon" for="SOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
@@ -72,7 +72,7 @@ $arr_OrderStatus = ArrOrderStatus();
     				</div>
     				<div class="col-xs-3">
     					<div class="input-group">
-		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['EOrderDate'];?>" for="EOrderDate" name="EOrderDate" id="EOrderDate" placeholder="dd/mm/yyyy" readonly="readonly" >
+		  					<input type="text"  class="form-control datepicker" value="<?php echo @$Input['EOrderDate'];?>" for="EOrderDate" name="EOrderDate" id="EOrderDate" placeholder="dd/mm/yyyy"  >
 		  					<span class="input-group-addon" for="EOrderDate"><i class="glyphicon glyphicon-calendar"></i></span>
 						</div>
     				</div>
