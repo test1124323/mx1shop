@@ -14,7 +14,9 @@ $path = $data['path'];
 
     $cate1      = CategoryModel::level1Cate()->get()->toArray();
     $cate2      = CategoryModel::level2Cate()->get()->toArray();
-
+    $brand      = BrandCarModel::all()->toArray();
+    // echo "<pre>";
+    // print_r($brand);exit;
     foreach (Session::all() as $key => $value) {
       if(!is_array($value)){
         if(strpos($key,'P_')!==false){
@@ -147,7 +149,7 @@ $path = $data['path'];
       </li>
 
 
-      <li class="dropdown dropdown-large" style="width:50px;margin-top:15px; padding-left:5px;">
+      <li class="dropdown dropdown-large" style="width:250px;margin-top:15px; padding-left:5px;">
         <div style="width:100% !important; overflow:hidden;" class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
       </li>
     </ul>
@@ -275,15 +277,44 @@ $path = $data['path'];
                   $con = '';
                 }
               ?>
-                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   <?php echo $v2['CategoryName'];?></option>
+                <option class="option-pad" value="<?php echo $v2['CategoryID'];?>" style="padding:4px;" <?php echo $con;?>>   - <?php echo $v2['CategoryName'];?></option>
               <?php
             }
           }
         }
       ?>
       </select>
-      <br/><br/>
-      <button class="btn btn-success col-sm-6" type="submit" style="float:right"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+      <select name="brand" class="form-control" style="border-radius:2px;border:none;border-bottom: solid 2px #DDDDDD !important;">
+        <option class="option-pad" value="">- - - ทุกยี่ห้อ - - -</option>
+        <?php 
+          $brandcar = Input::get('brand');
+         
+          foreach ($brand as $k1 => $v1) {
+                if($v1['BrandCarID']."_0"==$brandcar){
+                       $con1 = 'selected';
+                      }else{
+                        $con1 = '';
+                }
+          ?>
+          <option class="option-pad" value="<?php echo $v1['BrandCarID'];?>_0" <?php echo $con1;?>><?php echo $v1['BrandCarName'];?></option>
+          <?php
+          foreach ($v1['model_car'] as $k2 => $v2) {
+
+                if($v1['BrandCarID']."_".$v2['ModelCarID']==$brandcar){
+                  $con = 'selected';
+                }else{
+                  $con = '';
+                }
+          ?>
+                <option class="option-pad" value="<?php echo $v1['BrandCarID'].'_'.$v2['ModelCarID'];?>" style="padding:4px;" <?php echo $con;?>>   - <?php echo $v2['ModelCarName'];?></option>
+          <?php  
+          }
+        }
+      ?>
+      </select>
+    
+      <button class="btn btn-success col-sm-6" type="submit" style="float:right;margin-top:15px;"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+      </p>
 </form>
 </div><!-- /input-group -->
 

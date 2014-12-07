@@ -30,6 +30,17 @@ class Product extends Eloquent{
 							get()->toArray();
 	}
 
+	public function scopeBrand($query,$bid,$mid){
+
+		if($bid!=''){
+			$query 	= $query->where('BrandCarID',$bid);
+		}
+		if($mid!='' && $mid !=0){
+			$query 	= $query->where('ModelCarID',$mid);
+		}
+		return $query;
+	}
+
 	public function scopeJoinCategory($query){
 		
 		return $query->join('tbl_productcate', 'tbl_product.ProductId', '=', 'tbl_productcate.ProductID')

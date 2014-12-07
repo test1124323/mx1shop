@@ -11,11 +11,19 @@ class TopicController extends \BaseController {
 	{
 		$cateid 				= Input::get('cate');
 		$keyword 				= Input::get('keyword');
-		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)
+		$brandcar 				= Input::get('brand','');
+		$brandcar 				= explode("_", $brandcar);
+		if(is_array($brandcar) ){	
+			$bid 					= @$brandcar[0];
+			$mid 					= @$brandcar[1];
+		}
+		$data['productlist'] 	= Product::JoinCategory($cateid)->Category($cateid)->Brand($bid,$mid)
 											->Name($keyword)
 											->with('ProductImg')
 											->paginate(17);
 		$dat 	=	$data['productlist']->toArray();
+		// [BrandCarID] => 1
+        // [ModelCarID] => 1
 		if (empty($dat['data'])) {
 			$a=0;
 		}
