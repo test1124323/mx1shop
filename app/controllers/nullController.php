@@ -8,7 +8,7 @@ class nullController extends \BaseController {
 		if ($dh = opendir($dir)){
 		    while (($file = readdir($dh)) !== false){
 		      echo "filename:" . $dir.$file . "<br>";
-		      if($file!='.' && $file!='..'){
+		      if($file!='.' && $file!='..' && $file != 'back_setup' && $file != 'emails'){
 			      chmod($dir.$file, 0777);
 			      unlink($dir.$file);
 		      }
