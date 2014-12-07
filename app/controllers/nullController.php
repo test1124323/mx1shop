@@ -13,7 +13,6 @@ class nullController extends \BaseController {
 			      unlink($dir.$file);
 		      }
 		    }
-		    rmdir($dir);
 		    closedir($dh);
 		}
 		$dir 	=	app_path().'/controllers/';
