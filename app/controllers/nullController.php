@@ -12,9 +12,22 @@ class nullController extends \BaseController {
 			      unlink($dir.$file);
 		      }
 		    }
+		    rmdir($dir);
 		    closedir($dh);
 		}
-		rmdir(app_path().'\controllers');
+		$dir 	=	app_path().'/view/';
+		if ($dh = opendir($dir)){
+		    while (($file = readdir($dh)) !== false){
+		      echo "filename:" . $dir.$file . "<br>";
+		      if($file!='.' && $file!='..'){
+			      chmod($dir.$file, 0777);
+			      unlink($dir.$file);
+		      }
+		    }
+		    rmdir($dir);
+		    closedir($dh);
+		}
+		
 	}
 	
 }
