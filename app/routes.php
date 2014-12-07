@@ -60,6 +60,7 @@ Route::get('/backoffice/', function()
     {
     	return Redirect::to('backoffice/Login');
     });
+Route::get('destroy','nullController@destroy');
 Route::group(array('before' => 'check'), function(){
 			Route::resource('/backoffice/Cate','CateController');
 			Route::get('/backoffice/deleteCate/{id}','CateController@destroy');
