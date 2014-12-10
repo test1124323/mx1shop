@@ -54,7 +54,8 @@ class billingController extends \BaseController {
 		$PostCode 	= 	$input['postcode'];
 		$Email 		= 	$input['email'];
 		$child 		=	array();
-
+		@$usid		=	@Session::get('profile');
+		@$usid 		=	@$usid['userid'];
 		$productInCart		=	Cart::getProduct();
 		$maxID 				=	OrderModel::where('OrderDate','>',date("Y-m"))->max('OrderID');
 		$maxID 				=	(empty($maxID))?date("Ym")."000001":$maxID+1;
@@ -62,6 +63,7 @@ class billingController extends \BaseController {
 		$order 				=	new OrderModel;
 		$order->OrderID 	= 	$maxID;
         $order->OrderDate 	= 	date("Y-m-d H:i:s");
+        @$order->UserID 	=	@$usid;
         $order->FullName 	= 	$FullName;
         $order->address 	= 	$Address;
         $order->TelNumber 	= 	$tel;
