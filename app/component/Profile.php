@@ -7,6 +7,7 @@ class Profile{
 	public static function save($user) {
 
 		@$login 	=	@$user->toArray();
+
 		@$userInfo 				=	array();
 		@$fullname 				=	explode(" ", @$login['FullName']);
 		@$userInfo['fullname']	=	@$login['FullName'];
@@ -24,7 +25,7 @@ class Profile{
 		@$userInfo['telnumber']		=	@$login['UserTel'];
 		@$userInfo['userid']		=	@$login['UserID'];
 		@$userInfo['typeuser']		=	@$login['TypeUser'];
-		@$uesrInfo['facebook_id'] 	=	@$login['FacebookID'];
+		@$userInfo['facebook_id'] 	=	@$login['FacebookID'];
 		
 		Session::put('input',@$userInfo);
 		Session::put('profile',@$userInfo);

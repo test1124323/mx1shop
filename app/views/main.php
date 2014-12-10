@@ -50,7 +50,7 @@ foreach ($productlist as $pkey => $pvalue) {
 
           <div style="padding:13px 0 0 7px;color:#555;font-size:14px;"><b>ชื่อสินค้า : <?php echo $pvalue['ProductName'];?></b></div>
           <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>รหัสสินค้า : </b><?php echo str_pad($pvalue['ProductID'], 7 , '0' , STR_PAD_LEFT);?></div>
-          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>ราคา : <?php echo number_format($pvalue['ProductSalePrice']);?>฿</b></div>
+          <div style="padding:7px 0 0 7px;color:#888;font-size:14px;"><b>ราคา : <?php echo number_format($pvalue['ProductSalePrice']);?> ฿</b></div>
           </a>
 </div>
 

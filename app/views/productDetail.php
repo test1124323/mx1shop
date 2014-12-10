@@ -104,7 +104,7 @@ foreach ($detail['product_img'] as $key => $value) {
     <div style=" " class="col-sm-12">
       <div class="col-sm-12" style="text-align:center;padding:3px;font-size:18px;" >รหัสสินค้า <b><?php echo str_pad($detail['ProductID'], 7 , '0',STR_PAD_LEFT);?></b></div>
       <div class="col-sm-12" style="text-align:center;padding:3px;font-size:14px;color:#FF7799;" >สินค้าคงเหลือจำนวน <span style="font-size:16px"><?php echo $detail['ProductAmount']?></span> ชิ้น</b></div>
-      <div class="col-sm-12" style="text-align:center;background:#7FA92D;color:#FFF;padding:3px;font-size:24px;" >ราคา <?php echo number_format($detail['ProductSalePrice']);?>฿</div>
+      <div class="col-sm-12" style="text-align:center;background:#7FA92D;color:#FFF;padding:3px;font-size:24px;" >ราคา <?php echo number_format($detail['ProductSalePrice']);?> ฿</div>
     </div>
     <div class="col-sm-12">
     <form name="orderForm" method="post" action="../cartStore/<?php echo $detail['ProductID']?>">
