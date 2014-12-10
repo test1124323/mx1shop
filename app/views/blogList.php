@@ -30,7 +30,7 @@ foreach ($list as $key => $value) {
 					[TopicStatus] => 1 
 					[TopicPic] => 20141205041116.png ) -->
 	
-	<div class="col-sm-6" style="margin-top:20px;">
+	<div class="col-sm-6" style="margin-top:20px;height:400px;">
 	<a href="blog/<?php echo $value['TopicID']?>">
 	<div class="ProductPic" style="background:url(img/picTopic/<?php echo @$value['TopicPic'];?>);
                   background-position:center;
@@ -46,7 +46,7 @@ foreach ($list as $key => $value) {
 }
 ?>
 </div>
-<div class="col-sm-12" style="height:500px;"></div>
+<div class="col-sm-12" style="height:200px;"></div>
 <?php
 include("webFoot.php");
 ?>
