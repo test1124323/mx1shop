@@ -1,6 +1,10 @@
 <?php
 include("webHead.php");
-
+foreach ($detail['product_img'] as $key => $value) {
+  if($value['StatusFirst']!=1){
+    ?><img src="<?php echo $path;?>img/product/<?php echo $value['ProductIMG'];?>"><?php
+  }
+}
 ?>
 <div id="fb-root"></div>
 <title><?php echo $detail['ProductName']?> ประดับยนต์คุณภาพจาก Mx1Shop</title>
