@@ -11,9 +11,16 @@ class billingController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
-		$prod 	=	Cart::getProduct();
-		if(empty($prod)){return Redirect::to('cart?updated=1');}
-		return View::make('billingForm');
+		if(Input::has('listbill')){
+			$prof 		=	Session::get('profile');
+			$orders 	=	OrderModel::OfID($prof['userid'])->orderBy('OrderID', 'DESC')->get()->toArray();
+			
+			return View::make('billlist', array('orderlist' => $orders));
+		}else{
+			$prod 	=	Cart::getProduct();
+			if(empty($prod)){return Redirect::to('cart?updated=1');}
+			return View::make('billingForm');
+		}
 	}
 
 
@@ -129,8 +136,21 @@ class billingController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$order 	=	OrderModel::find($id)->toArray();
-		return View::make("bill",array('detail'=>$order));
+		$order 	=	OrderModel::find($id);
+		if(is_object($order)){
+			$order = $order->toArray();
+		}
+		$prof 	=	Session::get('profile');
+		if($order['UserID']!=$prof['userid']){
+			return Redirect::to('');
+		}
+
+
+		if(Input::has('listbill')){
+			return $order;
+		}else{
+			return View::make("bill",array('detail'=>$order));
+		}
 	}
 
 

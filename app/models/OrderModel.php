@@ -12,6 +12,11 @@ class OrderModel extends Eloquent{
 	public $timestamps = false;
 	protected $with 	=	array('OrderDetail');
 
+	public function scopeOfID($query,$id){
+		return $query->where('UserID',$id);
+
+	}
+
 	public function OrderDetail(){
 		return $this->hasMany('OrderDetailModel','OrderID');
 	}
