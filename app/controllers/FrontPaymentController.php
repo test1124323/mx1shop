@@ -43,7 +43,7 @@ class FrontPaymentController extends \BaseController {
 		   	return Redirect::to('payment?updated=1');
 		}
 
-		$input 	=	@Session::get('input');
+		$input 	=	@Session::get('profile');
 		$pay 	=	new PaymentModel;
 		$pay->OrderID 		=	Input::get('orderID',null);
 		$pay->UserID 		=	@$input['userid'];

@@ -43,9 +43,11 @@ class TrackController extends \BaseController {
 	 */
 	public function show($id)
 	{
-
 		$Ostat 	=	array('รอยืนยันการสั่งซื้อ','ยืนยันการสั่งซื้อ','รอการชำระเงิน','ชำระเงินเรียบร้อย','จัดส่งเรียบร้อย','ยกเลิกรายการ');
 		$order 	=	OrderModel::find($id)->toArray();
+		if($order['Email'] != $_REQUEST['mail'] || empty($order)){
+			return 'No';
+		}
 
 		$string 	=	"<div style='padding:20px;background:#EFEFEF;'>";
 		$string 	.=	"<p>รหัสการสั่งซื้อ : ".$id."</p>";

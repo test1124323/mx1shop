@@ -49,9 +49,8 @@ $path = $data['path'];
     
   <meta name="description" content="ศูนย์รวมประดับยนต์ เครื่องเสียง กล้องบันทึกภาพ กล้องถอย ไฟซีนอน ไฟเดย์ไลท์ ไฟแฟลช ไฟหรี่ เซนเซอร์กันขโมย ปลายท่อ กันสาด กันแมลง โครเมี่ยมตกแต่งรถยนต์ หน้ากากวิทยุ สอบถามข้อมูลเพิ่มเติมได้นะครับ
 แม็กซ์
-โทร : 081-7009767, 083-0208068
-ไลน์ : oxymaxy
-อีเมลล์ : lee.pradubyon@gmail.com">
+โทร :  061- 410-3299
+ไลน์ : mx1shop">
 
   <link rel="shortcut icon" href="<?php echo $path;?>img/miniicon.png">
   
@@ -96,7 +95,7 @@ $path = $data['path'];
     <?php 
         if(Session::has('profile')){
           ?>
-          <b><a href="<?php echo Request::root()?>/profile">โปรไฟล์</a></b> | <b><a href="<?php echo Request::root()?>/logout">ออกจากระบบ</a></b>
+          <b><a href="<?php echo Request::root()?>/profile">ข้อมูลสมาชิก</a></b> | <b><a href="<?php echo Request::root()?>/logout">ออกจากระบบ</a></b>
           <?php
         }else{
           ?>

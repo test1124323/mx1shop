@@ -24,7 +24,7 @@ function apass(){
 
 <div class="col-sm-8" style="padding-top:10px;">
 <div style="border-bottom:solid thin #F0F0F0;">
-<a href="<?php echo Request::root().'/profile'?>"><button class="btn btn-default" style="padding:15px; font-size:14px;color:#666;">จัดการโปรไฟล์</button></a>
+<a href="<?php echo Request::root().'/profile'?>"><button class="btn btn-default" style="padding:15px; font-size:14px;color:#666;">จัดการข้อมูลสมาชิก</button></a>
 <button class="btn btn-default" style="padding:15px; font-size:14px;color:#666;background:#DEDEDE;">เปลี่ยน password</button>
 </div>
 <form method="post" name="changepass" action = "<?php echo Request::root()?>/registeration/<?php echo $profile['userid']?>">
