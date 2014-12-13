@@ -50,18 +50,28 @@ function expand(id){
 <hr>
 <h4 style="padding:25px; color:rgba(255,30,30,0.9);">ประวัติการสั่งซื้อสินค้าของ <?php $pro 	=	Session::get('profile'); echo $pro['fullname'] ?></h4>
 <?php
+$ik = 0;
+if(empty($orderlist)){
+	?>
+<div class="col-sm-12" style=" padding:0 20px 0 20px;">
+<pre style="font-size:20px; color:#999; text-shadow:1px 2px 0px rgba(255,255,255,0.8); background:#FCFCFC;" align="center">
+คุณยังไม่มีประวัติการสั่งซื้อกับทางร้าน
+</pre>
+</div>
+	<?php
+}
 	foreach ($orderlist as $key => $detail) {
-		$i = 0;
+		
 		?>
-			<a href="javascript:void(0)" onclick="expand('<?php echo $i;?>')" style="text-decoration:none;">
-				<div class="shadow-line " id="expand_<?php echo $i;?>" onmouseout="non_hover(this.id)" onmouseover="hover(this.id);" style="padding:15px;background:#EFEFEF;border-radius:2px;font-weight:500;color:#555;
+			<a href="javascript:void(0)" onclick="expand('<?php echo $ik;?>')" style="text-decoration:none;">
+				<div class="shadow-line " id="expand_<?php echo $ik;?>" onmouseout="non_hover(this.id)" onmouseover="hover(this.id);" style="padding:15px;background:#EFEFEF;border-radius:2px;font-weight:500;color:#555;
 		">
 				<i class="glyphicon glyphicon-chevron-right"></i>  
 				รหัส <?php echo $detail['OrderID'];?>   |   วันที่ <?php echo str_replace('-', '/', $detail['OrderDate']) ?>
 				</div>
 			</a>
 
-			<div id="ex_content_<?php echo $i?>" style="padding:30px;border-radius:5px;border:thin solid #DDD;<?php ($i==0)?'display:none':'';?> ">
+			<div id="ex_content_<?php echo $ik?>" style="padding:30px;border-radius:5px;border:thin solid #DDD;<?php echo ($ik!=0)?'display:none':'';?> ">
 				<!-- content -->
 				
 					<div class="">
@@ -95,6 +105,7 @@ function expand(id){
 						    <?php
 						  }
 						  $total = 0;
+						  $i 	 = 0;
 						  foreach ($productInCart as $key => $value) {
 						  	// Array ( [AutoID] => 19 [OrderID] => 201411000001 [ProductID] => 1 [ProductName] => กระจกมองหลัง [OrderAmount] => 1 [ProductPrice] => 450 [OrderPriceTotal] => 450 )
 						  ?>
@@ -123,7 +134,7 @@ function expand(id){
 			</div>
 		<?php
 		
-		$i++;
+		$ik++;
 	}
 
 ?>

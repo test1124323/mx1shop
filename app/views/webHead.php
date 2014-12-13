@@ -95,7 +95,7 @@ $path = $data['path'];
     <?php 
         if(Session::has('profile')){
           ?>
-          <b><a href="<?php echo Request::root()?>/profile">ข้อมูลสมาชิก</a></b> | <b><a href="<?php echo Request::root()?>/logout">ออกจากระบบ</a></b>
+          <a href="<?php echo Request::root()?>/billing?listbill=true">ประวัติการสั่งซื้อ</a> | <a href="<?php echo Request::root()?>/profile">ข้อมูลสมาชิก</a> | <a href="<?php echo Request::root()?>/logout">ออกจากระบบ</a>
           <?php
         }else{
           ?>

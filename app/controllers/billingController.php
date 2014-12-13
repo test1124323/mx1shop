@@ -11,8 +11,12 @@ class billingController extends \BaseController {
 	//--------------------------RestFul function------------------------------------
 	public function index()
 	{
+
 		if(Input::has('listbill')){
 			$prof 		=	Session::get('profile');
+			if(empty($prof)){
+				return Redirect::to('');
+			}
 			$orders 	=	OrderModel::OfID($prof['userid'])->orderBy('OrderID', 'DESC')->get()->toArray();
 			
 			return View::make('billlist', array('orderlist' => $orders));
