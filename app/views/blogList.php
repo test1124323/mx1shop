@@ -21,8 +21,7 @@ foreach ($list as $key => $value) {
 	$content 	=	iconv_substr(strip_tags($value['TopicDetail']),0,200,"UTF-8");
 	$content 	=	preg_replace("/\[vdo\]/", '', $content);
 	$content 	=	preg_replace("/\[\/vdo\]/", '', $content);
-	?>	
-	<div class="col-sm-6" style="margin-top:20px;height:400px;">
+	?>
 	<div class="col-sm-6" style="margin-top:20px;height:400px;">
 	<a href="blog/<?php echo $value['TopicID']?>">
 	<div class="ProductPic" style="background:url(img/picTopic/<?php echo @$value['TopicPic'];?>);
