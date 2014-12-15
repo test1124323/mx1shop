@@ -1,8 +1,16 @@
 <?php
 include("webHead.php");
+?>
+
+<?php
 foreach ($detail['product_img'] as $key => $value) {
-  if($value['StatusFirst']!=1){
-    ?><img src="<?php echo $path;?>img/product/<?php echo $value['ProductIMG'];?>"><?php
+  if($value['StatusFirst']==1){
+    ?>
+    
+    <script type="text/javascript">
+    $("#tmpimagehid").html("<img src='http://www.mx1shop.com/img/product/<?php echo $value['ProductIMG'];?>'>");
+    </script>
+    <?php
   }
 }
 ?>

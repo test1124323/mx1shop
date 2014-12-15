@@ -39,7 +39,17 @@ $path = $data['path'];
     if (!empty($req1) && $req2=='main' ){
       ?>
       <title><?php echo $detail['ProductName'];?> Mx1Shop ศูนย์รวมประดับยนต์คุณภาพสำหรับคุณ</title>
-      <?php
+      <?php 
+        foreach ($detail['product_img'] as $key => $value) {
+          if($value['StatusFirst']==1){
+        ?>
+          <link rel="image_src" 
+          type="image/jpeg" 
+          href="http://www.mx1shop.com/img/product/<?php echo $value['ProductIMG']?>" />
+          <meta property="og:image" content="http://www.mx1shop.com/img/product/<?php echo $value['ProductIMG']?>" />
+        <?php
+        }
+      }
     }else{
       ?>
       <title>MX1 Shop::</title>
@@ -81,7 +91,7 @@ $path = $data['path'];
 
 </head>
 <body>
-
+<div style="z-index:-99999;position:absolute;width:100%;" align="center" id="tmpimagehid">test</div>
 <div class="container back-container">
 <!-- <div style="background:#FFF;" align="right">
   <div class="fb-like" data-href="https://www.facebook.com/pages/MX1shop/489895114484301" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
@@ -197,7 +207,7 @@ $path = $data['path'];
             </p>
             </div>
           </div>
-        </div><!-- End Item -->
+        </div> <!-- End Item-->
 
                 
       </div><!-- End Carousel Inner -->
