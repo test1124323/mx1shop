@@ -7,23 +7,23 @@
     <div class="col-sm-3">139-2-80992-5</div>
   </div>
   <div class="col-sm-12">
-    <div class="col-sm-6">ธนาคารไทยพาณิชย์ โรบินสันสระบุรี</div>
+    <div class="col-sm-6">ธนาคารไทยพาณิชย์ สาขาโรบินสันสระบุรี</div>
     <div class="col-sm-3">404-7-46941-3</div>
   </div>
   <div class="col-sm-12">
-    <div class="col-sm-6">ธนาคารกรุงศรีอยุธยา โรบินสันสระบุรี</div>
+    <div class="col-sm-6">ธนาคารกรุงศรีอยุธยา สาขาโรบินสันสระบุรี</div>
     <div class="col-sm-3">719-1-02381-9</div>
   </div>
   <div class="col-sm-12">
-    <div class="col-sm-6">ธนาคารกรุงเทพ โรบินสันสระบุรี</div>
+    <div class="col-sm-6">ธนาคารกรุงเทพ สาขาโรบินสันสระบุรี</div>
     <div class="col-sm-3">585-7-02048-0</div>
   </div>
   <div class="col-sm-12">
-    <div class="col-sm-6">ธนาคารกรุงไทย โรบินสันสระบุรี</div>
+    <div class="col-sm-6">ธนาคารกรุงไทย สาขาโรบินสันสระบุรี</div>
     <div class="col-sm-3">982-6-14535-1</div>
   </div>
   <div class="col-sm-12">
-    <div class="col-sm-6">ธนาคารทหารไทย โรบินสันสระบุรี</div>
+    <div class="col-sm-6">ธนาคารทหารไทย สาขาโรบินสันสระบุรี</div>
     <div class="col-sm-3">639-2-02909-3</div>
   </div>
   

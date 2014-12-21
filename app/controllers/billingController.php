@@ -110,7 +110,7 @@ class billingController extends \BaseController {
 		DB::transaction(function() use ($child,$order)
 		{
 			foreach ( Shelf::buy($child) as $key => $objChild) {
-			 	$objChild->save();
+			 	// $objChild->save();
 			}
 			$order->save();
 			foreach ($child as $key => $mChild) {
