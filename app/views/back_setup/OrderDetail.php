@@ -144,8 +144,9 @@ $status = "";
   				<div class="col-sm-5 bg-success"><strong>ข้อมูลใบสั่งซื้อ</strong></div>
   			</div>
   			<div class="row">
-  				<div class="col-sm-4">เลขที่ใบสั่งซ์้อ : </div>
-  				<div class="col-sm-8"><?php echo $result[0]['OrderID'];?></div>
+  				<div class="col-sm-4">เลขที่ใบสั่งซื้อ : </div>
+  				<div class="col-sm-8"><?php echo $result[0]['OrderID'];?>
+  				</div>
   			</div>
   			<div class="row">
   				<div class="col-sm-4">วันที่สั่งซื้อ : </div>

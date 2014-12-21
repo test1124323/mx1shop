@@ -118,7 +118,7 @@ class OrderController extends \BaseController {
 			}
 		}
 
-		if($OrderStatus=='5'){//if cancel  add increat product amount
+		/*if($OrderStatus=='5'){//if cancel  add increat product amount
 			
 			foreach ($product as $key => $value) {
 				# code...
@@ -126,7 +126,7 @@ class OrderController extends \BaseController {
 				$pro->ProductAmount = ($pro->ProductAmount+$value['OrderAmount']);
 				$pro->save();
 			}
-		}
+		}*/
 
 
 		/*if($PaymantDate!=NULL){

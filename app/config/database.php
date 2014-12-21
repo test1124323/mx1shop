@@ -50,6 +50,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'mx1shop',
+			'database'  => 'mxshopco_shop',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
