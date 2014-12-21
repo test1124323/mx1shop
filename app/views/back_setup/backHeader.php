@@ -5,6 +5,7 @@ $data['path'] = empty($reqs)?'':'../';
 //$path = $data['path'];
 $path = Request::root()."/";
 //echo Request::root();
+date_default_timezone_set("Asia/Bangkok");
 ?>
 <html lang="en">
 <head>
